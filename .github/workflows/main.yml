@@ -16,4 +16,4 @@ jobs:
     - name: Build and push
       run: heroku container:push -a nbae web
     - name: Release
-      run: heroku container:release -a myherokuappname web
+      run: heroku container:release -a nbae web
