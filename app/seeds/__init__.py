@@ -24,9 +24,9 @@ def seed():
         undo_products()
         undo_images()
     seed_categories()
+    seed_images()
     seed_users()
     seed_products()
-    seed_images()
     # Add other seed functions here
 
 
@@ -34,7 +34,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_categories()
+    undo_images()
     undo_users()
     undo_products()
-    undo_images()
     # Add other undo functions here
