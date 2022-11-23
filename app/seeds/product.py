@@ -4,19 +4,21 @@ from app.models import db, User, environment, SCHEMA, Product
 # Adds a demo user, you can add other users here if you want
 def seed_products():
     item1 = Product(
-        name='Jordan', user_id=1, price = 100, category_id = 1, inventory_id= 1)
+        name='Jordan', user_id=1, price = 100, category_id = 1)
     item2 = Product(
-        name='Iphone', user_id=3, price = 900, category_id = 2, inventory_id= 2)
+        name='Iphone', user_id=3, price = 900, category_id = 2)
     item3 = Product(
-        name='New Balance', user_id=2, price = 70, category_id = 1, inventory_id= 3)
+        name='New Balance', user_id=2, price = 70, category_id = 1)
     item4 = Product(
-        name='Gallexy', user_id=1, price = 910, category_id = 2, inventory_id= 4)
+        name='Gallexy', user_id=1, price = 910, category_id = 2)
     item5 = Product(
-        name='Java', user_id=3, price = 80, category_id = 3, inventory_id= 5)
+        name='Jara', user_id=3, price = 80, category_id = 3)
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(item1)
+    db.session.add(item2)
+    db.session.add(item3)
+    db.session.add(item4)
+    db.session.add(item5)
     db.session.commit()
 
 
@@ -26,10 +28,10 @@ def seed_products():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_users():
+def undo_products():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.products RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM users")
+        db.session.execute("DELETE FROM products")
         
     db.session.commit()

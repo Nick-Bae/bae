@@ -9,11 +9,10 @@ class Inventory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     quantity = db.Column(db.Integer)
+    product_id = db.Column(db.Integer, db.ForeignKey("products.id"))
 
-    item = db.relationship(
-        "Product", uselist=False,
-        back_populates="inventory"
-    )
+
+    item = db.relationship("Product", back_populates="inventory")
     # user = db.relationship("User", lazy='joined', back_populates="stories")
     # comments = db.relationship("Comment", cascade="all,delete", back_populates="story")
 
