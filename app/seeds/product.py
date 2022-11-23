@@ -4,15 +4,15 @@ from app.models import db, User, environment, SCHEMA, Product
 # Adds a demo user, you can add other users here if you want
 def seed_products():
     item1 = Product(
-        name='Jordan', user_id=1, price = 100, category_id = 1)
+        name='Jordan', user_id=1, price = 100, category_id = 1, image_id=1)
     item2 = Product(
-        name='Iphone', user_id=3, price = 900, category_id = 2)
+        name='Iphone', user_id=3, price = 900, category_id = 2, image_id=2)
     item3 = Product(
-        name='New Balance', user_id=2, price = 70, category_id = 1)
+        name='New Balance', user_id=2, price = 70, category_id = 1, image_id=3)
     item4 = Product(
-        name='Gallexy', user_id=1, price = 910, category_id = 2)
+        name='Gallexy', user_id=1, price = 910, category_id = 2, image_id=4)
     item5 = Product(
-        name='Jara', user_id=3, price = 80, category_id = 3)
+        name='Zara', user_id=3, price = 80, category_id = 3, image_id=5)
 
     db.session.add(item1)
     db.session.add(item2)

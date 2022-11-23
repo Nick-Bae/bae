@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getItemDetail } from "../../store/itemDetail";
 import { createItem } from "../../store/items";
-
+import { createImage } from "../../store/image";
 const ItemForm = () => {
   const [errors, setErrors] = useState([]);
   const user = useSelector((state) => state.session.user);
@@ -42,7 +42,14 @@ const ItemForm = () => {
             const data = await res.json();
             if (data && data.errors) setErrors((data.errors));
     });
-    console.log("new item is ?????",newItem.id)
+
+    const imageUrl = {
+        image,
+        product_id: newItem.id
+    }
+    
+    await dispatch(createImage( imageUrl))
+    
     history.push(`/items/${newItem.id}`);
   };
 
@@ -111,7 +118,17 @@ const ItemForm = () => {
                 required
             />
         </div>
-
+        
+        <div >
+            <label htmlFor='url'>url image:</label>
+                <textarea
+                        // maxLength='255'
+                    id='imageUrl'
+                    type='text'
+                    onChange={e => setImage(e.target.value)}
+                    value={image}
+                    />
+                </div>
         {/* <button type='submit'>Creat new spot</button> */}
         <div>
         <input id="spotBt" type="submit" /> &nbsp;

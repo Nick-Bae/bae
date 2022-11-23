@@ -10,13 +10,13 @@ class Product(db.Model):
     name = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     price = db.Column(db.Float, default=1.00)
-    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
+    category_id = db.Column(db.Integer, db.ForeignKey("categories.id", ondelete='RESTRICT'))
     image_id = db.Column(db.Integer, db.ForeignKey("images.id"))
     description = db.Column(db.String)
 
     category = db.relationship(
-        "Category", uselist=False,
-        cascade="all,delete",
+        "Category", 
+        # cascade="all,delete",
         back_populates="product"
     )
     inventory = db.relationship(
@@ -48,7 +48,8 @@ class Product(db.Model):
             'price': self.price,
             'category_id': self.category_id,
             'image_id': self.image_id,
-            'description': self.description
+            'description': self.description,
+            'image': self.image.url
             # 'User': self.user.to_dict(),
             # 'Comments': [comment.to_dict() for comment in self.comments]
         }

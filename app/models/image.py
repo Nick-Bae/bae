@@ -8,6 +8,7 @@ class Image(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String)
     product_id = db.Column(db.Integer)
     
     product = db.relationship(
@@ -26,15 +27,4 @@ class Image(db.Model):
     #     back_populates = 'liked')
 
 
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'name': self.title,
-            'user_id': self.user_id,
-            'price': self.price,
-            'category_id': self.category_id,
-            'inventory_id': self.inventory_id,
-            'image_id': self.image_id,
-            # 'User': self.user.to_dict(),
-            # 'Comments': [comment.to_dict() for comment in self.comments]
-        }
+  

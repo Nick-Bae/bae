@@ -4,13 +4,15 @@ from flask_login import UserMixin
 
 class Category(db.Model):
     __tablename__ = 'categories'
+    
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    
+
     product = db.relationship(
-        "Product", uselist=False,
+        "Product", 
         back_populates="category"
     )
     # user = db.relationship("User", lazy='joined', back_populates="stories")

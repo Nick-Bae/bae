@@ -4,12 +4,16 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react'
 // import './index.css'
 import { getItems } from '../../store/items';
-import ItemForm from './ItemForm';
+import './items.css'
+
+
 const Items = () => {
   const dispatch = useDispatch();
   const items = Object.values(useSelector(state => state.items));
-//   const spots = Object.values(spotsObj);
+  const images = useSelector(state=>state.images)
   const user = useSelector(state => state.session.user)
+
+  console.log("images?????????", images)
 
 console.log("all items???",items)
 
@@ -24,11 +28,17 @@ console.log("all items???",items)
 
   return (
     <main>
-        <div>
+        <div className='mainContainer'>
             {items.map(item=>(
-          <li>
-                    <Link key={item?.id} to={`/items/${item?.id}`}> {item?.name} </Link>
-          </li>
+          <div className="itemDetail">
+              <Link key={item?.id} to={`/items/${item?.id}`}> 
+                    {item?.name} 
+                    <div className='imageContainer'>
+                    <img className="itemImage" src={item?.image} />
+
+                    </div>
+              </Link>
+          </div>
             ))}
         </div>
         <div>

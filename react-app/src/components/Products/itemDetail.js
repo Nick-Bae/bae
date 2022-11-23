@@ -5,7 +5,7 @@ import { useState } from 'react'
 // import './index.css'
 import { getItemDetail } from '../../store/itemDetail';
 import { deleteOneItem } from '../../store/items';
-import EditItemForm from './EditItemForm';
+import './itemDetail.css'
 
 const ItemDetail = () => {
 const dispatch = useDispatch();
@@ -42,6 +42,7 @@ const itemEditBt = async(e) => {
     <main>
         <div>
             <h1>item detail</h1>
+            <img className="imageContainer" src={item.image} />
             {item?.name}
             {item?.price}
             {item?.category_id}

@@ -56,6 +56,9 @@ function App() {
         <ProtectedRoute path='/items/:itemId/edit' exact={true} >
           <EditItemForm />
         </ProtectedRoute>
+        <ProtectedRoute path='/items/:itemId/images' exact={true} >
+          <EditItemForm />
+        </ProtectedRoute>
         <ProtectedRoute path='/new-item' exact={true} >
           <ItemForm />
         </ProtectedRoute>
