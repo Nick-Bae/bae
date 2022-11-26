@@ -4,12 +4,16 @@ import session from './session'
 import { productReducer } from './items';
 import itemDetailReducer from './itemDetail';
 import imageReducer from './image';
+import { commentReducer } from './comment';
+import wishlistReducer from './wishlist';
 
 const rootReducer = combineReducers({
   session,
   items: productReducer,
   item: itemDetailReducer,
-  images: imageReducer
+  images: imageReducer,
+  comments: commentReducer,
+  wishlist: wishlistReducer
 });
 
 

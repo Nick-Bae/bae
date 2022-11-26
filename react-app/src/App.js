@@ -12,6 +12,9 @@ import Items from './components/Products/Items';
 import ItemDetail from './components/Products/itemDetail';
 import ItemForm from './components/Products/ItemForm';
 import EditItemForm from './components/Products/EditItemForm';
+import CommentDisplay from './components/Comment/CommentDisplay';
+import CommentEditForm from './components/Comment/CommentEditForm';
+import Cart from './components/Cart';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,21 +47,43 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+
+        <ProtectedRoute path='/users/:userId/cart' exact={true} >
+          <Cart />
+        </ProtectedRoute>
+
         <Route path='/' exact={true} >
           <Items />
         </Route>
+
         <ProtectedRoute path='/items' exact={true} >
           <Items />
         </ProtectedRoute>
+
         <ProtectedRoute path='/items/:itemId' exact={true} >
           <ItemDetail />
         </ProtectedRoute>
+
         <ProtectedRoute path='/items/:itemId/edit' exact={true} >
           <EditItemForm />
         </ProtectedRoute>
+
         <ProtectedRoute path='/items/:itemId/images' exact={true} >
           <EditItemForm />
         </ProtectedRoute>
+        
+        {/* <ProtectedRoute path='/images' exact={true} >
+          <EditItemForm />
+        </ProtectedRoute> */}
+
+        <ProtectedRoute path='/items/:itemId/comments' exact={true} >
+          <CommentDisplay />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/comments/:id' exact={true} >
+          <CommentEditForm />
+        </ProtectedRoute>
+
         <ProtectedRoute path='/new-item' exact={true} >
           <ItemForm />
         </ProtectedRoute>

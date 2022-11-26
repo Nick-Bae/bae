@@ -1,9 +1,8 @@
 from flask import Blueprint, request, jsonify
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
-from app.models import Product, db, Inventory, Category
+from app.models import Product, db, Inventory, Category, Image, Comment, User
 from flask_login import login_required, current_user
-# from app.forms import StoryForm
-# from app.forms import CommentForm
+from app.forms import CommentForm
 from ..forms import ItemForm
 products_routes = Blueprint('items', __name__)
 
@@ -20,6 +19,24 @@ def validation_errors_to_error_messages(validation_errors):
 @products_routes.route('')
 def get_items():
     products = Product.query.all()
+    # images = Image.query.all()
+    # images =[product.image.all().(product.id == Image.product_id) for product in products]
+
+    # print ("image  result ?????", images)
+    # # return image
+    # result = Image.query.join(Product).all()
+    # print(result)
+    # # return result
+    # result={}
+    # for i in range(len(products)):
+    #     {products[products[i].image.product_id]= image.url for image in images}
+    # products =Product.query.options(joinedload(Image.url))
+    # print ("dfdfadfadfadfadf????????",products)
+    # foods = Product.query.join(Image)
+    # print("fooood?????????????",foods)
+    products = Product.query.join(Product.image)
+    res =[product.image for product in products]
+    print("??????????????",res)
     return {item.to_dict()['id']: item.to_dict() for item in products}
 
 
@@ -83,3 +100,158 @@ def delete_Item(id):
         db.session.commit()
         return {"data": "Deleted"}
     return {'errors': ['Unauthorized']}
+
+
+
+# ==============C O M M E N T S=====================================
+@products_routes.route('/<int:id>/comments')
+def get_comments(id):
+    all_comments = Comment.query.all()
+    item_comments = [comment for comment in all_comments if comment.item_id == id]
+
+    return {comment.to_dict()['id']: comment.to_dict() for comment in item_comments}
+
+
+@products_routes.route('/<int:id>/comments', methods=['POST'])
+@login_required
+def post_comment(id):
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        comment = Comment(body=form.data['body'],
+                      user_id=current_user.id,
+                      item_id=id)
+        db.session.add(comment)
+        db.session.commit()
+        return comment.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# ========================Wish List=============================
+
+@products_routes.route('/<int:id>/wishlists')
+def get_wishlist(id):
+    item = Product.query.get(id)
+    # num = item.wish_user.count()
+    all_wish_users =  item.wish_user.all()
+    wishlist = {
+        'itemId':item.id,
+        'userId':current_user.id,
+        'allUser': [(user.id) for user in all_wish_users]
+    }
+
+    return wishlist
+
+#post wishlist for item
+@products_routes.route('/<int:id>/wishlists', methods=['POST'])
+@login_required
+def post_wishlist(id):
+    item = Product.query.get(id)
+    wish_user = User.query.get(current_user.id)
+    item_wish_user = item.wish_user
+
+    # if not all_liked_user:
+    #     story.liked_story_user.append(like_story_user)
+    #     # db.session.commit()
+    # else:
+    #     for user in all_liked_user:
+    #         if user.id == current_user.id:
+    #             return "You already clicked"
+    #         else:
+    item.wish_user.append(wish_user)
+
+    db.session.commit()
+    # the number of like for the story
+    # num = story.liked_story_user.count()
+
+    wishlist = {
+        'productId':item.id,
+        # 'num':num
+    }
+
+    return wishlist
+
+#delete wishlist
+
+@products_routes.route('/<int:id>/wishlists', methods=['DELETE'])
+@login_required
+def delete_wishlist(id):
+    item = Product.query.get(id)
+    wish_user = User.query.get(current_user.id)
+    all_wish_user =  item.wish_user.all()
+
+    users = [ user.id for user in all_wish_user]
+
+    if wish_user.id in users:
+        item.wish_user.remove(wish_user)
+    else:
+        return "You havn't click the wishlist"
+
+    db.session.commit()
+
+    return "unwish"
+
+
+    # ========================CART List=============================
+
+@products_routes.route('/<int:id>/wishlists')
+def get_wishlist(id):
+    item = Product.query.get(id)
+    # num = item.wish_user.count()
+    all_wish_users =  item.wish_user.all()
+    wishlist = {
+        'itemId':item.id,
+        'userId':current_user.id,
+        'allUser': [(user.id) for user in all_wish_users]
+    }
+
+    return wishlist
+
+#post wishlist for item
+@products_routes.route('/<int:id>/wishlists', methods=['POST'])
+@login_required
+def post_wishlist(id):
+    item = Product.query.get(id)
+    wish_user = User.query.get(current_user.id)
+    item_wish_user = item.wish_user
+
+    # if not all_liked_user:
+    #     story.liked_story_user.append(like_story_user)
+    #     # db.session.commit()
+    # else:
+    #     for user in all_liked_user:
+    #         if user.id == current_user.id:
+    #             return "You already clicked"
+    #         else:
+    item.wish_user.append(wish_user)
+
+    db.session.commit()
+    # the number of like for the story
+    # num = story.liked_story_user.count()
+
+    wishlist = {
+        'productId':item.id,
+        # 'num':num
+    }
+
+    return wishlist
+
+#delete wishlist
+
+@products_routes.route('/<int:id>/wishlists', methods=['DELETE'])
+@login_required
+def delete_wishlist(id):
+    item = Product.query.get(id)
+    wish_user = User.query.get(current_user.id)
+    all_wish_user =  item.wish_user.all()
+
+    users = [ user.id for user in all_wish_user]
+
+    if wish_user.id in users:
+        item.wish_user.remove(wish_user)
+    else:
+        return "You havn't click the wishlist"
+
+    db.session.commit()
+
+    return "unwish"

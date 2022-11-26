@@ -5,12 +5,13 @@ import { useState } from 'react'
 // import './index.css'
 import { getItems } from '../../store/items';
 import './items.css'
+import { getAllImages } from '../../store/image';
 
 
 const Items = () => {
   const dispatch = useDispatch();
   const items = Object.values(useSelector(state => state.items));
-  const images = useSelector(state=>state.images)
+  const images =Object.values( useSelector(state=>state.images));
   const user = useSelector(state => state.session.user)
 
   console.log("images?????????", images)
@@ -19,10 +20,11 @@ console.log("all items???",items)
 
   useEffect(() => {
     dispatch(getItems());
+    dispatch(getAllImages());
   }, [dispatch]);
 
 
-  
+
 
   //   onClick={() => {
   const login = (!user) ? false : true
@@ -31,12 +33,13 @@ console.log("all items???",items)
   return (
     <main>
         <div className='mainContainer'>
-            {items.map(item=>(
+            {/* {items.map(item=>( */}
+            {images.map(item=>(
           <div className="itemDetail">
-              <Link key={item?.id} to={`/items/${item?.id}`}> 
+              <Link key={item?.id} to={{pathname:`/items/${item?.product_id}`, state:{item:item}}}> 
                     {item?.name} 
                     <div className='imageContainer'>
-                    <img className="itemImage" src={item?.image} />
+                    <img className="itemImage" src={item?.url} />
 
                     </div>
               </Link>

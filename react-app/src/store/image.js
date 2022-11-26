@@ -77,10 +77,11 @@ export const imageReducer = (state = {}, action) => {
             return newState;
 
         case LOAD:
-            const images = action.images.Images
-            images.forEach((url) => {
-                newState[url.id] = url
-            })
+            // const images = action.images.Images
+            // images.forEach((url) => {
+            //     newState[url.id] = url
+            // })
+            newState = action.image
             return newState;
 
         case UPDATE:
