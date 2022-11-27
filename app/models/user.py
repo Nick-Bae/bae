@@ -7,17 +7,12 @@ wishlist = db.Table(
     db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
     db.Column("product_id", db.Integer, db.ForeignKey("products.id"))
 )
-cartlist = db.Table(
-    "wishlist",
-    db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
-    db.Column("product_id", db.Integer, db.ForeignKey("products.id"))
-)
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {'schema': SCHEMA,'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
@@ -34,12 +29,6 @@ class User(db.Model, UserMixin):
         back_populates = "wish_user"
     )
 
-    cart = db.relationship(
-        "Product",
-        secondary=cartlist,
-        lazy='dynamic',
-        back_populates = "user_cart"
-    )
 
     @property
     def password(self):

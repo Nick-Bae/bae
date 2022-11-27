@@ -24,8 +24,24 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
+# ===================User Wishlist================================
+@user_routes.route('/<int:id>/wishlists')
+@login_required
+def cart(id):
+    user = User.query.get(id)
+    wishlists = user.wish_item.all()
+   
+    wishlist ={wishlist.to_dict()['id']: wishlist.to_dict() for wishlist in wishlists}
+    return wishlist
 
-# @user_routes.route('/<int:id>/cart')
-# @login_required
-# def cart(id):
-#     item = Product.query.get(id)
+
+ # ========================CART List=============================
+
+@user_routes.route('/<int:id>/cart')
+def get_cartlist(id):
+    user = User.query.get(id)
+    itemsInCart =  user.cart.all()
+    cart ={item.to_dict()['id']: item.to_dict() for item in itemsInCart}
+
+    return cart
+

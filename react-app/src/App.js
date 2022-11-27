@@ -52,6 +52,10 @@ function App() {
           <Cart />
         </ProtectedRoute>
 
+        <ProtectedRoute path='/users/:userId/wishlists' exact={true} >
+          <Cart />
+        </ProtectedRoute>
+
         <Route path='/' exact={true} >
           <Items />
         </Route>

@@ -26,13 +26,13 @@ def seed():
         undo_products()
         undo_images()
         undo_comment()
-        undo_wishlist()
+        # undo_wishlist()
     seed_categories()
     seed_images()
     seed_users()
     seed_products()
     seed_comment()
-    seed_wishlist()
+    # seed_wishlist()
     # Add other seed functions here
 
 
@@ -44,5 +44,5 @@ def undo():
     undo_users()
     undo_products()
     undo_comment()
-    undo_wishlist()
+    # undo_wishlist()
     # Add other undo functions here

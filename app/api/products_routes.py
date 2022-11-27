@@ -1,9 +1,10 @@
 from flask import Blueprint, request, jsonify
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
-from app.models import Product, db, Inventory, Category, Image, Comment, User
+from app.models import Product, db, Inventory, Category, Image, Comment, User, wishlist
 from flask_login import login_required, current_user
 from app.forms import CommentForm
 from ..forms import ItemForm
+
 products_routes = Blueprint('items', __name__)
 
 def validation_errors_to_error_messages(validation_errors):
@@ -19,26 +20,17 @@ def validation_errors_to_error_messages(validation_errors):
 @products_routes.route('')
 def get_items():
     products = Product.query.all()
-    # images = Image.query.all()
-    # images =[product.image.all().(product.id == Image.product_id) for product in products]
-
-    # print ("image  result ?????", images)
-    # # return image
-    # result = Image.query.join(Product).all()
-    # print(result)
-    # # return result
-    # result={}
-    # for i in range(len(products)):
-    #     {products[products[i].image.product_id]= image.url for image in images}
-    # products =Product.query.options(joinedload(Image.url))
-    # print ("dfdfadfadfadfadf????????",products)
-    # foods = Product.query.join(Image)
-    # print("fooood?????????????",foods)
-    products = Product.query.join(Product.image)
-    res =[product.image for product in products]
-    print("??????????????",res)
+  
     return {item.to_dict()['id']: item.to_dict() for item in products}
 
+# ===================Current User items========================
+@products_routes.route('/current')
+@login_required
+def get_items_owner():
+    id = current_user.id
+    products = Product.query.filter(Product.user_id == id).all()
+    
+    return {item.to_dict()['id']: item.to_dict() for item in products}
 
 @products_routes.route('/<int:id>')
 def get_item(id):
@@ -126,7 +118,6 @@ def post_comment(id):
         return comment.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-
 # ========================Wish List=============================
 
 @products_routes.route('/<int:id>/wishlists')
@@ -191,30 +182,21 @@ def delete_wishlist(id):
 
     return "unwish"
 
+# =========================Cart post & delete=====================================
 
-    # ========================CART List=============================
-
-@products_routes.route('/<int:id>/wishlists')
-def get_wishlist(id):
-    item = Product.query.get(id)
-    # num = item.wish_user.count()
-    all_wish_users =  item.wish_user.all()
-    wishlist = {
-        'itemId':item.id,
-        'userId':current_user.id,
-        'allUser': [(user.id) for user in all_wish_users]
-    }
-
-    return wishlist
-
-#post wishlist for item
-@products_routes.route('/<int:id>/wishlists', methods=['POST'])
+   #post wishlist for item
+@products_routes.route('/<int:id>/cart', methods=['POST'])
 @login_required
-def post_wishlist(id):
+def post_cartlist(id):
+    user = User.query.get(current_user.id)
     item = Product.query.get(id)
-    wish_user = User.query.get(current_user.id)
-    item_wish_user = item.wish_user
-
+    cart = user.wish_item.append(item)
+    
+    form = ItemForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+        # cart = 
     # if not all_liked_user:
     #     story.liked_story_user.append(like_story_user)
     #     # db.session.commit()
@@ -223,7 +205,6 @@ def post_wishlist(id):
     #         if user.id == current_user.id:
     #             return "You already clicked"
     #         else:
-    item.wish_user.append(wish_user)
 
     db.session.commit()
     # the number of like for the story
@@ -240,7 +221,7 @@ def post_wishlist(id):
 
 @products_routes.route('/<int:id>/wishlists', methods=['DELETE'])
 @login_required
-def delete_wishlist(id):
+def delete_cartlist(id):
     item = Product.query.get(id)
     wish_user = User.query.get(current_user.id)
     all_wish_user =  item.wish_user.all()

@@ -3,13 +3,14 @@ from .image import Image
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app.models.user import wishlist
-from app.models.user import cartlist
+from app.models.cart import product_cart
 
 
 class Product(db.Model):
     __tablename__ = 'products'
     if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {'schema': SCHEMA,'extend_existing': True}
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
@@ -43,13 +44,13 @@ class Product(db.Model):
         secondary=wishlist,
         lazy='dynamic',
         back_populates = 'wish_item')
-    
-    user_cart = db.relationship(
-        "User",
-        secondary=cartlist,
-        lazy='dynamic',
-        back_populates = 'cart')
 
+    cart = db.relationship(
+        "Cart", 
+        secondary=product_cart, 
+        back_populates="items"
+    )
+    
     def to_dict(self):
         return {
             'id': self.id,
