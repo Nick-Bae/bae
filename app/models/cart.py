@@ -1,4 +1,5 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod
+# from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 # from app.models.product import Product
 
@@ -11,8 +12,8 @@ product_cart = db.Table(
 class Cart(db.Model):
     __tablename__ = 'carts'
 
-    if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+    # if environment == "production":
+    #     __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)

@@ -1,0 +1,4 @@
+.loginName {
+ display: flex;
+ justify-content: end;
+}

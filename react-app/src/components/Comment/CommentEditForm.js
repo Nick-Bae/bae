@@ -62,7 +62,6 @@ function CommentEditForm({comment, itemId,  setEditId}) {
       </ul>
       <label>
         <textarea
-          display='none'
           className="edit-text"
           id="edit-form-text"
           type="text"

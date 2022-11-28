@@ -1,4 +1,5 @@
-from app.models import db, User, environment, SCHEMA, Product, Category
+# from app.models import db, User, environment, SCHEMA, Product, Category
+from app.models import db, User, Category
 
 
 # Adds a demo user, you can add other users here if you want
@@ -24,7 +25,7 @@ def seed_categories():
 # it will reset the primary keys for you as well.
 def undo_categories():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.category RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.categories RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM category")
         

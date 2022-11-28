@@ -1,4 +1,5 @@
-from app.models import db, User, environment, SCHEMA, Product, Category, Comment
+# from app.models import db, User, environment, SCHEMA, Product, Category, Comment
+from app.models import db, User, Comment
 
 
 # Adds a demo user, you can add other users here if you want
@@ -24,7 +25,7 @@ def seed_comment():
 # it will reset the primary keys for you as well.
 def undo_comment():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.category RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.comments RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM category")
         

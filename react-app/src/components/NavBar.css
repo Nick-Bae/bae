@@ -1,0 +1,19 @@
+.navMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.navMenu_login {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+}
+
+.nav_profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+.nav_login, .nav_singup {
+    padding-right: 10px;
+}

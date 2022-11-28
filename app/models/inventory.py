@@ -1,11 +1,14 @@
-from .db import db, environment, SCHEMA
+# from .db import db, environment, SCHEMA
+from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 class Inventory(db.Model):
     __tablename__ = 'inventories'
-    if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+
+    # if environment == "production":
+    #     __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     quantity = db.Column(db.Integer)

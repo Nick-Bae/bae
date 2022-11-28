@@ -6,7 +6,8 @@ from .image import seed_images, undo_images
 from .comment import seed_comment, undo_comment
 # from .wishlist import seed_wishlist, undo_wishlist
 
-from app.models.db import db, environment, SCHEMA
+# from app.models.db import db, environment, SCHEMA
+from app.models.db import db
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`

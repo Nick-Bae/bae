@@ -1,4 +1,5 @@
-from .db import db, environment, SCHEMA
+# from .db import db, environment, SCHEMA
+from .db import db
 from .image import Image
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -8,8 +9,9 @@ from app.models.cart import product_cart
 
 class Product(db.Model):
     __tablename__ = 'products'
-    if environment == "production":
-        __table_args__ = {'schema': SCHEMA,'extend_existing': True}
+
+    # if environment == "production":
+    #     __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)

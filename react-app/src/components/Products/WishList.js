@@ -15,26 +15,7 @@ const WishList = () => {
     const [wishlistBt, setWishlistBt] = useState(false)
     console.log("wish list ????????????", wishlist)
     console.log("allWishUser??????", allWishUser)
-    // const likeInfo = likes[id];
-    // const allLikeUser = likeInfo?.allUser;
-
-
-    // like story without color=================================
-    // const clickStoryLike = (e) => {
-    //   if (!user) alert("please login")
-    //   if (allLikeUser?.find((id) => id === user?.id)) {
-
-    //     dispatch(deleteLikeStory(id))
-    //     // dispatch(getLikeStory(id))
-    //   } else {
-    //     dispatch(likeStory(id))
-    //   }
-    //   dispatch(getLikeStory(id))
-
-    // }
-    // ====================================================
-
-    // ===================== story like with color   #F5F5F5
+  
     if (allWishUser === undefined) {
         dispatch(getWishlist(itemId));
       }

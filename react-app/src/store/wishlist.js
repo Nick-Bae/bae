@@ -29,6 +29,16 @@ export const getWishlist =itemId =>async dispatch =>{
         return wishlist;
     };
 }
+export const userWishlist =userId =>async dispatch =>{
+    const response = await fetch(`/api/users/${userId}/wishlists`)
+
+    if (response.ok) {
+        const wishlist = await response.json();
+
+        dispatch(read(wishlist));
+        return wishlist;
+    };
+}
 
 
 export const postWishlist = (itemId) => async (dispatch) => {
