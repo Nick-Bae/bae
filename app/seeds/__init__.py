@@ -19,9 +19,9 @@ seed_commands = AppGroup('seed')
 def seed():
     # comments
     seed_categories()
-    seed_images()
     seed_users()
     seed_products()
+    seed_images()
     seed_comment()
 # comments    
 
@@ -29,9 +29,9 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_categories()
-    undo_images()
     undo_users()
     undo_products()
+    undo_images()
     undo_comment()
     # undo_wishlist()
     # Add other undo functions here
