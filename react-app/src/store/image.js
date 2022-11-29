@@ -31,8 +31,18 @@ export const getAllImages = () => async dispatch => {
         dispatch(load(images));
     }
 };
+
+export const getOneImage = (itemId) => async dispatch => {
+    const response = await fetch(`/api/images/${itemId}`);
+    console.log(response)
+
+    if (response.ok) {
+        const image = await response.json();
+        dispatch(load(image));
+    }
+};
 export const createImage = (data) => async dispatch => {
-    const response = await fetch(`/api/items/${data.itemId}/images`, {
+    const response = await fetch(`/api/items/${data.product_id}/images`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -43,7 +53,7 @@ export const createImage = (data) => async dispatch => {
 }
 
 export const updateImage = data => async dispatch => {
-    const response = await fetch(`/api/items/${data.id}/images`, {
+    const response = await fetch(`/api/items/${data.product_id}/images`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

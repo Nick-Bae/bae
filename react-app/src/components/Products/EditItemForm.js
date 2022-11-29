@@ -1,24 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, useLocation } from "react-router-dom";
+import { updateImage } from "../../store/image";
 import { getItemDetail } from "../../store/itemDetail";
 import { updateItem } from "../../store/items";
 
-const EditItemForm = () => {
-  const [errors, setErrors] = useState([]);
-  const item = useSelector(state => state.item)
-  const user = useSelector((state) => state.session.user);
+const EditItemForm = ({}) => {
+    const dispatch = useDispatch();
+    const location = useLocation();
+    const [errors, setErrors] = useState([]);
+//   const item = useSelector(state => state.item)
+    const user = useSelector((state) => state.session.user);
+    const {item} = location.state;
+    const {itemId} = useParams();
+    const history = useHistory();
 
-  const dispatch = useDispatch();
-  const {itemId} = useParams();
-  const history = useHistory();
-
-    const [name, setName] = useState(item.name);
-    const [price, setPrice] = useState(item.price);
+    const [name, setName] = useState(item.Product.name);
+    const [price, setPrice] = useState(item.Product.price);
     const [category_id, setCategory_id] = useState(item.category_id);
     // const [inventory_id, setInventory_id] = useState('');
-    const [description, setDescription] = useState(item.description);
-    const [image, setImage] = useState('');
+    const [description, setDescription] = useState(item.Product.description);
+    const [image, setImage] = useState(item.url);
     
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false); 
@@ -37,15 +39,24 @@ const EditItemForm = () => {
         name, 
         price: Number(price), 
         category_id, 
-        description };
-        // image, 
+        description, 
+        image, 
+    };
 
     await dispatch(updateItem(item))
         .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) setErrors((data.errors));
     });
-    history.push(`/items/${itemId}`);
+
+    const imageUrl = {
+        url:image,
+        product_id: item.id
+    }
+    
+    await dispatch(updateImage( imageUrl))
+
+    history.push(`/items/${item.id}`);
   };
 
   const cancelClick = (e) =>{
@@ -66,7 +77,7 @@ const EditItemForm = () => {
         </div>
     )}
     <form id="createItemForm" onSubmit={editSubmit}>
-        <h2 id="formTitle">Create Item</h2>
+        <h2 id="formTitle">Edit Item</h2>
     
         <div id="spotInput">
             <label htmlFor='name'>Title:</label>
@@ -114,7 +125,19 @@ const EditItemForm = () => {
             />
         </div>
 
+        <div >
+            <label htmlFor='url'>url image:</label>
+                <textarea
+                        // maxLength='255'
+                    id='imageUrl'
+                    type='text'
+                    onChange={e => setImage(e.target.value)}
+                    value={image}
+                    />
+                
         {/* <button type='submit'>Creat new spot</button> */}
+        </div>
+
         <div>
         <input id="spotBt" type="submit" /> &nbsp;
         {/* <button id="spotBt" type="button" onClick={editSubmit}>Cancel</button> */}

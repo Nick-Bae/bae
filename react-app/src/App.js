@@ -16,6 +16,7 @@ import CommentDisplay from './components/Comment/CommentDisplay';
 import CommentEditForm from './components/Comment/CommentEditForm';
 import Cart from './components/Cart';
 import Mymenu from './components/Mymenu/Mymenu';
+import WishList from './components/Products/WishList';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -59,7 +60,7 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute path='/users/:userId/wishlists' exact={true} >
-          <Cart />
+          <WishList />
         </ProtectedRoute>
 
         <Route path='/' exact={true} >
@@ -78,9 +79,9 @@ function App() {
           <EditItemForm />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/items/:itemId/images' exact={true} >
+        {/* <ProtectedRoute path='/items/:itemId/images' exact={true} >
           <EditItemForm />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         
         {/* <ProtectedRoute path='/images' exact={true} >
           <EditItemForm />

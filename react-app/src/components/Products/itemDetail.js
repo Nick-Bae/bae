@@ -9,14 +9,16 @@ import './itemDetail.css'
 import CommentDisplay from '../Comment/CommentDisplay';
 import CommentForm from '../Comment/CommentForm';
 import WishList from './WishList';
+import { getOneImage } from '../../store/image';
 
-const ItemDetail = ({ }) => {
+const ItemDetail = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const { itemId } = useParams();
     const history = useHistory();
-    const { item } = location.state
-    const items = useSelector(state => state?.item);
+    // const { item } = location.state
+    // const item = useSelector(state => state?.item);
+    const item = useSelector(state => state.images);
     //const item = useSelector(state => state?.item);
     //   const spots = Object.values(spotsObj);
     const user = useSelector(state => state.session.user)
@@ -26,20 +28,21 @@ const ItemDetail = ({ }) => {
 
     useEffect(() => {
         dispatch(getItemDetail(itemId));
+        dispatch(getOneImage(itemId))
     }, [dispatch]);
 
     const deleteBt = async (e) => {
         e.preventDefault();
-        // let confirmMessage = window.confirm("Are you sure to delete this spot?");
-        // if (confirmMessage) {
+        let confirmMessage = window.confirm("Are you sure to delete this item?");
+        if (confirmMessage) {
         await dispatch(deleteOneItem(itemId))
         history.push('/')
-        // }
+        }
     };
 
     const itemEditBt = async (e) => {
         e.preventDefault();
-        history.push(`/items/${itemId}/edit`)
+        history.push({pathname:`/items/${itemId}/edit`, state:{item:item} })
     };
 
     const wishBt = async (e) => {
@@ -56,16 +59,16 @@ const ItemDetail = ({ }) => {
                     <div className='itemImage_container'>
                         <img className="itemImage_detail" src={item?.url} />
                         <div className='itemEditBt'>
-                            <button onClick={itemEditBt}>Edit</button>
-                            <button onClick={deleteBt}>Delete</button>
+                            <button id="itemEditBt" onClick={itemEditBt}>Edit</button>
+                            <button id="itemDeleteBt" onClick={deleteBt}>Delete</button>
                         </div>
                     </div>
                     <ul className='itemDetail_info'>
-                        <li id="itemName"> {item?.Product.name} </li>
-                        <li id="itemPrice">price: ${item?.Product.price}</li>
+                        <li id="itemName"> {item?.Product?.name} </li>
+                        <li id="itemPrice">price: ${item?.Product?.price}</li>
                         <li id=""> </li>
                         <li id="itemCategory">{item?.category_id}</li>
-                        <li id="itemDescription">{item?.Product.description}</li>
+                        <li id="itemDescription">{item?.Product?.description}</li>
                         <button id="wishBt" onClick={wishBt}>Wish List</button>
                         <WishList itemId={itemId} />
                     </ul>

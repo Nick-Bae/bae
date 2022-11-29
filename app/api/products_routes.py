@@ -4,8 +4,11 @@ from app.models import Product, db, Inventory, Category, Image, Comment, User, w
 from flask_login import login_required, current_user
 from app.forms import CommentForm
 from ..forms import ItemForm
+from ..forms import ImageForm
 
 products_routes = Blueprint('items', __name__)
+
+# =======================Validation=================================
 
 def validation_errors_to_error_messages(validation_errors):
     """
@@ -16,6 +19,8 @@ def validation_errors_to_error_messages(validation_errors):
         for error in validation_errors[field]:
             errorMessages.append(f'{field} : {error}')
     return errorMessages
+
+# ======================All Items=================================================
 
 @products_routes.route('')
 def get_items():
@@ -31,6 +36,8 @@ def get_items_owner():
     products = Product.query.filter(Product.user_id == id).all()
     
     return {item.to_dict()['id']: item.to_dict() for item in products}
+
+# ========================get single Item=====================================
 
 @products_routes.route('/<int:id>')
 def get_item(id):
@@ -186,54 +193,91 @@ def delete_wishlist(id):
 # =========================Cart post & delete=====================================
 
    #post wishlist for item
-@products_routes.route('/<int:id>/cart', methods=['POST'])
-@login_required
-def post_cartlist(id):
-    user = User.query.get(current_user.id)
-    item = Product.query.get(id)
-    cart = user.wish_item.append(item)
+# @products_routes.route('/<int:id>/cart', methods=['POST'])
+# @login_required
+# def post_cartlist(id):
+#     user = User.query.get(current_user.id)
+#     item = Product.query.get(id)
+#     cart = user.wish_item.append(item)
     
-    form = ItemForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        data = form.data
-        # cart = 
-    # if not all_liked_user:
-    #     story.liked_story_user.append(like_story_user)
-    #     # db.session.commit()
-    # else:
-    #     for user in all_liked_user:
-    #         if user.id == current_user.id:
-    #             return "You already clicked"
-    #         else:
+#     form = ItemForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         data = form.data
+#         # cart = 
+#     # if not all_liked_user:
+#     #     story.liked_story_user.append(like_story_user)
+#     #     # db.session.commit()
+#     # else:
+#     #     for user in all_liked_user:
+#     #         if user.id == current_user.id:
+#     #             return "You already clicked"
+#     #         else:
 
-    db.session.commit()
-    # the number of like for the story
-    # num = story.liked_story_user.count()
+#     db.session.commit()
+#     # the number of like for the story
+#     # num = story.liked_story_user.count()
 
-    wishlist = {
-        'productId':item.id,
-        # 'num':num
-    }
+#     wishlist = {
+#         'productId':item.id,
+#         # 'num':num
+#     }
 
-    return wishlist
+#     return wishlist
 
 #delete wishlist
 
-@products_routes.route('/<int:id>/wishlists', methods=['DELETE'])
+# @products_routes.route('/<int:id>/wishlists', methods=['DELETE'])
+# @login_required
+# def delete_cartlist(id):
+#     item = Product.query.get(id)
+#     wish_user = User.query.get(current_user.id)
+#     all_wish_user =  item.wish_user.all()
+
+#     users = [ user.id for user in all_wish_user]
+
+#     if wish_user.id in users:
+#         item.wish_user.remove(wish_user)
+#     else:
+#         return "You havn't click the wishlist"
+
+#     db.session.commit()
+
+#     return "unwish"
+
+
+    # =====================Post an image on item============================
+
+@products_routes.route('/<int:id>/images', methods=['POST'])
 @login_required
-def delete_cartlist(id):
-    item = Product.query.get(id)
-    wish_user = User.query.get(current_user.id)
-    all_wish_user =  item.wish_user.all()
+def post_image(id):
+    form = ImageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+        newImage = Image(
+                    url = data['url'],
+                    product_id = id
+                    )
+        db.session.add(newImage)
+        db.session.commit()
+        return newImage.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-    users = [ user.id for user in all_wish_user]
+    # ========================Update Image===============================================
 
-    if wish_user.id in users:
-        item.wish_user.remove(wish_user)
-    else:
-        return "You havn't click the wishlist"
-
-    db.session.commit()
-
-    return "unwish"
+@products_routes.route('/<int:id>/images',  methods=['PUT'])
+@login_required
+def edit_image(id):
+    image = Image.query.filter(Image.product_id == id)
+    form = ImageForm()
+    if current_user.id == item.user_id:
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            data = form.data
+            image.url = data['url']
+           
+            db.session.add(image)
+            db.session.commit()
+            return image.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { getItems } from '../../store/items';
 import './items.css'
 import { getAllImages } from '../../store/image';
+import ItemDetail from './itemDetail';
 
 const Items = () => {
   const dispatch = useDispatch();
@@ -33,8 +34,10 @@ console.log("all items???",items)
             </div>
             <div className="itemDetail">
             {images.map(item=>(
-              <Link key={item?.id} to={{pathname:`/items/${item?.product_id}`, state:{item:item}}}> 
-                    {item?.Product.name} 
+              // <Link key={item?.id} to={{pathname:`/items/${item?.product_id}`, state:{item:item}}}> 
+              <Link key={item?.id} to={`/items/${item?.product_id}`}> 
+                    {/* <ItemDetail item={item}/> */}
+                    {item?.Product?.name} 
                     <div className='imageContainer'>
                     <img className="itemImage" src={item?.url} />
 

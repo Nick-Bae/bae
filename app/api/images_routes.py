@@ -55,22 +55,19 @@ def get_image(id):
 # @login_required
 # def edit_image(id):
 #     item = Product.query.get(id)
-#     form = ItemForm()
-#     if current_user.id == item.user_id:
-#         form['csrf_token'].data = request.cookies['csrf_token']
-#         form.category_id.choices = [(category.id, '')
-#                                     for category in Category.query.all()]
-#         if form.validate_on_submit():
-#             data = form.data
-#             item.user_id = current_user.id
-#             item.name = data['name']
-#             item.price = str(data['price'])
-#             item.category_id = data['category_id']
-#             item.description = data['description']
-           
-#             db.session.add(item)
-#             db.session.commit()
-#             return item.to_dict()
+#     form = ImageForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+        
+#     if form.validate_on_submit():
+#         data = form.data
+#         newImage = Image(
+#             url = data['url'],
+#             product_id = data['product_id']
+#         )
+                   
+#         db.session.add(newImage)
+#         db.session.commit()
+#         return newImage.to_dict()
 #     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

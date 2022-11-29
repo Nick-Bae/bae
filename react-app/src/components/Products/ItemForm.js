@@ -44,7 +44,7 @@ const ItemForm = () => {
     });
 
     const imageUrl = {
-        image,
+        url:image,
         product_id: newItem.id
     }
     

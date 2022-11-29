@@ -94,10 +94,9 @@ export const deleteOneItem = (itemId) => async (dispatch) => {
         method: "DELETE",
     });
     const data = await response.json()
-    console.log("??????delete",data)
 
     if (response.ok) {
-        dispatch(deleteItem(itemId));
+        dispatch(deleteItem(data));
         return response
     }
 };

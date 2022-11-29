@@ -1,14 +1,27 @@
-.itemDetail_container{
-    /* margin-left: 20px; */
+.itemDetail_all_container{
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
+    /* justify-content: center;
+    justify-items: center; */
+    align-content: center;
+    
+}
+.itemDetail_container{
+    display: flex;
+    /* justify-content: flex-start; */
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width:900px;
 }
 
 .itemImage_container{
     width: 500px;
     height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .itemImage_detail{
     width: 100%;
@@ -40,4 +53,14 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+.itemEditBt{
+    padding:10px;
+    margin-bottom: 20px;
+}
+
+#itemEditBt, #itemDeleteBt{
+    padding:10px;
+    margin-right: 10px;
 }
