@@ -30,7 +30,7 @@ def get_images():
 
 @images_routes.route('/<int:id>')
 def get_image(id):
-    item = Product.query.get(id)
+    item = Image.query.get(id)
     return item.to_dict()
 
 

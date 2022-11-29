@@ -1,0 +1,8 @@
+.myMenuBody{
+    display: flex;
+    flex-direction: row;
+}
+.myMenuBar{
+    border-right: 1px solid var(--grey-light-color);
+    margin-right: 10px;
+}

@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, Image, Product
+from flask_login import login_required, current_user
 
 user_routes = Blueprint('users', __name__)
 
@@ -27,13 +28,23 @@ def user(id):
 # ===================User Wishlist================================
 @user_routes.route('/<int:id>/wishlists')
 @login_required
-def cart(id):
+def wishlist(id):
     user = User.query.get(id)
     wishlists = user.wish_item.all()
    
     wishlist ={wishlist.to_dict()['id']: wishlist.to_dict() for wishlist in wishlists}
+    # image = Image.query.filter(product_id == item.id for item in wishlists)
+    # wishlist.image
     return wishlist
 
+# ======================User selling Items===============================
+@user_routes.route('/<int:id>/items')
+@login_required
+def get_user_items(id):
+    sellingItems = Product.query.filter(Product.user_id == current_user.id).all()
+   
+    items ={wishlist.to_dict()['id']: wishlist.to_dict() for wishlist in sellingItems}
+    return items
 
  # ========================CART List=============================
 

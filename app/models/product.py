@@ -61,6 +61,5 @@ class Product(db.Model):
             'price': self.price,
             'category_id': self.category_id,
             'description': self.description,
-            # 'image': self.image.url
             # 'image': self.image.to_dict()
         }

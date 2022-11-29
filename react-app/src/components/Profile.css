@@ -1,4 +1,3 @@
-.loginName {
- display: flex;
- justify-content: end;
+.loginName, .sellNewItem, .myBae {
+padding-right:10px;
 }

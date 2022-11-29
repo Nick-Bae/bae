@@ -1,0 +1,12 @@
+.wishlistDetail{
+    display: flex;
+    flex-direction: column;
+}
+.wishdetailContainer{
+    display: flex;
+}
+.wishImage{
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}

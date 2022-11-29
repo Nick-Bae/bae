@@ -34,20 +34,17 @@ console.log("all items???",items)
     <main>
         <div className='mainContainer'>
             {/* {items.map(item=>( */}
+            <div className="itemDetail">
             {images.map(item=>(
-          <div className="itemDetail">
               <Link key={item?.id} to={{pathname:`/items/${item?.product_id}`, state:{item:item}}}> 
-                    {item?.name} 
+                    {item?.Product.name} 
                     <div className='imageContainer'>
                     <img className="itemImage" src={item?.url} />
 
                     </div>
               </Link>
-          </div>
             ))}
-        </div>
-        <div>
-          <Link to={`/new-item`}>Create New Item</Link>
+            </div>
         </div>
     </main>
   );

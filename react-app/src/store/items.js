@@ -49,6 +49,17 @@ export const getSingleItem =itemId =>async dispatch =>{
         return item;
     };
 }
+export const getUserItem =userId =>async dispatch =>{
+    const response = await fetch(`/api/users/${userId}/items`)
+
+    if (response.ok) {
+        const item = await response.json();
+        dispatch(read(item));
+        return item;
+    };
+}
+
+
 
 
 export const createItem = (item) => async (dispatch) => {

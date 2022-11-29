@@ -15,6 +15,7 @@ import EditItemForm from './components/Products/EditItemForm';
 import CommentDisplay from './components/Comment/CommentDisplay';
 import CommentEditForm from './components/Comment/CommentEditForm';
 import Cart from './components/Cart';
+import Mymenu from './components/Mymenu/Mymenu';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -41,6 +42,11 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+
+        <ProtectedRoute path='/mymenu' exact={true} >
+          <Mymenu />
+        </ProtectedRoute>
+
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>

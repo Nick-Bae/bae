@@ -27,8 +27,8 @@ export const getAllImages = () => async dispatch => {
     console.log(response)
 
     if (response.ok) {
-        const spots = await response.json();
-        dispatch(load(spots));
+        const images = await response.json();
+        dispatch(load(images));
     }
 };
 export const createImage = (data) => async dispatch => {

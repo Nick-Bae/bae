@@ -31,14 +31,4 @@ class Image(db.Model):
             'Product': self.product.to_dict()
         }
    
-    # user = db.relationship("User", lazy='joined', back_populates="stories")
-    # comments = db.relationship("Comment", cascade="all,delete", back_populates="story")
-
-    # liked_story_user = db.relationship(
-    #     "User",
-    #     secondary=like_story,
-    #     lazy='dynamic',
-    #     back_populates = 'liked')
-
-
-  
+    
