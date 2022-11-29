@@ -1,0 +1,15 @@
+.commentSign{
+    padding:50px 20px;
+    font-size: 30px;
+}
+
+.leaveComment{
+    font-size: 20px;
+}
+
+#reviewTextInput{
+    /* padding:0px 40px; */
+    margin-left: 30px;
+    width:300px;
+    height: 100px;
+}

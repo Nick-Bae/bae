@@ -25,21 +25,21 @@ function Mymenu() {
     }
 
     return (
-        <>
+        <div className='myMenudetail_Container'>
             <div className='myMenuTop'>
-                <h1>  My bae</h1>
+                <h1 id="myBae_title">  My bae</h1>
             </div>
             <div className='myMenuBody'>
-                <div className='myMenuBar'>
-                    <ul>
-                        <li onClick={()=>setSelectedMenu("wishlist")}>Wishlist</li>
+                <div className='myMenuBars'>
+                    <ul className='myMenubar'>
+                        <li className="mymenu_wishlist" onClick={()=>setSelectedMenu("wishlist")}>Wishlist</li>
                         <li onClick={()=>setSelectedMenu("selling")}>Selling</li>
                     </ul>
                 </div>
                 <MymenuDetail menu={selectedMenu} />
             </div>
 
-        </>
+        </div>
     );
 }
 export default Mymenu;

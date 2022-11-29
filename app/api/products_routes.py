@@ -125,11 +125,12 @@ def get_wishlist(id):
     item = Product.query.get(id)
     # num = item.wish_user.count()
     all_wish_users =  item.wish_user.all()
-    wishlist = {
+    if (current_user):
+        wishlist = {
         'itemId':item.id,
-        'userId':current_user.id,
+        # 'userId':current_user.id,
         'allUser': [(user.id) for user in all_wish_users]
-    }
+        }
 
     return wishlist
 

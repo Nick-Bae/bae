@@ -19,36 +19,40 @@ const WishList = () => {
     if (allWishUser === undefined) {
         dispatch(getWishlist(itemId));
       }
-    const wishClick = document?.getElementById('wishSimbol')
-    wishClick === null ? dispatch(getWishlist(itemId)) :
-    wishClick.style.color = "black"
 
-    const wishClicked = allWishUser?.find((id)=>id === user?.id)
+      const wishClick = document?.getElementById('wishSimbol')
+        wishClick === null ? dispatch(getWishlist(itemId)) :
+        wishClick.style.color = "black"
 
-        if (allWishUser?.find((id)=>id === user?.id)) {
-            wishClick === null ? dispatch(getWishlist(itemId)) :
-            wishClick.style.color = "red"
-        } 
+        const wishClicked = allWishUser?.find((id)=>id === user?.id)
+    
+            if (allWishUser?.find((id)=>id === user?.id)) {
+                wishClick === null ? dispatch(getWishlist(itemId)) :
+                wishClick.style.color = "red"
+            } 
 
     const wishBt = (e) => {
         e.preventDefault();
-        if (!user) alert("please login")
-        if (allWishUser?.find((id)=>id === user?.id)) {
-            wishClick === null ? dispatch(getWishlist(itemId)) :
-            wishClick.style.color = "black"
-            dispatch(deleteWishlist(itemId))
-          } else {
-              dispatch(postWishlist(itemId))
-              wishClick === null ? dispatch(getWishlist(itemId)) :
-              wishClick.style.color = "red";
-            //   dispatch(getItemDetail(itemId))
-          }
-          dispatch(getWishlist(itemId))
+        if (!user) {
+            alert("please login")
+        } else {
+            if (allWishUser?.find((id)=>id === user?.id)) {
+                wishClick === null ? dispatch(getWishlist(itemId)) :
+                wishClick.style.color = "black"
+                dispatch(deleteWishlist(itemId))
+              } else {
+                  dispatch(postWishlist(itemId))
+                  wishClick === null ? dispatch(getWishlist(itemId)) :
+                  wishClick.style.color = "red";
+                //   dispatch(getItemDetail(itemId))
+              }
+              dispatch(getWishlist(itemId))
+        }
     };
 
     useEffect(() => {
         // dispatch(getItemDetail(itemId))
-        dispatch(getWishlist(itemId))
+        if (user) dispatch(getWishlist(itemId))
 
     }, [dispatch]);
 

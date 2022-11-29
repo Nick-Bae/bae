@@ -38,14 +38,15 @@ function MymenuDetail({ menu }) {
             <div className='meMenuDetail'>
                 {!menu && (
                     <div className="menu-details">
-                        <p className="menu-info">My bAe</p>
-                        <p>Welcome to personal profile page</p>
-                        <p>Please select a menu to view its details.</p>
+                        <p className="menu-info">My Bae</p>
+                        <p className="menu-info">Welcome to personal profile page</p>
+                        <p className="menu-info">Please select a menu to view its details.</p>
                     </div>
                 )}
 
                 {selectedMenu === 'wishlist' && (
-                    <div>
+                    <div className='wishlistDetail_container'> 
+                    <p id="wishlist">Wishlist</p>
                         {wishImages.map(item => (
                             <div className='wishlistDetail'>
                                 <NavLink key={item?.id} to={{ pathname: `/items/${item?.product_id}`, state: { item: item } }}>
@@ -62,7 +63,8 @@ function MymenuDetail({ menu }) {
                 )}
 
                 {selectedMenu === 'selling' && (
-                    <div>
+                    <div className='wishlistDetail_container'>
+                        <p id="wishlist">Selling</p>
                         {sellingImages.map(item => (
                             <div className='sellinglistDetail'>
                                 <NavLink key={item?.id} to={{ pathname: `/items/${item?.product_id}`, state: { item: item } }}>

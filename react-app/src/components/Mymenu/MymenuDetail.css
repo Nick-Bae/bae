@@ -1,3 +1,6 @@
+.wishlistDetail_container{
+
+}
 .wishlistDetail{
     display: flex;
     flex-direction: column;
@@ -9,4 +12,26 @@
     width: 150px;
     height: 150px;
     border-radius: 10px;
+    margin-left: 40px;
+    padding:10px;
+}
+
+.menu-details{
+    margin-left:20px;
+    padding: 10px 0;
+    font-size: 30px;
+}
+
+.wishTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size:25px;
+}
+
+#wishlist{
+    margin-left: 40px;
+    font-size: 30px;
+    font-weight: bold;
 }

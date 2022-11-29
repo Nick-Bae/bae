@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 20px 20px 20px 20px;
 }
 .navMenu_login {
     display: flex;
@@ -15,5 +16,5 @@
     justify-content: end;
 }
 .nav_login, .nav_singup {
-    padding-right: 10px;
+    padding-right: 20px;
 }

@@ -15,7 +15,7 @@ export const CommentForm = ({spot, setShowModal}) => {
     
     // const currSpot = spot.id;
     // const spotReview = spotReviews.filter(review=> review.spotId ===spot.id)
-    const isComment = comments.filter(comment => comment.user_id === user.id )
+    const isComment = comments.filter(comment => comment?.user_id === user?.id )
 
     const [update, setUpdate] = useState(false);
     const currentUser = useSelector(state => state.session.user)
@@ -88,8 +88,8 @@ export const CommentForm = ({spot, setShowModal}) => {
 
     return (
         <div id="reviewModal">
-            <div onClick={()=> {open ? setOpen(false) : setOpen(true)}}>
-            <i className="fa-solid fa-pen-to-square"> </i>
+            <div className="leaveComment" onClick={()=> {open ? setOpen(false) : setOpen(true)}}>
+            <i className="fa-solid fa-pen-to-square commentSign"> </i>
             &nbsp; Click to leave your comment!
             </div>
             {hasSubmitted && validationErrors.length > 0 && (
@@ -110,7 +110,7 @@ export const CommentForm = ({spot, setShowModal}) => {
                         <textarea
                             required
                             maxLength="250"
-                            id="textInput"
+                            id="reviewTextInput"
                             type="textarea"
                             // placeholder='please leave a review'
                             value={body}

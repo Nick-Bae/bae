@@ -1,12 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useState } from 'react'
-// import './index.css'
 import { getItems } from '../../store/items';
 import './items.css'
 import { getAllImages } from '../../store/image';
-
 
 const Items = () => {
   const dispatch = useDispatch();
@@ -24,8 +21,6 @@ console.log("all items???",items)
   }, [dispatch]);
 
 
-
-
   //   onClick={() => {
   const login = (!user) ? false : true
   //     // if (!login) return ("please log in first")
@@ -33,7 +28,9 @@ console.log("all items???",items)
   return (
     <main>
         <div className='mainContainer'>
-            {/* {items.map(item=>( */}
+            <div >
+              <img className='banner' src="/images/banner1.jpg"  />
+            </div>
             <div className="itemDetail">
             {images.map(item=>(
               <Link key={item?.id} to={{pathname:`/items/${item?.product_id}`, state:{item:item}}}> 

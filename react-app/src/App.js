@@ -70,9 +70,9 @@ function App() {
           <Items />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/items/:itemId' exact={true} >
+        <Route path='/items/:itemId' exact={true} >
           <ItemDetail />
-        </ProtectedRoute>
+        </Route>
 
         <ProtectedRoute path='/items/:itemId/edit' exact={true} >
           <EditItemForm />
