@@ -37,12 +37,12 @@ const WishList = () => {
             alert("please login")
         } else {
             if (allWishUser?.find((id)=>id === user?.id)) {
-                wishClick === null ? dispatch(getWishlist(itemId)) :
+                // wishClick === null ? dispatch(getWishlist(itemId)) :
                 wishClick.style.color = "black"
                 dispatch(deleteWishlist(itemId))
               } else {
                   dispatch(postWishlist(itemId))
-                  wishClick === null ? dispatch(getWishlist(itemId)) :
+                //   wishClick === null ? dispatch(getWishlist(itemId)) :
                   wishClick.style.color = "red";
                 //   dispatch(getItemDetail(itemId))
               }

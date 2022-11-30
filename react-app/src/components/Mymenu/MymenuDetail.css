@@ -35,3 +35,5 @@
     font-size: 30px;
     font-weight: bold;
 }
+
+.myMenubar li:hover {background-color: #ddd};

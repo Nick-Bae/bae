@@ -59,9 +59,6 @@ export const getUserItem =userId =>async dispatch =>{
     };
 }
 
-
-
-
 export const createItem = (item) => async (dispatch) => {
     const response = await fetch("/api/items", {
         method: 'POST',
@@ -70,10 +67,11 @@ export const createItem = (item) => async (dispatch) => {
         body: JSON.stringify(item)
     })
     if (response.ok) {
-    const item = await response.json();
-    dispatch(create(item));
-    return item;
-    }
+        const item = await response.json();
+        dispatch(create(item));
+        return item;
+    };
+    return response;
 };
 
 export const updateItem = (item) => async (dispatch) => {

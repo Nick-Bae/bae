@@ -8,8 +8,6 @@ import { updateItem } from "../../store/items";
 const EditItemForm = ({}) => {
     const dispatch = useDispatch();
     const location = useLocation();
-    const [errors, setErrors] = useState([]);
-//   const item = useSelector(state => state.item)
     const user = useSelector((state) => state.session.user);
     const {item} = location.state;
     const {itemId} = useParams();
@@ -17,22 +15,36 @@ const EditItemForm = ({}) => {
 
     const [name, setName] = useState(item.Product.name);
     const [price, setPrice] = useState(item.Product.price);
-    const [category_id, setCategory_id] = useState(item.category_id);
+    const [category_id, setCategory_id] = useState(item.Product.category_id);
     // const [inventory_id, setInventory_id] = useState('');
     const [description, setDescription] = useState(item.Product.description);
     const [image, setImage] = useState(item.url);
     
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false); 
+    const [ errors, setErrors ] = useState([]);
     
 
-//   useEffect(() => {
-//     dispatch(getItemDetail());
-//   }, [dispatch]);
+   useEffect(() => {
+    const errors =[];
+    if (name.length >15) errors.push('Name must be less than 30 chracters');
+    if ( price < 0) errors.push('Please enter your Correct Price');
+    if (price > 10000) errors.push('Price should be less than $10,000');
+    if (!category_id ) errors.push('Please select the category');
+    if (image.length>255) errors.push('url should not be over 255 characters');
+    if (!image.startsWith('https://') && 
+        !image.startsWith('http://')) errors.push('url should starts with https:// or http://');
+    if (!image.endsWith(".png") && !image.endsWith(".jpeg") 
+        && !image.endsWith(".jpg") && !image.endsWith(".gif")) errors.push('Image url should end with jpeg, jpg, gif, png');
+    setValidationErrors(errors);
+  }, [price, image, name, category_id]);
 
   const editSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
+
+    setHasSubmitted(true);
+    if (validationErrors.length) return alert(`Cannot Submit`);
+
     const item = { 
         id: itemId,
         user_id: user.id, 
@@ -40,7 +52,6 @@ const EditItemForm = ({}) => {
         price: Number(price), 
         category_id, 
         description, 
-        image, 
     };
 
     await dispatch(updateItem(item))
@@ -95,7 +106,7 @@ const EditItemForm = ({}) => {
             <label htmlFor='price'>Price:</label>
             <input
                 id='state'
-                type='text'
+                type='number'
                 onChange={e => setPrice(e.target.value)}
                 value={price}
                 required
@@ -133,6 +144,7 @@ const EditItemForm = ({}) => {
                     type='text'
                     onChange={e => setImage(e.target.value)}
                     value={image}
+                    required
                     />
                 
         {/* <button type='submit'>Creat new spot</button> */}

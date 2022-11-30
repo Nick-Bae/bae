@@ -8,18 +8,17 @@ import './CommentDisplay.css'
 import CommentEditForm from './CommentEditForm';
 //import ReviewFormModal from '.';
 
-export const CommentDisplay = ( ) => {
+export const CommentDisplay = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
     const comments = useSelector(state => Object.values(state.comments));
-   
+
     // const currSpot = spot.id;
     const [update, setUpdate] = useState(false);
     const [remove, setRemove] = useState(false);
     const currentUser = useSelector(state => state.session.user)
     const { itemId } = useParams();
-    const [review, setReview] = useState("");
     const [stars, setStars] = useState("");
     const [editId, setEditId] = useState(-1);
     const [validationErrors, setValidationErrors] = useState([]);
@@ -28,7 +27,7 @@ export const CommentDisplay = ( ) => {
     // console.log("ownerId",revi)
     // const permission = currentUser?.id === spot.ownerId
     // const spotReview = onlyspotReviews.filter(review => (review.spotId === (spot.id)))
-    
+
     // useEffect(() => {
     //     const errors = [];
     //     if (!review.length) errors.push('Please enter your review');
@@ -36,13 +35,11 @@ export const CommentDisplay = ( ) => {
     //     if (stars < 0 || stars > 6) errors.push('Please enter between 0~5')
     //     setValidationErrors(errors);
     // }, [review, stars])
-   
+
     useEffect(() => {
-        // dispatch(getSpotReviews(id));
-        console.log("itemId11111 ??/???1", itemId)
         dispatch(getItemComments(itemId))
 
-    }, [dispatch, update]);
+    }, [dispatch]);
 
     // console.log('allreviews', spotReviewsObj)
     // const reset = () => {
@@ -53,96 +50,97 @@ export const CommentDisplay = ( ) => {
     // const spotReviews = Object.values(spotReviewsObj);
 
     if (!comments) return null
-    
+
     return (
-    <>
-        <p id="reviewIcon">
+        <div className='comment_container'>
+            <p id="commentTitle">
                 {/* <button id="reviewModalClick" onClick={reveiwModal}> */}
-                    
-                 &nbsp; Review
-                     
-                     {/* <ReviewFormModal />
+
+                &nbsp; Comments
+
+                {/* <ReviewFormModal />
                      </button> */}
-                
-                </p>
+
+            </p>
             {/* <p id="numbers"><i className="fa-sharp fa-solid fa-star"></i> 
             &nbsp; {(spot.avgRating.toFixed(1))} · {spot.numReviews} Reviews</p> */}
-        <div id="reviews">
+            <div id="reviews">
 
-            {/* {setHasSubmitted &&  */}
-            {/* {comments.map(({ id, User, user_id, body}) => ( */}
-            {comments.map((comment) => (
-            <>
-                <ul  id='reviewer'>
-                    <li key={comment.id} className='userId'>
+                {/* {setHasSubmitted &&  */}
+                {/* {comments.map(({ id, User, user_id, body}) => ( */}
+                {comments.map((comment) => (
+                    <div className='commentDetails'>
+                        <div id='reviewer'>
+                            <li key={comment.id} className='userId'>
                                 {/* User Id: {userId} */}
-                        {comment?.User?.username} 
-                    </li>
+                                {comment?.User?.username}
+                            </li>
                             {/* <li key={updatedAt} className='date'>
                                 {updatedAt.split('T')[0]}
                             </li> */}
-                </ul>
-                <ul>
-                    <li key={body} className='review'>
-                            {comment.body}
-                    </li>
+                        </div>
+                        <div>
+                            <div key={body} className='reviewBody'>
+                                {comment.body}
+                            </div>
                             {/* <li className='reviewStar'>
                                 Stars: {stars}
                                 {(<i className="fa-sharp fa-solid fa-star"></i>) * Number(stars)}
 
                             </li> */}
 
-            {(comment.user_id === currentUser?.id) &&
-            <div className='commentEditBt'> 
-                <li>
-                    <button  onClick={() => {
-                        const login = (!currentUser) ? alert("Please log in") : true
+                            {(comment.user_id === currentUser?.id) &&
+                                <div className='commentEditBt'>
+                                    <div className='commentDelete_Edit'>
+                                        <div>
+                                            <button onClick={() => {
+                                                const login = (!currentUser) ? alert("Please log in") : true
 
-                        if (login) {
-                            const deletePermission = comment.user_id !== currentUser?.id ? alert("No Permission to delete") : true
-                            if (deletePermission) {
-                                setUpdate(true)
-                                dispatch(deleteComment(parseInt(comment.id)));
-                                dispatch(getItemComments(itemId))
-                                                
-                                                // setRemove(true)
-                                                // history.push(`/item/${itemId}/comments`);
-                                            }
-                                        }
-                                        // }} className="delete" disabled={validationErrors.length > 0}>delete</button>
-                                    }} className="deleteBt" >delete</button>
-                </li>
-                <div
-                    className="detailButton2"
-                    onClick={() => {
-                                if (editId === comment.id) {
-                                    setEditId(-1);
-                                    setEditId("");
-                                    return;
-                                      }
-                                      setEditId(comment.id);
-                                      setBody(comment.body);
-                                    }}
-                                  >
-                                    <i className="fa-solid fa-pen"></i>
-                                  </div>
-                                  <div className="editform">
-                                {editId === comment.id && (
-                                  <CommentEditForm
-                                    className="comment-edit-form"
-                                    comment={comment}
-                                    itemId={itemId}
-                                    setEditId={setEditId}
-                                  />
-                                )}
-                              </div>
+                                                if (login) {
+                                                    const deletePermission = comment.user_id !== currentUser?.id ? alert("No Permission to delete") : true
+                                                    if (deletePermission) {
+                                                        setUpdate(true)
+                                                        dispatch(deleteComment(parseInt(comment.id)));
+                                                        dispatch(getItemComments(itemId))
+                                                        // setRemove(true)
+                                                        // history.push(`/item/${itemId}/comments`);
+                                                    }
+                                                }
+                                                // }} className="delete" disabled={validationErrors.length > 0}>delete</button>
+                                            }} className="commentDeleteBt" ><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                        <div
+                                            className="commentEditBt"
+                                            onClick={() => {
+                                                if (editId === comment.id) {
+                                                    setEditId(-1);
+                                                    setEditId("");
+                                                    return;
+                                                }
+                                                setEditId(comment.id);
+                                                setBody(comment.body);
+                                            }}
+                                        >
+                                            <i className="fa-solid fa-pen"></i>
+                                        </div>
+                                    </div>
+                                    <div className="editform">
+                                        {editId === comment.id && (
+                                            <CommentEditForm
+                                                className="comment-edit-form"
+                                                comment={comment}
+                                                itemId={itemId}
+                                                setEditId={setEditId}
+                                            />
+                                        )}
+                                    </div>
                                 </div>
                             }
-                        </ul>
-                    </>
+                        </div>
+                    </div>
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 

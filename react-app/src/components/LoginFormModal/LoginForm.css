@@ -1,0 +1,71 @@
+#loginform {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.loginBt, .loginCancelBt, .demobt {
+   
+    border-radius: 5px;
+    font-size: var(--font-large);
+    background-color: rgb(252, 239, 213);
+    height: 40px;
+    color:black;
+    width: 70px;
+    font-weight: 300;
+    margin-right:5px;
+    font-weight: 300;
+}
+
+
+
+.loginForm {
+    width: 400px;
+    height: 260px;
+    padding: 30px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+#loginlabel{
+    margin: 10px 0;
+}
+
+.error {
+    font-size: 15px;
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.beforelogbt {
+    height: 40px;
+    font-size: var(--font-large);
+    width: 80px;
+    text-align: center;
+    justify-content: space-around;
+    border-radius: 5px;
+    background-color: rgb(131, 209, 248);
+    color: black;
+    font-weight: 300;
+    margin-top:9px;
+}
+
+#loginInputCredential, #loginInputPassword {
+    border: 1px solid var(--grey-light-color);
+    border-radius: 3px;
+    width:335px;
+    height:50px;
+}
+
+#loginButtons{
+    display: flex;
+    flex-direction: row;
+}
+
+.logbt, .cancelbt, .demobt{
+    margin-right:5px;
+    font-weight: 300;
+}

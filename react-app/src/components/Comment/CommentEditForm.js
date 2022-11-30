@@ -11,7 +11,7 @@ function CommentEditForm({comment, itemId,  setEditId}) {
   const {id} = useParams;
   const [body, setBody]= useState(comment.body)
   const [validationErrors, setValidationErrors] = useState([]);
-  // const [body, setBody] = useState("");
+  const [leftNum, setLeftNum] = useState();
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const dispatch = useDispatch()
   const history = useHistory()
@@ -25,6 +25,12 @@ function CommentEditForm({comment, itemId,  setEditId}) {
     setValidationErrors(errors);
 // }, [body, stars])
 }, [body])
+
+useEffect(()=>{
+  let commentNum = body.trim().length
+  setLeftNum(250-commentNum)
+},[body])
+
 
   const updateSubmit = async (e) => {
     // Prevent the default form behavior so the page doesn't reload.
@@ -57,7 +63,7 @@ function CommentEditForm({comment, itemId,  setEditId}) {
     <form id="form1" noValidate onSubmit={updateSubmit}>
       <ul>
         {validationErrors.map((error, idx) => (
-          <li key={idx}>{error}</li>
+          <li className="errorDetail" key={idx}>{error}</li>
         ))}
       </ul>
       <label>
@@ -70,7 +76,9 @@ function CommentEditForm({comment, itemId,  setEditId}) {
           required
         />
       </label>
+      <p id="wordCount"> <span style={{color: 'red', fontSize:16}}>{leftNum}</span> /250</p>
       <button type="submit">Update</button>
+      {/* <button type="submit">cancel</button> */}
     </form>
   );
 }

@@ -5,11 +5,17 @@
 
 .leaveComment{
     font-size: 20px;
+    /* border-top: 1px solid var(--grey-light-color); */
+    margin-top:20px;
 }
 
 #reviewTextInput{
     /* padding:0px 40px; */
     margin-left: 30px;
-    width:300px;
+    width:790px;
     height: 100px;
+}
+
+.errorDetail{
+    color: red;
 }

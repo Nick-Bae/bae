@@ -17,9 +17,9 @@ const deleteOne = id => ({
     type: DELETE,
     id
 });
-const update = imageId => ({
+const update = image => ({
     type: UPDATE,
-    imageId
+    image
 });
 
 export const getAllImages = () => async dispatch => {
@@ -95,7 +95,7 @@ export const imageReducer = (state = {}, action) => {
             return newState;
 
         case UPDATE:
-            newState[action.image.id] = action.image
+            newState[action.image] = action.image
             return newState;
 
         case DELETE:

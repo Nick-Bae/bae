@@ -35,14 +35,14 @@ const ItemDetail = () => {
         e.preventDefault();
         let confirmMessage = window.confirm("Are you sure to delete this item?");
         if (confirmMessage) {
-        await dispatch(deleteOneItem(itemId))
-        history.push('/')
+            await dispatch(deleteOneItem(itemId))
+            history.push('/')
         }
     };
 
     const itemEditBt = async (e) => {
         e.preventDefault();
-        history.push({pathname:`/items/${itemId}/edit`, state:{item:item} })
+        history.push({ pathname: `/items/${itemId}/edit`, state: { item: item } })
     };
 
     const wishBt = async (e) => {
@@ -56,28 +56,37 @@ const ItemDetail = () => {
         <div>
             <div className='itemDetail_container'>
                 <div className='itemDetail_all'>
-                    <div className='itemImage_container'>
-                        <img className="itemImage_detail" src={item?.url} />
-                        <div className='itemEditBt'>
-                            <button id="itemEditBt" onClick={itemEditBt}>Edit</button>
-                            <button id="itemDeleteBt" onClick={deleteBt}>Delete</button>
-                        </div>
-                    </div>
-                    <ul className='itemDetail_info'>
-                        <li id="itemName"> {item?.Product?.name} </li>
-                        <li id="itemPrice">price: ${item?.Product?.price}</li>
-                        <li id=""> </li>
-                        <li id="itemCategory">{item?.category_id}</li>
-                        <li id="itemDescription">{item?.Product?.description}</li>
-                        <button id="wishBt" onClick={wishBt}>Wish List</button>
-                        <WishList itemId={itemId} />
-                    </ul>
-                </div>
-            </div>
-            <div className='itemComment_container'>
-                <CommentForm />
-                <CommentDisplay />
+                    <div className='itemDetail'>
 
+                    <div className='itemImage_container'>
+                            <img className="itemImage_detail" src={item?.url} />
+                    </div>
+                    <div className="itemDetail_right">
+                        <ul className='itemDetail_info'>
+                            <li id="itemName"> {item?.Product?.name} </li>
+                            <li id="itemPrice">price: 
+                            ${parseFloat(item?.Product?.price).toFixed(2)}</li>
+                            <li id=""> </li>
+                            <li id="itemCategory">{item?.category_id}</li>
+                            <li id="itemDescription">{item?.Product?.description}</li>
+                            <button id="wishBt" onClick={wishBt}>Wish List</button>
+                            <WishList itemId={itemId} />
+                        </ul>
+                    </div>
+                    </div>
+                    <div className='itemEditBt'>
+                        <button id="itemEditBt" onClick={itemEditBt}>Edit</button>
+                        <button id="itemDeleteBt" onClick={deleteBt}>Delete</button>
+                    </div>
+                </div>
+                <div className='itemComment_container'>
+                    <div className='commentDisplay'>
+                        <CommentDisplay />
+                    </div>
+                    <div className='commentForm'>
+                        <CommentForm />
+                    </div>
+                </div>
             </div>
         </div>
     );

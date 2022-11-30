@@ -1,0 +1,44 @@
+.createItemForm{
+    margin:50px;
+}
+#formTitle{
+font-size: 40px;
+padding:20px;
+border-bottom: 1px solid var(--grey-light-color);
+margin-bottom: 20px;
+}
+
+#itemtInput{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+#name, #price, #imageUrl {
+    height: 80px;
+    margin-bottom: 30px;
+}
+
+#description{
+    height:140px;
+    margin-bottom: 30px;
+}
+
+#imageUrl {
+    margin-bottom: 30px;
+}
+
+#selectCategory{
+    margin-bottom: 30px;
+    height:50px;
+    width:170px;
+}
+
+#itemtBt{
+    height:40px;
+    width: 60px;
+}
+
+#errorMessages{
+    color: red;
+}

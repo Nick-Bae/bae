@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import LoginFormModal from './LoginFormModal';
+import SignupModal from './SignupFormPage';
 import './NavBar.css'
 import Profile from './Profile';
 
@@ -20,14 +22,16 @@ const NavBar = () => {
       <div>
         <ul className='navMenu_login'>
           <li className='nav_login'>
-            <NavLink to='/login' exact={true} activeClassName='active'>
+            {/* <NavLink to='/login' exact={true} activeClassName='active'>
               Login
-            </NavLink>
+            </NavLink> */}
+            <LoginFormModal />
           </li>
           <li className='nav_singup'>
-            <NavLink to='/sign-up' exact={true} activeClassName='active'>
+            {/* <NavLink to='/sign-up' exact={true} activeClassName='active'>
               Sign Up
-            </NavLink>
+            </NavLink> */}
+            <SignupModal />
           </li>
           {/* <li>
             <NavLink to='/users' exact={true} activeClassName='active'>
@@ -48,6 +52,7 @@ const NavBar = () => {
           <li>
             <NavLink to='/' exact={true} activeClassName='active'>
               Home
+              <img src="/images/"
             </NavLink>
           </li>
       </ul>
