@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getItemDetail } from "../../store/itemDetail";
 import { createItem } from "../../store/items";
 import { createImage } from "../../store/image";
 import './itemForm.css'
@@ -14,7 +13,6 @@ const ItemForm = () => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [category_id, setCategory_id] = useState('');
-    const [inventory_id, setInventory_id] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
     const [hasSubmitted, setHasSubmitted] = useState(false);

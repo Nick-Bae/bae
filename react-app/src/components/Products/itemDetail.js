@@ -13,7 +13,6 @@ import { getOneImage } from '../../store/image';
 
 const ItemDetail = () => {
     const dispatch = useDispatch();
-    const location = useLocation();
     const { itemId } = useParams();
     const history = useHistory();
     // const { item } = location.state
@@ -74,7 +73,7 @@ const ItemDetail = () => {
                         </ul>
                     </div>
                     </div>
-                    {user &&( 
+                    {user.id === item?.Product?.user_id &&( 
                     <div className='itemEditBt'>
                         <button id="itemEditBt" onClick={itemEditBt}>Edit</button>
                         <button id="itemDeleteBt" onClick={deleteBt}>Delete</button>

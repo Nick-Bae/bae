@@ -27,7 +27,7 @@ const EditItemForm = ({}) => {
 
    useEffect(() => {
     const errors =[];
-    if (name.length >15) errors.push('Name must be less than 30 chracters');
+    if (name.length >30) errors.push('Name must be less than 30 chracters');
     if ( price < 0) errors.push('Please enter your Correct Price');
     if (price > 10000) errors.push('Price should be less than $10,000');
     if (!category_id ) errors.push('Please select the category');
@@ -49,7 +49,7 @@ const EditItemForm = ({}) => {
         id: itemId,
         user_id: user.id, 
         name, 
-        price: Number(price), 
+        price: parseFloat(price).toFixed(2), 
         category_id, 
         description, 
     };
@@ -82,13 +82,14 @@ const EditItemForm = ({}) => {
             <p id="spotErrorTItle">The following errors were found:</p>
             <ul id="errorMessages">
                 {validationErrors.map(error => (
-                    <li key={error}>-{error}</li>
+                    <li key={error} style={{color: 'red'}}>-{error}</li>
                 ))}
             </ul>
         </div>
     )}
     <form id="createItemForm" onSubmit={editSubmit}>
         <h2 id="formTitle">Edit Item</h2>
+
     
         <div id="spotInput">
             <label htmlFor='name'>Title:</label>
@@ -101,17 +102,7 @@ const EditItemForm = ({}) => {
                 required
             />
         </div>
-        
-        <div id="spotInput">
-            <label htmlFor='price'>Price:</label>
-            <input
-                id='state'
-                type='number'
-                onChange={e => setPrice(e.target.value)}
-                value={price}
-                required
-            />
-        </div>
+
         <div id="spotInput">
             <label> Category:
             <select onChange={e=> setCategory_id(parseInt(e.target.value))}>
@@ -123,7 +114,19 @@ const EditItemForm = ({}) => {
             </select>
             </label>
         </div>
-            {category_id}
+        
+        <div id="spotInput">
+            <label htmlFor='price'>Price:</label>
+            <input
+                id='state'
+                type='number'
+                onChange={e => setPrice(e.target.value)}
+                value={price}
+                required
+            />
+        </div>
+        
+            
 
         <div id="spotInput">
             <label htmlFor='description'>description:</label>
