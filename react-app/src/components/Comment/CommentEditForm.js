@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory,  useParams } from "react-router-dom";
 import { editComment } from "../../store/comment";
 import { getItemComments } from "../../store/comment";
 import './CommentEditForm.css'
@@ -11,9 +10,7 @@ function CommentEditForm({comment, itemId,  setEditId}) {
   const [body, setBody]= useState(comment.body)
   const [validationErrors, setValidationErrors] = useState([]);
   const [leftNum, setLeftNum] = useState();
-  const [hasSubmitted, setHasSubmitted] = useState(false);
   const dispatch = useDispatch()
-  const history = useHistory()
 
   useEffect(() => {
     const errors = [];
@@ -35,7 +32,6 @@ useEffect(()=>{
     // Prevent the default form behavior so the page doesn't reload.
     e.preventDefault();
 
-    setHasSubmitted(true);
     if (validationErrors.length) return alert(`Cannot Submit`);
 
     // Create a new object for the song form information.
@@ -56,7 +52,7 @@ useEffect(()=>{
 
     useEffect (()=>{
       dispatch(getItemComments(itemId))
-    }, [dispatch])
+    }, [dispatch, itemId])
 
   return (
     <form id="form1" noValidate onSubmit={updateSubmit}>

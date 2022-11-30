@@ -13,7 +13,7 @@ function Mymenu() {
 
     useEffect(() => {
         dispatch(userWishlist(sessionUser.id))
-    }, [dispatch])
+    }, [dispatch, sessionUser.id])
 
     if (!sessionUser) {
         return null;

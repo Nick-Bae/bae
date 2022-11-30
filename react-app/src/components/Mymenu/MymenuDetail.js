@@ -20,7 +20,7 @@ function MymenuDetail({ menu }) {
         dispatch(userWishlist(sessionUser.id))
         dispatch(getAllImages())
         dispatch(getUserItem(sessionUser.id))
-    }, [dispatch])
+    }, [dispatch,sessionUser.id])
 
     const wishImages = wishlists.map(list => (
         images.find(image => image?.product_id === list?.id)
@@ -51,7 +51,7 @@ function MymenuDetail({ menu }) {
                             <div className='wishlistDetail'>
                                 <NavLink key={item?.id} to={{ pathname: `/items/${item?.product_id}`, state: { item: item } }}>
                                     <div className='wishdetailContainer'>
-                                        <img className="wishImage" src={item?.url} />
+                                        <img className="wishImage" src={item?.url} alt="" />
                                         <div className='wishTitle'>
                                             {item?.Product.name}
                                         </div>
@@ -69,7 +69,7 @@ function MymenuDetail({ menu }) {
                             <div className='sellinglistDetail'>
                                 <NavLink key={item?.id} to={{ pathname: `/items/${item?.product_id}`, state: { item: item } }}>
                                     <div className='wishdetailContainer'>
-                                        <img className="wishImage" src={item?.url} />
+                                        <img className="wishImage" src={item?.url} alt=""/>
                                         <div className='wishTitle'>
                                             {item?.Product.name}
                                         </div>

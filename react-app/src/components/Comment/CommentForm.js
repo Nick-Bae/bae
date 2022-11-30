@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { createComment, getComments } from '../../store/comment';
+import { createComment } from '../../store/comment';
 import { useSelector } from 'react-redux';
 import { getItemComments } from '../../store/comment';
 import './CommentForm.css'
 import { getItemDetail } from '../../store/itemDetail';
 
-export const CommentForm = ({ spot, setShowModal }) => {
+export const CommentForm = () => {
     const dispatch = useDispatch();
     const { itemId } = useParams();
     const comments = useSelector(state => Object.values(state.comments))
@@ -17,12 +17,11 @@ export const CommentForm = ({ spot, setShowModal }) => {
     // const spotReview = spotReviews.filter(review=> review.spotId ===spot.id)
     const isComment = comments.filter(comment => comment?.user_id === user?.id)
 
-    const [update, setUpdate] = useState(false);
     const currentUser = useSelector(state => state.session.user)
 
     const [body, setBody] = useState("");
     const [leftNum, setLeftNum] = useState();
-    const [stars, setStars] = useState("");
+    // const [stars, setStars] = useState("");
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [open, setOpen] = useState(false);
@@ -36,7 +35,8 @@ export const CommentForm = ({ spot, setShowModal }) => {
         // if (!stars.length) errors.push('-Please enter your stars');
         // if (stars < 0 || stars > 6) errors.push('Please enter between 0~5')
         setValidationErrors(errors);
-    }, [body, stars])
+    // }, [body, stars])
+    }, [body])
 
     useEffect(() => {
         let commentNum = body.trim().length
@@ -65,7 +65,6 @@ export const CommentForm = ({ spot, setShowModal }) => {
             .then(() => dispatch(getItemComments(itemId)))
             .then(() => dispatch(getItemDetail(itemId)))
         // .then(()=>history.push(`/spots/${spot.id}`))
-        setUpdate(true);
         setOpen(false);
         // const createRe = await dispatch(createReview(report));
 
@@ -83,7 +82,7 @@ export const CommentForm = ({ spot, setShowModal }) => {
 
         // dispatch(getSpotReviews(currSpot));
         // dispatch(getAllSpots())
-    }, [dispatch]);
+    }, [dispatch, itemId]);
 
     // if (!spotReviews) return null
 
