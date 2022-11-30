@@ -73,7 +73,7 @@ const ItemDetail = () => {
                         </ul>
                     </div>
                     </div>
-                    {user.id === item?.Product?.user_id &&( 
+                    {user?.id === item?.Product?.user_id &&( 
                     <div className='itemEditBt'>
                         <button id="itemEditBt" onClick={itemEditBt}>Edit</button>
                         <button id="itemDeleteBt" onClick={deleteBt}>Delete</button>

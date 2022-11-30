@@ -82,7 +82,7 @@ const ItemForm = () => {
   return (
     <section className='createItemForm'>
     { hasSubmitted && validationErrors.length > 0 && (
-        <div id="spotErrors">
+        <div id="itemErrors">
             <p id="spotErrorTItle">The following errors were found:</p>
             <ul >
                 {validationErrors.map(error => (
@@ -99,7 +99,7 @@ const ItemForm = () => {
         <div id="itemtInput">
             <label> Category:
             <select id="selectCategory" class="required" onChange={e=> setCategory_id(parseInt(e.target.value))}>
-                <option  defaultValue="Click"> Click more options </option>
+                <option  defaultValue="Click"> Click to see options </option>
                 <option value="1">Shoes</option>
                 <option value="2">Phones</option>
                 <option value="3">Clothes</option>
@@ -145,7 +145,7 @@ const ItemForm = () => {
         </div>
         
         <div id="itemtInput">
-            <label htmlFor='url'>url image:</label>
+            <label htmlFor='url'>Image:</label>
                 <textarea
                         // maxLength='255'
                     id='imageUrl'
