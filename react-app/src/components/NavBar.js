@@ -52,7 +52,7 @@ const NavBar = () => {
           <li>
             <NavLink to='/' exact={true} activeClassName='active'>
               Home
-              <img src="/images/"
+             
             </NavLink>
           </li>
       </ul>
