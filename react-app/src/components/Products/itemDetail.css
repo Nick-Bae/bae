@@ -42,10 +42,10 @@
 }
 
 #itemName{
-    font-size:50px;
+    font-size:40px;
 }
 #itemPrice{
-    font-size:40px;
+    font-size:30px;
 }
 
 .itemEditBt{
@@ -62,7 +62,7 @@
     /* width:800px; */
     border: 1px solid var(--grey-light-color);
     border-radius: 10px;
-    width:850px;
+    width:770px;
 }
 
 .itemEditBt{
@@ -75,6 +75,6 @@
     margin-right: 10px;
 }
 
-/* .commentForm{
-    width:900px;
-} */
+#itemDescription{
+    margin-top:30px;
+}

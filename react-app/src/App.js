@@ -14,7 +14,7 @@ import ItemForm from './components/Products/ItemForm';
 import EditItemForm from './components/Products/EditItemForm';
 import CommentDisplay from './components/Comment/CommentDisplay';
 import CommentEditForm from './components/Comment/CommentEditForm';
-import Cart from './components/Cart';
+// import Cart from './components/Cart';
 import Mymenu from './components/Mymenu/Mymenu';
 import WishList from './components/Products/WishList';
 
@@ -55,9 +55,9 @@ function App() {
           <User />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/users/:userId/cart' exact={true} >
+        {/* <ProtectedRoute path='/users/:userId/cart' exact={true} >
           <Cart />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
 
         <ProtectedRoute path='/users/:userId/wishlists' exact={true} >
           <WishList />

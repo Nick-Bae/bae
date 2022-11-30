@@ -12,10 +12,7 @@ const Items = () => {
   const images =Object.values( useSelector(state=>state.images));
   const user = useSelector(state => state.session.user)
 
-  console.log("images?????????", images)
-
-console.log("all items???",items)
-
+  
   useEffect(() => {
     dispatch(getItems());
     dispatch(getAllImages());
@@ -38,8 +35,8 @@ console.log("all items???",items)
               <Link key={item?.id} to={`/items/${item?.product_id}`}> 
                     {/* <ItemDetail item={item}/> */}
                     {item?.Product?.name} 
-                    <div className='imageContainer'>
-                    <img className="itemImage" src={item?.url} />
+                    <div key={item?.id} className='imageContainer'>
+                      <img className="itemImage" src={item?.url} />
 
                     </div>
               </Link>

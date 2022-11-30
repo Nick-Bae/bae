@@ -1,5 +1,5 @@
 import { useState, useEffect, React } from 'react';
-import { NavLink, useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getItemComments } from '../../store/comment';
 import { useSelector } from 'react-redux';
@@ -10,23 +10,14 @@ import CommentEditForm from './CommentEditForm';
 
 export const CommentDisplay = () => {
 
-    const history = useHistory();
     const dispatch = useDispatch();
     const comments = useSelector(state => Object.values(state.comments));
 
-    // const currSpot = spot.id;
-    const [update, setUpdate] = useState(false);
-    const [remove, setRemove] = useState(false);
     const currentUser = useSelector(state => state.session.user)
     const { itemId } = useParams();
-    const [stars, setStars] = useState("");
+    // const [stars, setStars] = useState("");
     const [editId, setEditId] = useState(-1);
-    const [validationErrors, setValidationErrors] = useState([]);
     const [body, setBody] = useState("");
-    const [hasSubmitted, setHasSubmitted] = useState(false);
-    // console.log("ownerId",revi)
-    // const permission = currentUser?.id === spot.ownerId
-    // const spotReview = onlyspotReviews.filter(review => (review.spotId === (spot.id)))
 
     // useEffect(() => {
     //     const errors = [];
@@ -39,15 +30,7 @@ export const CommentDisplay = () => {
     useEffect(() => {
         dispatch(getItemComments(itemId))
 
-    }, [dispatch]);
-
-    // console.log('allreviews', spotReviewsObj)
-    // const reset = () => {
-    //     setReview("");
-    //     setStars("");
-    // };
-    // if (!spotReviewsObj) return null
-    // const spotReviews = Object.values(spotReviewsObj);
+    }, [dispatch, itemId]);
 
     if (!comments) return null
 
@@ -69,8 +52,8 @@ export const CommentDisplay = () => {
                 {/* {setHasSubmitted &&  */}
                 {/* {comments.map(({ id, User, user_id, body}) => ( */}
                 {comments.map((comment) => (
-                    <div className='commentDetails'>
-                        <div id='reviewer'>
+                    <div key={comment.id} className='commentDetails'>
+                        <div id='reviewer' key={comment.id}>
                             <li key={comment.id} className='userId'>
                                 {/* User Id: {userId} */}
                                 {comment?.User?.username}
@@ -99,7 +82,6 @@ export const CommentDisplay = () => {
                                                 if (login) {
                                                     const deletePermission = comment.user_id !== currentUser?.id ? alert("No Permission to delete") : true
                                                     if (deletePermission) {
-                                                        setUpdate(true)
                                                         dispatch(deleteComment(parseInt(comment.id)));
                                                         dispatch(getItemComments(itemId))
                                                         // setRemove(true)
@@ -107,7 +89,7 @@ export const CommentDisplay = () => {
                                                     }
                                                 }
                                                 // }} className="delete" disabled={validationErrors.length > 0}>delete</button>
-                                            }} className="commentDeleteBt" ><i class="fa-solid fa-trash"></i></button>
+                                            }} className="commentDeleteBt" ><i className="fa-solid fa-trash"></i></button>
                                         </div>
                                         <div
                                             className="commentEditBt"

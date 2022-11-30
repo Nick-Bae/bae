@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import './Profile.css'
 import { userWishlist } from '../store/wishlist';
 import LogoutButton from './auth/LogoutButton';
-import Mymenu from './Mymenu/Mymenu';
 function Profile() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);

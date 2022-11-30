@@ -1,16 +1,14 @@
 // import { csrfFetch } from './csrf';
-import { getItemDetail } from "./itemDetail";
-
 const LOAD_ONE = 'Comment/LOAD_ONE';
 const LOAD = 'Comment/LOAD';
 const DELETE = 'Comment/DELETE';
 const UPDATE = 'Comment/UPDATE';
 const CREATE ='Comment/CREATE';
 
-const load = (comments) => ({
-    type: LOAD,
-    comments
-});
+// const load = (comments) => ({
+//     type: LOAD,
+//     comments
+// });
 const loadOne = comments => ({
     type: LOAD_ONE,
     comments

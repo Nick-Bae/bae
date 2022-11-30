@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { userWishlist } from '../../store/wishlist';
-import LogoutButton from '../auth/LogoutButton';
 import MymenuDetail from './MymenuDetail';
 import './Mymenu.css'
 
@@ -20,10 +18,7 @@ function Mymenu() {
     if (!sessionUser) {
         return null;
     }
-    const wishDetail ={
-
-    }
-
+   
     return (
         <div className='myMenudetail_Container'>
             <div className='myMenuTop'>

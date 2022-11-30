@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
-import { Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation, useParams } from "react-router-dom";
-import { editComment, getComments } from "../../store/comment";
+import { useHistory,  useParams } from "react-router-dom";
+import { editComment } from "../../store/comment";
 import { getItemComments } from "../../store/comment";
+import './CommentEditForm.css'
 
 function CommentEditForm({comment, itemId,  setEditId}) {
   // const comment  = useSelector(state=> state.comments)
   const userId = useSelector((state) => state.session.user.id);
-  const {id} = useParams;
   const [body, setBody]= useState(comment.body)
   const [validationErrors, setValidationErrors] = useState([]);
   const [leftNum, setLeftNum] = useState();
@@ -69,7 +68,7 @@ useEffect(()=>{
       <label>
         <textarea
           className="edit-text"
-          id="edit-form-text"
+          id="edit-commentform-text"
           type="text"
           value={body}
           onChange={(e) => setBody(e.target.value)}

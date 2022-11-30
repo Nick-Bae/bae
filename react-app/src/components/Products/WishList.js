@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams, NavLink, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getWishlist, postWishlist, deleteWishlist } from "../../store/wishlist";
-import { getItemDetail } from "../../store/itemDetail";
 import './wishlist.css'
 
 const WishList = () => {
@@ -13,9 +12,7 @@ const WishList = () => {
     const allWishUser = wishlist.allUser
     const [buttonClicked, setButtonClicked] = useState(false)
     const [wishlistBt, setWishlistBt] = useState(false)
-    console.log("wish list ????????????", wishlist)
-    console.log("allWishUser??????", allWishUser)
-  
+    
     if (allWishUser === undefined) {
         dispatch(getWishlist(itemId));
       }
@@ -62,7 +59,8 @@ const WishList = () => {
             <div >
                 <div id="wishSimbol" onClick={wishBt}>
                     {/* <i class="fa-regular fa-heart heartSign"></i> */}
-                    <i class="fa-solid fa-heart heartSign"></i>
+                   <button id="wishlistLabel">Add to Wishist </button> 
+                    <i className="fa-solid fa-heart heartSign"></i>
                 </div>
             </div>
         </>)

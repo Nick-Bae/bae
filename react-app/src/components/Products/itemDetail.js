@@ -68,7 +68,7 @@ const ItemDetail = () => {
                             <li id=""> </li>
                             <li id="itemCategory">{item?.category_id}</li>
                             <li id="itemDescription">{item?.Product?.description}</li>
-                            <button id="wishBt" onClick={wishBt}>Wish List</button>
+                            {/* <button id="wishBt" onClick={wishBt}>Add to Wishist</button> */}
                             <WishList itemId={itemId} />
                         </ul>
                     </div>

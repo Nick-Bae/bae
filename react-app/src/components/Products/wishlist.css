@@ -2,3 +2,21 @@
     color: red;
 }
 
+#wishlistLabel{
+    font-size: 20px;
+    color: black;
+    width:160px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 20px 10px 0 0;
+}
+
+.heartSign{
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+#wishSimbol{
+    display: flex;
+    align-items: center;
+}

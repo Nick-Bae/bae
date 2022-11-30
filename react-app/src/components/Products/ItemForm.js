@@ -98,7 +98,7 @@ const ItemForm = () => {
 
         <div id="itemtInput">
             <label> Category:
-            <select id="selectCategory" class="required" onChange={e=> setCategory_id(parseInt(e.target.value))}>
+            <select id="selectCategory" className="required" onChange={e=> setCategory_id(parseInt(e.target.value))}>
                 <option  defaultValue="Click"> Click to see options </option>
                 <option value="1">Shoes</option>
                 <option value="2">Phones</option>

@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams, NavLink, useLocation } from "react-router-dom";
-// import { getItemDetail } from "../../store/itemDetail";
-import './Cart.css'
+// import React, { useEffect, useState } from "react";
+// import { useSelector, useDispatch } from "react-redux";
+// import { useHistory, useParams, NavLink, useLocation } from "react-router-dom";
+// // import { getItemDetail } from "../../store/itemDetail";
+// import './Cart.css'
 
-const Cart = () => {
-    const dispatch = useDispatch();
-    const user = useSelector((state) => state.session.user);
-    const { itemId } = useParams();
-    const wishlist = useSelector((state) => state.wishlist);
-    const allWishUser = wishlist.allUser
-    const [buttonClicked, setButtonClicked] = useState(false)
-    const [wishlistBt, setWishlistBt] = useState(false)
-    console.log("wish list ????????????", wishlist)
-    console.log("allWishUser??????", allWishUser)
+// const Cart = () => {
+//     const dispatch = useDispatch();
+//     const user = useSelector((state) => state.session.user);
+//     const { itemId } = useParams();
+//     const wishlist = useSelector((state) => state.wishlist);
+//     const allWishUser = wishlist.allUser
+//     const [buttonClicked, setButtonClicked] = useState(false)
+//     const [wishlistBt, setWishlistBt] = useState(false)
+//     console.log("wish list ????????????", wishlist)
+//     console.log("allWishUser??????", allWishUser)
     // const likeInfo = likes[id];
     // const allLikeUser = likeInfo?.allUser;
 
@@ -70,16 +70,16 @@ const Cart = () => {
 
     // }, [dispatch]);
 
-    return (
-        <>
-            {/* <div id="wishSimbol" className={wishlistBt ? 'wishlist-clicked' : 'wishlist-click'}> */}
-            <div >
-                {/* <div id="wishSimbol" onClick={wishBt}>
-                    <i class="fa-regular fa-heart heartSign"></i>
-                    <i class="fa-solid fa-heart heartSign"></i>
-                </div> */}
-            </div>
-        </>)
-};
+//     return (
+//         <>
+//             {/* <div id="wishSimbol" className={wishlistBt ? 'wishlist-clicked' : 'wishlist-click'}> */}
+//             <div >
+//                 {/* <div id="wishSimbol" onClick={wishBt}>
+//                     <i class="fa-regular fa-heart heartSign"></i>
+//                     <i class="fa-solid fa-heart heartSign"></i>
+//                 </div> */}
+//             </div>
+//         </>)
+// };
 
-export default Cart;
+// export default Cart;
