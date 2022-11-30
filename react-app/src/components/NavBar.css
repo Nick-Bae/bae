@@ -23,3 +23,5 @@
     width:40px;
     height: 40px;
 }
+
+.nav_login div:hover {background-color: #ddd};
