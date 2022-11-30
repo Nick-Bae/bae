@@ -67,7 +67,7 @@ const ItemDetail = () => {
                             ${parseFloat(item?.Product?.price).toFixed(2)}</li>
                             <li id=""> </li>
                             <li id="itemCategory">{item?.category_id}</li>
-                            <li id="itemDescription">{item?.Product?.description}</li>
+                            <div id="itemDescription">{item?.Product?.description}</div>
                             {/* <button id="wishBt" onClick={wishBt}>Add to Wishist</button> */}
                             <WishList itemId={itemId} />
                         </ul>

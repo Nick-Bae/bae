@@ -62,6 +62,12 @@ const ItemForm = () => {
     }
     
     await dispatch(createImage( imageUrl))
+
+    // var txt;
+    // txt = document.getElementById('description').value;
+    // var text = txt.split(".");
+    // var str = text.join('.</br>');
+    // document.write(str);
     
     reset();
     history.push(`/items/${newItem.id}`);
