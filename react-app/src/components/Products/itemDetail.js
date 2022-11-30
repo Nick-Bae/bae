@@ -74,10 +74,12 @@ const ItemDetail = () => {
                         </ul>
                     </div>
                     </div>
+                    {user &&( 
                     <div className='itemEditBt'>
                         <button id="itemEditBt" onClick={itemEditBt}>Edit</button>
                         <button id="itemDeleteBt" onClick={deleteBt}>Delete</button>
                     </div>
+                    )}
                 </div>
                 <div className='itemComment_container'>
                     <div className='commentDisplay'>
