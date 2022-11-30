@@ -57,7 +57,7 @@ def post_item():
         newItem = Product(
                     user_id = current_user.id,
                     name = data['name'],
-                    price = data['price'],
+                    price = float(data['price']),
                     category_id = data['category_id'],
                     description = data['description']
                     )
@@ -271,13 +271,13 @@ def post_image(id):
 def edit_image(id):
     image = Image.query.filter(Image.product_id == id)
     form = ImageForm()
-    if current_user.id == item.user_id:
-        form['csrf_token'].data = request.cookies['csrf_token']
-        if form.validate_on_submit():
-            data = form.data
-            image.url = data['url']
+    
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+        image.url = data['url']
            
-            db.session.add(image)
-            db.session.commit()
-            return image.to_dict()
+        db.session.add(image)
+        db.session.commit()
+        return image.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
