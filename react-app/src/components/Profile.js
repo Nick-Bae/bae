@@ -7,13 +7,10 @@ import LogoutButton from './auth/LogoutButton';
 function Profile() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const wishlist = useSelector(state => state.wishlist);
-
-    console.log("wishlist ????????", wishlist)
 
     useEffect(() => {
         dispatch(userWishlist(sessionUser.id))
-    }, [dispatch])
+    }, [dispatch, sessionUser.id])
 
     if (!sessionUser) {
         return null;

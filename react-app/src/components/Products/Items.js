@@ -4,30 +4,23 @@ import { Link } from 'react-router-dom';
 import { getItems } from '../../store/items';
 import './items.css'
 import { getAllImages } from '../../store/image';
-import ItemDetail from './itemDetail';
 
 const Items = () => {
   const dispatch = useDispatch();
-  const items = Object.values(useSelector(state => state.items));
+  // const items = Object.values(useSelector(state => state.items));
   const images =Object.values( useSelector(state=>state.images));
-  const user = useSelector(state => state.session.user)
+  // const user = useSelector(state => state.session.user)
 
-  
   useEffect(() => {
     dispatch(getItems());
     dispatch(getAllImages());
   }, [dispatch]);
 
-
-  //   onClick={() => {
-  const login = (!user) ? false : true
-  //     // if (!login) return ("please log in first")
-
   return (
     <main>
         <div className='mainContainer'>
             <div >
-              <img className='banner' src="/images/banner1.jpg"  />
+              <img className='banner' src="/images/banner1.jpg"  alt=""/>
             </div>
             <div className="itemDetail">
             {images.map(item=>(
@@ -36,8 +29,7 @@ const Items = () => {
                     {/* <ItemDetail item={item}/> */}
                     {item?.Product?.name} 
                     <div key={item?.id} className='imageContainer'>
-                      <img className="itemImage" src={item?.url} />
-
+                      <img key={item?.id} className="itemImage" src={item?.url} alt="" />
                     </div>
               </Link>
             ))}

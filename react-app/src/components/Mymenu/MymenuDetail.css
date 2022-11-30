@@ -36,4 +36,7 @@
     font-weight: bold;
 }
 
+.sellinglistDetail{
+    /* border-bottom: 1px solid var(--grey-light-color); */
+}
 .myMenubar li:hover {background-color: #ddd};

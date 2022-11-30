@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getWishlist, postWishlist, deleteWishlist } from "../../store/wishlist";
@@ -10,8 +10,8 @@ const WishList = () => {
     const { itemId } = useParams();
     const wishlist = useSelector((state) => state.wishlist);
     const allWishUser = wishlist.allUser
-    const [buttonClicked, setButtonClicked] = useState(false)
-    const [wishlistBt, setWishlistBt] = useState(false)
+    // const [buttonClicked, setButtonClicked] = useState(false)
+    // const [wishlistBt, setWishlistBt] = useState(false)
     
     if (allWishUser === undefined) {
         dispatch(getWishlist(itemId));
@@ -21,7 +21,7 @@ const WishList = () => {
         wishClick === null ? dispatch(getWishlist(itemId)) :
         wishClick.style.color = "black"
 
-        const wishClicked = allWishUser?.find((id)=>id === user?.id)
+        // const wishClicked = allWishUser?.find((id)=>id === user?.id)
     
             if (allWishUser?.find((id)=>id === user?.id)) {
                 wishClick === null ? dispatch(getWishlist(itemId)) :
@@ -51,7 +51,7 @@ const WishList = () => {
         // dispatch(getItemDetail(itemId))
         if (user) dispatch(getWishlist(itemId))
 
-    }, [dispatch]);
+    }, [dispatch, itemId, user]);
 
     return (
         <>
@@ -59,7 +59,7 @@ const WishList = () => {
             <div >
                 <div id="wishSimbol" onClick={wishBt}>
                     {/* <i class="fa-regular fa-heart heartSign"></i> */}
-                   <button id="wishlistLabel">Add to Wishist </button> 
+                   <button id="wishlistLabel">Add to Wishlist </button> 
                     <i className="fa-solid fa-heart heartSign"></i>
                 </div>
             </div>

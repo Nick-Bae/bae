@@ -1,7 +1,7 @@
 // import { csrfFetch } from './csrf';
 
 const READ = 'Item/LOAD';
-const DELETE = 'Item/DELETE';
+// const DELETE = 'Item/DELETE';
 const UPDATE = "Item/UPDATE"
 
 const read = item => ({
@@ -9,10 +9,10 @@ const read = item => ({
     item
 });
 
-const deleteItem = itemId => ({
-    type: DELETE,
-    itemId
-});
+// const deleteItem = itemId => ({
+//     type: DELETE,
+//     itemId
+// });
 
 const update = data => ({
     type: UPDATE,

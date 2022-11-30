@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import { updateImage } from "../../store/image";
-import { getItemDetail } from "../../store/itemDetail";
 import { updateItem } from "../../store/items";
 
-const EditItemForm = ({ }) => {
+const EditItemForm = ( ) => {
     const dispatch = useDispatch();
     const location = useLocation();
     const user = useSelector((state) => state.session.user);
@@ -24,7 +23,6 @@ const EditItemForm = ({ }) => {
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
 
-    const oldCategory_id = category_id
     useEffect(() => {
         const errors = [];
         if (name.length > 30) errors.push('Name must be less than 30 chracters');
@@ -133,7 +131,7 @@ const EditItemForm = ({ }) => {
 
 
 
-                <div id="itemtInput">
+                <div id="itemtInput" >
                     <label htmlFor='description'>description:</label>
                     <textarea
                         id='description'

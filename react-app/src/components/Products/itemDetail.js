@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Link, useParams, useHistory, useLocation } from 'react-router-dom';
-import { useState } from 'react'
+import { useParams, useHistory } from 'react-router-dom';
 // import './index.css'
 import { getItemDetail } from '../../store/itemDetail';
 import { deleteOneItem } from '../../store/items';
@@ -28,7 +27,7 @@ const ItemDetail = () => {
     useEffect(() => {
         dispatch(getItemDetail(itemId));
         dispatch(getOneImage(itemId))
-    }, [dispatch]);
+    }, [dispatch, itemId]);
 
     const deleteBt = async (e) => {
         e.preventDefault();
@@ -44,12 +43,7 @@ const ItemDetail = () => {
         history.push({ pathname: `/items/${itemId}/edit`, state: { item: item } })
     };
 
-    const wishBt = async (e) => {
-        e.preventDefault();
-
-    }
-
-    const login = (!user) ? false : true
+    // const login = (!user) ? false : true
 
     return (
         <div>
@@ -57,27 +51,27 @@ const ItemDetail = () => {
                 <div className='itemDetail_all'>
                     <div className='itemDetail'>
 
-                    <div className='itemImage_container'>
-                            <img className="itemImage_detail" src={item?.url} />
+                        <div className='itemImage_container'>
+                            <img className="itemImage_detail" src={item?.url} alt="" />
+                        </div>
+                        <div className="itemDetail_right">
+                            <div className='itemDetail_info'>
+                                <div id="itemName"> {item?.Product?.name} </div>
+                                <div id="itemPrice">price:
+                                    ${parseFloat(item?.Product?.price).toFixed(2)}</div>
+                                <div id=""> </div>
+                                <div id="itemCategory">{item?.category_id}</div>
+                                <div id="itemDescription">{item?.Product?.description}</div>
+                                {/* <button id="wishBt" onClick={wishBt}>Add to Wishist</button> */}
+                                <WishList itemId={itemId} />
+                            </div>
+                        </div>
                     </div>
-                    <div className="itemDetail_right">
-                        <ul className='itemDetail_info'>
-                            <li id="itemName"> {item?.Product?.name} </li>
-                            <li id="itemPrice">price: 
-                            ${parseFloat(item?.Product?.price).toFixed(2)}</li>
-                            <li id=""> </li>
-                            <li id="itemCategory">{item?.category_id}</li>
-                            <div id="itemDescription">{item?.Product?.description}</div>
-                            {/* <button id="wishBt" onClick={wishBt}>Add to Wishist</button> */}
-                            <WishList itemId={itemId} />
-                        </ul>
-                    </div>
-                    </div>
-                    {user?.id === item?.Product?.user_id &&( 
-                    <div className='itemEditBt'>
-                        <button id="itemEditBt" onClick={itemEditBt}>Edit</button>
-                        <button id="itemDeleteBt" onClick={deleteBt}>Delete</button>
-                    </div>
+                    {user?.id === item?.Product?.user_id && (
+                        <div className='itemEditBt'>
+                            <button id="itemEditBt" onClick={itemEditBt}>Edit</button>
+                            <button id="itemDeleteBt" onClick={deleteBt}>Delete</button>
+                        </div>
                     )}
                 </div>
                 <div className='itemComment_container'>
