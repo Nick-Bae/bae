@@ -39,7 +39,7 @@ function LoginForm({ setShowModal }) {
   const demo = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ credential:'demo', password:'111111' })).catch(
+    return dispatch(sessionActions.login( 'demo@aa.io', 'password' )).catch(
       async (res) => {
         const data = await res.json();
         if (data && data.message) setErrors([data.message]);
