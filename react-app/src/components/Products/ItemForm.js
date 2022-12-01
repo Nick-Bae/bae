@@ -18,7 +18,8 @@ const ItemForm = () => {
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [ errors, setErrors ] = useState([]);
     const [validationErrors, setValidationErrors] = useState([]);
-  
+    const [imageLoading, setImageLoading] = useState(false)
+
     useEffect(() => {
     const errors =[];
     if (name.length >30) errors.push('Name must be less than 30 chracters');
@@ -26,10 +27,10 @@ const ItemForm = () => {
     if (price > 10000) errors.push('Price should be less than $10,000');
     if (!category_id ) errors.push('Please select the category');
     if (image.length>255) errors.push('url should not be over 255 characters');
-    if (!image.startsWith('https://') && 
-        !image.startsWith('http://')) errors.push('url should starts with https:// or http://');
-    if (!image.endsWith(".png") && !image.endsWith(".jpeg") 
-        && !image.endsWith(".jpg") && !image.endsWith(".gif")) errors.push('Image url should end with jpeg, jpg, gif, png');
+    // if (!image.startsWith('https://') && 
+    //     !image.startsWith('http://')) errors.push('url should starts with https:// or http://');
+    // if (!image.endsWith(".png") && !image.endsWith(".jpeg") 
+    //     && !image.endsWith(".jpg") && !image.endsWith(".gif")) errors.push('Image url should end with jpeg, jpg, gif, png');
     setValidationErrors(errors);
   }, [price, image, name, category_id]);
   
@@ -56,18 +57,39 @@ const ItemForm = () => {
             }
     });
 
-    const imageUrl = {
-        url:image,
-        product_id: newItem.id
-    }
+    // const imageUrl = {
+    //     url:image,
+    //     product_id: newItem.id
+    // }
     
-    await dispatch(createImage( imageUrl))
+    // await dispatch(createImage( imageUrl))
 
-    // var txt;
-    // txt = document.getElementById('description').value;
-    // var text = txt.split(".");
-    // var str = text.join('.</br>');
-    // document.write(str);
+   
+    
+    
+  
+        const formData = new FormData();
+        formData.append("image", image);
+        
+        // aws uploads can be a bit slow—displaying
+        // some sort of loading message is a good idea
+        setImageLoading(true);
+
+        const res = await fetch('/api/images', {
+            method: "POST",
+            body: formData,
+        });
+        if (res.ok) {
+            await res.json();
+            setImageLoading(false);
+            history.push("/images");
+        }
+        else {
+            setImageLoading(false);
+            // a real app would probably use more advanced
+            // error handling
+            console.log("error");
+        }
     
     reset();
     history.push(`/items/${newItem.id}`);
@@ -84,7 +106,12 @@ const ItemForm = () => {
     setPrice("");
     setDescription("");
   }
-  let select;
+  
+  const updateImage = (e) => {
+    const file = e.target.files[0];
+    setImage(file); 
+    }
+
   return (
     <section className='createItemForm'>
     { hasSubmitted && validationErrors.length > 0 && (
@@ -150,7 +177,7 @@ const ItemForm = () => {
             />
         </div>
         
-        <div id="itemtInput">
+        {/* <div id="itemtInput">
             <label htmlFor='url'>Image:</label>
                 <textarea
                         // maxLength='255'
@@ -160,8 +187,18 @@ const ItemForm = () => {
                     value={image}
                     required
                     />
-                </div>
-        {/* <button type='submit'>Creat new itemt</button> */}
+                </div> */}
+        <div id="uploadImage">
+            <label htmlFor='url'>Image:</label>
+             <input
+              type="file"
+              accept="image/*"
+              onChange={updateImage}
+            />
+            <button type="submit">Submit</button>
+            {(imageLoading)&& <p>Loading...</p>}
+        </div>
+
         <div>
         <input id="itemtBt" type="submit" /> &nbsp;
         <button id="itemtBt" type="button" onClick={cancelClick}>Cancel</button>
