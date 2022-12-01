@@ -101,16 +101,13 @@ function App() {
           <ItemForm />
         </ProtectedRoute>
 
-<<<<<<< HEAD
         <ProtectedRoute path='/upload' exact={true} >
           <UploadPicture />
         </ProtectedRoute>
 
-=======
         <Route>
           <NotFound />
         </Route>
->>>>>>> main
       </Switch>
     </BrowserRouter>
   );
