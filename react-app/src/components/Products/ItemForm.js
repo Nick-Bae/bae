@@ -47,8 +47,9 @@ const ItemForm = () => {
         name, 
         price:parseFloat(price).toFixed(2), 
         category_id, 
-        description };
-        // image, 
+        description 
+    };
+       
 
     const newItem = await dispatch(createItem(item)).catch(async (res) => {
             const data = await res.json();
@@ -63,31 +64,30 @@ const ItemForm = () => {
     // }
     
     // await dispatch(createImage( imageUrl))
+    
+    // <form id="createItemForm" method="POST">
+    // <input type="text" id="product_id" name="product_id" value={newItem.id}></input>
+    // </form>
 
-   
-    
-    
-  
         const formData = new FormData();
         formData.append("image", image);
+        formData.append("product_id", newItem.id);
         
-        // aws uploads can be a bit slow—displaying
-        // some sort of loading message is a good idea
+        
         setImageLoading(true);
 
         const res = await fetch('/api/images', {
             method: "POST",
-            body: formData,
+            body:  formData ,
         });
+
         if (res.ok) {
             await res.json();
             setImageLoading(false);
-            history.push("/images");
+            // history.push("/images");
         }
         else {
             setImageLoading(false);
-            // a real app would probably use more advanced
-            // error handling
             console.log("error");
         }
     
@@ -188,6 +188,7 @@ const ItemForm = () => {
                     required
                     />
                 </div> */}
+        
         <div id="uploadImage">
             <label htmlFor='url'>Image:</label>
              <input

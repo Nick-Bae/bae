@@ -77,7 +77,7 @@
 #itemDescription{
     margin-top:30px;
     width: 200px;
-    /* overflow-wrap: break-word */
+    overflow-wrap: break-word;
 
 }
 .itemDetail_right{
