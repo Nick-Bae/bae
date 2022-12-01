@@ -5,18 +5,23 @@ from app.models import db, User, Image
 # Adds a demo user, you can add other users here if you want
 def seed_images():
     image1 = Image(
+        # user_id=1,
         url='https://static.nike.com/a/images/w_1536,c_limit,f_auto/y3henppvrmboxalhqbn5/air-jordan-1-banned-555088-001.jpg', 
         product_id=1)
     image2 = Image(
+        # user_id=3,
         url='https://cdn.vox-cdn.com/thumbor/cPeVH-m_b9pScRXzpCBW-nAHSfw=/0x0:2032x1355/1400x1400/filters:focal(1016x678:1017x679)/cdn.vox-cdn.com/uploads/chorus_asset/file/22863258/akrales_210917_4760_0175.jpg', 
         product_id=2)
     image3 = Image(
+        # user_id=2,
         url='https://nbalance.by/wp-content/uploads/2022/03/574-1.jpg', 
         product_id=3)
     image4 = Image(
+        # user_id=1,
         url='https://pisces.bbystatic.com/image2/BestBuy_US/dam/MMT-571594-tradein-pol-243e6ddd-89c0-4d89-b68c-c66b1f2c6c77.jpg', 
         product_id=4)
     image5 = Image(
+        # user_id=3,
         url='https://media.glamourmagazine.co.uk/photos/633eeed812cab0baed0aeb15/master/w_1600%2Cc_limit/KAIA%2520GERBER%2520X%2520ZARA%2520061022%2520campaign3.jpg', 
         product_id=5)
 

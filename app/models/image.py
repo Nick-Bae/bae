@@ -15,8 +15,11 @@ class Image(db.Model):
     #     __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    # user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     url = db.Column(db.String)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
+
+    # user = db.relationship("User", back_populates="images")
     
     product = db.relationship(
         "Product",
@@ -26,6 +29,7 @@ class Image(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            # "username": self.user_id,
             'url': self.url,
             'product_id': self.product_id,
             'Product': self.product.to_dict()
