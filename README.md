@@ -11,6 +11,7 @@
    Make sure the SQLite3 database connection URL is in the .env file
    
 3. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+  
    pipenv shell
    
    flask db upgrade
