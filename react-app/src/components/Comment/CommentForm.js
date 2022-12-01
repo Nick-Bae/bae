@@ -142,8 +142,6 @@ export const CommentForm = () => {
                 </form>
 
             )}
-
-
         </div>
     );
 }

@@ -129,20 +129,20 @@ const ItemForm = () => {
     <form id="createItemForm" onSubmit={onSubmit}>
         <h2 id="formTitle">Create Item</h2>
 
-        <div id="itemtInput">
-            <label> Category:
+        <div className="selectCategory">
+            <label id="categoryLabel"> Category</label>
             <select id="selectCategory" className="required" onChange={e=> setCategory_id(parseInt(e.target.value))}>
-                <option  defaultValue="Click"> Click to see options </option>
+                <option id="categoryOption" defaultValue="Click"> Click to see options </option>
                 <option value="1">Shoes</option>
                 <option value="2">Phones</option>
                 <option value="3">Clothes</option>
                 {/* <option value="mango">Mango</option> */}
             </select>
-            </label>
+            
         </div>
 
         <div id="itemtInput">
-            <label htmlFor='name'>Title:</label>
+            <label htmlFor='name'>Title</label>
             <input 
                 id='name'
                 type='text'
@@ -154,7 +154,7 @@ const ItemForm = () => {
         </div>
         
         <div id="itemtInput">
-            <label htmlFor='price'>Price:</label>
+            <label htmlFor='price'>Price</label>
             <input
                 id='price'
                 type='number'
@@ -167,7 +167,7 @@ const ItemForm = () => {
         
 
         <div id="itemtInput">
-            <label htmlFor='description'>description:</label>
+            <label htmlFor='description'>description</label>
             <textarea
                 id='description'
                 type='text'

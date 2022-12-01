@@ -71,8 +71,10 @@ useEffect(()=>{
           required
         />
       </label>
+      <div className="wordandUpdate">
       <p id="wordCount"> <span style={{color: 'red', fontSize:16}}>{leftNum}</span> /250</p>
-      <button type="submit">Update</button>
+      <button id="commentEdit" type="submit">Update</button>
+      </div>
       {/* <button type="submit">cancel</button> */}
     </form>
   );

@@ -17,18 +17,18 @@ function Profile() {
     }
 
     return (
-        <>
-            <div className='loginName'>
-                Hi!{sessionUser.username}
-            </div>
-            <div>
+        <div className='navLeft'>
+            <div className='navInfo'>
+                <div className='loginName'>
+                    Hi!{sessionUser.username}
+                </div>
                 <NavLink className="sellNewItem" to={`/new-item`}>Sell</NavLink>
 
                 <NavLink className="myBae" to='/mymenu'>My Bae</NavLink>
 
                 <LogoutButton />
             </div>
-        </>
+        </div>
     );
 }
 export default Profile;
