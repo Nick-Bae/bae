@@ -9,7 +9,6 @@ function Mymenu() {
     const sessionUser = useSelector(state => state.session.user);
     const wishlist = useSelector(state => state.wishlist);
     const [selectedMenu, setSelectedMenu] = useState("")
-    console.log("wishlist ????????", wishlist)
 
     useEffect(() => {
         dispatch(userWishlist(sessionUser.id))
@@ -27,8 +26,10 @@ function Mymenu() {
             <div className='myMenuBody'>
                 <div className='myMenuBars'>
                     <ul className='myMenubar'>
-                        <li className="mymenu_wishlist" onClick={()=>setSelectedMenu("wishlist")}>Wishlist</li>
-                        <li onClick={()=>setSelectedMenu("selling")}>Selling</li>
+                        <li className="mymenu_wishlist" 
+                            onClick={()=>setSelectedMenu("wishlist")}>Wishlist</li>
+                        <li className="mymenu_sellinglist" 
+                            onClick={()=>setSelectedMenu("selling")}>Selling</li>
                     </ul>
                 </div>
                 <MymenuDetail menu={selectedMenu} />

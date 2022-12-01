@@ -15,7 +15,6 @@ function MymenuDetail({ menu }) {
     const wishlists = Object.values(useSelector(state => state.wishlist));
     const items = Object.values(useSelector(state => state.items));
 
-    console.log("items  ??????", items)
     useEffect(() => {
         dispatch(userWishlist(sessionUser.id))
         dispatch(getAllImages())
