@@ -17,6 +17,7 @@ import CommentEditForm from './components/Comment/CommentEditForm';
 // import Cart from './components/Cart';
 import Mymenu from './components/Mymenu/Mymenu';
 import WishList from './components/Products/WishList';
+import UploadPicture from './components/UploadPicture';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -98,6 +99,12 @@ function App() {
         <ProtectedRoute path='/new-item' exact={true} >
           <ItemForm />
         </ProtectedRoute>
+        
+        <ProtectedRoute path='/upload' exact={true} >
+          <UploadPicture />
+        </ProtectedRoute>
+
+
       </Switch>
     </BrowserRouter>
   );
