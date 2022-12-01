@@ -1,3 +1,14 @@
 .loginName, .sellNewItem, .myBae {
-padding-right:10px;
+padding-right:30px;
+}
+
+.navInfo{
+    font-size: var(--font-large);
+    display: flex;
+    justify-content: center;
+}
+
+.navLeft {
+    display: flex;
+    align-items: center;
 }

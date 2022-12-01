@@ -16,13 +16,25 @@
     align-items: center;
     justify-content: center;
     border-radius: 3px;
-    background-color: rgb(131, 209, 248);
+    background-color: rgb(239, 231, 216);
     width: 147px;
     font-size:15px;
     color:black;
 }
+.session{
+    display: flex;
+    margin-top:10px
+    /* align-content: center; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* justify-items: center; */
+}
 .signupBt{
-    border-radius: 5px;
+    border: none;
+    background-color: white;
+    font-size:18px;
+   
+
     /* background-color: rgb(131, 209, 248);
     height: 40px;
     font-size: var(--font-large);
@@ -35,7 +47,7 @@
 #signupCancel {
     margin: 15px 0 0 0;
     border-radius: 3px;
-    background-color: rgb(131, 209, 248);
+    background-color: rgb(239, 231, 216);
     height: 40px;
     width: 147px;
     font-size:15px;

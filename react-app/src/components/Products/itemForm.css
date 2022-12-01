@@ -1,5 +1,9 @@
 .createItemForm{
     margin:50px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(246, 243, 240);
+    height: auto;
 }
 #formTitle{
 font-size: 40px;
@@ -7,20 +11,43 @@ padding:20px;
 border-bottom: 1px solid var(--grey-light-color);
 margin-bottom: 20px;
 }
+label{
+    margin: 20px;
+
+}
 
 #itemtInput{
     display: flex;
     flex-direction: column;
     font-size: 20px;
+    min-width:700px;
+    background-color: white;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--grey-light-color);
+    border-radius: 10px;
+   
 }
 
-#name, #price, #imageUrl {
-    height: 80px;
-    margin-bottom: 30px;
+.selectCategory{
+    background-color: white;
 }
 
+
+
+#name, #price, #imageUrl, #description {
+    height: 20px;
+    margin: 30px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--grey-light-color);
+   
+}
+
+#imageUrl{
+    height:60px
+}
 #description{
-    height:140px;
+    min-height:150px;
     margin-bottom: 30px;
 }
 
@@ -28,17 +55,37 @@ margin-bottom: 20px;
     margin-bottom: 30px;
 }
 
-#selectCategory{
+.selectCategory{
     margin-bottom: 30px;
-    height:50px;
-    width:170px;
+    height:80px;
+    min-width:700px;
+    border-radius: 10px;
+    font-size: 20px;
 }
 
 #itemtBt{
     height:40px;
     width: 60px;
+    background-color: rgb(252, 239, 213);
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 #errorMessages{
     color: red;
+}
+
+#selectCategory{
+    margin: 30px;
+}
+
+#title{
+    margin-top: 20px;
+}
+
+#categoryOption{
+    height: 20px;
+}
+option {
+    height: 30px;
 }

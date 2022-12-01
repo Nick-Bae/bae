@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
+import LoginForm from './components/LoginFormModal/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -14,6 +14,7 @@ import ItemForm from './components/Products/ItemForm';
 import EditItemForm from './components/Products/EditItemForm';
 import CommentDisplay from './components/Comment/CommentDisplay';
 import CommentEditForm from './components/Comment/CommentEditForm';
+import NotFound from './components/NotFound';
 // import Cart from './components/Cart';
 import Mymenu from './components/Mymenu/Mymenu';
 import WishList from './components/Products/WishList';
@@ -82,7 +83,7 @@ function App() {
         {/* <ProtectedRoute path='/items/:itemId/images' exact={true} >
           <EditItemForm />
         </ProtectedRoute> */}
-        
+
         {/* <ProtectedRoute path='/images' exact={true} >
           <EditItemForm />
         </ProtectedRoute> */}
@@ -98,6 +99,10 @@ function App() {
         <ProtectedRoute path='/new-item' exact={true} >
           <ItemForm />
         </ProtectedRoute>
+
+        <Route>
+          <NotFound />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

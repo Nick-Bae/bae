@@ -35,6 +35,12 @@ const Items = () => {
             ))}
             </div>
         </div>
+        <div className='about'>
+          <p> about me </p>
+          <a target="_blank" href='https://github.com/Nick-Bae'>  Github</a> &nbsp; &nbsp;
+          <a target="_blank" href='https://www.linkedin.com/in/namju-bae-4274893a/'>  Linkedin</a>
+          
+        </div>
     </main>
   );
 };
