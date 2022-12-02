@@ -101,31 +101,31 @@ export const CommentDisplay = () => {
                                         </div>
                                         <div
                                             className="commentEditBt"
-                                            // onClick={() => {
-                                            //     if (editId === comment.id) {
-                                            //         setEditId(-1);
-                                            //         setEditId("");
-                                            //         return;
-                                            //     }
-                                            //     setEditId(comment.id);
-                                            //     setBody(comment.body);
-                                            // }}
-                                            onClick={() => { open ? setOpen(false) : setOpen(true) }}
+                                            onClick={() => {
+                                                if (editId === comment.id) {
+                                                    setEditId(-1);
+                                                    setEditId("");
+                                                    return;
+                                                }
+                                                setEditId(comment.id);
+                                                setBody(comment.body);
+                                            }}
+                                            // onClick={() => { open ? setOpen(false) : setOpen(true) }}
                                         >
                                             <i className="fa-solid fa-pen"></i> 
                                         </div>
                                     </div>
                                     <div className="editform">
-                                        {open && (
+                                    {editId === comment.id && (
                                             <div className='commentUpdateBt'>
                                             
                                             <CommentEditForm
                                                 className="comment-edit-form"
                                                 comment={comment}
                                                 itemId={itemId}
-                                                Open={true}
+                                                setEditId={setEditId}
                                             />
-                                            <button id="commentEditCancel" onClick={cancel}> Cancel </button>
+                                            {/* <button id="commentEditCancel" onClick={cancel}> Cancel </button> */}
                                             </div>
                                             
                                         )}
