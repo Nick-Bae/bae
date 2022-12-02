@@ -29,6 +29,7 @@ psycopg2-binary = "*"
 dj-database-url = "*"
 email-validator = "*"
 flask-json = "*"
+boto3 = "*"
 
 [dev-packages]
 
