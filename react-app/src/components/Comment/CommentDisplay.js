@@ -32,7 +32,12 @@ export const CommentDisplay = () => {
     useEffect(() => {
         dispatch(getItemComments(itemId))
 
-    }, [dispatch, itemId]);
+    }, [dispatch, itemId, open]);
+    const cancel = () => {
+        setOpen(false)
+        // dispatch(getItemComments(itemId));
+        // dispatch(getItemDetail(itemId));
+    }
 
     if (!comments) return null
 
@@ -73,6 +78,7 @@ export const CommentDisplay = () => {
                                 {(<i className="fa-sharp fa-solid fa-star"></i>) * Number(stars)}
 
                             </li> */}
+                            
 
                             {(comment.user_id === currentUser?.id) &&
                                 <div className='commentEditBt'>
@@ -106,17 +112,22 @@ export const CommentDisplay = () => {
                                             // }}
                                             onClick={() => { open ? setOpen(false) : setOpen(true) }}
                                         >
-                                            <i className="fa-solid fa-pen"></i>
+                                            <i className="fa-solid fa-pen"></i> 
                                         </div>
                                     </div>
                                     <div className="editform">
                                         {open && (
+                                            <div className='commentUpdateBt'>
+                                            
                                             <CommentEditForm
                                                 className="comment-edit-form"
                                                 comment={comment}
                                                 itemId={itemId}
-                                                setOpen={true}
+                                                Open={true}
                                             />
+                                            <button id="reviewCancel" onClick={cancel}> Cancel </button>
+                                            </div>
+                                            
                                         )}
                                     </div>
                                 </div>

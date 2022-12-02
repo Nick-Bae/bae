@@ -50,3 +50,9 @@
     margin-bottom: 20px;
 }
 
+#reviewCancel{
+    position: relative;
+    right: -560px;
+    top: -20px;
+    width: 60px;
+}
