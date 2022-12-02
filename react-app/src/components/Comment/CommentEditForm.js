@@ -4,12 +4,13 @@ import { editComment } from "../../store/comment";
 import { getItemComments } from "../../store/comment";
 import './CommentEditForm.css'
 
-function CommentEditForm({comment, itemId,  setEditId}) {
+function CommentEditForm({comment, itemId}) {
   // const comment  = useSelector(state=> state.comments)
   const userId = useSelector((state) => state.session.user.id);
   const [body, setBody]= useState(comment.body)
   const [validationErrors, setValidationErrors] = useState([]);
   const [leftNum, setLeftNum] = useState();
+  const [enable, setEnable] = useState(true);
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -29,12 +30,10 @@ useEffect(()=>{
 
 
   const updateSubmit = async (e) => {
-    // Prevent the default form behavior so the page doesn't reload.
     e.preventDefault();
 
     if (validationErrors.length) return alert(`Cannot Submit`);
 
-    // Create a new object for the song form information.
     const commentForm = {body,
                         user_id:userId,
                         item_id:itemId,
@@ -42,12 +41,14 @@ useEffect(()=>{
      };
 
     await dispatch(editComment(commentForm))
-    setEditId(-1)
 
-    // Reset the form state.
+    setEnable(false)
     setBody("");
     setValidationErrors([]);
-    // setHasSubmitted(false);
+  };
+
+  const cancel =() =>{
+    setEnable(false)
   };
 
     useEffect (()=>{
@@ -55,6 +56,9 @@ useEffect(()=>{
     }, [dispatch, itemId])
 
   return (
+    <>
+    {enable &&(
+      <>
     <form id="form1" noValidate onSubmit={updateSubmit}>
       <ul>
         {validationErrors.map((error, idx) => (
@@ -74,9 +78,12 @@ useEffect(()=>{
       <div className="wordandUpdate">
       <p id="wordCount"> <span style={{color: 'red', fontSize:16}}>{leftNum}</span> /250</p>
       <button id="commentEdit" type="submit">Update</button>
+      <button onClick={cancel} >cancel</button>
       </div>
-      {/* <button type="submit">cancel</button> */}
     </form>
+    </>
+    )}
+    </>
   );
 }
 

@@ -14,12 +14,22 @@
 .itemDetail{
     display:flex;
     flex-direction: row;
+    /* flex-wrap:wrap; */
+    /* gap:21px; */
+    justify-items: center;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.itemLayout{
+    display:flex;
+    flex-direction: row;
     flex-wrap:wrap;
     gap:21px;
     justify-content: center;
     margin-bottom: 20px;
 }
-
 
 .banner{
     width:100%;

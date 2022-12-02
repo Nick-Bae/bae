@@ -51,7 +51,7 @@ const NavBar = () => {
       <ul className='navMenu_home'>
           <li>
             <NavLink to='/' exact={true} activeClassName='active'>
-              <img className="logoHome" src="images/logo.png" alt="Home"/>
+              <img className="logoHome" src="https://nbae.s3.amazonaws.com/logo.png" alt="Home"/>
              
             </NavLink>
           </li>

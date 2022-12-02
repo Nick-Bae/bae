@@ -16,6 +16,8 @@ export const CommentDisplay = () => {
     const currentUser = useSelector(state => state.session.user)
     const { itemId } = useParams();
     // const [stars, setStars] = useState("");
+    const [open, setOpen] = useState(false);
+
     const [editId, setEditId] = useState(-1);
     const [body, setBody] = useState("");
 
@@ -93,26 +95,27 @@ export const CommentDisplay = () => {
                                         </div>
                                         <div
                                             className="commentEditBt"
-                                            onClick={() => {
-                                                if (editId === comment.id) {
-                                                    setEditId(-1);
-                                                    setEditId("");
-                                                    return;
-                                                }
-                                                setEditId(comment.id);
-                                                setBody(comment.body);
-                                            }}
+                                            // onClick={() => {
+                                            //     if (editId === comment.id) {
+                                            //         setEditId(-1);
+                                            //         setEditId("");
+                                            //         return;
+                                            //     }
+                                            //     setEditId(comment.id);
+                                            //     setBody(comment.body);
+                                            // }}
+                                            onClick={() => { open ? setOpen(false) : setOpen(true) }}
                                         >
                                             <i className="fa-solid fa-pen"></i>
                                         </div>
                                     </div>
                                     <div className="editform">
-                                        {editId === comment.id && (
+                                        {open && (
                                             <CommentEditForm
                                                 className="comment-edit-form"
                                                 comment={comment}
                                                 itemId={itemId}
-                                                setEditId={setEditId}
+                                                setOpen={true}
                                             />
                                         )}
                                     </div>
