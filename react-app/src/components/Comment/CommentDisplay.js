@@ -18,8 +18,7 @@ export const CommentDisplay = () => {
     // const [stars, setStars] = useState("");
     const [open, setOpen] = useState(false);
 
-    const [editId, setEditId] = useState(-1);
-    const [body, setBody] = useState("");
+    const [updateId, setUpdateId] = useState(-1);
 
     // useEffect(() => {
     //     const errors = [];
@@ -70,7 +69,7 @@ export const CommentDisplay = () => {
                             </li> */}
                         </div>
                         <div>
-                            <div key={body} className='reviewBody'>
+                            <div key={comment.id} className='reviewBody'>
                                 {comment.body}
                             </div>
                             {/* <li className='reviewStar'>
@@ -102,13 +101,12 @@ export const CommentDisplay = () => {
                                         <div
                                             className="commentEditBt"
                                             onClick={() => {
-                                                if (editId === comment.id) {
-                                                    setEditId(-1);
-                                                    setEditId("");
+                                                if (updateId === comment.id) {
+                                                    setUpdateId(-1);
+                                                    setUpdateId("");
                                                     return;
                                                 }
-                                                setEditId(comment.id);
-                                                setBody(comment.body);
+                                                setUpdateId(comment.id);
                                             }}
                                             // onClick={() => { open ? setOpen(false) : setOpen(true) }}
                                         >
@@ -116,14 +114,14 @@ export const CommentDisplay = () => {
                                         </div>
                                     </div>
                                     <div className="editform">
-                                    {editId === comment.id && (
+                                    {updateId === comment.id && (
                                             <div className='commentUpdateBt'>
                                             
                                             <CommentEditForm
                                                 className="comment-edit-form"
                                                 comment={comment}
                                                 itemId={itemId}
-                                                setEditId={setEditId}
+                                                setUpdateId={setUpdateId}
                                             />
                                             {/* <button id="commentEditCancel" onClick={cancel}> Cancel </button> */}
                                             </div>

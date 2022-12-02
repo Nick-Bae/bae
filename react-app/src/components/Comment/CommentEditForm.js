@@ -4,7 +4,7 @@ import { editComment } from "../../store/comment";
 import { getItemComments } from "../../store/comment";
 import './CommentEditForm.css'
 
-function CommentEditForm({comment, itemId, setEditId}) {
+function CommentEditForm({comment, itemId, setUpdateId}) {
   // const comment  = useSelector(state=> state.comments)
   const userId = useSelector((state) => state.session.user.id);
   const [body, setBody]= useState(comment.body)
@@ -42,7 +42,7 @@ useEffect(()=>{
 
     await dispatch(editComment(commentForm))
 
-    setEditId(-1)
+    setUpdateId(-1)
     setBody("");
     setValidationErrors([]);
   };
