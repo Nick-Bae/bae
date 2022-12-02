@@ -71,25 +71,38 @@ const ItemForm = () => {
 
         const formData = new FormData();
         formData.append("image", image);
-        formData.append("product_id", newItem.id);
-        
-        
-        setImageLoading(true);
+        // const product_id = {"product_id": newItem.id }
+        // formData.append("product_id", JSON.stringify(product_id));
 
-        const res = await fetch('/api/images', {
+        const imageReturn = await fetch('/api/images',{
             method: "POST",
-            body:  formData ,
-        });
+            body:formData
+        })
+        const imgUrl = await imageReturn.json()
+        console.log("image return",imgUrl)
+        const imageUrl = {
+                url:imgUrl.url,
+                product_id: newItem.id
+            }
 
-        if (res.ok) {
-            await res.json();
-            setImageLoading(false);
-            // history.push("/images");
-        }
-        else {
-            setImageLoading(false);
-            console.log("error");
-        }
+            console.log("imageUrl??????????????",imageUrl)
+        await dispatch(createImage( imageUrl))
+        // setImageLoading(true);
+
+        // const res = await fetch('/api/images', {
+        //     method: "POST",
+        //     body:  formData ,
+        // });
+
+        // if (res.ok) {
+        //     await res.json();
+        //     setImageLoading(false);
+        //     // history.push("/images");
+        // }
+        // else {
+        //     setImageLoading(false);
+        //     console.log("error");
+        // }
     
     reset();
     history.push(`/items/${newItem.id}`);
@@ -196,7 +209,7 @@ const ItemForm = () => {
               accept="image/*"
               onChange={updateImage}
             />
-            <button type="submit">Submit</button>
+          
             {(imageLoading)&& <p>Loading...</p>}
         </div>
 
