@@ -50,9 +50,11 @@
     margin-bottom: 20px;
 }
 
-#reviewCancel{
+#commentEditCancel{
     position: relative;
-    right: -560px;
+    right: -570px;
     top: -20px;
-    width: 60px;
+    width: 50px;
+    border-radius: 3px;
+    background-color: antiquewhite
 }

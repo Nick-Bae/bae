@@ -125,7 +125,7 @@ export const CommentDisplay = () => {
                                                 itemId={itemId}
                                                 Open={true}
                                             />
-                                            <button id="reviewCancel" onClick={cancel}> Cancel </button>
+                                            <button id="commentEditCancel" onClick={cancel}> Cancel </button>
                                             </div>
                                             
                                         )}
