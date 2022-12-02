@@ -154,8 +154,8 @@ const ItemForm = () => {
             
         </div>
 
-        <div id="itemtInput">
-            <label htmlFor='name'>Title</label>
+        <div id="nameInput">
+            <label id="editLabel" htmlFor='name'>Title</label>
             <input 
                 id='name'
                 type='text'
@@ -166,8 +166,8 @@ const ItemForm = () => {
             />
         </div>
         
-        <div id="itemtInput">
-            <label htmlFor='price'>Price</label>
+        <div id="priceInput">
+            <label id="editLabel" htmlFor='price'>Price</label>
             <input
                 id='price'
                 type='number'
@@ -180,7 +180,7 @@ const ItemForm = () => {
         
 
         <div id="itemtInput">
-            <label htmlFor='description'>description</label>
+            <label id="editLabel" htmlFor='description'>description</label>
             <textarea
                 id='description'
                 type='text'
@@ -203,8 +203,9 @@ const ItemForm = () => {
                 </div> */}
         
         <div id="uploadImage">
-            <label htmlFor='url'>Image:</label>
+            <label id="uploadBt" htmlFor='url'>Image:</label>
              <input
+              id="uploadBt"
               type="file"
               accept="image/*"
               onChange={updateImage}

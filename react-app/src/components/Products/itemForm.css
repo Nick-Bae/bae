@@ -12,7 +12,7 @@ border-bottom: 1px solid var(--grey-light-color);
 margin-bottom: 20px;
 }
 label{
-    margin: 20px;
+    margin: 20px 0 0 20px;
 
 }
 
@@ -23,9 +23,33 @@ label{
     min-width:700px;
     background-color: white;
     margin-bottom: 20px;
+    /* border-bottom: 1px solid var(--grey-light-color); */
+    border-radius: 10px;
+}
+#nameInput, #priceInput{
+    font-size: 20px;
+    min-width:700px;
+    background-color: white;
+    margin-bottom: 20px;
     border-bottom: 1px solid var(--grey-light-color);
     border-radius: 10px;
-   
+    height: 60px;
+    display: flex;
+    align-content: center;
+}
+
+#uploadImage{background-color: white;
+    margin-bottom: 20px;
+    height:50px;
+    /* border-bottom: 1px solid var(--grey-light-color); */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+#uploadBt{
+    display: flex;
+    align-items: center;
+    margin: 0 5px 0 10px;
 }
 
 .selectCategory{
@@ -35,14 +59,21 @@ label{
 
 
 #name, #price, #imageUrl, #description {
-    height: 20px;
-    margin: 30px;
+    height: 40px;
+    width: 700px;
+    margin: 10px 20px 0 20px;
     outline: none;
     border: none;
     border-bottom: 1px solid var(--grey-light-color);
    
 }
 
+#description{
+    width:750px;
+}
+#price {
+    /* height:50px */
+}
 #imageUrl{
     height:60px
 }
@@ -56,8 +87,8 @@ label{
 }
 
 .selectCategory{
-    margin-bottom: 30px;
-    height:80px;
+    margin-bottom: 20px;
+    height:70px;
     min-width:700px;
     border-radius: 10px;
     font-size: 20px;
@@ -88,4 +119,24 @@ label{
 }
 option {
     height: 30px;
+}
+
+#uploadBt{
+    font-size: 18px;
+}
+    
+#uploadBt::file-selector-button {
+        font-weight: bold;
+        padding: 0.5em;
+        border: thin solid rgb(244, 233, 168);
+        border-radius: 3px;
+        margin-top: 0;
+}
+
+#editLabel{
+    /* display: flex;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: row; */
 }
