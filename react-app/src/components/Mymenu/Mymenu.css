@@ -8,6 +8,8 @@
 .myMenuBars{
     border-right: 1px solid var(--grey-light-color);
     margin-right: 10px 10px 0 10px;
+    /* background-color: rgb(247, 247, 220); */
+    min-height: 1100px;
 }
 .myMenubar{
     margin: 0 40px;
@@ -19,6 +21,12 @@
     margin-bottom: 30px;
 }
 
-.mymenu_wishlist{
+.mymenuWishlist, .mymenu_sellinglist{
     padding: 10px 0;
+    width: 120px;
 }
+
+.mymenuWishlist{
+    margin-top:20px;
+}
+

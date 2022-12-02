@@ -16,6 +16,8 @@ export const CommentDisplay = () => {
     const currentUser = useSelector(state => state.session.user)
     const { itemId } = useParams();
     // const [stars, setStars] = useState("");
+    const [open, setOpen] = useState(false);
+
     const [editId, setEditId] = useState(-1);
     const [body, setBody] = useState("");
 
@@ -30,7 +32,12 @@ export const CommentDisplay = () => {
     useEffect(() => {
         dispatch(getItemComments(itemId))
 
-    }, [dispatch, itemId]);
+    }, [dispatch, itemId, open]);
+    const cancel = () => {
+        setOpen(false)
+        // dispatch(getItemComments(itemId));
+        // dispatch(getItemDetail(itemId));
+    }
 
     if (!comments) return null
 
@@ -71,6 +78,7 @@ export const CommentDisplay = () => {
                                 {(<i className="fa-sharp fa-solid fa-star"></i>) * Number(stars)}
 
                             </li> */}
+                            
 
                             {(comment.user_id === currentUser?.id) &&
                                 <div className='commentEditBt'>
@@ -93,27 +101,33 @@ export const CommentDisplay = () => {
                                         </div>
                                         <div
                                             className="commentEditBt"
-                                            onClick={() => {
-                                                if (editId === comment.id) {
-                                                    setEditId(-1);
-                                                    setEditId("");
-                                                    return;
-                                                }
-                                                setEditId(comment.id);
-                                                setBody(comment.body);
-                                            }}
+                                            // onClick={() => {
+                                            //     if (editId === comment.id) {
+                                            //         setEditId(-1);
+                                            //         setEditId("");
+                                            //         return;
+                                            //     }
+                                            //     setEditId(comment.id);
+                                            //     setBody(comment.body);
+                                            // }}
+                                            onClick={() => { open ? setOpen(false) : setOpen(true) }}
                                         >
-                                            <i className="fa-solid fa-pen"></i>
+                                            <i className="fa-solid fa-pen"></i> 
                                         </div>
                                     </div>
                                     <div className="editform">
-                                        {editId === comment.id && (
+                                        {open && (
+                                            <div className='commentUpdateBt'>
+                                            
                                             <CommentEditForm
                                                 className="comment-edit-form"
                                                 comment={comment}
                                                 itemId={itemId}
-                                                setEditId={setEditId}
+                                                Open={true}
                                             />
+                                            <button id="commentEditCancel" onClick={cancel}> Cancel </button>
+                                            </div>
+                                            
                                         )}
                                     </div>
                                 </div>

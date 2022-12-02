@@ -23,9 +23,10 @@ const Items = () => {
               <img className='banner' src="/images/banner1.jpg"  alt=""/>
             </div>
             <div className="itemDetail">
+              <div className="itemLayout">
             {images.map(item=>(
               // <Link key={item?.id} to={{pathname:`/items/${item?.product_id}`, state:{item:item}}}> 
-              <Link key={item?.id} to={`/items/${item?.product_id}`}> 
+              <Link  key={item?.id} to={`/items/${item?.product_id}`}> 
                     {/* <ItemDetail item={item}/> */}
                     {item?.Product?.name} 
                     <div key={item?.id} className='imageContainer'>
@@ -33,6 +34,7 @@ const Items = () => {
                     </div>
               </Link>
             ))}
+            </div>
             </div>
         </div>
         <div className='about'>

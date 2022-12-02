@@ -74,6 +74,8 @@ export const CommentForm = () => {
 
     const cancel = () => {
         setOpen(false)
+        dispatch(getItemComments(itemId));
+        dispatch(getItemDetail(itemId));
     }
     useEffect(() => {
         // console.log("useeffect ",currSpot)
@@ -82,7 +84,7 @@ export const CommentForm = () => {
 
         // dispatch(getSpotReviews(currSpot));
         // dispatch(getAllSpots())
-    }, [dispatch, itemId]);
+    }, [dispatch, itemId,open]);
 
     // if (!spotReviews) return null
 

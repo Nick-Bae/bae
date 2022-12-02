@@ -50,3 +50,11 @@
     margin-bottom: 20px;
 }
 
+#commentEditCancel{
+    position: relative;
+    right: -570px;
+    top: -20px;
+    width: 50px;
+    border-radius: 3px;
+    background-color: antiquewhite
+}

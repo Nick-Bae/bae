@@ -26,10 +26,12 @@ function Mymenu() {
             <div className='myMenuBody'>
                 <div className='myMenuBars'>
                     <ul className='myMenubar'>
-                        <li className="mymenu_wishlist" 
-                            onClick={()=>setSelectedMenu("wishlist")}>Wishlist</li>
+                        <li className="mymenuWishlist" 
+                            onClick={()=>setSelectedMenu("wishlist")}>Wishlist
+                        </li>
                         <li className="mymenu_sellinglist" 
-                            onClick={()=>setSelectedMenu("selling")}>Selling</li>
+                            onClick={()=>setSelectedMenu("selling")}>Selling
+                        </li>
                     </ul>
                 </div>
                 <MymenuDetail menu={selectedMenu} />
