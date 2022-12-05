@@ -65,12 +65,13 @@ useEffect(()=>{
       </ul>
       <label>
         <textarea
+          required
+          maxLength="250"
           className="edit-text"
           id="edit-commentform-text"
           type="text"
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          required
         />
       </label>
       <div className="wordandUpdate">
