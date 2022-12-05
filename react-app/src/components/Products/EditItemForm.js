@@ -25,7 +25,7 @@ const EditItemForm = ( ) => {
 
     useEffect(() => {
         const errors = [];
-        if (name.length > 30) errors.push('Title must be less than 30 chracters');
+        if (name.length > 20) errors.push('Title must be less than 20 chracters');
         if (price < 0) errors.push('Please enter your Correct Price');
         if (price > 10000) errors.push('Price should be less than $10,000');
         if (!category_id) errors.push('Please select the category');
