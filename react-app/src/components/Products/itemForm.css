@@ -65,6 +65,7 @@ label{
     outline: none;
     border: none;
     border-bottom: 1px solid var(--grey-light-color);
+    overflow-wrap: break-word;
    
 }
 

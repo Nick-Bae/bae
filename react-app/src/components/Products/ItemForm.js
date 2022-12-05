@@ -22,17 +22,18 @@ const ItemForm = () => {
 
     useEffect(() => {
     const errors =[];
-    if (name.length >30) errors.push('Name must be less than 30 chracters');
+    if (name.length >20) errors.push('Title must be less than 20 chracters');
     if ( price < 0) errors.push('Please enter your Correct Price');
     if (price > 10000) errors.push('Price should be less than $10,000');
     if (!category_id ) errors.push('Please select the category');
     if (image.length>255) errors.push('url should not be over 255 characters');
-    // if (!image.startsWith('https://') && 
-    //     !image.startsWith('http://')) errors.push('url should starts with https:// or http://');
-    // if (!image.endsWith(".png") && !image.endsWith(".jpeg") 
-    //     && !image.endsWith(".jpg") && !image.endsWith(".gif")) errors.push('Image url should end with jpeg, jpg, gif, png');
+    if (!image.startsWith('https://') && 
+        !image.startsWith('http://')) errors.push('url should starts with https:// or http://');
+    if (!image.endsWith(".png") && !image.endsWith(".jpeg") 
+        && !image.endsWith(".jpg") && !image.endsWith(".gif")) errors.push('Image url should end with jpeg, jpg, gif, png');
+    if (description.length > 500) errors.push('Description must be less than 500 chracters');
     setValidationErrors(errors);
-  }, [price, image, name, category_id]);
+  }, [price, image, name, category_id, description]);
   
 
   const onSubmit = async (e) => {

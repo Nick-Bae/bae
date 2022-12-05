@@ -51,6 +51,7 @@
 
 #itemName{
     font-size:40px;
+    overflow-wrap: break-word;
 }
 #itemPrice{
     font-size:30px;

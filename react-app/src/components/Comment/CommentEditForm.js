@@ -4,7 +4,7 @@ import { editComment } from "../../store/comment";
 import { getItemComments } from "../../store/comment";
 import './CommentEditForm.css'
 
-function CommentEditForm({comment, itemId}) {
+function CommentEditForm({comment, itemId, setUpdateId}) {
   // const comment  = useSelector(state=> state.comments)
   const userId = useSelector((state) => state.session.user.id);
   const [body, setBody]= useState(comment.body)
@@ -42,7 +42,7 @@ useEffect(()=>{
 
     await dispatch(editComment(commentForm))
 
-    setEnable(false)
+    setUpdateId(-1)
     setBody("");
     setValidationErrors([]);
   };
@@ -57,8 +57,6 @@ useEffect(()=>{
 
   return (
     <>
-    {enable &&(
-      <>
     <form id="form1" noValidate onSubmit={updateSubmit}>
       <ul>
         {validationErrors.map((error, idx) => (
@@ -67,12 +65,13 @@ useEffect(()=>{
       </ul>
       <label>
         <textarea
+          required
+          maxLength="250"
           className="edit-text"
           id="edit-commentform-text"
           type="text"
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          required
         />
       </label>
       <div className="wordandUpdate">
@@ -81,8 +80,6 @@ useEffect(()=>{
       {/* <button onClick={cancel} >cancel</button> */}
       </div>
     </form>
-    </>
-    )}
     </>
   );
 }
