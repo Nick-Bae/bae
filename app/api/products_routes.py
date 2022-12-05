@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
-from app.models import Product, db, Inventory, Category, Image, Comment, User, wishlist
+from app.models import Product, db, Inventory, Category, Image, Comment, User, wishlist, Cart
 from flask_login import login_required, current_user
 from app.forms import CommentForm
 from ..forms import ItemForm
@@ -44,6 +44,7 @@ def get_item(id):
     item = Product.query.get(id)
     return item.to_dict()
 
+# ========================Post an Item=====================================
 
 @products_routes.route('', methods=['POST'])
 @login_required
@@ -147,7 +148,6 @@ def get_wishlist(id):
 def post_wishlist(id):
     item = Product.query.get(id)
     wish_user = User.query.get(current_user.id)
-    item_wish_user = item.wish_user
 
     # if not all_liked_user:
     #     story.liked_story_user.append(like_story_user)
@@ -281,3 +281,34 @@ def edit_image(id):
         db.session.commit()
         return image.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# =========================Post a Cart========================================
+
+@products_routes.route('/<int:id>/carts', methods=['POST'])
+@login_required
+def post_cart_item(id):
+    user_cart = Cart.query.filter(current_user.id == Cart.userId).first()
+    item = Product.query.get(id)
+    total = item.price * user_cart.quantity
+    # if not all_liked_user:
+    #     story.liked_story_user.append(like_story_user)
+    #     # db.session.commit()
+    # else:
+    #     for user in all_liked_user:
+    #         if user.id == current_user.id:
+    #             return "You already clicked"
+    #         else:
+    # item.cart.append(user_cart)
+    user_cart.items.append(item)
+    db.session.commit()
+    # the number of like for the story
+    # num = story.liked_story_user.count()
+
+    newCart = {
+        "cart": user_cart.to_dict(),
+        "item": item.to_dict(),
+        "total": total
+        # total: total
+    }
+
+    return newCart   

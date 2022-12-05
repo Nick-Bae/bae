@@ -38,6 +38,7 @@ const NavBar = () => {
               Users
             </NavLink>
           </li> */}
+          
           <li>
             {sessionUser && <LogoutButton />}
           </li>

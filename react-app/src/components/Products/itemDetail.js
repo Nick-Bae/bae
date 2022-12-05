@@ -9,6 +9,7 @@ import CommentDisplay from '../Comment/CommentDisplay';
 import CommentForm from '../Comment/CommentForm';
 import WishList from './WishList';
 import { getOneImage } from '../../store/image';
+import Cart from '../Cart/Cart';
 
 const ItemDetail = () => {
     const dispatch = useDispatch();
@@ -64,6 +65,7 @@ const ItemDetail = () => {
                                 <div id="itemDescription">{item?.Product?.description}</div>
                                 {/* <button id="wishBt" onClick={wishBt}>Add to Wishist</button> */}
                                 <WishList itemId={itemId} />
+                                <Cart />
                             </div>
                         </div>
                     </div>

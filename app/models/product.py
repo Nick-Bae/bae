@@ -4,7 +4,7 @@ from .image import Image
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app.models.user import wishlist
-# from app.models.cart import product_cart
+from app.models.cart import product_cart
 
 
 class Product(db.Model):
@@ -47,12 +47,12 @@ class Product(db.Model):
         lazy='dynamic',
         back_populates = 'wish_item')
 
-    # cart = db.relationship(
-    #     "Cart", 
-    #     ondelete='RESTRICT',
-    #     secondary=product_cart, 
-    #     back_populates="items"
-    # )
+    cart = db.relationship(
+        "Cart", 
+        secondary=product_cart, 
+        lazy='dynamic',
+        back_populates="items"
+    )
     
     def to_dict(self):
         return {

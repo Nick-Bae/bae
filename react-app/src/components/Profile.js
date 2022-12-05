@@ -4,9 +4,12 @@ import { NavLink } from "react-router-dom";
 import './Profile.css'
 import { userWishlist } from '../store/wishlist';
 import LogoutButton from './auth/LogoutButton';
+import CartDetail from './Cart/CartDetail';
+
 function Profile() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const userId = sessionUser.id
 
     useEffect(() => {
         dispatch(userWishlist(sessionUser.id))
@@ -26,6 +29,11 @@ function Profile() {
 
                 <NavLink className="myBae" to='/mymenu'>My Bae</NavLink>
 
+                <div>
+                <NavLink to={`/users/${userId}/cart`}>
+                    <i class="fa fa-thin fa-cart-shopping"></i>
+                </NavLink>
+                </div>
                 <LogoutButton />
             </div>
         </div>

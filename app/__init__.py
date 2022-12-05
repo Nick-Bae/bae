@@ -14,7 +14,6 @@ from .api.comments_routes import comments_routes
 from .api.images_routes import images_routes
 from .api.carts_routes import carts_routes
 
-# from .api.images_routes import images_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 

@@ -1,9 +1,10 @@
 from flask import Blueprint, request, jsonify
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
-from app.models import Product, db, Inventory, Category, Image, Comment, User, wishlist
+from app.models import Product, db, Inventory, Category, Image, Comment, User, Cart
 from flask_login import login_required, current_user
 from app.forms import CommentForm
 from ..forms import ItemForm
+from ..forms import CartForm
 
 carts_routes = Blueprint('carts', __name__)
 
@@ -17,47 +18,59 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+# ============================Cart All===================================================
+
+@carts_routes.route('')
+def get_cart():
+    products = Cart.query.all()
+  
+    return {item.to_dict()['id']: item.to_dict() for item in products}
+
+# ===============================Cart by user============================================   
+
 # @carts_routes.route('')
 # def get_cart():
-#     products = Cart.query.all()
+#     products = Cart.query.filter(Cart.cart)
   
 #     return {item.to_dict()['id']: item.to_dict() for item in products}
 
 
 # # =========================Cart post & delete=====================================
 
-#    #post wishlist for item
-# @carts_routes.route('/<int:id>/cart', methods=['POST'])
-# @login_required
-# def post_cartlist(id):
-#     user = User.query.get(current_user.id)
-#     item = Product.query.get(id)
-#     cart = user.wish_item.append(item)
-    
-#     form = ItemForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         data = form.data
-#         # cart = 
-#     # if not all_liked_user:
-#     #     story.liked_story_user.append(like_story_user)
-#     #     # db.session.commit()
-#     # else:
-#     #     for user in all_liked_user:
-#     #         if user.id == current_user.id:
-#     #             return "You already clicked"
-#     #         else:
+   #post wishlist for item
+@carts_routes.route('', methods=['POST'])
+@login_required
+def post_cart():
+    form = CartForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+        cart = Cart(
+                userId = current_user.id,
+                quantity = data['quantity']
+                )
+        itemId = data['itemId']
+        item =  Product.query.get(itemId)
+        total = item.price * cart.quantity
 
-#     db.session.commit()
-#     # the number of like for the story
-#     # num = story.liked_story_user.count()
-
-#     wishlist = {
-#         'productId':item.id,
-#         # 'num':num
-#     }
-
-#     return wishlist
+        cart.items.append(item)
+        db.session.add(cart)
+        db.session.commit()
+        newCart ={
+            "cart": cart.to_dict(),
+            "item": item.to_dict(),
+            "total": total
+        }
+        return newCart
+        # cart = 
+    # if not all_liked_user:
+    #     story.liked_story_user.append(like_story_user)
+    #     # db.session.commit()
+    # else:
+    #     for user in all_liked_user:
+    #         if user.id == current_user.id:
+    #             return "You already clicked"
+    #         else:
 
 #delete wishlist
 

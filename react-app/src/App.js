@@ -19,6 +19,7 @@ import NotFound from './components/NotFound';
 import Mymenu from './components/Mymenu/Mymenu';
 import WishList from './components/Products/WishList';
 import UploadPicture from './components/UploadPicture';
+import CartDetail from './components/Cart/CartDetail';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -57,9 +58,9 @@ function App() {
           <User />
         </ProtectedRoute>
 
-        {/* <ProtectedRoute path='/users/:userId/cart' exact={true} >
-          <Cart />
-        </ProtectedRoute> */}
+        <ProtectedRoute path='/users/:userId/cart' exact={true} >
+          <CartDetail />
+        </ProtectedRoute>
 
         <ProtectedRoute path='/users/:userId/wishlists' exact={true} >
           <WishList />
