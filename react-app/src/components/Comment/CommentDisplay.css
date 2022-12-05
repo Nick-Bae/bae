@@ -58,3 +58,8 @@
     border-radius: 3px;
     background-color: antiquewhite
 }
+
+.reviewBody{
+    width: 620px;
+    overflow-wrap: break-word;
+}
