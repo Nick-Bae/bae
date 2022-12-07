@@ -18,6 +18,7 @@ const EditItemForm = ( ) => {
     // const [inventory_id, setInventory_id] = useState('');
     const [description, setDescription] = useState(item.Product.description);
     const [image, setImage] = useState(item.url);
+    const [quantity, setQuantity] = useState('');
 
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -37,10 +38,6 @@ const EditItemForm = ( ) => {
         if (description.length > 500) errors.push('Description must be less than 500 chracters');
         setValidationErrors(errors);
     }, [price, image, name, category_id, description]);
-
-    if (category_id === 1){
-
-    }
 
     const editSubmit = async (e) => {
         e.preventDefault();
@@ -117,7 +114,6 @@ const EditItemForm = ( ) => {
                     />
                 </div>
 
-
                 <div id="itemtInput">
                     <label htmlFor='price'>Price:</label>
                     <input
@@ -130,7 +126,17 @@ const EditItemForm = ( ) => {
                     />
                 </div>
 
-
+                <div id="quantityInput">
+                    <label id="quantityLabel" htmlFor='quantity'>Quantity</label>
+                    <input
+                        id='quantity'
+                        type='number'
+                        onChange={e => setQuantity(e.target.value)}
+                        value={quantity}
+                        required
+                        max="1000"
+                    />
+                </div>            
 
                 <div id="itemtInput" >
                     <label htmlFor='description'>description:</label>

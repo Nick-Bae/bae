@@ -51,47 +51,42 @@ def get_user_items(id):
 @user_routes.route('/<int:id>/cart')
 def get_cartlist(id):
     user = User.query.get(id)
-    itemsInCart =  user.cart
-    
     carts =  user.cart
     items = [Cart.query.get(cart.id) for cart in carts]
     cart = [item.items.all() for item in items]
-    # itemInfo = {cartInfo.to_dict()['id']: cartInfo.to_dict() for cartInfo in cart}
-    itemInfo = [cartInfo[0].id for cartInfo in cart]
-    # detail = [inside for inside in itemInfo]
-    print ("item ##3#####", itemInfo)
+    itemInfo = [cartInfo[0] for cartInfo in cart]
+   
+    itemsInCart ={item.add_to_cart()['cartId']: item.add_to_cart() for item in itemInfo}
 
-    cartRes ={item.to_dict()['id']: item.to_dict() for item in itemsInCart}
-
-    return cartRes
+    return itemsInCart
 
 
-@user_routes.route('/<int:id>/carts', methods=['POST'])
-@login_required
-def post_user_cart(id):
-    # user_cart = Cart.query.filter(id == Cart.user_id)
-    user_cart = current_user.cart
-    user = User.query.get(current_user.id)
+# @user_routes.route('/<int:id>/carts', methods=['POST'])
+# @login_required
+# def post_user_cart(id):
+#     # user_cart = Cart.query.filter(id == Cart.user_id)
+#     user_cart = current_user.cart
+#     user = User.query.get(current_user.id)
     
-    form = CartForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        data = form.data
-        newCart = Cart(
-                    userId = id,
-                    quantity = data['quantity']
-                    )
-    # if not all_liked_user:
-    #     story.liked_story_user.append(like_story_user)
-    #     # db.session.commit()
-    # else:
-    #     for user in all_liked_user:
-    #         if user.id == current_user.id:
-    #             return "You already clicked"
-    #         else:
-    db.session.add(newCart)
-    db.session.commit()
-    # the number of like for the story
-    # num = story.liked_story_user.count()
+#     form = CartForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         data = form.data
+#         newCart = Cart(
+#                     userId = id,
+#                     quantity = data['quantity']
+#                     )
+#     # if not all_liked_user:
+#     #     story.liked_story_user.append(like_story_user)
+#     #     # db.session.commit()
+#     # else:
+#     #     for user in all_liked_user:
+#     #         if user.id == current_user.id:
+#     #             return "You already clicked"
+#     #         else:
+#     db.session.add(newCart)
+#     db.session.commit()
+#     # the number of like for the story
+#     # num = story.liked_story_user.count()
 
-    return newCart.to_dict()
+#     return newCart.to_dict()

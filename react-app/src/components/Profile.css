@@ -6,9 +6,50 @@ padding-right:30px;
     font-size: var(--font-large);
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .navLeft {
     display: flex;
     align-items: center;
 }
+
+.dropbtn {
+    background-color: #f7fbfa;
+    color: rgb(19, 18, 18);
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  .cartList {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .cartList-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    /* min-width: 160px; */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width:250px; 
+    margin:auto;
+    max-height:1500px;
+    right:1px;
+
+  }
+  
+  .cartList-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .cartList-content a:hover {background-color: #ddd;}
+  
+  .cartList:hover .cartList-content {display: block;}
+  
+  .cartList:hover .dropbtn {background-color: #acb2ac;}

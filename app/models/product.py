@@ -18,8 +18,7 @@ class Product(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     price = db.Column(db.Float, default=1.00)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id", ondelete='RESTRICT'))
-    # image_id = db.Column(db.Integer, db.ForeignKey("images.id", ondelete='RESTRICT'))
-    # images = db.relationship("Image", back_populates="product")
+    quantity = db.Column(db.Integer)
     description = db.Column(db.String)
 
     user = db.relationship("User", lazy='joined', back_populates="items")
@@ -53,8 +52,8 @@ class Product(db.Model):
         lazy='dynamic',
         back_populates="items"
     )
-    
-    def to_dict(self):
+
+    def add_to_cart(self):
         return {
             'id': self.id,
             'user_id': self.user_id,
@@ -62,5 +61,21 @@ class Product(db.Model):
             'price': self.price,
             'category_id': self.category_id,
             'description': self.description,
-            # 'image': self.image.to_dict()
+            'image': self.image[0].url,
+            'quantity':self.cart[0].quantity,
+            'cartId':self.cart[0].id,
+            'total': self.price * self.cart[0].quantity
+        }
+
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'name': self.name,
+            'price': self.price,
+            'quantity': self.quantity,
+            'category_id': self.category_id,
+            'description': self.description,
+            'image': self.image[0].url,
         }

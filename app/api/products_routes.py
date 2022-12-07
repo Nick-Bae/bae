@@ -59,6 +59,7 @@ def post_item():
                     user_id = current_user.id,
                     name = data['name'],
                     price = float(data['price']),
+                    quantity = data['quantity'],
                     category_id = data['category_id'],
                     description = data['description']
                     )
@@ -81,7 +82,8 @@ def edit_item(id):
             data = form.data
             item.user_id = current_user.id
             item.name = data['name']
-            item.price = str(data['price'])
+            item.price = str(data['price']),
+            item.quantity = data['quantity'],
             item.category_id = data['category_id']
             item.description = data['description']
            
@@ -282,33 +284,3 @@ def edit_image(id):
         return image.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-# =========================Post a Cart========================================
-
-@products_routes.route('/<int:id>/carts', methods=['POST'])
-@login_required
-def post_cart_item(id):
-    user_cart = Cart.query.filter(current_user.id == Cart.userId).first()
-    item = Product.query.get(id)
-    total = item.price * user_cart.quantity
-    # if not all_liked_user:
-    #     story.liked_story_user.append(like_story_user)
-    #     # db.session.commit()
-    # else:
-    #     for user in all_liked_user:
-    #         if user.id == current_user.id:
-    #             return "You already clicked"
-    #         else:
-    # item.cart.append(user_cart)
-    user_cart.items.append(item)
-    db.session.commit()
-    # the number of like for the story
-    # num = story.liked_story_user.count()
-
-    newCart = {
-        "cart": user_cart.to_dict(),
-        "item": item.to_dict(),
-        "total": total
-        # total: total
-    }
-
-    return newCart   

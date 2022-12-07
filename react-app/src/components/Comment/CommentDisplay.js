@@ -32,11 +32,11 @@ export const CommentDisplay = () => {
         dispatch(getItemComments(itemId))
 
     }, [dispatch, itemId, open]);
-    const cancel = () => {
-        setOpen(false)
-        // dispatch(getItemComments(itemId));
-        // dispatch(getItemDetail(itemId));
-    }
+    // const cancel = () => {
+    //     setOpen(false)
+    //     // dispatch(getItemComments(itemId));
+    //     // dispatch(getItemDetail(itemId));
+    // }
 
     if (!comments) return null
 

@@ -53,13 +53,16 @@ def post_cart():
         item =  Product.query.get(itemId)
         total = item.price * cart.quantity
 
+        # item.quantity = item.quantity - cart.quantity
+        # if item.quantity > cart.quantity:
         cart.items.append(item)
         db.session.add(cart)
         db.session.commit()
+
         newCart ={
             "cart": cart.to_dict(),
             "item": item.to_dict(),
-            "total": total
+            # "total": total
         }
         return newCart
         # cart = 
@@ -74,20 +77,12 @@ def post_cart():
 
 #delete wishlist
 
-# @carts_routes.route('/<int:id>/wishlists', methods=['DELETE'])
-# @login_required
-# def delete_cartlist(id):
-#     item = Product.query.get(id)
-#     wish_user = User.query.get(current_user.id)
-#     all_wish_user =  item.wish_user.all()
+@carts_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_cartlist(id):
+    cart = Cart.query.get(id)
+    
+    db.session.delete(cart)
+    db.session.commit()
 
-#     users = [ user.id for user in all_wish_user]
-
-#     if wish_user.id in users:
-#         item.wish_user.remove(wish_user)
-#     else:
-#         return "You havn't click the wishlist"
-
-#     db.session.commit()
-
-#     return "unwish"
+    return "cart delete"

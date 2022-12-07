@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, ValidationError
 class ItemForm(FlaskForm):
 
     name = StringField('Title', validators=[DataRequired()])
-    # user_id = IntegerField('')
+    quantity = IntegerField('Quantity', validators=[DataRequired()])
     price = FloatField('Price', validators=[DataRequired()])
     category_id = SelectField("Category", coerce=int, validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])

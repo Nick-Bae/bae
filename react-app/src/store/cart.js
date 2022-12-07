@@ -6,10 +6,10 @@ const DELETE = 'Cart/DELETE';
 const READ = 'Cart/LOAD';
 const UPDATE = "Cart/UPDATE"
 
-const load = (cart) => ({
-    type: LOAD,
-    cart
-});
+// const load = (cart) => ({
+//     type: LOAD,
+//     cart
+// });
 
 const read = cart => ({
     type: READ,
@@ -71,7 +71,6 @@ export const createCart = (data) => async (dispatch) => {
         dispatch(create(data));
         return data;
     };
-    return response;
 };
 
 export const updateCart = (data) => async (dispatch) => {
@@ -90,10 +89,10 @@ export const updateCart = (data) => async (dispatch) => {
 export const deleteOneCart = (cartId) => async (dispatch) => {
     const response = await fetch(`/api/carts/${cartId}`, {
         method: "DELETE",
-    });
-    const cartId = await response.json()
-
-    if (response.ok) {
+      }); 
+      
+        // const data = await response.json()
+      if (response.ok) {
         dispatch(deleteCart(cartId));
         return response
     }

@@ -9,8 +9,7 @@ import CartDetail from './Cart/CartDetail';
 function Profile() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const userId = sessionUser.id
-
+    
     useEffect(() => {
         dispatch(userWishlist(sessionUser.id))
     }, [dispatch, sessionUser.id])
@@ -30,11 +29,12 @@ function Profile() {
                 <NavLink className="myBae" to='/mymenu'>My Bae</NavLink>
 
                 <div>
-                <NavLink to={`/users/${userId}/cart`}>
-                    <i class="fa fa-thin fa-cart-shopping"></i>
-                </NavLink>
+                {/* <NavLink to={`/users/${userId}/cart`}> */}
+                    {/* <i class="fa fa-thin fa-cart-shopping"><CartDetail /></i> */}
+                {/* </NavLink> */}
                 </div>
                 <LogoutButton />
+                <CartDetail />
             </div>
         </div>
     );

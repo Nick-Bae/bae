@@ -20,6 +20,7 @@ import Mymenu from './components/Mymenu/Mymenu';
 import WishList from './components/Products/WishList';
 import UploadPicture from './components/UploadPicture';
 import CartDetail from './components/Cart/CartDetail';
+import CartPage from './components/Cart/CartPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -104,6 +105,10 @@ function App() {
 
         <ProtectedRoute path='/upload' exact={true} >
           <UploadPicture />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/cart' exact={true} >
+          <CartPage />
         </ProtectedRoute>
 
         <Route>

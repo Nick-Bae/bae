@@ -15,6 +15,7 @@ const ItemForm = () => {
     const [category_id, setCategory_id] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
+    const [quantity, setQuantity] = useState('');
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [ errors, setErrors ] = useState([]);
     const [validationErrors, setValidationErrors] = useState([]);
@@ -42,7 +43,7 @@ const ItemForm = () => {
     setHasSubmitted(true);
     if (validationErrors.length) return alert(`Cannot Submit`);
   
-
+   
     const item = { 
         user_id: user.id, 
         name, 
@@ -179,6 +180,17 @@ const ItemForm = () => {
             />
         </div>
         
+        <div id="quantityInput">
+          <label id="quantityLabel" htmlFor='quantity'>Quantity</label>
+          <input
+            id='quantity'
+            type='number'
+            onChange={e => setQuantity(e.target.value)}
+            value={quantity}
+            required
+            max="1000"
+          />
+        </div>
 
         <div id="itemtInput">
             <label id="editLabel" htmlFor='description'>description</label>

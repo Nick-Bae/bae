@@ -7,7 +7,6 @@ import './Mymenu.css'
 function Mymenu() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const wishlist = useSelector(state => state.wishlist);
     const [selectedMenu, setSelectedMenu] = useState("")
 
     useEffect(() => {
