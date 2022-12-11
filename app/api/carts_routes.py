@@ -26,13 +26,13 @@ def get_cart():
   
     return {item.to_dict()['id']: item.to_dict() for item in products}
 
-# ===============================Cart by user============================================   
+# ===============================Cart by cartId============================================   
 
-# @carts_routes.route('')
-# def get_cart():
-#     products = Cart.query.filter(Cart.cart)
+@carts_routes.route('/<int:id>')
+def get_cartId(id):
+    cart = Cart.query.get(id)
   
-#     return {item.to_dict()['id']: item.to_dict() for item in products}
+    return cart.to_dict()
 
 
 # # =========================Cart post & delete=====================================
@@ -76,6 +76,25 @@ def post_cart():
     #         else:
 
 #delete wishlist
+
+@carts_routes.route('/<int:id>',  methods=['PUT'])
+@login_required
+def edit_cart(id):
+    cart = Cart.query.get(id)
+    form = CartForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    
+    if form.validate_on_submit():
+        data = form.data
+        cart.quantity = data['quantity']
+        cart.userId = current_user.id
+        cart.itemId = data['itemId']
+       
+        db.session.add(cart)
+        db.session.commit()
+        return cart.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 @carts_routes.route('/<int:id>', methods=['DELETE'])
 @login_required

@@ -4,3 +4,4 @@ from .item_form import ItemForm
 from .comment_form import CommentForm
 from .image_form import ImageForm
 from .cart_form import CartForm
+from .order_form import OrderForm

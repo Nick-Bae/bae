@@ -61,32 +61,9 @@ def get_cartlist(id):
     return itemsInCart
 
 
-# @user_routes.route('/<int:id>/carts', methods=['POST'])
-# @login_required
-# def post_user_cart(id):
-#     # user_cart = Cart.query.filter(id == Cart.user_id)
-#     user_cart = current_user.cart
-#     user = User.query.get(current_user.id)
-    
-#     form = CartForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         data = form.data
-#         newCart = Cart(
-#                     userId = id,
-#                     quantity = data['quantity']
-#                     )
-#     # if not all_liked_user:
-#     #     story.liked_story_user.append(like_story_user)
-#     #     # db.session.commit()
-#     # else:
-#     #     for user in all_liked_user:
-#     #         if user.id == current_user.id:
-#     #             return "You already clicked"
-#     #         else:
-#     db.session.add(newCart)
-#     db.session.commit()
-#     # the number of like for the story
-#     # num = story.liked_story_user.count()
-
-#     return newCart.to_dict()
+@user_routes.route('/<int:id>/order')
+@login_required
+def get_user_order(id):
+    user = User.query.get(id)
+    orders = user.orders
+    # for order in orders

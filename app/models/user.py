@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
     cart = db.relationship('Cart', backref='buyer')
     items = db.relationship("Product", back_populates="user")
     comments = db.relationship("Comment", back_populates="user")
+    orders = db.relationship("Order", backref='customer')
 
     wish_item = db.relationship(
         "Product",

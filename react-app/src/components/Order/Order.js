@@ -1,46 +1,47 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { getUserCart } from '../../store/cart';
-import { deleteOneCart } from '../../store/cart';
-import CartPage from './CartPage';
-import './CartDetail.css'
-import Order from '../Order/Order';
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import { getUserCart, deleteOneCart } from '../../store/cart';
+import { createOrder } from '../../store/order';
 
-const CartDetail = () => {
-    const dispatch = useDispatch();
-    const carts = Object.values(useSelector(state => state.cart));
-    const user = useSelector(state => state.session.user)
-
-    let cartTotal = 0
-    console.log("carts ###########", carts)
-
+const Order = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const { carts } = location.state;
+  const history = useHistory();
+  const user = useSelector(state => state.session.user)
+  // const items = Object.values(useSelector(state => state.items));
+  let cartTotal = 0
     useEffect(() => {
         dispatch(getUserCart(user?.id))
     }, [dispatch, user.id]);
 
 
     const cartDelete = (cartId) => {
-        console.log("cart delete is working??")
-        dispatch(deleteOneCart(cartId))
+    dispatch(deleteOneCart(cartId))
     }
 
-    return (
+    const order =()=>{
+        const orderInfo ={
+            "userId": user.id,
+            "status": "processing",
+            "items": carts
+        }
 
-        <div className="cartList">
-            <div className='cartNum'>
-                <i className="fa fa-thin fa-cart-shopping dropbtn"></i>
-                {carts.length>=1 && (
-                    <p id="cartNum">{carts.length}</p>
-                )}
-            </div>
+        console.log("orderInfo ???????????",orderInfo)
+        dispatch(createOrder(orderInfo))
 
-            {/* <button class="dropbtn"></button> */}
-            <div className='cartList-content'>
+        history.push('/order-complete');
+    }
+
+  return (
+    
+    <div className="orderList">
+            <div className='orderList-content'>
                 {carts.map(cart => (
                     <div key={cart.id}>
                         <NavLink to={`/items/${cart.id}`}>
-                            <div className='cartInside'>
+                            <div className='orderInside'>
                                 <img className="cartImage" src={cart.image} />
                                 <div>
                                     <p>{cart.name}</p>
@@ -62,17 +63,11 @@ const CartDetail = () => {
                     <p>${parseFloat(cartTotal).toFixed(2)} </p>
                 </div>
                 <div>
-                    {/* <p><Order carts={carts} /></p> */}
-                    <NavLink to={{
-                        pathname:`/order`,
-                        state: {carts: carts}}} >Check out
-                    </NavLink>
-                    <NavLink to={`/cart`}>View Cart</NavLink>
+                    <button onClick={order}>Place an Order</button>
                 </div>
             </div>
         </div>
-
-    );
+  );
 };
 
-export default CartDetail;
+export default Order;

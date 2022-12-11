@@ -22,3 +22,23 @@
     display: flex;
     justify-content: space-between;
 }
+
+.cartNum{
+    display: flex;
+}
+
+#cartNum{
+    position:relative;
+    display: flex;
+    right:22px;
+    top:5px;
+    border-radius: 20px;
+    border: 1px solid black;
+    height:20px;
+    width:20px;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    background-color: rgb(192, 8, 8);
+    color:white;
+}

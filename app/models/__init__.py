@@ -7,4 +7,5 @@ from .image import Image
 from .inventory import Inventory
 from .comment import Comment
 from .cart import Cart
-
+from .order import Order
+from .ordered_item import Ordered_item

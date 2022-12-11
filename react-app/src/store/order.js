@@ -1,19 +1,19 @@
 // import { csrfFetch } from './csrf';
 
-const LOAD = "Carts/LOAD"
-const CREATE = 'Cart/ADD_ONE';
-const DELETE = 'Cart/DELETE';
-const READ = 'Cart/LOAD';
-const UPDATE = "Cart/UPDATE"
+const LOAD = "Order/LOAD"
+const CREATE = 'Order/ADD_ONE';
+const DELETE = 'Order/DELETE';
+const READ = 'Order/LOAD';
+const UPDATE = "Order/UPDATE"
 
 // const load = (cart) => ({
 //     type: LOAD,
 //     cart
 // });
 
-const read = cart => ({
+const read = order => ({
     type: READ,
-    cart
+    order
 });
 
 const create = data => ({
@@ -21,9 +21,9 @@ const create = data => ({
     data
 });
 
-const deleteCart = cartId => ({
+const deleteCart = orderId => ({
     type: DELETE,
-    cartId
+    orderId
 });
 
 const update = data => ({
@@ -32,7 +32,7 @@ const update = data => ({
 })
 
 // export const getItems = () =>async dispatch =>{
-//     const response = await fetch(`/api/carts`);
+//     const response = await fetch(`/api/Order`);
 //     if (response.ok) {
 //         const items = await response.json();
 //         dispatch(load(items));
@@ -40,13 +40,13 @@ const update = data => ({
 //     };
 // }
 
-export const getUserCart = (userId) => async dispatch =>{
-    const response = await fetch(`/api/users/${userId}/cart`)
+export const getUserOrder = (userId) => async dispatch =>{
+    const response = await fetch(`/api/users/${userId}/order`)
 
     if (response.ok) {
-        const cart = await response.json();
-        dispatch(read(cart));
-        return cart;
+        const order = await response.json();
+        dispatch(read(order));
+        return order;
     };
 }
 // export const getUserItem =userId =>async dispatch =>{
@@ -59,8 +59,8 @@ export const getUserCart = (userId) => async dispatch =>{
 //     };
 // }
 
-export const createCart = (data) => async (dispatch) => {
-    const response = await fetch("/api/carts", {
+export const createOrder = (data) => async (dispatch) => {
+    const response = await fetch("/api/orders", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         // body is neccessary?
@@ -73,8 +73,8 @@ export const createCart = (data) => async (dispatch) => {
     };
 };
 
-export const updateCart = (data, cartId) => async (dispatch) => {
-    const response = await fetch(`/api/carts/${cartId}`, {
+export const updateCart = (data) => async (dispatch) => {
+    const response = await fetch(`/api/orders/${data.orderId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -86,28 +86,26 @@ export const updateCart = (data, cartId) => async (dispatch) => {
     }
 }
 
-export const deleteOneCart = (cartId) => async (dispatch) => {
-    const response = await fetch(`/api/carts/${cartId}`, {
+export const deleteOneCart = (orderId) => async (dispatch) => {
+    const response = await fetch(`/api/orders/${orderId}`, {
         method: "DELETE",
       }); 
       
         // const data = await response.json()
       if (response.ok) {
-        dispatch(deleteCart(cartId));
+        dispatch(deleteCart(orderId));
         return response
     }
 };
 
-
-
-export const cartReducer = (state = {}, action) => {
+export const orderReducer = (state = {}, action) => {
     let newState = { ...state };
     switch (action.type) {
         case LOAD:
-            newState = action.cart;
+            newState = action.order;
             return newState;
         case READ:
-            newState = action.cart;
+            newState = action.order;
             return newState;
         case CREATE:
             newState[action.data] = action.data;
@@ -116,11 +114,11 @@ export const cartReducer = (state = {}, action) => {
             newState[action.data] = action.data;
             return newState;    
         case DELETE:
-            delete newState[action.cartId]
+            delete newState[action.orderId]
             return newState;
         default:
             return state;
     }
 }
 
-export default cartReducer
+export default orderReducer

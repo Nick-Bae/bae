@@ -21,6 +21,8 @@ import WishList from './components/Products/WishList';
 import UploadPicture from './components/UploadPicture';
 import CartDetail from './components/Cart/CartDetail';
 import CartPage from './components/Cart/CartPage';
+import Order from './components/Order/Order';
+import OrderComplete from './components/Order/OrderComplete';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -109,6 +111,14 @@ function App() {
 
         <ProtectedRoute path='/cart' exact={true} >
           <CartPage />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/order' exact={true} >
+          <Order />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/order-complete' exact={true} >
+          <OrderComplete />
         </ProtectedRoute>
 
         <Route>

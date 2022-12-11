@@ -53,6 +53,8 @@ class Product(db.Model):
         back_populates="items"
     )
 
+    orders = db.relationship("Ordered_item", backref="item")
+
     def add_to_cart(self):
         return {
             'id': self.id,
