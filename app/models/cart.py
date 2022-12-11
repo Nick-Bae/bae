@@ -18,7 +18,7 @@ class Cart(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     # user_id = db.Column(db.Integer)
-    quantity = db.Column(db.Integer, db.ForeignKey('products.quantity'))
+    quantity = db.Column(db.Integer, nullable=False, default=1)
     # total = db.Column(db.Float, default=1.00)
 
     items = db.relationship(
