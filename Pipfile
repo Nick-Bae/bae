@@ -30,6 +30,8 @@ dj-database-url = "*"
 email-validator = "*"
 flask-json = "*"
 boto3 = "*"
+flask-socketio = "*"
+eventlet = "==0.30.2"
 
 [dev-packages]
 
