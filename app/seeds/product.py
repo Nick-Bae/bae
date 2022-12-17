@@ -11,7 +11,7 @@ def seed_products():
     item3 = Product(
         name='New Balance', user_id=2, price = 70, quantity = 100 ,category_id = 1, )
     item4 = Product(
-        name='Gallexy', user_id=1, price = 910, quantity = 100 ,category_id = 2, )
+        name='Galaxy', user_id=1, price = 910, quantity = 100 ,category_id = 2, )
     item5 = Product(
         name='Zara', user_id=3, price = 80, quantity = 100 ,category_id = 3, )
 

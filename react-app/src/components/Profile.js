@@ -22,7 +22,7 @@ function Profile() {
         <div className='navLeft'>
             <div className='navInfo'>
                 <div className='loginName'>
-                    Hi!{sessionUser.username}
+                    Hi!  {sessionUser.username}
                 </div>
                 <NavLink className="sellNewItem" to={`/new-item`}>Sell</NavLink>
 

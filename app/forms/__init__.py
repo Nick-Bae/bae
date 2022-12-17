@@ -5,3 +5,4 @@ from .comment_form import CommentForm
 from .image_form import ImageForm
 from .cart_form import CartForm
 from .order_form import OrderForm
+from .bid_form import BidForm

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { createCart } from '../../store/cart';
 import { getUserCart, updateCart } from '../../store/cart';
 import { getItemDetail } from '../../store/itemDetail';
-import './Cart.css'
+import './CartQuantity.css'
 
 const CartQuantity = ({item}) => {
   const dispatch = useDispatch();
@@ -41,32 +41,33 @@ const CartQuantity = ({item}) => {
     console.log("cartId ??????",cartId)
     dispatch(updateCart(update, cartId))
 }
-
+let cartTotal = 0
   return (
     <>
-    <form id="cartForm" onSubmit={cartUpdate}>
-                            <div id="quantityInput">
-                                <label id="quantityLabel" htmlFor='quantity'>Quantity</label>
-                                <input
-                                    id='quantity'
-                                    type='number'
-                                    onChange={e => setQuantity(e.target.value)}
-                                    value={quantity}
-                                    required
-                                    min="1"
-                                    max="1000"
-                                />
-                                <div className='availableQty'>
-                                    <div style={{color:"red"}} id="availableQty"> 
-                                    {itemQ.quantity < quantity ? <p>only available {item.quantity}</p> : ""} 
+    <form id="cartFormInCartview" onSubmit={cartUpdate}>
+          <div id="cartViewquantityInput">
+              <label id="cartViewquantityLabel" htmlFor='quantity'>Quantity</label>
+              <input
+                  id='quantity'
+                  type='number'
+                  onChange={e => setQuantity(e.target.value)}
+                  value={quantity}
+                  required
+                  min="1"
+                  max="1000"
+              />
+              <div className='availableQty'>
+                  <div style={{color:"red"}} id="availableQty"> 
+                  {itemQ.quantity < quantity ? <p>only available {item.quantity}</p> : ""} 
                                     
-                                    </div> 
-                                </div>
-                            </div>
-                        </form>
-        <button type="submit" className="cartUpdate" onClick={()=>cartUpdate(item.cartId)} >update</button>
-        <div>total: $</div> <div>{item.quantity*item.price}</div>
-      
+                  </div> 
+              </div>
+          </div>
+          <button type="submit" className="cartViewUpdate" onClick={()=>cartUpdate(item.cartId)} >update</button>
+          {/* <div>total: $</div> <div>{item.quantity*item.price}</div> */}
+          {/* <div hidden={true}>{cartTotal += item.quantity*item.price}</div> */}
+    </form>
+          
     </>
   );
 };

@@ -26,7 +26,7 @@
 .itemImage_detail{
     width: 100%;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 20px 0px 0px 20px;
 }
 
 .about {
@@ -42,11 +42,14 @@
 .itemDetail_all{
     display: flex;
     flex-direction: column;
+    width: 950px;
 }
 .itemDetail_info{
     padding:20px;
     border: 1px solid var(--grey-light-color);
+    border-radius: 0 20px 20px 0;
     height: 700px;
+    width:400px;
 }
 
 #itemName{
@@ -72,7 +75,7 @@
     /* width:800px; */
     border: 1px solid var(--grey-light-color);
     border-radius: 10px;
-    width:770px;
+    min-width:900px;
 }
 
 .itemEditBt{
@@ -90,9 +93,22 @@
 
 #itemDescription{
     margin-top:30px;
-    width: 200px;
+    width: 350px;
     overflow-wrap: break-word;
 }
 .itemDetail_right{
-    width:250px
+    width:400px
+}
+
+.heartSigns{
+    font-size: 30px;
+    position:relative;
+    right:-220px;
+    top:-680px;
+}
+
+#endTime{
+    margin-top: 20px;
+    padding-top:10px;
+    border-top: 1px solid var(--grey-light-color);
 }

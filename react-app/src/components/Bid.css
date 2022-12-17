@@ -1,0 +1,31 @@
+.currentBid {
+    margin-top:20px;
+    font-size: 20px;
+}
+.biddingPrice{
+    margin-top:20px;
+    height: 40px;
+    width:180px;
+}
+.bidWinner{
+    /* margin-bottom:70px; */
+}
+.placeBidBt{
+    font-size: 20px;
+    color: black;
+    width:160px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 20px 10px 0 0;
+}
+
+.bidForm{
+    margin-top:1px solid var(--grey-light-color);
+    display: flex;
+    flex-direction: column;
+}
+
+#endTime{
+    font-size: 20px;
+    font-weight: bold;
+}

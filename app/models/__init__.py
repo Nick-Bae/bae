@@ -9,3 +9,4 @@ from .comment import Comment
 from .cart import Cart
 from .order import Order
 from .ordered_item import Ordered_item
+from .bid import Bid

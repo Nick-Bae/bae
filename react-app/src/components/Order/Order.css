@@ -1,0 +1,50 @@
+.orderList{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top:100px;
+}
+.orderList-content{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-width:700px;
+    /* border: 1px solid var(--grey-light-color); */
+    padding:20px;
+    /* background-color: rgb(214, 231, 245); */
+}
+
+.orderIndividual{
+    border-bottom: 1px solid var(--grey-light-color);
+    display: flex;
+    justify-content: space-between;
+    padding:10px;
+}
+
+.cartviewTitle{
+    width:200px;
+}
+
+.cartTotal{
+    margin-top:50px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.placeAnOrder{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.placeOrderBt{
+    width:160px;
+    height:40px;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+.orderDeleteBt{
+    border: none;
+}

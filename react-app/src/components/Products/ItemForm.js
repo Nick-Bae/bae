@@ -16,6 +16,7 @@ const ItemForm = () => {
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
     const [quantity, setQuantity] = useState('');
+    const [end, setEnd] = useState('');
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [ errors, setErrors ] = useState([]);
     const [validationErrors, setValidationErrors] = useState([]);
@@ -28,10 +29,10 @@ const ItemForm = () => {
     if (price > 10000) errors.push('Price should be less than $10,000');
     if (!category_id ) errors.push('Please select the category');
     if (image.length>255) errors.push('url should not be over 255 characters');
-    if (!image.startsWith('https://') && 
-        !image.startsWith('http://')) errors.push('url should starts with https:// or http://');
-    if (!image.endsWith(".png") && !image.endsWith(".jpeg") 
-        && !image.endsWith(".jpg") && !image.endsWith(".gif")) errors.push('Image url should end with jpeg, jpg, gif, png');
+    // if (!image.startsWith('https://') && 
+    //     !image.startsWith('http://')) errors.push('url should starts with https:// or http://');
+    // if (!image.endsWith(".png") && !image.endsWith(".jpeg") 
+    //     && !image.endsWith(".jpg") && !image.endsWith(".gif")) errors.push('Image url should end with jpeg, jpg, gif, png');
     if (description.length > 500) errors.push('Description must be less than 500 chracters');
     setValidationErrors(errors);
   }, [price, image, name, category_id, description]);
@@ -39,20 +40,24 @@ const ItemForm = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // setErrors([]);
     setHasSubmitted(true);
     if (validationErrors.length) return alert(`Cannot Submit`);
-  
-   
+    
+    let removeT = end.split('T');
+    let convertTime = removeT[0]+" "+removeT[1]+":00"
+    // let convertTime = new Date(Date.UTC(end))
+    
     const item = { 
         user_id: user.id, 
         name, 
         price:parseFloat(price).toFixed(2), 
+        quantity,
         category_id, 
-        description 
+        description,
+        end: convertTime
     };
-       
-
+    // console.log("remove TTT",rest)
+    console.log("convert ??????????",convertTime)
     const newItem = await dispatch(createItem(item)).catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
@@ -70,7 +75,7 @@ const ItemForm = () => {
     // <form id="createItemForm" method="POST">
     // <input type="text" id="product_id" name="product_id" value={newItem.id}></input>
     // </form>
-
+        console.log("newItemId #####", newItem.id)
         const formData = new FormData();
         formData.append("image", image);
         // const product_id = {"product_id": newItem.id }
@@ -81,13 +86,11 @@ const ItemForm = () => {
             body:formData
         })
         const imgUrl = await imageReturn.json()
-        console.log("image return",imgUrl)
         const imageUrl = {
                 url:imgUrl.url,
                 product_id: newItem.id
             }
 
-            console.log("imageUrl??????????????",imageUrl)
         await dispatch(createImage( imageUrl))
         // setImageLoading(true);
 
@@ -142,7 +145,7 @@ const ItemForm = () => {
         </div>
     )}
     <form id="createItemForm" onSubmit={onSubmit}>
-        <h2 id="formTitle">Create Item</h2>
+        <h2 id="formTitle">List an Item</h2>
 
         <div className="selectCategory">
             <label id="categoryLabel"> Category</label>
@@ -199,6 +202,18 @@ const ItemForm = () => {
                 type='text'
                 onChange={e => setDescription(e.target.value)}
                 value={description}
+                required
+            />
+        </div>
+
+        <div id="itemtInput">
+            <label id="editLabel" htmlFor='end'>end biding</label>
+            <input
+                id='end'
+                type='datetime-local'
+                name='biddingend'
+                onChange={e => setEnd(e.target.value)}
+                value={end}
                 required
             />
         </div>

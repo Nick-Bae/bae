@@ -1,0 +1,13 @@
+#cartFormInCartview{
+    display: flex;
+    align-items:flex-start
+}
+
+#quantity{
+    margin-right:10px;
+}
+
+.cartViewUpdate{
+    margin-right:10px;
+}
+

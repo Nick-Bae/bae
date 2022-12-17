@@ -7,6 +7,7 @@ import imageReducer from './image';
 import { commentReducer } from './comment';
 import wishlistReducer from './wishlist';
 import cartReducer from './cart';
+import bidReducer from './bid';
 
 const rootReducer = combineReducers({
   session,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   images: imageReducer,
   comments: commentReducer,
   wishlist: wishlistReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  bid: bidReducer
 });
 
 

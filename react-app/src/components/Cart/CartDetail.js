@@ -30,7 +30,7 @@ const CartDetail = () => {
         <div className="cartList">
             <div className='cartNum'>
                 <i className="fa fa-thin fa-cart-shopping dropbtn"></i>
-                {carts.length>=1 && (
+                {carts.length >= 1 && (
                     <p id="cartNum">{carts.length}</p>
                 )}
             </div>
@@ -38,36 +38,43 @@ const CartDetail = () => {
             {/* <button class="dropbtn"></button> */}
             <div className='cartList-content'>
                 {carts.map(cart => (
-                    <div key={cart.id}>
+                    <div className='cartDetailContainer' key={cart.id}>
                         <NavLink to={`/items/${cart.id}`}>
                             <div className='cartInside'>
                                 <img className="cartImage" src={cart.image} />
-                                <div>
-                                    <p>{cart.name}</p>
-                                    <p>${parseFloat(cart.price).toFixed(2)}</p>
-                                </div>
                             </div>
                         </NavLink>
-                        <div className='qtyAndDelete'>
+                        <div className='cartDetailInfoinCart'>
+                            <NavLink to={`/items/${cart.id}`}>
+                                <div>
+                                 <p className='titleInCart'>{cart.name}</p>
+                                </div>
+                            </NavLink>
+                            <p>${parseFloat(cart.price).toFixed(2)}</p>
                             <p>Qty:{cart.quantity}</p>
-                            <button onClick={() => cartDelete(cart.cartId)}>
-                                <i className="fa-solid fa-trash" ></i>
+                            <button className="cartDeleteCartView" onClick={() => cartDelete(cart.cartId)}>
+                                <i className="fa-solid fa-trash " ></i>
                             </button>
                         </div>
                         <div hidden={true}>{cartTotal += cart.price * cart.quantity}</div>
                     </div>
                 ))}
-                <div className='cartTotal'>
+                <div className='cartTotalInCart'>
                     <p>Total:</p>
-                    <p>${parseFloat(cartTotal).toFixed(2)} </p>
+                    <p style={{fontWeight:"bold"}}>${parseFloat(cartTotal).toFixed(2)} </p>
                 </div>
-                <div>
+                <div className='checkOutAndViewCart'>
                     {/* <p><Order carts={carts} /></p> */}
-                    <NavLink to={{
-                        pathname:`/order`,
-                        state: {carts: carts}}} >Check out
-                    </NavLink>
-                    <NavLink to={`/cart`}>View Cart</NavLink>
+                    <div className="checkOutInCart">
+                        <NavLink  to={{
+                            pathname: `/order`,
+                            state: { carts: carts }
+                        }} >Check out
+                        </NavLink>
+                    </div>
+                    <div className='viewCartInCart'>
+                        <NavLink to={`/cart`}>View Cart</NavLink>
+                    </div>
                 </div>
             </div>
         </div>

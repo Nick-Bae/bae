@@ -1,10 +1,13 @@
 from flask import Blueprint, request, jsonify
+from sqlalchemy import func, and_
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
-from app.models import Product, db, Inventory, Category, Image, Comment, User, wishlist, Cart
+from app.models import Product, db, Inventory, Category, Image, Comment, User, wishlist, Cart, Bid
 from flask_login import login_required, current_user
 from app.forms import CommentForm
 from ..forms import ItemForm
-from ..forms import ImageForm
+from ..forms import ImageForm, BidForm
+import datetime
+from datetime import datetime
 
 products_routes = Blueprint('items', __name__)
 
@@ -42,6 +45,7 @@ def get_items_owner():
 @products_routes.route('/<int:id>')
 def get_item(id):
     item = Product.query.get(id)
+    img = Image
     return item.to_dict()
 
 # ========================Post an Item=====================================
@@ -61,11 +65,24 @@ def post_item():
                     price = float(data['price']),
                     quantity = data['quantity'],
                     category_id = data['category_id'],
-                    description = data['description']
+                    description = data['description'],
+                    end = data['end']
                     )
         db.session.add(newItem)
         db.session.commit()
-        return newItem.to_dict()
+        # return newItem.to_dict()
+        newItem={
+            "id": newItem.id,
+            "user_id": current_user.id,
+            "name" : newItem.name,
+            "price" : newItem.price,
+            "quantity" : newItem.quantity,
+            "category_id" : newItem.category_id,
+            "description" : newItem.description,
+            "end" : newItem.end
+        }
+        return newItem
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -192,61 +209,6 @@ def delete_wishlist(id):
 
     return "unwish"
 
-# =========================Cart post & delete=====================================
-
-   #post wishlist for item
-# @products_routes.route('/<int:id>/cart', methods=['POST'])
-# @login_required
-# def post_cartlist(id):
-#     user = User.query.get(current_user.id)
-#     item = Product.query.get(id)
-#     cart = user.wish_item.append(item)
-    
-#     form = ItemForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         data = form.data
-#         # cart = 
-#     # if not all_liked_user:
-#     #     story.liked_story_user.append(like_story_user)
-#     #     # db.session.commit()
-#     # else:
-#     #     for user in all_liked_user:
-#     #         if user.id == current_user.id:
-#     #             return "You already clicked"
-#     #         else:
-
-#     db.session.commit()
-#     # the number of like for the story
-#     # num = story.liked_story_user.count()
-
-#     wishlist = {
-#         'productId':item.id,
-#         # 'num':num
-#     }
-
-#     return wishlist
-
-#delete wishlist
-
-# @products_routes.route('/<int:id>/wishlists', methods=['DELETE'])
-# @login_required
-# def delete_cartlist(id):
-#     item = Product.query.get(id)
-#     wish_user = User.query.get(current_user.id)
-#     all_wish_user =  item.wish_user.all()
-
-#     users = [ user.id for user in all_wish_user]
-
-#     if wish_user.id in users:
-#         item.wish_user.remove(wish_user)
-#     else:
-#         return "You havn't click the wishlist"
-
-#     db.session.commit()
-
-#     return "unwish"
-
 
     # =====================Post an image on item============================
 
@@ -283,4 +245,51 @@ def edit_image(id):
         db.session.commit()
         return image.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# ========================Bidding===============================================
+
+@products_routes.route('/<int:id>/bids')
+def get_bids(id):
+    bids = db.session.query(
+        func.max(Bid.price)).filter(Bid.itemId == id).one()
+    # maxBid = Bid.query.filter(Bid.itemId == id)
+    # queries = maxBid.query(func.max(Bid.price))
+
+    # bid = Bid.where(
+    #     and_(
+    #         Bid.itemId == id,
+    #         Bid.query(func.max(Bid.price)).all()
+    #     )
+    # )
+
+    # bid = bids.query(func.max(Bid.price)).all()   
+    # return bid.to_dict()
+    # return { bid[0].to_dict()['id']: bid[0].to_dict() for bid in bids}
+    # print("what is bids##########", bids)
+    # return "bids"
+    # print ("bid################",bids[0]) 
+    return  {"bid":bids[0]}
+    # return { bid.query(func.max(bid.price)) for bid in bids}
+
+    # return bids.price
+
+@products_routes.route('/<int:id>/bids', methods=['POST'])
+@login_required
+def post_bid(id):
+    form = BidForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+   
+    if form.validate_on_submit():
+        data = form.data
+        newBid = Bid(
+                    userId = current_user.id,
+                    itemId = id,
+                    price = data['price']
+                    )
+        db.session.add(newBid)
+        db.session.commit()
+        return newBid.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 // import './index.css'
@@ -10,24 +10,50 @@ import CommentForm from '../Comment/CommentForm';
 import WishList from './WishList';
 import { getOneImage } from '../../store/image';
 import Cart from '../Cart/Cart';
+import Bid from '../Bid';
 
 const ItemDetail = () => {
     const dispatch = useDispatch();
     const { itemId } = useParams();
     const history = useHistory();
-    // const { item } = location.state
-    // const item = useSelector(state => state?.item);
-    const item = useSelector(state => state.images);
+    const item = useSelector(state => state.item)
     //const item = useSelector(state => state?.item);
-    //   const spots = Object.values(spotsObj);
     const user = useSelector(state => state.session.user)
 
-    // console.log("ALL items  ?????",items)
-    console.log("single item  ?????", item)
+    const endtime =new Date(item?.end)
+    const currentTime = new Date()
 
+    const [remainTime, setRemainTime] = useState()
+    const [delta, setDelta] = useState("");
+
+    endtime.setHours(endtime.getHours()+(endtime.getTimezoneOffset()/60))
+    var days = Math.floor(delta/ 86400)
+    var hours = Math.floor((delta / 3600))%24
+    var minutes = Math.floor(delta/60)%60
+    var seconds = Math.floor(delta % 60)
+
+    // console.log("current bid",currentBid)
+    // console.log("currenttime", currentTime)
+    // console.log("delta", delta)
+    // console.log("remaining days is", days)
+    // console.log("remaining hours is", hours)
+    // console.log("remaining minutes is", minutes)
+    // console.log("remainin seconds is", seconds)
+
+    var calculateTime = days+"d "+hours+"h "+minutes+"m "+seconds+"s"
+
+    useEffect(()=>{
+        const interval = setInterval(
+            () => setDelta(Math.abs(endtime - currentTime) / 1000), 1000)
+        setRemainTime(calculateTime)
+
+        return ()=> clearInterval(interval);
+    },[endtime] )
+    
+     
     useEffect(() => {
         dispatch(getItemDetail(itemId));
-        dispatch(getOneImage(itemId))
+        // dispatch(getOneImage(itemId))
     }, [dispatch, itemId]);
 
     const deleteBt = async (e) => {
@@ -53,23 +79,28 @@ const ItemDetail = () => {
                     <div className='itemDetail'>
 
                         <div className='itemImage_container'>
-                            <img className="itemImage_detail" src={item?.url} alt="" />
+                            <img className="itemImage_detail" src={item?.image} alt="" />
+                            {/* <i className="fa-solid fa-heart heartSigns"></i> */}
                         </div>
                         <div className="itemDetail_right">
                             <div className='itemDetail_info'>
-                                <div id="itemName"> {item?.Product?.name} </div>
+                                <div id="itemName"> {item?.name} </div>
                                 <div id="itemPrice">price:
-                                    ${parseFloat(item?.Product?.price).toFixed(2)}</div>
+                                    ${parseFloat(item?.price).toFixed(2)}</div>
                                 <div id=""> </div>
-                                <div id="itemCategory">{item?.category_id}</div>
-                                <div id="itemDescription">{item?.Product?.description}</div>
+                                {/* <div id="itemCategory">{item?.category_id}</div> */}
+                                <div id="itemDescription">{item?.description}</div>
+                                <div id="endTime">Time left</div>
+                                <div id="remainTime">{remainTime}</div>
+                                
                                 {/* <button id="wishBt" onClick={wishBt}>Add to Wishist</button> */}
+                                <Bid item={item}/>
                                 <WishList itemId={itemId} />
                                 <Cart />
                             </div>
                         </div>
                     </div>
-                    {user?.id === item?.Product?.user_id && (
+                    {user?.id === item?.user_id && (
                         <div className='itemEditBt'>
                             <button id="itemEditBt" onClick={itemEditBt}>Edit</button>
                             <button id="itemDeleteBt" onClick={deleteBt}>Delete</button>

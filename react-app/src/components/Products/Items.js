@@ -24,9 +24,9 @@ const Items = () => {
             </div>
             <div className="itemDetail">
               <div className="itemLayout">
-            {images.map(item=>(
+            {images.map((item, ind)=>(
               // <Link key={item?.id} to={{pathname:`/items/${item?.product_id}`, state:{item:item}}}> 
-              <Link  key={item?.id} to={`/items/${item?.product_id}`}> 
+              <Link  key={ind} to={`/items/${item?.product_id}`}> 
                     {/* <ItemDetail item={item}/> */}
                     {item?.Product?.name} 
                     <div key={item?.id} className='imageContainer'>

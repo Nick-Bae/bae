@@ -63,7 +63,6 @@ export const createItem = (item) => async (dispatch) => {
     const response = await fetch("/api/items", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // body is neccessary?
         body: JSON.stringify(item)
     })
     if (response.ok) {

@@ -20,6 +20,7 @@ class Product(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id", ondelete='RESTRICT'))
     quantity = db.Column(db.Integer)
     description = db.Column(db.String)
+    end = db.Column(db.DateTime)
 
     user = db.relationship("User", lazy='joined', back_populates="items")
     comments = db.relationship("Comment", cascade="all,delete", back_populates="item")
@@ -80,4 +81,5 @@ class Product(db.Model):
             'category_id': self.category_id,
             'description': self.description,
             'image': self.image[0].url,
+            'end': self.end
         }

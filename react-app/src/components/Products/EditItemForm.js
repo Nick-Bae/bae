@@ -11,13 +11,13 @@ const EditItemForm = ( ) => {
     const { item } = location.state;
     const { itemId } = useParams();
     const history = useHistory();
-
-    const [name, setName] = useState(item.Product.name);
-    const [price, setPrice] = useState(item.Product.price);
-    const [category_id, setCategory_id] = useState(item.Product.category_id);
+console.log("items is", item)
+    const [name, setName] = useState(item?.name);
+    const [price, setPrice] = useState(item?.price);
+    const [category_id, setCategory_id] = useState(item?.category_id);
     // const [inventory_id, setInventory_id] = useState('');
-    const [description, setDescription] = useState(item.Product.description);
-    const [image, setImage] = useState(item.url);
+    const [description, setDescription] = useState(item?.description);
+    const [image, setImage] = useState(item?.image);
     const [quantity, setQuantity] = useState('');
 
     const [validationErrors, setValidationErrors] = useState([]);
@@ -26,16 +26,16 @@ const EditItemForm = ( ) => {
 
     useEffect(() => {
         const errors = [];
-        if (name.length > 20) errors.push('Title must be less than 20 chracters');
+        if (name?.length > 20) errors.push('Title must be less than 20 chracters');
         if (price < 0) errors.push('Please enter your Correct Price');
         if (price > 10000) errors.push('Price should be less than $10,000');
         if (!category_id) errors.push('Please select the category');
-        if (image.length > 255) errors.push('url should not be over 255 characters');
-        if (!image.startsWith('https://') &&
-            !image.startsWith('http://')) errors.push('url should starts with https:// or http://');
-        if (!image.endsWith(".png") && !image.endsWith(".jpeg")
-            && !image.endsWith(".jpg") && !image.endsWith(".gif")) errors.push('Image url should end with jpeg, jpg, gif, png');
-        if (description.length > 500) errors.push('Description must be less than 500 chracters');
+        if (image?.length > 255) errors.push('url should not be over 255 characters');
+        // if (!image.startsWith('https://') &&
+        //     !image.startsWith('http://')) errors.push('url should starts with https:// or http://');
+        // if (!image.endsWith(".png") && !image.endsWith(".jpeg")
+        //     && !image.endsWith(".jpg") && !image.endsWith(".gif")) errors.push('Image url should end with jpeg, jpg, gif, png');
+        if (description?.length > 500) errors.push('Description must be less than 500 chracters');
         setValidationErrors(errors);
     }, [price, image, name, category_id, description]);
 
@@ -52,6 +52,7 @@ const EditItemForm = ( ) => {
             price: parseFloat(price).toFixed(2),
             category_id,
             description,
+            quantity
         };
 
         await dispatch(updateItem(item))

@@ -65,6 +65,8 @@ const Cart = () => {
             </ul>
         </div>
       )}
+      <button type="submit" className="addToCartLabel" onClick={submitCart} >Add to Cart</button>
+      
       <form id="cartForm" onSubmit={submitCart}>
         <div id="quantityInput">
           <label id="quantityLabel" htmlFor='quantity'>Quantity</label>
@@ -84,7 +86,7 @@ const Cart = () => {
       </form>
 
       {/* <div className='cart-container'> */}
-      <button type="submit" className="addToCartLabel" onClick={submitCart} >Add to Cart</button>
+    
 
       {/* </div> */}
     </>
