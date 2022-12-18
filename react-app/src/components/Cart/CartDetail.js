@@ -46,12 +46,12 @@ const CartDetail = () => {
                         </NavLink>
                         <div className='cartDetailInfoinCart'>
                             <NavLink to={`/items/${cart.id}`}>
-                                <div>
-                                 <p className='titleInCart'>{cart.name}</p>
+                                <div className='titleInCart'>
+                                 <p className='overflow-ellipsis'>{cart.name}</p>
                                 </div>
                             </NavLink>
-                            <p>${parseFloat(cart.price).toFixed(2)}</p>
-                            <p>Qty:{cart.quantity}</p>
+                            <p className='cartPriceLabel'>${parseFloat(cart.price).toFixed(2)}</p>
+                            <p className='cartPriceLabel'>Qty:{cart.quantity}</p>
                             <button className="cartDeleteCartView" onClick={() => cartDelete(cart.cartId)}>
                                 <i className="fa-solid fa-trash " ></i>
                             </button>

@@ -31,6 +31,13 @@ def get_items():
   
     return {item.to_dict()['id']: item.to_dict() for item in products}
 
+@products_routes.route('')
+def get_itemsByCategory():
+    products = Product.query.filter(Product.category == ).all()
+  
+    return {item.to_dict()['id']: item.to_dict() for item in products}
+
+
 # ===================Current User items========================
 @products_routes.route('/current')
 @login_required

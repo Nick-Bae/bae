@@ -23,6 +23,7 @@ import CartDetail from './components/Cart/CartDetail';
 import CartPage from './components/Cart/CartPage';
 import Order from './components/Order/Order';
 import OrderComplete from './components/Order/OrderComplete';
+import Splash from './components/splash';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -70,7 +71,9 @@ function App() {
         </ProtectedRoute>
 
         <Route path='/' exact={true} >
-          <Items />
+          {/* <Items /> */}
+          <Splash />
+
         </Route>
 
         <ProtectedRoute path='/items' exact={true} >

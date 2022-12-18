@@ -1,0 +1,125 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    /* background-color: rgb(247, 246, 242); */
+}
+.mainImageContainer{
+    width:auto;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.trendContainer{
+    min-width: 1300px;
+}
+.mainImage{
+    width:1300px;
+    height: 450px;
+}
+
+.mainCategory{
+    display: flex;
+    width:1300px;
+    height:400px;
+    justify-content: center;
+}
+.womenCollection, .shoesCategory, .accesoryCategory {
+    width:200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.categoryBtInMain{
+    border:none;
+    background-color: white;
+    padding:20px;
+    font-size: 17px;
+    /* width:70px;
+    height:20px; */
+}
+
+.categoryImg{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.shoesCategory{
+    background: no-repeat
+}
+
+.trendGroup{
+    display: flex;
+    min-width: 1300px;
+}
+
+.trendSmall{
+    display: flex;
+    flex-direction: column;
+    margin-top:20px;
+}
+
+.trendRow{
+    display: flex;
+}
+.trendBimages{
+    width:450px;
+    height: 450px;
+    background-color: rgb(252, 252, 244);
+
+    /* padding:20px; */
+}
+
+.trendBig{
+    width:500px;
+    height: 493px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.trendSimages{
+    width:225px;
+    height: 213px;
+    padding:10px;
+    background-color: rgb(252, 252, 244);
+    margin-right:20px;
+}
+.trendSimages1{
+    width:225px;
+    height: 213px;
+    padding:10px;
+    background-color: rgb(252, 252, 244);
+    margin-right:25px;
+}
+.trendGroup{
+    background-color: rgb(244, 243, 232);
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+}
+
+.trendRow{
+    margin-bottom: 20px;
+}
+
+.trendSmallEach{
+    /* background-color: rgb(252, 252, 244); */
+}
+
+.trendLabel{
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.trendContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 25px;
+
+}
