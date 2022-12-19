@@ -8,6 +8,7 @@ import { commentReducer } from './comment';
 import wishlistReducer from './wishlist';
 import cartReducer from './cart';
 import bidReducer from './bid';
+import categoryReducer from './category';
 
 const rootReducer = combineReducers({
   session,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   comments: commentReducer,
   wishlist: wishlistReducer,
   cart: cartReducer,
-  bid: bidReducer
+  bid: bidReducer,
+  category: categoryReducer
 });
 
 

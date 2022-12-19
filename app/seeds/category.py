@@ -5,11 +5,13 @@ from app.models import db, User, Category
 # Adds a demo user, you can add other users here if you want
 def seed_categories():
     category1 = Category(
-        name='Shoes')
-    category2 = Category(
-        name='Phones')
-    category3 = Category(
         name='Clothes')
+    category2 = Category(
+        name='Shoes')
+    category3 = Category(
+        name='Jewelry')
+    category4 = Category(
+        name='Accessoreis')
 
     db.session.add(category1)
     db.session.add(category2)

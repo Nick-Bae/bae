@@ -16,7 +16,7 @@ from .api.images_routes import images_routes
 from .api.carts_routes import carts_routes
 from .api.orders_routes import orders_routes
 from .api.bids_routes import bids_routes
-# from .api.categories_routes import categories_routes
+from .api.categories_routes import categories_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -37,13 +37,12 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(products_routes, url_prefix='/api/items')
-# app.register_blueprint(images_routes, url_prefix='/api/images')
 app.register_blueprint(comments_routes, url_prefix='/api/comments')
 app.register_blueprint(images_routes, url_prefix='/api/images')
 app.register_blueprint(carts_routes, url_prefix='/api/carts')
 app.register_blueprint(orders_routes, url_prefix='/api/orders')
 app.register_blueprint(bids_routes, url_prefix='/api/bids')
-# app.register_blueprint(categories_routes, url_prefix='/api/category')
+app.register_blueprint(categories_routes, url_prefix='/api/categories')
 
 db.init_app(app)
 db.init_app(app)

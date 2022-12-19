@@ -24,6 +24,7 @@ import CartPage from './components/Cart/CartPage';
 import Order from './components/Order/Order';
 import OrderComplete from './components/Order/OrderComplete';
 import Splash from './components/splash';
+import CategoryItems from './components/CategoryItems';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,6 +50,10 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+
+        <Route path='/categories/:categoryId' exact={true}>
+          <CategoryItems />
         </Route>
 
         <ProtectedRoute path='/mymenu' exact={true} >

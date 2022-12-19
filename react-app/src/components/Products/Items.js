@@ -7,9 +7,11 @@ import { getAllImages } from '../../store/image';
 
 const Items = () => {
   const dispatch = useDispatch();
-  // const items = Object.values(useSelector(state => state.items));
-  const images =Object.values( useSelector(state=>state.images));
+  const items = Object.values(useSelector(state => state.items));
+  // const images =Object.values( useSelector(state=>state.images));
   // const user = useSelector(state => state.session.user)
+
+  console.log("items is",items)
 
   useEffect(() => {
     dispatch(getItems());
@@ -20,17 +22,17 @@ const Items = () => {
     <main>
         <div className='mainContainer'>
             <div >
-              <img className='banner' src="/images/banner1.jpg"  alt=""/>
+              <img className='banner' src="https://nbae.s3.amazonaws.com/mainImage.jpg"  alt=""/>
             </div>
             <div className="itemDetail">
               <div className="itemLayout">
-            {images.map((item, ind)=>(
+            {items.map((item, ind)=>(
               // <Link key={item?.id} to={{pathname:`/items/${item?.product_id}`, state:{item:item}}}> 
-              <Link  key={ind} to={`/items/${item?.product_id}`}> 
+              <Link  key={ind} to={`/items/${item?.id}`}> 
                     {/* <ItemDetail item={item}/> */}
-                    {item?.Product?.name} 
+                    {item?.name} 
                     <div key={item?.id} className='imageContainer'>
-                      <img key={item?.id} className="itemImage" src={item?.url} alt="" />
+                      <img key={item?.id} className="itemImage" src={item?.image} alt="" />
                     </div>
               </Link>
             ))}
