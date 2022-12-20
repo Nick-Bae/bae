@@ -43,7 +43,7 @@ const Order = () => {
                     <div className="orderIndividual" key={cart.id}>
                         <NavLink to={`/items/${cart.id}`}>
                             <div className='cartviewImage'>
-                                <img className="cartImage" src={cart.image} />
+                                <img className="cartImage" src={cart.image} alt=""/>
                             </div>
                         </NavLink>
                         <NavLink to={`/items/${cart.id}`}>

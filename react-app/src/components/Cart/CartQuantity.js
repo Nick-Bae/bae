@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { createCart } from '../../store/cart';
 import { getUserCart, updateCart } from '../../store/cart';
-import { getItemDetail } from '../../store/itemDetail';
 import './CartQuantity.css'
 
 const CartQuantity = ({item}) => {
   const dispatch = useDispatch();
-  const { itemId } = useParams();
 //   const item = (useSelector(state => state.item));
   const cart = Object.values(useSelector(state => state.cart));
   const user = useSelector(state => state.session.user);
@@ -41,7 +37,6 @@ const CartQuantity = ({item}) => {
     console.log("cartId ??????",cartId)
     dispatch(updateCart(update, cartId))
 }
-let cartTotal = 0
   return (
     <>
     <form id="cartFormInCartview" onSubmit={cartUpdate}>

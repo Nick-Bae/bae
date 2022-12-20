@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getUserCart, updateCart } from '../../store/cart';
+import { getUserCart } from '../../store/cart';
 import './CartPage.css'
 import CartQuantity from './CartQuantity';
 
@@ -10,7 +10,7 @@ const CartPage = () => {
     const carts = Object.values(useSelector(state => state.cart));
     const user = useSelector(state => state.session.user)
 
-    const [quantity, setQuantity] = useState('1');
+    // const [quantity, setQuantity] = useState('1');
 
     useEffect(() => {
         dispatch(getUserCart(user?.id))

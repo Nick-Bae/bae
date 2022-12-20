@@ -8,7 +8,6 @@ import './itemDetail.css'
 import CommentDisplay from '../Comment/CommentDisplay';
 import CommentForm from '../Comment/CommentForm';
 import WishList from './WishList';
-import { getOneImage } from '../../store/image';
 import Cart from '../Cart/Cart';
 import Bid from '../Bid';
 
@@ -50,7 +49,7 @@ const ItemDetail = () => {
         setRemainTime(calculateTime)
 
         return ()=> clearInterval(interval);
-    },[endtime] )
+    },[endtime, calculateTime, currentTime] )
     
      
     useEffect(() => {

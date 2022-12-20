@@ -1,14 +1,10 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useLocation } from 'react-router-dom';
-import { getUserCart, deleteOneCart } from '../../store/cart';
-import { createOrder } from '../../store/order';
+// import { useDispatch, useSelector } from 'react-redux';
 
 const OrderComplete = () => {
-  const dispatch = useDispatch();
+
 //   const location = useLocation();
 //   const { carts } = location.state;
-  const user = useSelector(state => state.session.user)
+
   // const items = Object.values(useSelector(state => state.items));
 //   let cartTotal = 0
 //     useEffect(() => {

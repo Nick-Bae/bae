@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getUserCart } from '../../store/cart';
 import { deleteOneCart } from '../../store/cart';
-import CartPage from './CartPage';
+// import CartPage from './CartPage';
 import './CartDetail.css'
-import Order from '../Order/Order';
+// import Order from '../Order/Order';
 
 const CartDetail = () => {
     const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const CartDetail = () => {
                     <div className='cartDetailContainer' key={cart.id}>
                         <NavLink to={`/items/${cart.id}`}>
                             <div className='cartInside'>
-                                <img className="cartImage" src={cart.image} />
+                                <img className="cartImage" src={cart.image} alt=""/>
                             </div>
                         </NavLink>
                         <div className='cartDetailInfoinCart'>

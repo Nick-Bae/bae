@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useParams,useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import CategoryItems from './CategoryItems';
-import Items from './Products/Items';
 
 import './splash.css'
 
@@ -28,7 +26,7 @@ const Splash = () => {
     return (
         <div className='mainContainer'>
             <div className='mainImageContainer'>
-                <img className='mainImage' src="https://nbae.s3.amazonaws.com/mainImage.jpg" />
+                <img className='mainImage' src="https://nbae.s3.amazonaws.com/mainImage.jpg" alt=""/>
             </div>
             <div className='mainCategory' onClick={() => <CategoryItems category={1} />}>
                 <div className='singleCategory'>
@@ -36,7 +34,7 @@ const Splash = () => {
                         <div className='mainCategories'>
                             <NavLink className="categoryNav" to={`/categories/${category.categoryId}`}>
                                 <div className='categoryImg'>
-                                    <img className="womenCollection" src={category.img} />
+                                    <img className="womenCollection" src={category.img} alt=""/>
                                     <button className='categoryBtInMain'> {category.category} </button>
                                 </div>
                             </NavLink>
@@ -55,23 +53,23 @@ const Splash = () => {
                 </div>
                 <div className='trendGroup'>
                     <div className='trendBig'>
-                        <img className="trendBimages" src="https://nbae.s3.amazonaws.com/women+collection.png" />
+                        <img className="trendBimages" src="https://nbae.s3.amazonaws.com/women+collection.png" alt=""/>
                     </div>
                     <div className="trendSmall">
                         <div className='trendRow'>
                             <div className='trendSmallEach'>
-                                <img className="trendSimages" src="https://nbae.s3.amazonaws.com/yellow+Tshirt.jpg" />
+                                <img className="trendSimages" src="https://nbae.s3.amazonaws.com/yellow+Tshirt.jpg" alt=""/>
                             </div>
                             <div className='trendSmallEach'>
-                                <img className="trendSimages1" src="https://nbae.s3.amazonaws.com/heels.png" />
+                                <img className="trendSimages1" src="https://nbae.s3.amazonaws.com/heels.png" alt=""/>
                             </div>
                         </div>
                         <div className='trendRow'>
                             <div className='trendSmallEach'>
-                                <img className="trendSimages" src="https://nbae.s3.amazonaws.com/jean+and+sweater.png" />
+                                <img className="trendSimages" src="https://nbae.s3.amazonaws.com/jean+and+sweater.png" alt=""/>
                             </div>
                             <div className='trendSmallEach'>
-                                <img className="trendSimages1" src="https://nbae.s3.amazonaws.com/short+pants.jpg" />
+                                <img className="trendSimages1" src="https://nbae.s3.amazonaws.com/short+pants.jpg" alt=""/>
                             </div>
                         </div>
                     </div>
