@@ -32,10 +32,10 @@ const Items = () => {
                       <img key={item?.id} className="itemImage" src={item?.image} alt="" />
                     </div>
                     <div className='previewNamePrice'>
-                        <div>
+                        <div className='previewName'>
                             {item?.name}
                         </div>
-                        <div>
+                        <div className="previewPrice">
                             ${parseFloat(item?.price).toFixed(2)}
                         </div>
                     </div>
