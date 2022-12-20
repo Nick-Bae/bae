@@ -214,7 +214,6 @@ const ItemForm = () => {
                 name='biddingend'
                 onChange={e => setEnd(e.target.value)}
                 value={end}
-                required
             />
         </div>
         
