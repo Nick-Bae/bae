@@ -42,7 +42,7 @@
 .itemDetail_all{
     display: flex;
     flex-direction: column;
-    width: 950px;
+    width: 1300px;
 }
 .itemDetail_info{
     padding:20px;
