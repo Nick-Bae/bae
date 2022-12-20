@@ -89,6 +89,7 @@
     background-color: rgb(246, 230, 208);
     border-radius: 5px;
     width:70px;
+    cursor: pointer;
 } 
 
 #itemDescription{

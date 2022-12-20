@@ -63,3 +63,7 @@
     width: 620px;
     overflow-wrap: break-word;
 }
+
+.leaveComment{
+    cursor: pointer;
+}

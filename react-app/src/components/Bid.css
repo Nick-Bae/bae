@@ -17,6 +17,7 @@
     height: 40px;
     border-radius: 20px;
     margin: 20px 10px 0 0;
+    cursor: pointer;
 }
 
 .bidForm{

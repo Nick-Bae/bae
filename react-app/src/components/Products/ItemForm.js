@@ -28,7 +28,7 @@ const ItemForm = () => {
     if ( price < 0) errors.push('Please enter your Correct Price');
     if (price > 10000) errors.push('Price should be less than $10,000');
     if (!category_id ) errors.push('Please select the category');
-    if (image.length>255) errors.push('url should not be over 255 characters');
+    // if (image.length>255) errors.push('url should not be over 255 characters');
     // if (!image.startsWith('https://') && 
     //     !image.startsWith('http://')) errors.push('url should starts with https:// or http://');
     // if (!image.endsWith(".png") && !image.endsWith(".jpeg") 
@@ -46,16 +46,27 @@ const ItemForm = () => {
     let removeT = end.split('T');
     let convertTime = removeT[0]+" "+removeT[1]+":00"
     // let convertTime = new Date(Date.UTC(end))
-    
-    const item = { 
-        user_id: user.id, 
-        name, 
-        price:parseFloat(price).toFixed(2), 
-        quantity,
-        category_id, 
-        description,
-        end: convertTime
-    };
+    let item={}
+    if (end) {
+         item = { 
+            user_id: user.id, 
+            name, 
+            price:parseFloat(price).toFixed(2), 
+            quantity,
+            category_id, 
+            description,
+            end: convertTime
+        };
+    } else {
+         item = { 
+            user_id: user.id, 
+            name, 
+            price:parseFloat(price).toFixed(2), 
+            quantity,
+            category_id, 
+            description,
+        };
+    }
     // console.log("remove TTT",rest)
     console.log("convert ??????????",convertTime)
     const newItem = await dispatch(createItem(item)).catch(async (res) => {

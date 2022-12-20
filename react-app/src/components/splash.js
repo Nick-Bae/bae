@@ -31,7 +31,7 @@ const Splash = () => {
             <div className='mainCategory' onClick={() => <CategoryItems category={1} />}>
                 <div className='singleCategory'>
                     {categories.map((category) => (
-                        <div className='mainCategories'>
+                        <div key={category.id} className='mainCategories'>
                             <NavLink className="categoryNav" to={`/categories/${category.categoryId}`}>
                                 <div className='categoryImg'>
                                     <img className="womenCollection" src={category.img} alt=""/>
