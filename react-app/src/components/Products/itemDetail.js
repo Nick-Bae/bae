@@ -42,6 +42,8 @@ const ItemDetail = () => {
 
     var calculateTime = days+"d "+hours+"h "+minutes+"m "+seconds+"s"
 
+    const isEnded = endtime - currentTime > 0
+
     useEffect(()=>{
         const interval = setInterval(
             () => setDelta(Math.abs(endtime - currentTime) / 1000), 1000)
@@ -90,11 +92,18 @@ const ItemDetail = () => {
                                 <div id=""> </div>
                                 {/* <div id="itemCategory">{item?.category_id}</div> */}
                                 <div id="itemDescription">{item?.description}</div>
+                                {item?.end && isEnded && (
+                                    <>
                                 <div id="endTime">Time left</div>
                                 <div id="remainTime">{remainTime}</div>
                                 
                                 {/* <button id="wishBt" onClick={wishBt}>Add to Wishist</button> */}
                                 <Bid item={item}/>
+                                </>
+                                )}
+                                {!isEnded && item?.end && (
+                                   <p> This auction is over. </p>
+                                )}
                                 <WishList itemId={itemId} />
                                 <Cart />
                             </div>
