@@ -20,12 +20,19 @@
     height: 450px;
 }
 
+.singleCategory{
+    display: flex;
+}
+
 .mainCategory{
     display: flex;
     width:1300px;
     height:400px;
     justify-content: center; 
+    align-content: center;
+    align-items: center;
     cursor: pointer;
+    flex-direction: column;
 }
 .womenCollection, .shoesCategory, .accesoryCategory {
     width:200px;
@@ -43,6 +50,16 @@
    
     /* width:70px;
     height:20px; */
+}
+
+.allItemsBt{
+    width:60px;
+    height:60px;
+    border-radius: 30px;
+    font-size: 25px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
 }
 
 .categoryImg{

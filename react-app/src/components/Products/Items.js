@@ -27,12 +27,17 @@ const Items = () => {
             <div className="itemDetail">
               <div className="itemLayout">
             {items.map((item, ind)=>(
-              // <Link key={item?.id} to={{pathname:`/items/${item?.product_id}`, state:{item:item}}}> 
               <Link  key={ind} to={`/items/${item?.id}`}> 
-                    {/* <ItemDetail item={item}/> */}
-                    {item?.name} 
                     <div key={item?.id} className='imageContainer'>
                       <img key={item?.id} className="itemImage" src={item?.image} alt="" />
+                    </div>
+                    <div className='previewNamePrice'>
+                        <div>
+                            {item?.name}
+                        </div>
+                        <div>
+                            ${parseFloat(item?.price).toFixed(2)}
+                        </div>
                     </div>
               </Link>
             ))}
