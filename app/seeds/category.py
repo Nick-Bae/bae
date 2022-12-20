@@ -16,6 +16,7 @@ def seed_categories():
     db.session.add(category1)
     db.session.add(category2)
     db.session.add(category3)
+    db.session.add(category4)
     db.session.commit()
 
 

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch,useParams } from "react-redux";
 import { io } from 'socket.io-client';
 import {createBid, getBidsOnItem, updateBid} from '../store/bid';
+import { getItemDetail } from "../store/itemDetail";
 import './Bid.css'
 let socket;
 
-const Bid = ({item}) => {
+const Bid = () => {
     const dispatch = useDispatch();
     const [bidInput, setBidInput] = useState("");
     const [messages, setMessages] = useState([]);
+    const item = useSelector(state => state.item)
     const [currentPrice, setCurrentPrice] = useState(item.price)
     const user = useSelector(state => state.session.user)
     const currentBid = useSelector(state => state.bid)
@@ -31,6 +33,7 @@ const Bid = ({item}) => {
     useEffect(()=>{
         console.log("item id is", item.id)
         dispatch(getBidsOnItem(item.id))
+        dispatch(getItemDetail(item.id))
     },[dispatch, item.id, bidInput])
 
     const updateBidInput = (e) => {

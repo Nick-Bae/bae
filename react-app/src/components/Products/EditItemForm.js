@@ -95,10 +95,10 @@ console.log("items is", item)
                     <label> Category:
                         <select id="selectCategory" defaultValue={category_id} onChange={e => setCategory_id(parseInt(e.target.value))}>
                             <option > Click to see options </option>
-                            <option value="1">Shoes</option>
-                            <option value="2">Phones</option>
-                            <option value="3">Clothes</option>
-                            {/* <option value="mango">Mango</option> */}
+                            <option value="1">Clothes</option>
+                            <option value="2">Shoes</option>
+                            <option value="3">Jewelry</option>
+                            <option value="4">Accessoreis</option>
                         </select>
                     </label>
                 </div>

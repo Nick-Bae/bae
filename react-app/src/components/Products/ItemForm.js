@@ -151,10 +151,10 @@ const ItemForm = () => {
             <label id="categoryLabel"> Category</label>
             <select id="selectCategory" className="required" onChange={e=> setCategory_id(parseInt(e.target.value))}>
                 <option id="categoryOption" defaultValue="Click"> Click to see options </option>
-                <option value="1">Shoes</option>
-                <option value="2">Phones</option>
-                <option value="3">Clothes</option>
-                {/* <option value="mango">Mango</option> */}
+                <option value="1">Clothes</option>
+                <option value="2">Shoes</option>
+                <option value="3">Jewelry</option>
+                <option value="4">Accessoreis</option>
             </select>
             
         </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getCategoryItem } from '../store/category';
+import './CategoryItems.css'
 
 const CategoryItems = () => {
     const { categoryId } = useParams();
@@ -30,11 +31,13 @@ const CategoryItems = () => {
                                 <div key={item?.id} className='imageContainer'>
                                     <img key={item?.id} className="itemImage" src={item?.image} alt="" />
                                 </div>
-                                <div>
-                                    {item?.name}
-                                </div>
-                                <div>
-                                    ${parseFloat(item?.price).toFixed(2)}
+                                <div className='previewNamePrice'>
+                                    <div>
+                                        {item?.name}
+                                    </div>
+                                    <div>
+                                        ${parseFloat(item?.price).toFixed(2)}
+                                    </div>
                                 </div>
                             </NavLink>
                         ))}
