@@ -40,8 +40,7 @@ def upload_image( ):
     # db.session.add(new_image)
     # db.session.commit()
     return {"url": url}
-    return " "
-
+    
 
 def validation_errors_to_error_messages(validation_errors):
     """

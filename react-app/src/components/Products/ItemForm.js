@@ -68,7 +68,6 @@ const ItemForm = () => {
         };
     }
     // console.log("remove TTT",rest)
-    console.log("convert ??????????",convertTime)
     const newItem = await dispatch(createItem(item)).catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
@@ -86,7 +85,6 @@ const ItemForm = () => {
     // <form id="createItemForm" method="POST">
     // <input type="text" id="product_id" name="product_id" value={newItem.id}></input>
     // </form>
-        console.log("newItemId #####", newItem.id)
         const formData = new FormData();
         formData.append("image", image);
         // const product_id = {"product_id": newItem.id }
