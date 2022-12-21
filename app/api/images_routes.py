@@ -25,8 +25,9 @@ def upload_image( ):
     
     image.filename = get_unique_filename(image.filename)
 
+    print("before the upload image")
     upload = upload_file_to_s3(image)
-
+    print("after the upload image")
     if "url" not in upload:
         # if the dictionary doesn't have a url key
         # it means that there was an error when we tried to upload

@@ -47,7 +47,7 @@ const ItemForm = () => {
     let convertTime = removeT[0]+" "+removeT[1]+":00"
     // let convertTime = new Date(Date.UTC(end))
     let item={}
-    if (end) {
+    // if (end) {
          item = { 
             user_id: user.id, 
             name, 
@@ -57,24 +57,24 @@ const ItemForm = () => {
             description,
             end: convertTime
         };
-    } else {
-         item = { 
-            user_id: user.id, 
-            name, 
-            price:parseFloat(price).toFixed(2), 
-            quantity,
-            category_id, 
-            description,
-        };
-    }
-    // console.log("remove TTT",rest)
+    // } else {
+    //      item = { 
+    //         user_id: user.id, 
+    //         name, 
+    //         price:parseFloat(price).toFixed(2), 
+    //         quantity,
+    //         category_id, 
+    //         description
+    //     };
+    // }
     const newItem = await dispatch(createItem(item)).catch(async (res) => {
-            const data = await res.json();
-            if (data && data.errors) {
-                setErrors(Object.values(data.errors));
-            }
+        const data = await res.json();
+        if (data && data.errors) {
+            setErrors(Object.values(data.errors));
+        }
     });
-
+    
+    console.log("newItem is",newItem)
     // const imageUrl = {
     //     url:image,
     //     product_id: newItem.id
@@ -89,7 +89,7 @@ const ItemForm = () => {
         formData.append("image", image);
         // const product_id = {"product_id": newItem.id }
         // formData.append("product_id", JSON.stringify(product_id));
-
+        console.log("formData is ???",formData)
         const imageReturn = await fetch('/api/images',{
             method: "POST",
             body:formData
