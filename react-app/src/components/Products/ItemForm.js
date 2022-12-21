@@ -87,9 +87,11 @@ const ItemForm = () => {
     // </form>
         const formData = new FormData();
         formData.append("image", image);
+
+        console.log("formData is ???",formData)
         // const product_id = {"product_id": newItem.id }
         // formData.append("product_id", JSON.stringify(product_id));
-        console.log("formData is ???",formData)
+
         const imageReturn = await fetch('/api/images',{
             method: "POST",
             body:formData

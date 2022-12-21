@@ -78,12 +78,11 @@ function App() {
         <Route path='/' exact={true} >
           {/* <Items /> */}
           <Splash />
-
         </Route>
 
-        <ProtectedRoute path='/items' exact={true} >
+        <Route path='/items' exact={true} >
           <Items />
-        </ProtectedRoute>
+        </Route>
 
         <Route path='/items/:itemId' exact={true} >
           <ItemDetail />
