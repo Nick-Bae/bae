@@ -1,26 +1,28 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
-import { getUserCart, deleteOneCart } from '../../store/cart';
+import { getUserOrder, deleteOneOrder } from '../../store/order';
 import { createOrder } from '../../store/order';
 import './Order.css'
+import OrderQuantity from './OrderQuantity';
 
 const Order = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const { carts } = location.state;
+//   const { carts } = location.state;
+  const carts = Object.values(useSelector(state => state.cart));
   const history = useHistory();
   const user = useSelector(state => state.session.user)
   // const items = Object.values(useSelector(state => state.items));
   let cartTotal = 0
 
-    useEffect(() => {
-        dispatch(getUserCart(user?.id))
-    }, [dispatch, user.id]);
+    // useEffect(() => {
+    //     dispatch(getUserOrder(user?.id))
+    // }, [dispatch, user.id]);
 
 
-    const cartDelete = (cartId) => {
-    dispatch(deleteOneCart(cartId))
+    const orderDelete = (cartId) => {
+    dispatch(deleteOneOrder(cartId))
     }
 
     const order =()=>{
@@ -31,15 +33,16 @@ const Order = () => {
         }
 
         dispatch(createOrder(orderInfo))
-
         history.push('/order-complete');
     }
 
   return (
-    
-    <div className="orderList">
+    <div className='Order'>
+         <h2 className='shoppingCartLabel'>Checkout</h2>
+        <div className="orderList">
             <div className='orderList-content'>
                 {carts.map(cart => (
+                <>
                     <div className="orderIndividual" key={cart.id}>
                         <NavLink to={`/items/${cart.id}`}>
                             <div className='cartviewImage'>
@@ -52,17 +55,19 @@ const Order = () => {
                             </div>
                         </NavLink>
 
-                        <p>${parseFloat(cart.price).toFixed(2)}</p>
+                        <p className='cartviewPrice'>${parseFloat(cart.price).toFixed(2)}</p>
                         <div className='cartViewQty'>
-                            <p>Qty:{cart.quantity}</p>
+                            {/* <p>Qty:{cart.quantity}</p> */}
+                            <OrderQuantity item={cart} />
                         </div>
                         <div hidden={true}>{cartTotal += cart.price * cart.quantity}</div>
                         <div className='cartDeleteBt'>
-                            <button className="orderDeleteBt" onClick={() => cartDelete(cart.cartId)}>
+                            <button className="orderDeleteBt" onClick={() => orderDelete(cart.cartId)}>
                                 <i className="fa-solid fa-trash" ></i>
                             </button>
                         </div>
                     </div>
+                </>
                 ))}
                 <div className='cartTotal'>
                     <p>Total: &nbsp;</p>
@@ -73,6 +78,7 @@ const Order = () => {
                 </div>
             </div>
         </div>
+    </div>
   );
 };
 

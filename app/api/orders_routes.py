@@ -60,9 +60,9 @@ def post_orders():
         db.session.add(newOrdered_item)
         db.session.commit()
 
-        cart = Cart.query.get(item['cartId'])
+        # cart = Cart.query.get(item['cartId'])
     
-        db.session.delete(cart)
+        # db.session.delete(cart)
         db.session.commit()
         # order = {
         #     "orderId": newOrder.id,
@@ -81,3 +81,51 @@ def post_orders():
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+@orders_routes.route('', methods=['PUT'])
+@login_required
+def update_orders():
+    form = OrderForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    # if form.validate_on_submit():
+    data = form.data
+    # newOrder = Order(
+    #             userId = current_user.id,
+    #             date = datetime.now(),
+    #             status = data['status']
+    #         )
+   
+    # orderInfo = request.get_json()    
+    # items = orderInfo['items']   
+    # # item.quantity = data['quantity']
+    # db.session.add(newOrder)
+    # db.session.commit()
+    # print("items what is inside???",orderInfo['items'])
+    items = data['items']
+    for item in items:
+        
+        newOrdered_item = Ordered_item(
+            orderId = newOrder.id,
+            itemId = item['id'],
+            quantity = item['quantity']
+        )
+        print ("neworder_ed item???",newOrdered_item)
+        db.session.add(newOrdered_item)
+        db.session.commit()
+
+        # cart = Cart.query.get(item['cartId'])
+    
+        # db.session.delete(cart)
+        db.session.commit()
+        # order = {
+        #     "orderId": newOrder.id,
+        #     "userId": current_user.id,
+        #     "date": newOrder.date,
+        #     "itemId": itemId,
+        #     "name": item.name,
+        #     "price": item.price,
+        #     "quantity": newOrdered_item.quantity,
+        #     "status": newOrder.status,
+        #     "items": [item.to_dict() for item in items]
+        # }
+        
+    return newOrder.to_dict()

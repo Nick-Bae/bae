@@ -23,8 +23,11 @@
 
 .cartviewTitle{
     width:200px;
+    margin-top:5px;
 }
-
+.cartviewPrice{
+    margin-top:5px;
+}
 .cartTotal{
     margin-top:50px;
     display: flex;

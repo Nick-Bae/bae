@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { getUserCart } from '../../store/cart';
 import './CartPage.css'
 import CartQuantity from './CartQuantity';
 
 const CartPage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const carts = Object.values(useSelector(state => state.cart));
     const user = useSelector(state => state.session.user)
 
@@ -62,14 +63,15 @@ const CartPage = () => {
                                 <CartQuantity item={item} />
                                 {/* <button type="submit" className="cartUpdate" onClick={()=>cartUpdate(item.cartId)} >update</button> */}
                             </div>
-                            <div>total: $</div> <div>{item.quantity * item.price}</div>
+                            <div className="shoppingCartTotal">total: $</div> 
+                            <div className="shoppingCartTotal">{parseFloat(item.quantity * item.price).toFixed(2)}</div>
                             <div hidden={true}>{cartTotal += item.quantity * item.price}</div>
                         </div>
                     </div>
             ))}
             </div>
                 <div className='totalOrderPrice'>
-                    <button className='goToCheckoutBt'>Go to checkout</button>
+                    <button className='goToCheckoutBt' onClickCapture={()=>{history.push('/order')}}>Go to checkout</button>
                     <div className='cartViewTotal'>
                           <p>Subtotal:</p>
                           <p> ${parseFloat(cartTotal).toFixed(2)} </p>

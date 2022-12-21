@@ -77,6 +77,12 @@ export const CommentForm = () => {
         dispatch(getItemComments(itemId));
         dispatch(getItemDetail(itemId));
     }
+
+    const moveToComment=()=>{
+        var elem = document.getElementById("reviewForm");
+        elem?.scrollIntoView()
+    }
+
     useEffect(() => {
         // console.log("useeffect ",currSpot)
         setHasSubmitted(false);
@@ -91,7 +97,8 @@ export const CommentForm = () => {
     return (
         <div id="reviewModal">
             <div className="leaveComment" onClick={() => { open ? setOpen(false) : setOpen(true) }}>
-                <i className="fa-solid fa-pen-to-square commentSign"> </i>
+                <i className="fa-solid fa-pen-to-square commentSign" 
+                    onClick={moveToComment}> </i>
                 &nbsp; Click to leave your comment!
             </div>
             {hasSubmitted && validationErrors.length > 0 && (
@@ -105,7 +112,7 @@ export const CommentForm = () => {
                 </div>
             )}
             {open && (
-                <form id="reviewForm" onSubmit={handleSubmit} >
+                <form id="reviewForm"  className="reviewForm" onSubmit={handleSubmit} >
                     <div id="reviewFormBox">
                         <label id="reviewFormLabel">
                             {/* Comment */}

@@ -73,7 +73,7 @@ export const createOrder = (data) => async (dispatch) => {
     };
 };
 
-export const updateCart = (data) => async (dispatch) => {
+export const updateOrder = (data) => async (dispatch) => {
     const response = await fetch(`/api/orders/${data.orderId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -86,7 +86,7 @@ export const updateCart = (data) => async (dispatch) => {
     }
 }
 
-export const deleteOneCart = (orderId) => async (dispatch) => {
+export const deleteOneOrder = (orderId) => async (dispatch) => {
     const response = await fetch(`/api/orders/${orderId}`, {
         method: "DELETE",
       }); 
