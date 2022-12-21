@@ -36,6 +36,8 @@ const CartDetail = () => {
             </div>
 
             {/* <button class="dropbtn"></button> */}
+            {carts.length>=1 && (
+
             <div className='cartList-content'>
                 {carts.map(cart => (
                     <div className='cartDetailContainer' key={cart.id}>
@@ -77,6 +79,7 @@ const CartDetail = () => {
                     </div>
                 </div>
             </div>
+            )}
         </div>
 
     );
