@@ -11,8 +11,6 @@ const Items = () => {
   // const images =Object.values( useSelector(state=>state.images));
   // const user = useSelector(state => state.session.user)
 
-  console.log("items is",items)
-
   useEffect(() => {
     dispatch(getItems());
     dispatch(getAllImages());

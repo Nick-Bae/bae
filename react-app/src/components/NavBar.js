@@ -1,25 +1,20 @@
-import React,  { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import LoginFormModal from './LoginFormModal';
 import SignupModal from './SignupFormPage';
 import './NavBar.css'
 import Profile from './Profile';
-import AutoComplete from './AutoComplete';
-import { getItems } from '../store/items';
+import AutoComplete from './AutoComplete2';
+import SearchBar from './SearchBar';
+
 
 const NavBar = () => {
-  const dispatch = useDispatch();
+
   const sessionUser = useSelector(state => state.session.user);
   let sessionLinks;
-  const autoCompleteData = Object.values(useSelector(state => state.items));
-  console.log("all items is",autoCompleteData)
-
-  useEffect(() => {
-    dispatch(getItems());
-  }, [dispatch]);
-
+  
   if (sessionUser) {
     sessionLinks = (
       <div className="nav_profile">
@@ -66,7 +61,8 @@ const NavBar = () => {
             </NavLink>
           </li>
       </ul>
-      <AutoComplete data={autoCompleteData} />
+      {/* <AutoComplete /> */}
+      <SearchBar placeholder="search for product" />
       {sessionLinks}
     </div>
   );
