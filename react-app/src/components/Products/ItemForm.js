@@ -94,7 +94,7 @@ const ItemForm = () => {
 
         const imageReturn = await fetch('/api/images',{
             method: "POST",
-            body:formData
+            body:formData,
         })
         const imgUrl = await imageReturn.json()
         const imageUrl = {
