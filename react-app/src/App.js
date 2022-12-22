@@ -56,6 +56,10 @@ function App() {
           <CategoryItems />
         </Route>
 
+        {/* <Route path='/categories/:categoryId' exact={true}>
+          <CategoryItems />
+        </Route> */}
+
         <ProtectedRoute path='/mymenu' exact={true} >
           <Mymenu />
         </ProtectedRoute>
