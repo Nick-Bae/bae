@@ -17,7 +17,7 @@ def upload_image( ):
 
     image = request.files["image"]
     # data = request.form
-    
+   
     # print("getting data #########", data)
 
     if not allowed_file(image.filename):
@@ -27,7 +27,7 @@ def upload_image( ):
 
     print("before the upload image")
     upload = upload_file_to_s3(image)
-    print("after the upload image")
+    print("after the upload image", upload["url"])
     if "url" not in upload:
         # if the dictionary doesn't have a url key
         # it means that there was an error when we tried to upload
