@@ -47,9 +47,11 @@ export const createImage = (data) => async dispatch => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     });
-    const image = await response.json();
-    dispatch(addOne(image));
-    return image;
+    if (response.ok) {
+        const image = await response.json();
+        dispatch(addOne(image));
+        return image;
+    }
 }
 
 export const updateImage = data => async dispatch => {
