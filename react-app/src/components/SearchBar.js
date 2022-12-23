@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./SearchBar.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 import { useSelector, useDispatch } from 'react-redux';
 import { getItems } from '../store/items';
 
 function SearchBar({ placeholder }) {
+    const location = useLocation();
     const dispatch = useDispatch();
     const data = Object.values(useSelector(state => state.items));
     // const data = items.map((item)=> item?.name)
@@ -20,11 +21,13 @@ function SearchBar({ placeholder }) {
     }, [dispatch, wordEntered]);
 
     useEffect(()=> {
+        clearInput();
+    },[location])
 
-    })
-
+    var hideMe
     const handleFilter = (event) => {
         setOpen(true)
+        hideMe = document.getElementById('resultContent');
         const searchWord = event.target.value;
         setWordEntered(searchWord);
         const newFilter = data.filter((value) => {
@@ -52,22 +55,47 @@ function SearchBar({ placeholder }) {
     dispatch(getItems());
     // clearInput()
   }
-    const popup = document.querySelector('.dataResult');
-    // function showPopup() {
-    // popup.classList.add('open');
-    // }
-    // function hidePopup() {
-    // popup.classList.remove('open');
-    // }
+  
+  window.onload=function() {
+    // var hideMe = document.getElementById('dataResult');
+    
+   document.onClick= function(e) {
+    if (e.target.id !== 'resultContent'){
+        hideMe.style.display = 'none';
+    }
+   }
+}
+
+  const ref = useRef();
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+      if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [isMenuOpen]);
 
   return (
-    <div className="search">
+    <div className="search" ref={ref}>
       <div className="searchInputs">
         <input
           type="text"
           placeholder={placeholder}
           value={wordEntered}
           onChange={handleFilter}
+          onClick={() => setIsMenuOpen((oldState) => !oldState)}
         />
         <div className="searchIcon">
           {filteredData.length === 0 ? (
@@ -77,9 +105,9 @@ function SearchBar({ placeholder }) {
           )}
         </div>
       </div>
-      {open && (
-      <div className="isResult" id="isResult">
-        {filteredData.length != 0 &&  (
+      {open && isMenuOpen &&(
+      <div className="isResult" id="isResult" >
+        {filteredData.length !== 0 &&  (
             <div className="dataResult" id="dataResult">
                 
                 <div className="resultContent" id="resultContent">
@@ -98,14 +126,30 @@ function SearchBar({ placeholder }) {
       )}
        {/* {
             window.onload=function() {
-                document.addEventListener('click', function(e) {
-                    var container = document.querySelector('.isResult');
-                    if (!container.contains(e.target)) {
-                        container.style.display = 'none';
-                    }
-                })
+                var hideMe = document.getElementById('isResult');
+               document.onClick= function(e) {
+                if (e.target.id !== 'isResult'){
+                    hideMe.style.display = 'none';
+                }
+               }
             }
         } */}
+         {/* <div className="wrapper" ref={ref}>
+      <button
+        className="button"
+        onClick={() => setIsMenuOpen((oldState) => !oldState)}
+      >
+        Click Me
+      </button>
+      {isMenuOpen && (
+        <ul className="list">
+          <li className="list-item">dropdown option 1</li>
+          <li className="list-item">dropdown option 2</li>
+          <li className="list-item">dropdown option 3</li>
+          <li className="list-item">dropdown option 4</li>
+        </ul>
+      )}
+    </div> */}
     </div>
   );
 }
