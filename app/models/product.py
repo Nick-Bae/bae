@@ -72,14 +72,27 @@ class Product(db.Model):
 
     
     def to_dict(self):
-        return {
-            'id': self.id,
-            'user_id': self.user_id,
-            'name': self.name,
-            'price': self.price,
-            'quantity': self.quantity,
-            'category_id': self.category_id,
-            'description': self.description,
-            'image': self.image[0].url,
-            'end': self.end
+        if len(self.image) == 0:
+            return {
+                'id': self.id,
+                'user_id': self.user_id,
+                'name': self.name,
+                'price': self.price,
+                'quantity': self.quantity,
+                'category_id': self.category_id,
+                'description': self.description,
+                'image': 'null',
+                'end': self.end
+            } 
+        else:
+            return {
+                'id': self.id,
+                'user_id': self.user_id,
+                'name': self.name,
+                'price': self.price,
+                'quantity': self.quantity,
+                'category_id': self.category_id,
+                'description': self.description,
+                'image': self.image[0].url,
+                'end': self.end
         }

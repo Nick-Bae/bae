@@ -4,6 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 // import './index.css'
 import { getItemDetail } from '../../store/itemDetail';
 import { deleteOneItem } from '../../store/items';
+import { getItems } from '../../store/items';
 import './itemDetail.css'
 import CommentDisplay from '../Comment/CommentDisplay';
 import CommentForm from '../Comment/CommentForm';
@@ -54,7 +55,7 @@ const ItemDetail = () => {
      
     useEffect(() => {
         dispatch(getItemDetail(itemId));
-        // dispatch(getOneImage(itemId))
+        dispatch(getItems());
     }, [dispatch, itemId]);
 
     const deleteBt = async (e) => {

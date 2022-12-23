@@ -1,5 +1,5 @@
 .searchInputs {
-    margin-top: 105px;
+    margin-top: 10px;
     display: flex;
   }
   
@@ -12,11 +12,11 @@
     font-size: 18px;
     padding: 15px;
     height: 30px;
-    width: 300px;
+    width: 450px;
   }
   
   .searchIcon {
-    height: 60px;
+    /* height: 60px; */
     width: 50px;
     background-color: white;
     display: grid;
@@ -32,12 +32,24 @@
   
   .dataResult {
     margin-top: 5px;
-    width: 300px;
-    height: 200px;
+    width: 450px;
+    min-height: 100px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: hidden;
     overflow-y: auto;
+
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+    /* padding: 12px 16px; */
+    z-index: 1;
+  }
+  .isResult{
+    position: relative;
+    display: inline-block;
   }
   
   .dataResult::-webkit-scrollbar {
@@ -49,11 +61,12 @@
     height: 50px;
     display: flex;
     align-items: center;
-    color: black;
+    /* color:rgb(100, 6, 6); */
   }
   
   .dataItem p {
     margin-left: 10px;
+    
   }
   a {
     text-decoration: none;
@@ -63,6 +76,34 @@
     background-color: lightgrey;
   }
   
-  #clearBtn {
+  #clearBtn, #searchIconBtn {
     cursor: pointer;
+    font-size: 25px;
   }
+
+
+/* .dataResult { display: none; }
+.dataResult.open { display: block; }
+.blocker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: ' ';
+    background: rgba(0,0,0,.5);
+}
+.dataResult .resultContent {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFF;
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+} */

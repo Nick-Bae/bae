@@ -121,6 +121,12 @@ def delete_Item(id):
         return {"data": "Deleted"}
     return {'errors': ['Unauthorized']}
 
+# ============================search by title==========================================
+@products_routes.route('/<search>')
+def search_Item(search):
+    products = Product.query.filter(Product.name == search).all()
+
+    return {item.to_dict()['id']: item.to_dict() for item in products}
 
 
 # ==============C O M M E N T S=====================================

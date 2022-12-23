@@ -62,7 +62,9 @@ const NavBar = () => {
           </li>
       </ul>
       {/* <AutoComplete /> */}
-      <SearchBar placeholder="search for product" />
+      <div className='searchBarInNav'>
+        <SearchBar className="searchBarDisplay" placeholder="search for product" />
+      </div>
       {sessionLinks}
     </div>
   );
