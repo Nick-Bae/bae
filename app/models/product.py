@@ -93,6 +93,6 @@ class Product(db.Model):
                 'quantity': self.quantity,
                 'category_id': self.category_id,
                 'description': self.description,
-                'image': self.image[0].url,
+                'image': [image.url for image in self.image],
                 'end': self.end
         }

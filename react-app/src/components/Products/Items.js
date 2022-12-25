@@ -10,7 +10,7 @@ const Items = () => {
   const items = Object.values(useSelector(state => state.items));
   // const images =Object.values( useSelector(state=>state.images));
   // const user = useSelector(state => state.session.user)
-
+console.log(items)
   useEffect(() => {
     dispatch(getItems());
     dispatch(getAllImages());
@@ -27,7 +27,7 @@ const Items = () => {
             {items.map((item, ind)=>(
               <Link  key={ind} to={`/items/${item?.id}`}> 
                     <div key={item?.id} className='imageContainer'>
-                      <img key={item?.id} className="itemImage" src={item?.image} alt="" />
+                      <img key={item?.id} className="itemImage" src={item?.image[0]} alt="" />
                     </div>
                     <div className='previewNamePrice'>
                         <div className='previewName'>

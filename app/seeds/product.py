@@ -16,6 +16,8 @@ def seed_products():
         name='Zara', user_id=3, price = 80, quantity = 100 ,category_id = 1, )
     item6 = Product(
         name='Womens watches of 2023', user_id=1, price = 580, quantity = 100 ,category_id = 4, )
+    item7 = Product(
+        name='Women Court Vision Low Sneaker', user_id=2, price = 280, quantity = 50 ,category_id = 2, )
 
     db.session.add(item1)
     db.session.add(item2)
@@ -23,6 +25,7 @@ def seed_products():
     db.session.add(item4)
     db.session.add(item5)
     db.session.add(item6)
+    db.session.add(item7)
     db.session.commit()
 
 

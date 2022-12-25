@@ -22,6 +22,18 @@ def seed_images():
     image6 = Image(
         url='https://m.media-amazon.com/images/I/51l+OB+eV6L._AC_UY780_.jpg', 
         product_id=6)
+    image7 = Image(
+        url='https://nbae.s3.amazonaws.com/Nike_red_74397_right_large.jpg', 
+        product_id=7)
+    image8 = Image(
+        url='https://nbae.s3.amazonaws.com/Nike_red_74397_left_large.jpg', 
+        product_id=7)
+    image9 = Image(
+        url='https://nbae.s3.amazonaws.com/Nike_red_74397_top_large.jpg', 
+        product_id=7)
+    image10 = Image(
+        url='https://nbae.s3.amazonaws.com/Nike_red_74397_back_large.jpg', 
+        product_id=7)
 
     db.session.add(image1)
     db.session.add(image2)
@@ -29,6 +41,10 @@ def seed_images():
     db.session.add(image4)
     db.session.add(image5)
     db.session.add(image6)
+    db.session.add(image7)
+    db.session.add(image8)
+    db.session.add(image9)
+    db.session.add(image10)
     db.session.commit()
 
 

@@ -18,7 +18,7 @@ console.log("items is", item)
     // const [inventory_id, setInventory_id] = useState('');
     const [description, setDescription] = useState(item?.description);
     const [image, setImage] = useState(item?.image);
-    const [quantity, setQuantity] = useState('');
+    const [quantity, setQuantity] = useState(item.quantity);
 
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);

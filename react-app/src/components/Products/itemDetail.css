@@ -17,7 +17,7 @@
 }
 
 .itemImage_container{
-    width: 500px;
+    width: 600px;
     height: 700px;
     display: flex;
     flex-direction: column;
@@ -112,4 +112,24 @@
     margin-top: 20px;
     padding-top:10px;
     border-top: 1px solid var(--grey-light-color);
+}
+
+.imgContainer{
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+}
+
+.itemImage_container{
+    display: flex;
+    flex-direction: row;
+}
+.thumnailImg{
+    width:100px;
+    height: 100px;
+}
+
+.selectedImage{
+    width: 400px;
+    height: 300px;
 }

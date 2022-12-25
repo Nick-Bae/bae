@@ -29,7 +29,7 @@ const CategoryItems = () => {
                         {items.map((item, ind) => (
                             <NavLink key={ind} to={`/items/${item?.id}`}>
                                 <div key={item?.id} className='imageContainer'>
-                                    <img key={item?.id} className="itemImage" src={item?.image} alt="" />
+                                    <img key={item?.id} className="itemImage" src={item?.image[0]} alt="" />
                                 </div>
                                 <div className='previewNamePrice'>
                                     <div>

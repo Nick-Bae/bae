@@ -100,8 +100,8 @@ def edit_item(id):
             data = form.data
             item.user_id = current_user.id
             item.name = data['name']
-            item.price = str(data['price']),
-            item.quantity = data['quantity'],
+            item.price = str(data['price'])
+            item.quantity = data['quantity']
             item.category_id = data['category_id']
             item.description = data['description']
            

@@ -19,6 +19,13 @@ const ItemDetail = () => {
     const item = useSelector(state => state.item)
     //const item = useSelector(state => state?.item);
     const user = useSelector(state => state.session.user)
+    
+    const [selectedImg, setSelectedImg] = useState(item?.image);
+
+    useEffect(() => {
+        dispatch(getItemDetail(itemId));
+        // dispatch(getItems());
+    }, [dispatch, itemId]);
 
     const endtime =new Date(item?.end)
     const currentTime = new Date()
@@ -53,10 +60,7 @@ const ItemDetail = () => {
     },[endtime, calculateTime, currentTime] )
     
      
-    useEffect(() => {
-        dispatch(getItemDetail(itemId));
-        dispatch(getItems());
-    }, [dispatch, itemId]);
+   
 
     const deleteBt = async (e) => {
         e.preventDefault();
@@ -74,6 +78,7 @@ const ItemDetail = () => {
 
     // const login = (!user) ? false : true
 
+    if (!item) return null;
     return (
         <div>
             <div className='itemDetail_container'>
@@ -81,8 +86,23 @@ const ItemDetail = () => {
                     <div className='itemDetail'>
 
                         <div className='itemImage_container'>
-                            <img className="itemImage_detail" src={item?.image} alt="" />
+                            {/* <img className="itemImage_detail" src={item?.image} alt="" /> */}
                             {/* <i className="fa-solid fa-heart heartSigns"></i> */}
+                            <div className="imgContainer">
+                            {item?.image?.map((img, index) => (
+                                <img
+                                className='thumnailImg'
+                                style={{ border: selectedImg === img ? "4px solid purple" : "" }}
+                                key={index}
+                                src={img}
+                                alt="dog"
+                                onClick={() => setSelectedImg(img)}
+                                />
+                            ))}
+                            </div>
+                            <div className='zoomedImage'>
+                                <img  src={selectedImg} alt="zoom" className="selectedImage" />
+                            </div>
                         </div>
                         <div className="itemDetail_right">
                             <div className='itemDetail_info'>

@@ -30,5 +30,7 @@ class Image(db.Model):
             'product_id': self.product_id,
             'Product': self.product.to_dict()
         }
+
+  
    
     
