@@ -120,7 +120,7 @@ function App() {
         {/* <ProtectedRoute path='/upload' exact={true} >
           <UploadPicture />
         </ProtectedRoute> */}
-
+ 
         <ProtectedRoute path='/cart' exact={true} >
           <CartPage />
         </ProtectedRoute>
