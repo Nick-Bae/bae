@@ -21,6 +21,7 @@ def validation_errors_to_error_messages(validation_errors):
 # ============================Cart All===================================================
 
 @carts_routes.route('')
+@login_required
 def get_cart():
     products = Cart.query.all()
   
@@ -29,6 +30,7 @@ def get_cart():
 # ===============================Cart by cartId============================================   
 
 @carts_routes.route('/<int:id>')
+@login_required
 def get_cartId(id):
     cart = Cart.query.get(id)
   

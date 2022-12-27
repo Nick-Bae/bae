@@ -49,6 +49,7 @@ def get_user_items(id):
  # ========================CART List=============================
 
 @user_routes.route('/<int:id>/cart')
+@login_required
 def get_cartlist(id):
     user = User.query.get(id)
     carts =  user.cart

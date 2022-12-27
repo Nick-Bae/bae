@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react';
+import { useEffect,useState, useCallback, React  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 // import './index.css'
@@ -11,21 +11,25 @@ import CommentForm from '../Comment/CommentForm';
 import WishList from './WishList';
 import Cart from '../Cart/Cart';
 import Bid from '../Bid';
+import ReactImageZoom from "react-image-zoom";
+// import Zoom from 'react-medium-image-zoom'
+// import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
+// import 'react-medium-image-zoom/dist/styles.css'
 
 const ItemDetail = () => {
+    
     const dispatch = useDispatch();
     const { itemId } = useParams();
     const history = useHistory();
     const item = useSelector(state => state.item)
     //const item = useSelector(state => state?.item);
     const user = useSelector(state => state.session.user)
-    
-    const [selectedImg, setSelectedImg] = useState(item?.image);
+    const [selectedImg, setSelectedImg] = useState( );
 
     useEffect(() => {
         dispatch(getItemDetail(itemId));
         // dispatch(getItems());
-    }, [dispatch, itemId]);
+    }, [dispatch, itemId, getItemDetail]);
 
     const endtime =new Date(item?.end)
     const currentTime = new Date()
@@ -51,12 +55,15 @@ const ItemDetail = () => {
 
     const isEnded = endtime - currentTime > 0
 
+    
     useEffect(()=>{
-        const interval = setInterval(
-            () => setDelta(Math.abs(endtime - currentTime) / 1000), 1000)
-        setRemainTime(calculateTime)
-
-        return ()=> clearInterval(interval);
+        if (item.end){
+            const interval = setInterval(
+                () => setDelta(Math.abs(endtime - currentTime) / 1000), 1000)
+            setRemainTime(calculateTime)
+    
+            return ()=> clearInterval(interval);
+        }
     },[endtime, calculateTime, currentTime] )
     
      
@@ -75,11 +82,24 @@ const ItemDetail = () => {
         e.preventDefault();
         history.push({ pathname: `/items/${itemId}/edit`, state: { item: item } })
     };
-
+    const props = {
+        width: 400,
+        height: 250,
+        zoomWidth: 500,
+        img: selectedImg
+      };
+    
+    
+    //   console.log("what is props", props)
     // const login = (!user) ? false : true
+    const loadImg = async()=>{
+        await dispatch(getItemDetail(itemId))
+        setSelectedImg(item?.image[0])
+    }
 
     if (!item) return null;
     return (
+       
         <div>
             <div className='itemDetail_container'>
                 <div className='itemDetail_all'>
@@ -88,8 +108,11 @@ const ItemDetail = () => {
                         <div className='itemImage_container'>
                             {/* <img className="itemImage_detail" src={item?.image} alt="" /> */}
                             {/* <i className="fa-solid fa-heart heartSigns"></i> */}
+                            {/* <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange}> */}
                             <div className="imgContainer">
                             {item?.image?.map((img, index) => (
+                        //    <Zoom>
+                                // {setSelectedImg(img)}
                                 <img
                                 className='thumnailImg'
                                 style={{ border: selectedImg === img ? "4px solid purple" : "" }}
@@ -98,11 +121,23 @@ const ItemDetail = () => {
                                 alt="dog"
                                 onClick={() => setSelectedImg(img)}
                                 />
+                            // </Zoom>
                             ))}
                             </div>
-                            <div className='zoomedImage'>
-                                <img  src={selectedImg} alt="zoom" className="selectedImage" />
+                            {/* </ControlledZoom> */}
+                            {/* { item?.image && (
+                                <div className='zoomedImage'>
+                                {!(selectedImg) ? setSelectedImg(item.image[0]) : <img  src={selectedImg} alt="zoom" className="selectedImage" width="500" />}
                             </div>
+                            )}  */}
+                            {/* <img  src={selectedImg} alt="zoom" className="selectedImage" width="500" /> */}
+
+                                <div>
+                                    {!(selectedImg) ? loadImg : <ReactImageZoom {...props} />}
+
+                                </div>
+                                 {/* <ReactImageZoom {...props} />; */}
+
                         </div>
                         <div className="itemDetail_right">
                             <div className='itemDetail_info'>
@@ -146,6 +181,7 @@ const ItemDetail = () => {
                 </div>
             </div>
         </div>
+       
     );
 };
 
