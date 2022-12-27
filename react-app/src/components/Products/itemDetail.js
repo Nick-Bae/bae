@@ -133,7 +133,7 @@ const ItemDetail = () => {
                             {/* <img  src={selectedImg} alt="zoom" className="selectedImage" width="500" /> */}
 
                                 <div>
-                                    {!(selectedImg) ? loadImg : <ReactImageZoom {...props} />}
+                                    {/* {!(selectedImg) ? loadImg : <ReactImageZoom {...props} />} */}
 
                                 </div>
                                  {/* <ReactImageZoom {...props} />; */}
