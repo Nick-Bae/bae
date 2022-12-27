@@ -117,9 +117,9 @@ function App() {
           <ItemForm />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/upload' exact={true} >
+        {/* <ProtectedRoute path='/upload' exact={true} >
           <UploadPicture />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
 
         <ProtectedRoute path='/cart' exact={true} >
           <CartPage />
