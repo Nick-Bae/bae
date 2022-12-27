@@ -11,7 +11,7 @@ import CommentForm from '../Comment/CommentForm';
 import WishList from './WishList';
 import Cart from '../Cart/Cart';
 import Bid from '../Bid';
-// import ReactImageZoom from "react-image-zoom";
+import ReactImageZoom from "react-image-zoom";
 // import Zoom from 'react-medium-image-zoom'
 // import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
 // import 'react-medium-image-zoom/dist/styles.css'
