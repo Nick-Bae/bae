@@ -11,7 +11,7 @@ import CommentForm from '../Comment/CommentForm';
 import WishList from './WishList';
 import Cart from '../Cart/Cart';
 import Bid from '../Bid';
-import ReactImageZoom from "react-image-zoom";
+// import ReactImageZoom from "react-image-zoom";
 // import Zoom from 'react-medium-image-zoom'
 // import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
 // import 'react-medium-image-zoom/dist/styles.css'
@@ -133,7 +133,7 @@ const ItemDetail = () => {
                             {/* <img  src={selectedImg} alt="zoom" className="selectedImage" width="500" /> */}
 
                                 <div>
-                                    {/* {!(selectedImg) ? loadImg : <ReactImageZoom {...props} />} */}
+                                    {!(selectedImg) ? loadImg : <ReactImageZoom {...props} />}
 
                                 </div>
                                  {/* <ReactImageZoom {...props} />; */}
