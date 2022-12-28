@@ -7,7 +7,7 @@
 }
 .navMenu_login {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
 }
 
@@ -17,7 +17,10 @@
     justify-content: flex-end;
 }
 .nav_login, .nav_singup {
-    padding-right: 20px;
+    /* padding-right: 20px; */
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .logoHome{
@@ -29,7 +32,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left:300px;
+    position:relative;
+    right:-150px;
 }
 
 .search{
