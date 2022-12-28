@@ -9,15 +9,14 @@ const CategoryItems = () => {
     const dispatch = useDispatch();
     const items = Object.values(useSelector(state => state.category))
     // const items = (useSelector(state => state.category))
-    console.log("items is ", categoryId)
+    console.log("items is ", items)
 
     useEffect(() => {
         dispatch(getCategoryItem(categoryId))
 
     }, [dispatch, categoryId]);
 
-
-
+    if (!items) return null
     return (
         <>
             <div className='mainContainer'>
@@ -29,7 +28,9 @@ const CategoryItems = () => {
                         {items.map((item, ind) => (
                             <NavLink key={ind} to={`/items/${item?.id}`}>
                                 <div key={item?.id} className='imageContainer'>
+                                 { item.image &&(
                                     <img key={item?.id} className="itemImage" src={item?.image[0]} alt="" />
+                                 )}   
                                 </div>
                                 <div className='previewNamePrice'>
                                     <div>

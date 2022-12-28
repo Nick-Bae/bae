@@ -27,7 +27,9 @@ console.log(items)
             {items.map((item, ind)=>(
               <Link  key={ind} to={`/items/${item?.id}`}> 
                     <div key={item?.id} className='imageContainer'>
-                      <img key={item?.id} className="itemImage" src={item?.image[0]} alt="" />
+                    { item?.image &&(
+                                    <img key={item?.id} className="itemImage" src={item?.image[0]} alt="" />
+                                 )} 
                     </div>
                     <div className='previewNamePrice'>
                         <div className='previewName'>

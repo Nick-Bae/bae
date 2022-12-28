@@ -23,13 +23,13 @@ def seed_images():
         url='https://m.media-amazon.com/images/I/51l+OB+eV6L._AC_UY780_.jpg', 
         product_id=6)
     image7 = Image(
-        url='https://nbae.s3.amazonaws.com/Nike_red_74397_right_large.jpg', 
+        url='https://nbae.s3.amazonaws.com/Nike_red+right.png', 
         product_id=7)
     image8 = Image(
-        url='https://nbae.s3.amazonaws.com/Nike_red_74397_left_large.jpg', 
+        url='https://nbae.s3.amazonaws.com/Nike_red+left.png', 
         product_id=7)
     image9 = Image(
-        url='https://nbae.s3.amazonaws.com/Nike_red_74397_top_large.jpg', 
+        url='https://nbae.s3.amazonaws.com/Nike_red+top.png', 
         product_id=7)
     image10 = Image(
         url='https://nbae.s3.amazonaws.com/Nike_red_74397_back_large.jpg', 

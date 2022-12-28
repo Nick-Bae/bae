@@ -11,7 +11,6 @@ function SearchBar({ placeholder }) {
     const dispatch = useDispatch();
     const data = Object.values(useSelector(state => state.items));
     // const data = items.map((item)=> item?.name)
-    console.log("data is ",data)
     const [filteredData, setFilteredData] = useState([]);
     const [wordEntered, setWordEntered] = useState("");
     const [open, setOpen] = useState(false);

@@ -83,9 +83,10 @@ const ItemDetail = () => {
         history.push({ pathname: `/items/${itemId}/edit`, state: { item: item } })
     };
     const props = {
-        width: 400,
-        height: 250,
-        zoomWidth: 500,
+        width: 350,
+        height: 450,
+        zoomWidth: 600,
+        zoomHeight: 500,
         img: selectedImg
       };
     
@@ -115,7 +116,7 @@ const ItemDetail = () => {
                                 // {setSelectedImg(img)}
                                 <img
                                 className='thumnailImg'
-                                style={{ border: selectedImg === img ? "4px solid purple" : "" }}
+                                style={{ border: selectedImg === img ? "4px solid gray" : "" }}
                                 key={index}
                                 src={img}
                                 alt="dog"
@@ -135,8 +136,8 @@ const ItemDetail = () => {
                                 <div>
                                     {!(selectedImg) ? loadImg : <ReactImageZoom {...props} />}
 
+                                 {/* { item.image && (<ReactImageZoom {...props} /> )} */}
                                 </div>
-                                 {/* <ReactImageZoom {...props} />; */}
 
                         </div>
                         <div className="itemDetail_right">

@@ -5,6 +5,7 @@ categories_routes = Blueprint('categories', __name__)
 
 # =======================Validation=================================
 
+
 def validation_errors_to_error_messages(validation_errors):
     """
     Simple function that turns the WTForms validation errors into a simple list
@@ -14,6 +15,12 @@ def validation_errors_to_error_messages(validation_errors):
         for error in validation_errors[field]:
             errorMessages.append(f'{field} : {error}')
     return errorMessages
+
+@categories_routes.route('')
+def get_categories():
+    categories = Category.query.distinct()
+  
+    return {category.to_dict()['id']: category.to_dict() for category in categories}
 
 @categories_routes.route('/<category>')
 def get_itemsByCategory(category):

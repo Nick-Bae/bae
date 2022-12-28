@@ -1,8 +1,12 @@
 // import { csrfFetch } from './csrf';
 
-
+const LOAD = "Category/LOAD"
 const READ = 'Category/LOAD';
 
+const load = (category) => ({
+    type: LOAD,
+    category
+});
 
 const read = category => ({
     type: READ,
@@ -21,13 +25,23 @@ export const getCategoryItem = (category) => async dispatch =>{
     };
 }
 
+export const getAllCategory = () =>async dispatch =>{
+    const response = await fetch(`/api/categories`);
+    if (response.ok) {
+        const items = await response.json();
+        dispatch(load(items));
+        return items;
+    };
+}
+
+
 
 export const categoryReducer = (state = {}, action) => {
     let newState = { ...state };
     switch (action.type) {
-        // case LOAD:
-        //     newState = action.cart;
-        //     return newState;
+        case LOAD:
+            newState = action.category;
+            return newState;
         case READ:
             newState = action.category;
             return newState;

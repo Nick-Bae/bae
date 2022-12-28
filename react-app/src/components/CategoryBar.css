@@ -1,0 +1,15 @@
+.categorySingle{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height:50px;
+}
+
+.categoryBarContainer{
+    background-color: rgb(222, 222, 215);
+}
+
+.categoryBarName{
+    display: flex;
+    justify-content: space-evenly;
+}

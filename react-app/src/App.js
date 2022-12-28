@@ -25,6 +25,7 @@ import Order from './components/Order/Order';
 import OrderComplete from './components/Order/OrderComplete';
 import Splash from './components/splash';
 import CategoryItems from './components/CategoryItems';
+import CategoryBar from './components/CategoryBar';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +46,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <CategoryBar />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
