@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 20px 20px 0px 20px;
-    /* height:40px; */
+    margin: 0px 20px 0px 20px;
+    height:67px;
 }
 .navMenu_login {
     display: flex;
@@ -26,15 +26,25 @@
 }
 
 .searchBarInNav{
-    display: flex; 
+    display: flex;
+    justify-content: center;
     align-items: center;
+    margin-left:300px;
 }
 
 .search{
     margin-left:350px;
+    height: 67px;
 
 }
 
 .searchBarDisplay{
     border:1px solid black;
+    align-items: center;
+}
+
+.navMenu_home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

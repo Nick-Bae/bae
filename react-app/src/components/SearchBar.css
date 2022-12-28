@@ -1,10 +1,11 @@
 .searchInputs {
-    margin: 10px;
+    /* margin-top: 6px; */
     display: flex;
     border: 1px solid rgb(152, 150, 150);
     border-radius: 10px;
     padding:5px;
     min-width: 500px;
+    align-content: center;
   }
   
   .search input {
@@ -18,7 +19,11 @@
     height: 30px;
     width: 450px;
   }
-  
+  .searchInput{
+    width:500px;
+    height:40px;
+    border:none;
+  }
   .searchIcon {
     /* height: 60px; */
     width: 50px;
@@ -54,6 +59,7 @@
   .isResult{
     position: relative;
     display: inline-block;
+    margin-bottom:0px;
   }
   
   .dataResult::-webkit-scrollbar {
@@ -65,9 +71,14 @@
     height: 50px;
     display: flex;
     align-items: center;
+    margin-bottom:0px;
     /* color:rgb(100, 6, 6); */
   }
-  
+  .resultContent, .dataItem, .dataResult{
+    margin-bottom:0px;
+    width:510px;
+    /* margin-left:10px; */
+  }
   .dataItem p {
     margin-left: 10px;
     

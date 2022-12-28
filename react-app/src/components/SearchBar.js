@@ -87,9 +87,10 @@ function SearchBar({ placeholder }) {
   }, [isMenuOpen]);
 
   return (
-    <div className="search" ref={ref}>
+    <div className="searchContainer" ref={ref}>
       <div className="searchInputs">
         <input
+          className="searchInput"
           type="text"
           placeholder={placeholder}
           value={wordEntered}
