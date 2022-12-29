@@ -1,157 +1,66 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./SearchBar.css";
-import { NavLink, useLocation } from 'react-router-dom';
-import SearchIcon from "@material-ui/icons/Search";
-import CloseIcon from "@material-ui/icons/Close";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { getItems } from '../store/items';
+import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import { useLocation } from 'react-router-dom';
+import { getItems } from "../store/items";
+// import Profile from "./Profile/Profile";
+// import Cart from "./Cart/Cart";
 
-function SearchBar({ placeholder }) {
-    const location = useLocation();
-    const dispatch = useDispatch();
-    const data = Object.values(useSelector(state => state.items));
-    // const data = items.map((item)=> item?.name)
-    const [filteredData, setFilteredData] = useState([]);
-    const [wordEntered, setWordEntered] = useState("");
-    const [open, setOpen] = useState(false);
+function SearchBar() {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const data = Object.values(useSelector(state => state.items));
 
-    useEffect(() => {
-        dispatch(getItems());
-    }, [dispatch, wordEntered]);
-
-    useEffect(()=> {
-        clearInput();
-    },[location])
-
-    var hideMe
-    const handleFilter = (event) => {
-        setOpen(true)
-        hideMe = document.getElementById('resultContent');
-        const searchWord = event.target.value;
-        setWordEntered(searchWord);
-        const newFilter = data.filter((value) => {
-        return value?.name?.toLowerCase().includes(searchWord.toLowerCase());
-        });
-
-        
-        if (searchWord === "") {
-        setFilteredData([]);
-        } else {
-        setFilteredData(newFilter);
-        }
+  const handleOnSearch = (string, results) => {
+    if (string)  {
+      dispatch(getItems())
+    }
+    console.log(string, results);
   };
 
-  const clearInput = () => {
-    setFilteredData([]);
-    setWordEntered("");
-    setOpen(false)
+  const handleOnHover = (result) => {
+    console.log(result);
   };
 
-  const resetInput =() => {
-    setOpen(false);
-    setWordEntered("");
-    setFilteredData([]);
-    dispatch(getItems());
-    // clearInput()
+  const handleOnSelect = (item) => {
+    window.location = `/items/${item.id}`;
+  };
+
+  const handleOnFocus = () => {
+    dispatch(getItems())
+    console.log("Focused");
+  };
+
+  const formatResult = (item) => {
+    return (
+      <>
+        {/* <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span> */}
+        <span style={{ display: 'block', textAlign: 'left' }}> {item.name}</span>
+      </>
+    )
   }
   
-  window.onload=function() {
-    // var hideMe = document.getElementById('dataResult');
-    
-   document.onClick= function(e) {
-    if (e.target.id !== 'resultContent'){
-        hideMe.style.display = 'none';
-    }
-   }
-}
-
-  const ref = useRef();
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   useEffect(() => {
-    const checkIfClickedOutside = (e) => {
-      // If the menu is open and the clicked target is not within the menu,
-      // then close the menu
-      if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", checkIfClickedOutside);
-
-    return () => {
-      // Cleanup the event listener
-      document.removeEventListener("mousedown", checkIfClickedOutside);
-    };
-  }, [isMenuOpen]);
+      dispatch(getItems());
+  }, [dispatch, location.pathname]);
 
   return (
-    <div className="searchContainer" ref={ref}>
-      <div className="searchInputs">
-        <input
-          className="searchInput"
-          type="text"
-          placeholder={placeholder}
-          value={wordEntered}
-          onChange={handleFilter}
-          onClick={() => setIsMenuOpen((oldState) => !oldState)}
-        />
-        <div className="searchIcon">
-          {filteredData.length === 0 ? (
-            <SearchIcon id="searchIconBtn"/>
-          ) : (
-            <CloseIcon id="clearBtn" onClick={clearInput} />
-          )}
+    <div className="App">
+      <header className="App-header">
+        <div style={{ width: 650 }}>
+          <ReactSearchAutocomplete
+            items={data}
+            onSearch={handleOnSearch}
+            onHover={handleOnHover}
+            onSelect={handleOnSelect}
+            onFocus={handleOnFocus}
+            autoFocus
+            formatResult={formatResult}
+          />
         </div>
-      </div>
-      {open && isMenuOpen &&(
-      <div className="isResult" id="isResult" >
-        {filteredData.length !== 0 &&  (
-            <div className="dataResult" id="dataResult">
-                
-                <div className="resultContent" id="resultContent">
-                    {filteredData.slice(0, 15).map((value, key) => {
-                        return (
-                        <NavLink className="dataItem" onClick={resetInput} to={`/items/${value.id}`} >
-                            <p >{value.name} </p>
-                        </NavLink>
-                        );
-                    })}
-                </div>
-                
-            </div>
-        )}
-      </div>
-      )}
-       {/* {
-            window.onload=function() {
-                var hideMe = document.getElementById('isResult');
-               document.onClick= function(e) {
-                if (e.target.id !== 'isResult'){
-                    hideMe.style.display = 'none';
-                }
-               }
-            }
-        } */}
-         {/* <div className="wrapper" ref={ref}>
-      <button
-        className="button"
-        onClick={() => setIsMenuOpen((oldState) => !oldState)}
-      >
-        Click Me
-      </button>
-      {isMenuOpen && (
-        <ul className="list">
-          <li className="list-item">dropdown option 1</li>
-          <li className="list-item">dropdown option 2</li>
-          <li className="list-item">dropdown option 3</li>
-          <li className="list-item">dropdown option 4</li>
-        </ul>
-      )}
-    </div> */}
+      </header>
     </div>
-  );
+  )
 }
 
 export default SearchBar;

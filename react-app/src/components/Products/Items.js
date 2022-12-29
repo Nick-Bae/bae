@@ -25,7 +25,11 @@ console.log(items)
             <div className="itemDetail">
               <div className="itemLayout">
             {items.map((item, ind)=>(
-              <Link  key={ind} to={`/items/${item?.id}`}> 
+              <Link  key={ind} 
+                     to={{ pathname:`/items/${item?.id}`,
+                     state:{item:item}   
+                    }}
+              > 
                     <div key={item?.id} className='imageContainer'>
                     { item?.image &&(
                                     <img key={item?.id} className="itemImage" src={item?.image[0]} alt="" />

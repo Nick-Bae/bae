@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getCategoryItem } from '../store/category';
 import './CategoryItems.css'
 
@@ -26,7 +26,11 @@ const CategoryItems = () => {
                 <div className="itemDetail">
                     <div className="itemLayout">
                         {items.map((item, ind) => (
-                            <NavLink key={ind} to={`/items/${item?.id}`}>
+                            <Link key={ind} 
+                                to={{ pathname:`/items/${item?.id}`,
+                                state:{item:item}
+                                }}
+                            >
                                 <div key={item?.id} className='imageContainer'>
                                  { item.image &&(
                                     <img key={item?.id} className="itemImage" src={item?.image[0]} alt="" />
@@ -40,7 +44,7 @@ const CategoryItems = () => {
                                         ${parseFloat(item?.price).toFixed(2)}
                                     </div>
                                 </div>
-                            </NavLink>
+                            </Link>
                         ))}
                     </div>
                 </div>

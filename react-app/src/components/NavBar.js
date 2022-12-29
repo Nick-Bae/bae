@@ -6,7 +6,6 @@ import LoginFormModal from './LoginFormModal';
 import SignupModal from './SignupFormPage';
 import './NavBar.css'
 import Profile from './Profile';
-import AutoComplete from './AutoComplete2';
 import SearchBar from './SearchBar';
 
 
@@ -61,7 +60,6 @@ const NavBar = () => {
             </NavLink>
           </li>
       </ul>
-      {/* <AutoComplete /> */}
       <div className='searchBarInNav'>
         <SearchBar className="searchBarDisplay" placeholder="search for product" />
       </div>

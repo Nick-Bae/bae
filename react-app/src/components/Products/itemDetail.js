@@ -1,6 +1,6 @@
 import { useEffect,useState, useCallback, React  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, useLocation } from 'react-router-dom';
 // import './index.css'
 import { getItemDetail } from '../../store/itemDetail';
 import { deleteOneItem } from '../../store/items';
@@ -19,18 +19,28 @@ import ReactImageZoom from "react-image-zoom";
 const ItemDetail = () => {
     
     const dispatch = useDispatch();
+    const location = useLocation();
+    const item= location.state?.item;
     const { itemId } = useParams();
     const history = useHistory();
-    const item = useSelector(state => state.item)
-    //const item = useSelector(state => state?.item);
+    // const item = useSelector(state => state.item)
+    // const items = useSelector(state => state?.items);
+    // const image = items[itemId]?.image
     const user = useSelector(state => state.session.user)
-    const [selectedImg, setSelectedImg] = useState( );
+    const [selectedImg, setSelectedImg] = useState([item?.image[0]]);
 
     useEffect(() => {
-        dispatch(getItemDetail(itemId));
-        // dispatch(getItems());
-    }, [dispatch, itemId, getItemDetail]);
+       
+            dispatch(getItemDetail(itemId));
+       
+    }, [dispatch, itemId]);
 
+    if (item === 'undefined') {
+        dispatch(getItemDetail(itemId));
+            console.log("item is ", item)
+            setSelectedImg(item?.image[0])
+    }
+    // console.log("image is ",image)
     const endtime =new Date(item?.end)
     const currentTime = new Date()
 
@@ -57,7 +67,7 @@ const ItemDetail = () => {
 
     
     useEffect(()=>{
-        if (item.end){
+        if (item?.end){
             const interval = setInterval(
                 () => setDelta(Math.abs(endtime - currentTime) / 1000), 1000)
             setRemainTime(calculateTime)
@@ -134,7 +144,8 @@ const ItemDetail = () => {
                             {/* <img  src={selectedImg} alt="zoom" className="selectedImage" width="500" /> */}
 
                                 <div>
-                                    {!(selectedImg) ? loadImg : <ReactImageZoom {...props} />}
+                                    {/* {!(selectedImg) ? loadImg : <ReactImageZoom {...props} />} */}
+                                     <ReactImageZoom {...props} />
 
                                  {/* { item.image && (<ReactImageZoom {...props} /> )} */}
                                 </div>

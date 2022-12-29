@@ -45,6 +45,7 @@
 .searchBarDisplay{
     border:1px solid black;
     align-items: center;
+    width:200px;
 }
 
 .navMenu_home {
