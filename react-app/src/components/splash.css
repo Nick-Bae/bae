@@ -32,7 +32,7 @@
     align-content: center;
     align-items: center;
     cursor: pointer;
-    flex-direction: column;
+    /* flex-direction: column; */
 }
 .womenCollection, .shoesCategory, .accesoryCategory {
     width:200px;
@@ -60,6 +60,7 @@
     background-color: black;
     color: white;
     cursor: pointer;
+    margin-right:40px;
 }
 
 .categoryImg{

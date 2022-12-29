@@ -29,6 +29,9 @@ const Splash = () => {
                 <img className='mainImage' src="https://nbae.s3.amazonaws.com/mainImage.jpg" alt=""/>
             </div>
             <div className='mainCategory' onClick={() => <CategoryItems category={1} />}>
+                <div className="allItems">
+                    <button className="allItemsBt" onClick={()=> history.push('/items') }> All </button>
+                </div>
                 <div className='singleCategory'>
                     {categories.map((category) => (
                         <div key={category.id} className='mainCategories'>
@@ -41,9 +44,6 @@ const Splash = () => {
                                                 
                         </div>
                     ))}
-                </div>
-                <div className="allItems">
-                    <button className="allItemsBt" onClick={()=> history.push('/items') }> All </button>
                 </div>
             </div>
 

@@ -28,9 +28,7 @@ const CategoryBar = () => {
                                     <img key={item?.id} className="itemImage" src={item?.image[0]} alt="" />
                                 </div> */}
                             <div className='categoryBarName'>
-                                <div>
                                     {item}
-                                </div>
                             </div>
                         </NavLink>
                     ))}

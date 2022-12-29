@@ -12,4 +12,5 @@
 .categoryBarName{
     display: flex;
     justify-content: space-evenly;
+    text-decoration: none;
 }
