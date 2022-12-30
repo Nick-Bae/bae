@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import { getUserCart, updateCart } from '../../store/cart';
 import './OrderQuantity.css'
 

@@ -47,7 +47,7 @@ const ItemForm = () => {
     let convertTime = removeT[0]+" "+removeT[1]+":00"
     // let convertTime = new Date(Date.UTC(end))
     let item={}
-    // if (end) {
+    if (end) {
          item = { 
             user_id: user.id, 
             name, 
@@ -57,16 +57,16 @@ const ItemForm = () => {
             description,
             end: convertTime
         };
-    // } else {
-    //      item = { 
-    //         user_id: user.id, 
-    //         name, 
-    //         price:parseFloat(price).toFixed(2), 
-    //         quantity,
-    //         category_id, 
-    //         description
-    //     };
-    // }
+    } else {
+         item = { 
+            user_id: user.id, 
+            name, 
+            price:parseFloat(price).toFixed(2), 
+            quantity,
+            category_id, 
+            description
+        };
+    }
     const newItem = await dispatch(createItem(item)).catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
@@ -136,9 +136,75 @@ const ItemForm = () => {
     setDescription("");
   }
   
-  const updateImage = (e) => {
+    const updateImage = (e) => {
     const file = e.target.files[0];
-    setImage(file); 
+        setImage(file); 
+    }
+
+    const MultipleFileChange = (e) => {
+        setImage(e.target.files);
+    }
+
+    const UploadMultipleFiles = async () => {
+        setHasSubmitted(true);
+        if (validationErrors.length) return alert(`Cannot Submit`);
+        
+        let removeT = end.split('T');
+        let convertTime = removeT[0]+" "+removeT[1]+":00"
+        // let convertTime = new Date(Date.UTC(end))
+        let item={}
+        if (end) {
+             item = { 
+                user_id: user.id, 
+                name, 
+                price:parseFloat(price).toFixed(2), 
+                quantity,
+                category_id, 
+                description,
+                end: convertTime
+            };
+        } else {
+             item = { 
+                user_id: user.id, 
+                name, 
+                price:parseFloat(price).toFixed(2), 
+                quantity,
+                category_id, 
+                description
+            };
+        }
+        const newItem = await dispatch(createItem(item)).catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) {
+                setErrors(Object.values(data.errors));
+            }
+        });
+        console.log("this line is read111?")
+        console.log("newItem is",newItem)
+
+        const formData = new FormData();
+        for (let i = 0; i < image.length; i++) {
+            formData.append('image', image[i]);                      
+        }
+        const imageReturn = await fetch('/api/images',{
+            method: "POST",
+            body:formData,
+        })
+
+        const imgUrl = await imageReturn.json()
+        const urlValues = Object.values(imgUrl)
+
+        for (let j=0; j<urlValues.length; j++) {
+            const imageUrl ={
+                url:urlValues[j].url,
+                product_id: newItem.id
+            }
+            await dispatch(createImage( imageUrl))
+        }
+
+        // console.log("this line is read222?")
+        // console.log("object values",url)
+        // console.log("what is return", imgUrl)
     }
 
   return (
@@ -246,7 +312,9 @@ const ItemForm = () => {
               id="uploadBt"
               type="file"
               accept="image/*"
-              onChange={updateImage}
+            //   onChange={updateImage}
+              onChange={MultipleFileChange}
+              multiple 
             />
           
             {(imageLoading)&& <p>Loading...</p>}
@@ -255,6 +323,8 @@ const ItemForm = () => {
         <div>
         <input id="itemtBt" type="submit" /> &nbsp;
         <button id="itemtBt" type="button" onClick={cancelClick}>Cancel</button>
+        {/* <button onClick={()=>{history.push(`/items/${itemId}/images`)}}>edit image</button> */}
+        <button type="button" onClick={() => UploadMultipleFiles()}  className="mutipleUploadBt">Upload</button>
         </div>
     </form>
     

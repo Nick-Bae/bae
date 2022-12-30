@@ -11,18 +11,16 @@ const EditItemForm = ( ) => {
     const { item } = location.state;
     const { itemId } = useParams();
     const history = useHistory();
-console.log("items is", item)
     const [name, setName] = useState(item?.name);
     const [price, setPrice] = useState(item?.price);
     const [category_id, setCategory_id] = useState(item?.category_id);
-    // const [inventory_id, setInventory_id] = useState('');
     const [description, setDescription] = useState(item?.description);
     const [image, setImage] = useState(item?.image);
     const [quantity, setQuantity] = useState(item.quantity);
-
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
+    const [imageLoading, setImageLoading] = useState(false)
 
     useEffect(() => {
         const errors = [];
@@ -50,9 +48,9 @@ console.log("items is", item)
             user_id: user.id,
             name,
             price: parseFloat(price).toFixed(2),
+            quantity,
             category_id,
-            description,
-            quantity
+            description
         };
 
         await dispatch(updateItem(item))
@@ -168,6 +166,7 @@ console.log("items is", item)
                     <input id="itemtBt" type="submit" /> &nbsp;
                     {/* <button id="itemtBt" type="button" onClick={editSubmit}>Cancel</button> */}
                     <button id="itemtBt" type="button" onClick={cancelClick}>Cancel</button>
+                    <button onClick={()=>{history.push(`/items/${itemId}/images`)}}>edit image</button>
                 </div>
             </form>
         </section>

@@ -1,19 +1,15 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
-import { getUserOrder, deleteOneOrder } from '../../store/order';
+import { deleteOneOrder } from '../../store/order';
 import { createOrder } from '../../store/order';
 import './Order.css'
 import OrderQuantity from './OrderQuantity';
 
 const Order = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
-//   const { carts } = location.state;
   const carts = Object.values(useSelector(state => state.cart));
   const history = useHistory();
   const user = useSelector(state => state.session.user)
-  // const items = Object.values(useSelector(state => state.items));
   let cartTotal = 0
 
     // useEffect(() => {

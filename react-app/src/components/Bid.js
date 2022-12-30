@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
 import {createBid, getBidsOnItem } from '../store/bid';
-import { getItemDetail } from "../store/itemDetail";
 import './Bid.css'
 let socket;
 
@@ -33,7 +32,7 @@ const Bid = () => {
     useEffect(()=>{
         console.log("item id is", item.id)
         dispatch(getBidsOnItem(item.id))
-        dispatch(getItemDetail(item.id))
+        // dispatch(getItemDetail(item.id))
     },[dispatch, item.id, bidInput])
 
     const updateBidInput = (e) => {

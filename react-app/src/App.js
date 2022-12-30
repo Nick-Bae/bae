@@ -18,7 +18,6 @@ import NotFound from './components/NotFound';
 // import Cart from './components/Cart';
 import Mymenu from './components/Mymenu/Mymenu';
 import WishList from './components/Products/WishList';
-import UploadPicture from './components/UploadPicture';
 import CartDetail from './components/Cart/CartDetail';
 import CartPage from './components/Cart/CartPage';
 import Order from './components/Order/Order';
@@ -99,9 +98,9 @@ function App() {
           <EditItemForm />
         </ProtectedRoute>
 
-        {/* <ProtectedRoute path='/items/:itemId/images' exact={true} >
+        <ProtectedRoute path='/items/:itemId/images' exact={true} >
           <EditItemForm />
-        </ProtectedRoute> */}
+        </ProtectedRoute>
 
         {/* <ProtectedRoute path='/images' exact={true} >
           <EditItemForm />

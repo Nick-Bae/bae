@@ -12,9 +12,7 @@ import WishList from './WishList';
 import Cart from '../Cart/Cart';
 import Bid from '../Bid';
 import ReactImageZoom from "react-image-zoom";
-// import Zoom from 'react-medium-image-zoom'
-// import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
-// import 'react-medium-image-zoom/dist/styles.css'
+import EndTime from './EndTime';
 
 const ItemDetail = () => {
     
@@ -23,9 +21,6 @@ const ItemDetail = () => {
     const item= location.state?.item;
     const { itemId } = useParams();
     const history = useHistory();
-    // const item = useSelector(state => state.item)
-    // const items = useSelector(state => state?.items);
-    // const image = items[itemId]?.image
     const user = useSelector(state => state.session.user)
     const [selectedImg, setSelectedImg] = useState([item?.image[0]]);
 
@@ -35,11 +30,6 @@ const ItemDetail = () => {
        
     }, [dispatch, itemId]);
 
-    if (item === 'undefined') {
-        dispatch(getItemDetail(itemId));
-            console.log("item is ", item)
-            setSelectedImg(item?.image[0])
-    }
     // console.log("image is ",image)
     const endtime =new Date(item?.end)
     const currentTime = new Date()
@@ -66,19 +56,17 @@ const ItemDetail = () => {
     const isEnded = endtime - currentTime > 0
 
     
-    useEffect(()=>{
-        if (item?.end){
-            const interval = setInterval(
-                () => setDelta(Math.abs(endtime - currentTime) / 1000), 1000)
-            setRemainTime(calculateTime)
+    // useEffect(()=>{
+    //     if (item?.end){
+    //         const interval = setInterval(
+    //             () => setDelta(Math.abs(endtime - currentTime) / 1000), 1000)
+    //         setRemainTime(calculateTime)
     
-            return ()=> clearInterval(interval);
-        }
-    },[endtime, calculateTime, currentTime] )
+    //         return ()=> clearInterval(interval);
+    //     }
+    // },[endtime, calculateTime, currentTime] )
     
      
-   
-
     const deleteBt = async (e) => {
         e.preventDefault();
         let confirmMessage = window.confirm("Are you sure to delete this item?");
@@ -135,19 +123,10 @@ const ItemDetail = () => {
                             // </Zoom>
                             ))}
                             </div>
-                            {/* </ControlledZoom> */}
-                            {/* { item?.image && (
-                                <div className='zoomedImage'>
-                                {!(selectedImg) ? setSelectedImg(item.image[0]) : <img  src={selectedImg} alt="zoom" className="selectedImage" width="500" />}
-                            </div>
-                            )}  */}
-                            {/* <img  src={selectedImg} alt="zoom" className="selectedImage" width="500" /> */}
 
                                 <div>
                                     {/* {!(selectedImg) ? loadImg : <ReactImageZoom {...props} />} */}
                                      <ReactImageZoom {...props} />
-
-                                 {/* { item.image && (<ReactImageZoom {...props} /> )} */}
                                 </div>
 
                         </div>
@@ -161,8 +140,9 @@ const ItemDetail = () => {
                                 <div id="itemDescription">{item?.description}</div>
                                 {item?.end && isEnded && (
                                     <>
-                                <div id="endTime">Time left</div>
-                                <div id="remainTime">{remainTime}</div>
+                                    <EndTime />
+                                {/* <div id="endTime">Time left</div>
+                                <div id="remainTime">{remainTime}</div> */}
                                 
                                 {/* <button id="wishBt" onClick={wishBt}>Add to Wishist</button> */}
                                 <Bid item={item}/>
