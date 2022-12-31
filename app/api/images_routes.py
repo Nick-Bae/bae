@@ -15,33 +15,19 @@ def upload_image( ):
     if "image" not in request.files:
         return {"errors": "image required"}, 400
 
-    image = request.files["image"]
-    # data = request.form
-   
-    # print("getting data #########", data)
-
-    if not allowed_file(image.filename):
-        return {"errors": "file type not permitted"}, 400
+    images = request.files.getlist('image')
+    # images = request.files["image"]
     
-    image.filename = get_unique_filename(image.filename)
-
-    print("before the upload image")
-    upload = upload_file_to_s3(image)
-    print("after the upload image", upload["url"])
-    if "url" not in upload:
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when we tried to upload
-        # so we send back that error message
-        return upload, 400
-
-    url = upload["url"]
-    # flask_login allows us to get the current user from the request
-    # new_image = Image(user=current_user, url=url)
-    # new_image = Image( url=url)
-    # db.session.add(new_image)
-    # db.session.commit()
-    return {"url": url}
+    upload =[];
     
+    for image in images:
+        if not allowed_file(image.filename):
+            return {"errors": "file type not permitted"}, 400
+        image.filename = get_unique_filename(image.filename)
+        upload.append(upload_file_to_s3(image));
+
+    return {i+1: upload[i] for i in range(len(upload))}
+
 
 def validation_errors_to_error_messages(validation_errors):
     """

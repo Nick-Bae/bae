@@ -179,7 +179,6 @@ const ItemForm = () => {
                 setErrors(Object.values(data.errors));
             }
         });
-        console.log("this line is read111?")
         console.log("newItem is",newItem)
 
         const formData = new FormData();
