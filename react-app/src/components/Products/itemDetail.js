@@ -30,7 +30,6 @@ const ItemDetail = () => {
        
     }, [dispatch, itemId]);
 
-    // console.log("image is ",image)
     const endtime =new Date(item?.end)
     const currentTime = new Date()
 
