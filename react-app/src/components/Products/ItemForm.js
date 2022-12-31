@@ -173,7 +173,7 @@ const ItemForm = () => {
                 description
             };
         }
-        const newItem = await dispatch(createItem(item)).catch(async (res) => {
+        let newItem = await dispatch(createItem(item)).catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
                 setErrors(Object.values(data.errors));
@@ -192,18 +192,22 @@ const ItemForm = () => {
 
         const imgUrl = await imageReturn.json()
         const urlValues = Object.values(imgUrl)
-
+        let url=[]
         for (let j=0; j<urlValues.length; j++) {
             const imageUrl ={
                 url:urlValues[j].url,
                 product_id: newItem.id
             }
+           
+            url.push(urlValues[j].url)
+
             await dispatch(createImage( imageUrl))
         }
-
-        // console.log("this line is read222?")
-        // console.log("object values",url)
-        // console.log("what is return", imgUrl)
+        newItem.image=url
+        history.push({
+            pathname: `/items/${newItem.id}`,
+            state: { item: newItem }
+          });
     }
 
   return (
