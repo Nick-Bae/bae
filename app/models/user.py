@@ -49,3 +49,11 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email
         }
+
+    # def to_order(self):
+    #     return {
+    #         'id': self.id,
+    #         'username': self.username,
+    #         'email': self.email,
+    #         'order': self.orders
+    #     }

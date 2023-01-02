@@ -13,7 +13,8 @@ import Cart from '../Cart/Cart';
 import Bid from '../Bid';
 import ReactImageZoom from "react-image-zoom";
 import EndTime from './EndTime';
-
+import BuyNow from '../Order/BuyNow';
+import { getWishlist } from '../../store/wishlist';
 const ItemDetail = () => {
     
     const dispatch = useDispatch();
@@ -24,9 +25,13 @@ const ItemDetail = () => {
     const user = useSelector(state => state.session.user)
     const [selectedImg, setSelectedImg] = useState([item?.image[0]]);
 
+    const wishlist = useSelector((state) => state.wishlist);
+    const allWishUser = wishlist.allUser
+
     useEffect(() => {
        
             dispatch(getItemDetail(itemId));
+            dispatch(getWishlist(itemId));
        
     }, [dispatch, itemId]);
 
@@ -95,6 +100,8 @@ const ItemDetail = () => {
         setSelectedImg(item?.image[0])
     }
 
+    const isWishlist = allWishUser?.find((id) => id === user?.id)
+
     if (!item) return null;
     return (
        
@@ -150,7 +157,7 @@ const ItemDetail = () => {
                                 {!isEnded && item?.end && (
                                    <p> This auction is over. </p>
                                 )}
-                                <WishList itemId={itemId} />
+                                <WishList allWishUser={allWishUser} isWishlist={isWishlist}/>
                                 <Cart />
                             </div>
                         </div>

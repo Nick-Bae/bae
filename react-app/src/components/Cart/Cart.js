@@ -48,9 +48,9 @@ const Cart = () => {
        }
       //  setQuantity('');
      }
-
   }
 
+ 
   return (
     <>
       { validationErrors.length > 0 && (
@@ -66,7 +66,7 @@ const Cart = () => {
         </div>
       )}
       <button type="submit" className="addToCartLabel" onClick={submitCart} >Add to Cart</button>
-      
+                
       <form id="cartForm" onSubmit={submitCart}>
         <div id="quantityInput">
           <label id="quantityLabel" htmlFor='quantity'>Quantity</label>

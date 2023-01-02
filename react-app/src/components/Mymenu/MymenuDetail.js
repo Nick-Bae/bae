@@ -46,13 +46,13 @@ function MymenuDetail({ menu }) {
                 {selectedMenu === 'wishlist' && (
                     <div className='wishlistDetail_container'> 
                     <p id="wishlist">Wishlist</p>
-                        {wishImages.map(item => (
+                        {wishlists.map(item => (
                             <div className='wishlistDetail'>
-                                <NavLink key={item?.id} to={{ pathname: `/items/${item?.product_id}`, state: { item: item } }}>
+                                <NavLink key={item?.id} to={{ pathname: `/items/${item?.id}`, state: { item: item } }}>
                                     <div className='wishdetailContainer'>
-                                        <img className="wishImage" src={item?.url} alt="" />
+                                        <img className="wishImage" src={item?.image[0]} alt="" />
                                         <div className='wishTitle'>
-                                            {item?.Product.name}
+                                            {item?.name}
                                         </div>
                                     </div>
                                 </NavLink>

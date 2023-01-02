@@ -61,10 +61,11 @@ def get_cartlist(id):
 
     return itemsInCart
 
-
+# ============================= User Order==============================
 @user_routes.route('/<int:id>/order')
 @login_required
 def get_user_order(id):
     user = User.query.get(id)
     orders = user.orders
-    # for order in orders
+    
+    # return 

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getUserCart } from '../../store/cart';
 import { deleteOneCart } from '../../store/cart';
+import Order from '../Order/Order';
 // import CartPage from './CartPage';
 import './CartDetail.css'
 // import Order from '../Order/Order';
@@ -13,7 +14,6 @@ const CartDetail = () => {
     const user = useSelector(state => state.session.user)
 
     let cartTotal = 0
-    console.log("carts ###########", carts)
 
     useEffect(() => {
         dispatch(getUserCart(user?.id))
@@ -70,9 +70,10 @@ const CartDetail = () => {
                     <div className="checkOutInCart">
                         <NavLink  to={{
                             pathname: `/order`,
-                            state: { carts: carts }
+                            state: { item: carts }
                         }} >Check out
                         </NavLink>
+                         
                     </div>
                     <div className='viewCartInCart'>
                         <NavLink to={`/cart`}>View Cart</NavLink>

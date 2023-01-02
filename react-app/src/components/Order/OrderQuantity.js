@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserCart, updateCart } from '../../store/cart';
+import { getUserOrder } from '../../store/order';
 import './OrderQuantity.css'
 
 const OrderQuantity = ({item}) => {
@@ -24,6 +25,11 @@ const OrderQuantity = ({item}) => {
       useEffect(() => {
         dispatch(getUserCart(user?.id))
       }, [dispatch, cart.length, user?.id]);
+
+    //   useEffect(() => {
+    //     dispatch(getUserOrder(user?.id))
+    // }, [dispatch, quantity]);
+
     
       const cartUpdate = (cartId) => {
         if (validationErrors.length) return alert(`Cannot Submit`);

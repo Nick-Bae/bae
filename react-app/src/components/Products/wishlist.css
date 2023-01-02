@@ -14,10 +14,18 @@
 
 .heartSign{
     font-size: 30px;
-    /* margin-top: 20px; */
     position:relative;
     right:250px;
-    top:-350px;
+    top:-50px;
+    color: red;
+}
+
+.blackHeart{
+    font-size: 30px;
+    position:relative;
+    right:250px;
+    top:-50px;
+    color: black;
 }
 
 #wishSimbol{

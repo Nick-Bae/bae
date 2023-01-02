@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import { deleteOneOrder } from '../../store/order';
@@ -8,13 +9,15 @@ import OrderQuantity from './OrderQuantity';
 const Order = () => {
   const dispatch = useDispatch();
   const carts = Object.values(useSelector(state => state.cart));
+  const location = useLocation();
+  const orders= location.state?.item;
   const history = useHistory();
   const user = useSelector(state => state.session.user)
   let cartTotal = 0
 
     // useEffect(() => {
     //     dispatch(getUserOrder(user?.id))
-    // }, [dispatch, user.id]);
+    // }, [dispatch, quantity]);
 
 
     const orderDelete = (cartId) => {
@@ -37,7 +40,7 @@ const Order = () => {
          <h2 className='shoppingCartLabel'>Checkout</h2>
         <div className="orderList">
             <div className='orderList-content'>
-                {carts.map(cart => (
+                {carts?.map(cart => (
                 <>
                     <div className="orderIndividual" key={cart.id}>
                         <NavLink to={`/items/${cart.id}`}>
@@ -58,7 +61,7 @@ const Order = () => {
                         </div>
                         <div hidden={true}>{cartTotal += cart.price * cart.quantity}</div>
                         <div className='cartDeleteBt'>
-                            <button className="orderDeleteBt" onClick={() => orderDelete(cart.cartId)}>
+                            <button className="orderDeleteBt" onClick={() => orderDelete(cart.id)}>
                                 <i className="fa-solid fa-trash" ></i>
                             </button>
                         </div>
