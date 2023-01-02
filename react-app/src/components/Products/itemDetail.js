@@ -15,6 +15,7 @@ import ReactImageZoom from "react-image-zoom";
 import EndTime from './EndTime';
 import BuyNow from '../Order/BuyNow';
 import { getWishlist } from '../../store/wishlist';
+
 const ItemDetail = () => {
     
     const dispatch = useDispatch();

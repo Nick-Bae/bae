@@ -24,7 +24,7 @@ const WishList = ({allWishUser, isWishlist}) => {
         // isWishlist ? wishClick.style.color = "red" : wishClick.style.color = "black"
         
     
-    }, [dispatch, wishClick]);
+    }, [dispatch, isWishlist]);
 
     if (allWishUser === undefined) {
         dispatch(getWishlist(itemId));
@@ -75,19 +75,13 @@ const wishBt = (e) => {
     //         setWishlistBt(true)
     //         //   dispatch(getItemDetail(itemId))
     //     }
-    wishClick = document?.getElementById('wishSimbol')
+    // wishClick = document?.getElementById('wishSimbol')
     // isWishlist ? wishClick.style.color = "red" : wishClick.style.color = "black"
-    isWishlist ? checkWishBt.current.style.color = "red" : checkWishBt.current.style.color = "black"
+    // isWishlist ? checkWishBt.current.style.color = "red" : checkWishBt.current.style.color = "black"
     dispatch(getWishlist(itemId))
     // }
 };
 
-
-
-// useEffect(() => {
-//      dispatch(getWishlist(itemId))
-
-// }, [dispatch]);
 
 return (
     <>
@@ -95,8 +89,11 @@ return (
             <div onClick={wishBt}>
                 <button id="wishlistLabel">Add to Wishlist </button>
                 {/* <i className="fa-solid fa-heart heartSign"></i> */}
-                <i ref={checkWishBt} id="wishSimbol" className={wishlistBt ? "fa-solid fa-heart heartSign" 
-                                :"fa-solid fa-heart blackHeart"}></i>
+                <i ref={checkWishBt} 
+                    id="wishSimbol" 
+                    className={wishlistBt ? "fa-solid fa-heart heartSign" 
+                                :"fa-solid fa-heart blackHeart"}>
+                </i>
             </div>
         </div>
         

@@ -50,10 +50,10 @@ class User(db.Model, UserMixin):
             'email': self.email
         }
 
-    # def to_order(self):
-    #     return {
-    #         'id': self.id,
-    #         'username': self.username,
-    #         'email': self.email,
-    #         'order': self.orders
-    #     }
+    def to_order(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'order': [order.to_dict() for order in self.orders]
+        }

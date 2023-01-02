@@ -66,6 +66,7 @@ def get_cartlist(id):
 @login_required
 def get_user_order(id):
     user = User.query.get(id)
-    orders = user.orders
-    
+    # orders = user.orders
+    print("user.to order?????????????",user.to_order())
+    return user.to_order()
     # return 
