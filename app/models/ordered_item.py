@@ -6,11 +6,14 @@ class Ordered_item(db.Model):
     orderId = db.Column(db.Integer, db.ForeignKey('orders.id'), nullable=False)
     itemId = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
-    
+
+    item = db.relationship("Product", back_populates="ordered_items")
+
     def to_dict(self):
         return {
-            'id': self.id,
+            'ordered_itemId': self.id,
+            # 'itemId': self.itemId,
             'orderId': self.orderId,
-            'itemId': self.itemId,
             'quantity': self.quantity,
+            'item': self.item.to_dict()
         }

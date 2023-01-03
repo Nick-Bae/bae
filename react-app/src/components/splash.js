@@ -61,7 +61,7 @@ const Splash = () => {
                                 <img className="trendSimages" src="https://nbae.s3.amazonaws.com/yellow+Tshirt.jpg" alt=""/>
                             </div>
                             <div className='trendSmallEach'>
-                                <img className="trendSimages1" src="https://nbae.s3.amazonaws.com/heels.png" alt=""/>
+                                <img className="trendSimages" src="https://nbae.s3.amazonaws.com/heels.png" alt=""/>
                             </div>
                         </div>
                         <div className='trendRow'>
@@ -69,7 +69,7 @@ const Splash = () => {
                                 <img className="trendSimages" src="https://nbae.s3.amazonaws.com/jean+and+sweater.png" alt=""/>
                             </div>
                             <div className='trendSmallEach'>
-                                <img className="trendSimages1" src="https://nbae.s3.amazonaws.com/short+pants.jpg" alt=""/>
+                                <img className="trendSimages" src="https://nbae.s3.amazonaws.com/short+pants.jpg" alt=""/>
                             </div>
                         </div>
                     </div>

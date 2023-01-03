@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getAllImages } from '../../store/image';
 import { getUserItem } from '../../store/items';
+import { getUserOrder } from '../../store/order';
 import { userWishlist } from '../../store/wishlist';
 import './MymenuDetail.css'
 
@@ -14,11 +15,18 @@ function MymenuDetail({ menu }) {
     const images = Object.values(useSelector(state => state.images));
     const wishlists = Object.values(useSelector(state => state.wishlist));
     const items = Object.values(useSelector(state => state.items));
-
+    const orderHistory = (useSelector(state => state.orders))
+    const orders = orderHistory?.order
+    console.log(orders)
+    const item = orders?.map(order=> {
+        return order?.items
+    })
+    console.log("items",item)
     useEffect(() => {
         dispatch(userWishlist(sessionUser.id))
         dispatch(getAllImages())
         dispatch(getUserItem(sessionUser.id))
+        dispatch(getUserOrder(sessionUser.id))
     }, [dispatch,sessionUser.id])
 
     const wishImages = wishlists.map(list => (
@@ -31,7 +39,8 @@ function MymenuDetail({ menu }) {
     if (!sessionUser) {
         return null;
     }
-
+    let eachTotal=0
+    let totalPrice=0
     return (
         <>
             <div className='meMenuDetail'>
@@ -47,7 +56,7 @@ function MymenuDetail({ menu }) {
                     <div className='wishlistDetail_container'> 
                     <p id="wishlist">Wishlist</p>
                         {wishlists.map(item => (
-                            <div className='wishlistDetail'>
+                            <div key={item?.id} className='wishlistDetail'>
                                 <NavLink key={item?.id} to={{ pathname: `/items/${item?.id}`, state: { item: item } }}>
                                     <div className='wishdetailContainer'>
                                         <img className="wishImage" src={item?.image[0]} alt="" />
@@ -65,7 +74,7 @@ function MymenuDetail({ menu }) {
                     <div className='wishlistDetail_container'>
                         <p id="wishlist">Selling</p>
                         {sellingImages.map(item => (
-                            <div className='sellinglistDetail'>
+                            <div key={item?.id} className='sellinglistDetail'>
                                 <NavLink key={item?.id} to={{ pathname: `/items/${item?.product_id}`, state: { item: item } }}>
                                     <div className='wishdetailContainer'>
                                         <img className="wishImage" src={item?.url} alt=""/>
@@ -75,6 +84,64 @@ function MymenuDetail({ menu }) {
                                     </div>
                                 </NavLink>
                             </div>
+                        ))}
+                    </div>
+                )}
+
+                {selectedMenu === 'order' && (
+                    <div className='wishlistDetail_container'>
+                        <p id="wishlist">Order History</p>
+                        {orderHistory?.order?.map(orders => (
+                            // <div className='sellinglistDetail'>
+                            //     {console.log("orders", orders)}
+                            //     <div>
+                            //         {orders.items.map(singleItem=>(
+                            //             <div>
+                            //            {console.log("items",singleItem.item.name)}
+
+                                            
+                            //             </div>
+                            //         ))}
+                            //     </div>
+                            <>
+                            <div>
+                            Order Date: &nbsp;
+                            {
+                                <>
+                                {(()=> {
+                                    let data = orders.date.split(' ')
+                                    let onlyDate = (data.splice(1,3).join(' '))
+                                    return onlyDate
+                                })()}
+                                </>
+                            }
+                            </div>
+                                 <div>
+                                    {orders?.items.map(singleItem=>(
+                                       
+                                            <>
+                                           
+                                    <NavLink key={singleItem?.id} 
+                                        to={{ pathname: `/items/${singleItem?.item?.id}`, state: { item: singleItem?.item } }}>
+                                        <div className='wishdetailContainer'>
+                                            <img className="wishImage" src={singleItem.item?.image[0]} alt=""/>
+                                            
+                                            <div className='wishTitle'>
+                                                {singleItem.item?.name}
+                                            </div>
+                                        </div>
+                                        <div className='totalOrderPrice'>
+                                                $ {eachTotal = singleItem.item?.price*singleItem.item.quantity}
+                                        </div>
+                                    </NavLink>
+                                            <div hidden={true} className='totalOrderPrice'>
+                                                $ {totalPrice += eachTotal}
+                                            </div>
+                                            </>
+                                    ))}
+                                    ${totalPrice}
+                            </div>
+                            </>
                         ))}
                     </div>
                 )}

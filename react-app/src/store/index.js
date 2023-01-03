@@ -9,6 +9,7 @@ import wishlistReducer from './wishlist';
 import cartReducer from './cart';
 import bidReducer from './bid';
 import categoryReducer from './category';
+import orderReducer from './order';
 
 const rootReducer = combineReducers({
   session,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   wishlist: wishlistReducer,
   cart: cartReducer,
   bid: bidReducer,
-  category: categoryReducer
+  category: categoryReducer,
+  orders: orderReducer
 });
 
 

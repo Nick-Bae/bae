@@ -39,7 +39,13 @@
     height: 200px;
     display: flex;
     justify-content: center;
+    /* border: 1px solid rgb(235, 231, 231); */
+    border-radius: 230px;
+    transition: transform .2s;
     
+}
+.womenCollection:hover {
+    transform: scale(1.05);
 }
 
 .categoryBtInMain{

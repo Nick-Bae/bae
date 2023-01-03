@@ -31,6 +31,9 @@ function Mymenu() {
                         <li className="mymenu_sellinglist" 
                             onClick={()=>setSelectedMenu("selling")}>Selling
                         </li>
+                        <li className="mymenu_orderlist" 
+                            onClick={()=>setSelectedMenu("order")}>Order History
+                        </li>
                     </ul>
                 </div>
                 <MymenuDetail menu={selectedMenu} />
