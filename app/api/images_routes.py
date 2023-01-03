@@ -24,6 +24,7 @@ def upload_image( ):
         if not allowed_file(image.filename):
             return {"errors": "file type not permitted"}, 400
         image.filename = get_unique_filename(image.filename)
+        print("before uploading file#######",image)
         upload.append(upload_file_to_s3(image));
 
     return {i+1: upload[i] for i in range(len(upload))}
