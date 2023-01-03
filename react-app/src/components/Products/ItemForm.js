@@ -204,6 +204,7 @@ const ItemForm = () => {
            
             url.push(urlValues[j].url)
 
+            console.log("sending url ", imageUrl)
             await dispatch(createImage( imageUrl))
         }
         newItem.image=url
