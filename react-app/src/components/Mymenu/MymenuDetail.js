@@ -104,14 +104,14 @@ function MymenuDetail({ menu }) {
                             //         ))}
                             //     </div>
                             <>
-                            <div>
+                            <div className='orderDate'>
                             Order Date: &nbsp;
                             {
                                 <>
                                 {(()=> {
                                     let data = orders.date.split(' ')
-                                    let onlyDate = (data.splice(1,3).join(' '))
-                                    return onlyDate
+                                    let date = (data.splice(1,3).join(' '))
+                                    return date
                                 })()}
                                 </>
                             }

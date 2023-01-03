@@ -1,3 +1,4 @@
+
 .wishlistDetail_container{
 
 }
@@ -38,3 +39,7 @@
 
 
 .myMenubar li:hover {background-color: #ddd};
+
+.orderDate{
+    margin: 50px 0 0 50px;
+}

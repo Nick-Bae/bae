@@ -185,6 +185,7 @@ const ItemForm = () => {
         for (let i = 0; i < image.length; i++) {
             formData.append('image', image[i]);                      
         }
+        
         const imageReturn = await fetch('/api/images',{
             method: "POST",
             body:formData,
@@ -192,6 +193,8 @@ const ItemForm = () => {
 
         const imgUrl = await imageReturn.json()
         const urlValues = Object.values(imgUrl)
+        console.log("url is returing", urlValues)
+
         let url=[]
         for (let j=0; j<urlValues.length; j++) {
             const imageUrl ={
