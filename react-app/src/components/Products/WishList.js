@@ -82,7 +82,7 @@ const wishBt = (e) => {
     // }
 };
 
-
+{/* <i className="far fa-heart btnProd-icons"></i> */}
 return (
     <>
         <div >
@@ -91,8 +91,8 @@ return (
                 {/* <i className="fa-solid fa-heart heartSign"></i> */}
                 <i ref={checkWishBt} 
                     id="wishSimbol" 
-                    className={wishlistBt ? "fa-solid fa-heart heartSign" 
-                                :"fa-solid fa-heart blackHeart"}>
+                    className={wishlistBt ? "fas fa-heart heartSign" 
+                                :"fa fa-heart-o blackHeart"}>
                 </i>
             </div>
         </div>

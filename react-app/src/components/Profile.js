@@ -28,12 +28,7 @@ function Profile() {
 
                 <NavLink className="myBae" to='/mymenu'>My Bae</NavLink>
 
-                <div>
-                {/* <NavLink to={`/users/${userId}/cart`}> */}
-                    {/* <i class="fa fa-thin fa-cart-shopping"><CartDetail /></i> */}
-                {/* </NavLink> */}
-                </div>
-                <LogoutButton />
+                <LogoutButton className="logOutButton" />
                 <CartDetail />
             </div>
         </div>

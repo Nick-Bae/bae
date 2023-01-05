@@ -34,7 +34,7 @@ const Splash = () => {
                 </div>
                 <div className='singleCategory'>
                     {categories.map((category) => (
-                        <div key={category.id} className='mainCategories'>
+                        <div key={category} className='mainCategories'>
                             <NavLink className="categoryNav" to={`/categories/${category.categoryId}`}>
                                 <div className='categoryImg'>
                                     <img className="womenCollection" src={category.img} alt=""/>

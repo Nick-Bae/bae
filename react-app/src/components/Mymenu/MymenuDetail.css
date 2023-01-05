@@ -19,7 +19,7 @@
 
 .menu-details{
     margin-left:20px;
-    padding: 10px 0;
+    /* padding: 10px 0; */
     font-size: 30px;
 }
 
@@ -31,15 +31,19 @@
     font-size:25px;
 }
 
-#wishlist{
+#myBaeMenu{
     margin-left: 40px;
     font-size: 30px;
     font-weight: bold;
 }
 
 
-.myMenubar li:hover {background-color: #ddd};
+.myMenubar div:hover {background-color: #ddd};
 
 .orderDate{
     margin: 50px 0 0 50px;
+}
+
+.meMenuDetail{
+    margin-top:20px;
 }

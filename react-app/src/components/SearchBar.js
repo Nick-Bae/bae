@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { useLocation } from 'react-router-dom';
 import { getItems } from "../store/items";
+import "./SearchBar.css"
 // import Profile from "./Profile/Profile";
 // import Cart from "./Cart/Cart";
 
@@ -47,7 +48,7 @@ function SearchBar() {
   return (
     <div className="App">
       <header className="App-header">
-        <div style={{ width: 650 }}>
+        <div className="searchBarStyle" style={{ width: 520 }}>
           <ReactSearchAutocomplete
             items={data}
             onSearch={handleOnSearch}

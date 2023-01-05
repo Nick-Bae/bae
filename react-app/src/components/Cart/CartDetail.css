@@ -1,5 +1,7 @@
 .cartList{
-    font-size: 14px;;
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-end;
 }
 .cartImage{
     width:90px;
@@ -72,6 +74,9 @@
 
 .cartNum{
     display: flex;
+    width:80px;
+    justify-content: flex-end;
+    /* margin-left:30px; */
 }
 
 .cartPriceLabel{
@@ -97,4 +102,9 @@
 .cartDeleteCartView{
     border:none;
 
+}
+
+.dropbtn{
+    background-color: white;
+    cursor: pointer;
 }

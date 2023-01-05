@@ -240,14 +240,14 @@ def post_image(id):
 @products_routes.route('/<int:id>/images',  methods=['PUT'])
 @login_required
 def edit_image(id):
-    image = Image.query.filter(Image.product_id == id)
+    image = Image.query.filter(Image.product_id == id).first()
     form = ImageForm()
-    
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
         image.url = data['url']
-           
+        image.product_id = id   
+
         db.session.add(image)
         db.session.commit()
         return image.to_dict()

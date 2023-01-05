@@ -24,17 +24,17 @@ function Mymenu() {
             </div>
             <div className='myMenuBody'>
                 <div className='myMenuBars'>
-                    <ul className='myMenubar'>
-                        <li className="mymenuWishlist" 
+                    <div className='myMenubar'>
+                        <div className="mymenuWishlist" 
                             onClick={()=>setSelectedMenu("wishlist")}>Wishlist
-                        </li>
-                        <li className="mymenu_sellinglist" 
+                        </div>
+                        <div className="mymenu_sellinglist" 
                             onClick={()=>setSelectedMenu("selling")}>Selling
-                        </li>
-                        <li className="mymenu_orderlist" 
-                            onClick={()=>setSelectedMenu("order")}>Order History
-                        </li>
-                    </ul>
+                        </div>
+                        <div className="mymenu_orderlist" 
+                            onClick={()=>setSelectedMenu("order")}>Orders
+                        </div>
+                    </div>
                 </div>
                 <MymenuDetail menu={selectedMenu} />
             </div>

@@ -3,6 +3,7 @@
     min-width:1300px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 .myMenuBody{
     display: flex;
@@ -10,7 +11,7 @@
 }
 .myMenuBars{
     border-right: 1px solid var(--grey-light-color);
-    margin-right: 10px 10px 0 10px;
+    margin: 10px 10px 0 10px;
     /* background-color: rgb(247, 247, 220); */
     min-height: 1100px;
 }
@@ -24,12 +25,17 @@
     margin-bottom: 30px;
 }
 
-.mymenuWishlist, .mymenu_sellinglist{
-    padding: 10px 0;
-    width: 120px;
+.mymenuWishlist, .mymenu_sellinglist, .mymenu_orderlist{
+    padding: 10px 15px;
+    width: 130px;
+    word-spacing: 15px;
+    justify-content: flex-end;
+    display: flex;
 }
 
 .mymenuWishlist{
-    margin-top:20px;
+    /* margin-top:20px; */
 }
-
+.myMenuTop{
+    margin-top:50px;
+}

@@ -75,7 +75,7 @@
     /* width:800px; */
     border: 1px solid var(--grey-light-color);
     border-radius: 10px;
-    min-width:900px;
+    min-width:1000px;
 }
 
 .itemEditBt{

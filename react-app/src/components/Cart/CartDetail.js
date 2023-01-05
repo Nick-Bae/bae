@@ -31,7 +31,7 @@ const CartDetail = () => {
             <div className='cartNum'>
                 <i className="fa fa-thin fa-cart-shopping dropbtn"></i>
                 {carts.length >= 1 && (
-                    <p id="cartNum">{carts.length}</p>
+                    <p id="cartNum" style={{marginRight:0}}>{carts.length}</p>
                 )}
             </div>
 

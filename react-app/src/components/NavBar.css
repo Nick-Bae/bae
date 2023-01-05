@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0px 20px 0px 20px;
+    margin: 0px 5px;
     height:67px;
 }
 .navMenu_login {
@@ -52,4 +52,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.navInfo{
+    margin-right:0;
 }

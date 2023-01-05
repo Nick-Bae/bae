@@ -54,7 +54,7 @@ function MymenuDetail({ menu }) {
 
                 {selectedMenu === 'wishlist' && (
                     <div className='wishlistDetail_container'> 
-                    <p id="wishlist">Wishlist</p>
+                    <p id="myBaeMenu">Wishlist</p>
                         {wishlists.map(item => (
                             <div key={item?.id} className='wishlistDetail'>
                                 <NavLink key={item?.id} to={{ pathname: `/items/${item?.id}`, state: { item: item } }}>
@@ -72,7 +72,7 @@ function MymenuDetail({ menu }) {
 
                 {selectedMenu === 'selling' && (
                     <div className='wishlistDetail_container'>
-                        <p id="wishlist">Selling</p>
+                        <p id="myBaeMenu">Selling</p>
                         {sellingImages.map(item => (
                             <div key={item?.id} className='sellinglistDetail'>
                                 <NavLink key={item?.id} to={{ pathname: `/items/${item?.product_id}`, state: { item: item } }}>
@@ -90,7 +90,7 @@ function MymenuDetail({ menu }) {
 
                 {selectedMenu === 'order' && (
                     <div className='wishlistDetail_container'>
-                        <p id="wishlist">Order History</p>
+                        <p id="myBaeMenu">Order History</p>
                         {orderHistory?.order?.map(orders => (
                             // <div className='sellinglistDetail'>
                             //     {console.log("orders", orders)}

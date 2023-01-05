@@ -1,4 +1,4 @@
-.loginName, .sellNewItem, .myBae {
+.loginName, .sellNewItem, .myBae, .logOutButton {
 padding-right:30px;
 }
 
@@ -36,9 +36,9 @@ padding-right:30px;
     z-index: 1;
     width:250px; 
     margin:auto;
-    max-height:1500px;
+    max-height:700px;
     right:1px;
-
+    top:40px;
   }
   
   .cartList-content a {
@@ -52,4 +52,4 @@ padding-right:30px;
   
   .cartList:hover .cartList-content {display: block;}
   
-  .cartList:hover .dropbtn {background-color: #acb2ac;}
+  /* .cartList:hover .dropbtn {background-color: #acb2ac;} */

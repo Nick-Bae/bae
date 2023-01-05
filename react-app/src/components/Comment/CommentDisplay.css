@@ -1,3 +1,7 @@
+.commentDisplay{
+    max-width: 1300px;
+}
+
 .comment_container{
     /* border: 1px solid var(--grey-light-color); */
 }
