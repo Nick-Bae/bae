@@ -17,6 +17,7 @@ def upload_image( ):
 
     images = request.files.getlist('image')
     # images = request.files["image"]
+    print("this is a receving data from front", images)
     
     upload =[];
     

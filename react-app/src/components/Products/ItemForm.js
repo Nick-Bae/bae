@@ -170,6 +170,8 @@ const ItemForm = () => {
             formData.append('image', image[i]);                      
         }
         
+        console.log("this is a sending file to server", formData)
+        
         const imageReturn = await fetch('/api/images',{
             method: "POST",
             body:formData,
