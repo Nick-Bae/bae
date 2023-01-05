@@ -14,14 +14,12 @@ function MymenuDetail({ menu }) {
     const sessionUser = useSelector(state => state.session.user);
     const images = Object.values(useSelector(state => state.images));
     const wishlists = Object.values(useSelector(state => state.wishlist));
-    const items = Object.values(useSelector(state => state.items));
+    const items = Object.values(useSelector(state => state.item));
     const orderHistory = (useSelector(state => state.orders))
     const orders = orderHistory?.order
-    console.log(orders)
     const item = orders?.map(order=> {
         return order?.items
     })
-    console.log("items",item)
     useEffect(() => {
         dispatch(userWishlist(sessionUser.id))
         dispatch(getAllImages())
@@ -35,7 +33,7 @@ function MymenuDetail({ menu }) {
     const sellingImages = items.map(item => (
         images.find(image => image?.product_id === item?.id)
     ))
-
+        console.log("sellingimages",items)
     if (!sessionUser) {
         return null;
     }
@@ -73,13 +71,13 @@ function MymenuDetail({ menu }) {
                 {selectedMenu === 'selling' && (
                     <div className='wishlistDetail_container'>
                         <p id="myBaeMenu">Selling</p>
-                        {sellingImages.map(item => (
+                        {items.map(item => (
                             <div key={item?.id} className='sellinglistDetail'>
-                                <NavLink key={item?.id} to={{ pathname: `/items/${item?.product_id}`, state: { item: item } }}>
+                                <NavLink key={item?.id} to={{ pathname: `/items/${item?.id}`, state: { item: item } }}>
                                     <div className='wishdetailContainer'>
-                                        <img className="wishImage" src={item?.url} alt=""/>
+                                        <img className="wishImage" src={item?.image[0]} alt=""/>
                                         <div className='wishTitle'>
-                                            {item?.Product.name}
+                                            {item?.name}
                                         </div>
                                     </div>
                                 </NavLink>
