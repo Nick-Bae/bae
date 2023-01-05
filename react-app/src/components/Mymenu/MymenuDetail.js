@@ -17,6 +17,8 @@ function MymenuDetail({ menu }) {
     const items = Object.values(useSelector(state => state.item));
     const orderHistory = (useSelector(state => state.orders))
     const orders = orderHistory?.order
+
+    console.log("orders",orders)
     const item = orders?.map(order=> {
         return order?.items
     })
@@ -27,13 +29,12 @@ function MymenuDetail({ menu }) {
         dispatch(getUserOrder(sessionUser.id))
     }, [dispatch,sessionUser.id])
 
-    const wishImages = wishlists.map(list => (
-        images.find(image => image?.product_id === list?.id)
-    ))
-    const sellingImages = items.map(item => (
-        images.find(image => image?.product_id === item?.id)
-    ))
-        console.log("sellingimages",items)
+    // const wishImages = wishlists.map(list => (
+    //     images.find(image => image?.product_id === list?.id)
+    // ))
+    // const sellingImages = items.map(item => (
+    //     images.find(image => image?.product_id === item?.id)
+    // ))
     if (!sessionUser) {
         return null;
     }
@@ -90,29 +91,27 @@ function MymenuDetail({ menu }) {
                     <div className='wishlistDetail_container'>
                         <p id="myBaeMenu">Order History</p>
                         {orderHistory?.order?.map(orders => (
-                            // <div className='sellinglistDetail'>
-                            //     {console.log("orders", orders)}
-                            //     <div>
-                            //         {orders.items.map(singleItem=>(
-                            //             <div>
-                            //            {console.log("items",singleItem.item.name)}
-
-                                            
-                            //             </div>
-                            //         ))}
-                            //     </div>
+                            
                             <>
-                            <div className='orderDate'>
-                            Order Date: &nbsp;
-                            {
-                                <>
-                                {(()=> {
-                                    let data = orders.date.split(' ')
-                                    let date = (data.splice(1,3).join(' '))
-                                    return date
-                                })()}
-                                </>
-                            }
+                            <div className='orderHtableHead'>
+                                <div className='orderDate'>
+                                    <p className='orderDateLabel'>
+                                        Order Date: &nbsp;
+                                    </p>
+                                    {
+                                    <p className='orderDateData'>
+                                        {(()=> {
+                                            let data = orders.date.split(' ')
+                                            let date = (data.splice(1,3).join(' '))
+                                            return date
+                                        })()}
+                                    </p>
+                                    }
+                                </div>
+                                
+                                <div className='orderTotalLabel'>
+                                    <p>Item Price</p>
+                                </div>
                             </div>
                                  <div>
                                     {orders?.items.map(singleItem=>(
@@ -121,15 +120,24 @@ function MymenuDetail({ menu }) {
                                            
                                     <NavLink key={singleItem?.id} 
                                         to={{ pathname: `/items/${singleItem?.item?.id}`, state: { item: singleItem?.item } }}>
-                                        <div className='wishdetailContainer'>
-                                            <img className="wishImage" src={singleItem.item?.image[0]} alt=""/>
-                                            
-                                            <div className='wishTitle'>
-                                                {singleItem.item?.name}
+                                        <div className='orderHistoryContainer'>
+                                            <div className='orderHImgName'>
+                                                <div className='orderHimg'>
+                                                  <img className="ordherHImage" src={singleItem.item?.image[0]} alt=""/>
+                                                </div>
+                                                
+                                                <div className='wishTitle'>
+                                                    {singleItem.item?.name}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className='totalOrderPrice'>
-                                                $ {eachTotal = singleItem.item?.price*singleItem.item.quantity}
+                                            <div className='totalOrderHistoryPrice'>
+                                                <p className='orderHistoryTotalLabel'>
+                                                    {/* Order Total */}
+                                                </p>
+                                                <p className='orderHtotal'>
+                                                    $ {eachTotal = singleItem.item?.price*singleItem.quantity}
+                                                </p>
+                                            </div>
                                         </div>
                                     </NavLink>
                                             <div hidden={true} className='totalOrderPrice'>
@@ -137,7 +145,10 @@ function MymenuDetail({ menu }) {
                                             </div>
                                             </>
                                     ))}
-                                    ${totalPrice}
+                                    <p className='orderHTotal'>
+                                    Order Total: ${totalPrice}
+                                    </p>
+                                    <p hidden={true}>{totalPrice=0}</p>
                             </div>
                             </>
                         ))}

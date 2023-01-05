@@ -9,9 +9,9 @@
 .wishdetailContainer{
     display: flex;
 }
-.wishImage{
-    width: 150px;
-    height: 150px;
+.ordherHImage{
+    width: 100px;
+    height: 100px;
     border-radius: 10px;
     margin-left: 40px;
     padding:10px;
@@ -32,7 +32,7 @@
 }
 
 #myBaeMenu{
-    margin-left: 40px;
+    margin: 15px 0 50px 50px;
     font-size: 30px;
     font-weight: bold;
 }
@@ -40,10 +40,63 @@
 
 .myMenubar div:hover {background-color: #ddd};
 
-.orderDate{
-    margin: 50px 0 0 50px;
-}
 
 .meMenuDetail{
     margin-top:20px;
+}
+
+.orderHistoryContainer{
+    display: flex;
+    height:90px;
+
+}
+
+.orderHistoryTotalLabel{
+    margin: 10px;
+}
+
+.orderHtotal{
+    margin: 10px;
+}
+
+.orderHTotal{
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-end;
+    padding:10px;
+    border-bottom: 1px solid black;
+}
+
+.orderDate{
+    /* margin: 50px 0 0 50px; */
+    display: flex;
+    height:60px;
+}
+.orderDateLabel{
+    margin:20px 0 0 50px;
+}
+
+.orderDateData{
+   display: flex;
+   align-items: center;
+}
+
+.orderHImgName{
+    min-width:700px;
+    display: flex;
+}
+.orderHtableHead{
+    display: flex;
+    justify-content:space-between
+}
+
+.orderTotalLabel{
+    padding-right:10px;
+    display: flex;
+    align-items: center;
+}
+
+.totalOrderHistoryPrice{
+    display: flex;
+    align-items: center;
 }
