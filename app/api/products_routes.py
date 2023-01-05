@@ -67,7 +67,7 @@ def post_item():
                     quantity = data['quantity'],
                     category_id = data['category_id'],
                     description = data['description'],
-                    end = data['end']
+                    # end = data['end']
                     )
         db.session.add(newItem)
         db.session.commit()
@@ -80,7 +80,7 @@ def post_item():
             "quantity" : newItem.quantity,
             "category_id" : newItem.category_id,
             "description" : newItem.description,
-            "end" : newItem.end
+            # "end" : newItem.end
         }
         return newItem
 

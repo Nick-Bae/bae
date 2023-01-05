@@ -11,5 +11,5 @@ class ItemForm(FlaskForm):
     quantity = IntegerField('Quantity', validators=[DataRequired()])
     category_id = SelectField("Category", coerce=int, validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
-    end = DateTimeField('Biding')
+    # end = DateTimeField('Biding')
     

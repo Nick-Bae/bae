@@ -103,23 +103,7 @@ const ItemForm = () => {
             }
 
         await dispatch(createImage( imageUrl))
-        // setImageLoading(true);
-
-        // const res = await fetch('/api/images', {
-        //     method: "POST",
-        //     body:  formData ,
-        // });
-
-        // if (res.ok) {
-        //     await res.json();
-        //     setImageLoading(false);
-        //     // history.push("/images");
-        // }
-        // else {
-        //     setImageLoading(false);
-        //     console.log("error");
-        // }
-    
+       
     reset();
     history.push(`/items/${newItem.id}`);
   };
@@ -153,17 +137,17 @@ const ItemForm = () => {
         let convertTime = removeT[0]+" "+removeT[1]+":00"
         // let convertTime = new Date(Date.UTC(end))
         let item={}
-        if (end) {
-             item = { 
-                user_id: user.id, 
-                name, 
-                price:parseFloat(price).toFixed(2), 
-                quantity,
-                category_id, 
-                description,
-                end: convertTime
-            };
-        } else {
+        // if (end) {
+        //      item = { 
+        //         user_id: user.id, 
+        //         name, 
+        //         price:parseFloat(price).toFixed(2), 
+        //         quantity,
+        //         category_id, 
+        //         description,
+        //         end: convertTime
+        //     };
+        // } else {
              item = { 
                 user_id: user.id, 
                 name, 
@@ -172,7 +156,7 @@ const ItemForm = () => {
                 category_id, 
                 description
             };
-        }
+        // }
         let newItem = await dispatch(createItem(item)).catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
@@ -290,7 +274,7 @@ const ItemForm = () => {
             />
         </div>
 
-        <div id="itemtInput">
+        {/* <div id="itemtInput">
             <label id="editLabel" htmlFor='end'>end biding</label>
             <input
                 id='end'
@@ -299,7 +283,7 @@ const ItemForm = () => {
                 onChange={e => setEnd(e.target.value)}
                 value={end}
             />
-        </div>
+        </div> */}
         
         {/* <div id="itemtInput">
             <label htmlFor='url'>Image:</label>

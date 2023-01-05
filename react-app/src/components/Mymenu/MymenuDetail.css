@@ -66,6 +66,10 @@
     padding:10px;
     border-bottom: 1px solid black;
 }
+.wishImage{
+    width:150px;
+    height: 150px;
+}
 
 .orderDate{
     /* margin: 50px 0 0 50px; */
