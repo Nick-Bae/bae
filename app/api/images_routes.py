@@ -8,56 +8,56 @@ from app.s3_helpers import (
 
 images_routes = Blueprint('images', __name__)
 
-# @images_routes.route("", methods=["POST"])
-# @login_required
-# def upload_image( ):
-#     if "image" not in request.files:
-#         return {"errors": "image required"}, 400
-
-#     images = request.files.getlist('image')
-#     # images = request.files["image"]
-#     print("this is a receving data from front", images)
-    
-#     upload =[];
-    
-#     for image in images:
-#         if not allowed_file(image.filename):
-#             return {"errors": "file type not permitted"}, 400
-#         image.filename = get_unique_filename(image.filename)
-#         print("before uploading file#######",image)
-#         upload.append(upload_file_to_s3(image));
-
-#     return {i+1: upload[i] for i in range(len(upload))}
-# ===============================================================
 @images_routes.route("", methods=["POST"])
-def upload_image():
+@login_required
+def upload_image( ):
     if "image" not in request.files:
         return {"errors": "image required"}, 400
 
-    # console.log("request. files", request.files)
-    image = request.files["image"]
-
-    print("what is the value of image", image.name)
-    print("what is the value of image", image.filename)
-    if not allowed_file(image.filename):
-        return {"errors": "file type not permitted"}, 400
+    images = request.files.getlist('image')
+    # images = request.files["image"]
+    print("this is a receving data from front", images)
     
-    # image.filename = get_unique_filename(image.filename)
+    upload =[];
+    
+    for image in images:
+        if not allowed_file(image.filename):
+            return {"errors": "file type not permitted"}, 400
+        image.filename = get_unique_filename(image.filename)
+        print("before uploading file#######",image)
+        upload.append(upload_file_to_s3(image));
 
-    upload = upload_file_to_s3(image)
+    return {i+1: upload[i] for i in range(len(upload))}
+# ===============================================================
+# @images_routes.route("", methods=["POST"])
+# def upload_image():
+#     if "image" not in request.files:
+#         return {"errors": "image required"}, 400
 
-    if "url" not in upload:
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when we tried to upload
-        # so we send back that error message
-        return upload, 400
+#     # console.log("request. files", request.files)
+#     image = request.files["image"]
 
-    url = upload["url"]
-    # flask_login allows us to get the current user from the request
-    # new_image = Image(user=current_user, url=url)
-    # db.session.add(new_image)
-    # db.session.commit()
-    return {"url": url}
+#     print("what is the value of image", image.name)
+#     print("what is the value of image", image.filename)
+#     if not allowed_file(image.filename):
+#         return {"errors": "file type not permitted"}, 400
+    
+#     image.filename = get_unique_filename(image.filename)
+
+#     upload = upload_file_to_s3(image)
+
+#     if "url" not in upload:
+#         # if the dictionary doesn't have a url key
+#         # it means that there was an error when we tried to upload
+#         # so we send back that error message
+#         return upload, 400
+
+#     url = upload["url"]
+#     # flask_login allows us to get the current user from the request
+#     # new_image = Image(user=current_user, url=url)
+#     # db.session.add(new_image)
+#     # db.session.commit()
+#     return {"url": url}
 
 
 def validation_errors_to_error_messages(validation_errors):

@@ -7,7 +7,8 @@ from boto3.s3.transfer import TransferConfig
 BUCKET_NAME = os.environ.get("S3_BUCKET")
 S3_LOCATION = f"https://{BUCKET_NAME}.s3.amazonaws.com/"
 ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "gif"}
-config = TransferConfig(use_threads=False)
+config = TransferConfig(use_threads=False),
+
 
 s3 = boto3.client(
    "s3",

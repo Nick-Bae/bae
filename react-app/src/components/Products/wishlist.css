@@ -15,7 +15,7 @@
 .heartSign{
     font-size: 30px;
     position:relative;
-    right:250px;
+    right:170px;
     top:-50px;
     color: rgb(212, 24, 24);
 }
@@ -23,7 +23,7 @@
 .blackHeart{
     font-size: 30px;
     position:relative;
-    right:250px;
+    right:170px;
     top:-50px;
     color: red;
 }

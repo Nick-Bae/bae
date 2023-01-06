@@ -43,7 +43,7 @@ const EditItemForm = ( ) => {
         setHasSubmitted(true);
         if (validationErrors.length) return alert(`Cannot Submit`);
 
-        const item = {
+        let item = {
             id: itemId,
             user_id: user.id,
             name,
@@ -53,7 +53,7 @@ const EditItemForm = ( ) => {
             description
         };
 
-        await dispatch(updateItem(item))
+        let updatedItem = await dispatch(updateItem(item))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors((data.errors));
@@ -65,13 +65,20 @@ const EditItemForm = ( ) => {
         }
 
         await dispatch(updateImage(imageUrl))
-
-        history.push(`/items/${item.id}`);
+        item.image = imageUrl.url
+        console.log("what is the editing item", item)
+        history.push({
+            pathname: `/items/${item.id}`,
+            state: { item: item }
+          });
     };
 
     const cancelClick = (e) => {
         e.preventDefault();
-        history.push(`/items/${itemId}`);
+        history.push({
+            pathname: `/items/${item.id}`,
+            state: { item: item }
+          });
     }
 
     return (
