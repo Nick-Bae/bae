@@ -25,6 +25,7 @@ import OrderComplete from './components/Order/OrderComplete';
 import Splash from './components/splash';
 import CategoryItems from './components/CategoryItems';
 import CategoryBar from './components/CategoryBar';
+import UploadPicture from './components/UploadPicture';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -118,9 +119,9 @@ function App() {
           <ItemForm />
         </ProtectedRoute>
 
-        {/* <ProtectedRoute path='/upload' exact={true} >
+        <ProtectedRoute path='/upload' exact={true} >
           <UploadPicture />
-        </ProtectedRoute> */}
+        </ProtectedRoute>
 
         <ProtectedRoute path='/cart' exact={true} >
           <CartPage />
