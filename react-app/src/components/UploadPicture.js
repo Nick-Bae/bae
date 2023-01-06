@@ -16,6 +16,12 @@ const UploadPicture = () => {
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
+        // for (let ['image', value] of formData){
+        //     console.log(`${'image'}: ${image}`)
+            
+        // }
+        console.log(...formData)
+        console.log(formData.get('image'))
 
         const res = await fetch('/api/images', {
             method: "POST",
