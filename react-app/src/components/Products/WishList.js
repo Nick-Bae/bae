@@ -11,17 +11,13 @@ const WishList = ({allWishUser, isWishlist}) => {
     const checkWishBt = useRef(null);
     const { itemId } = useParams();
     const wishlist = useSelector((state) => state.wishlist);
-    // const allWishUser = wishlist.allUser
-    // const [buttonClicked, setButtonClicked] = useState(false)
     const [wishlistBt, setWishlistBt] = useState('')
     let wishClick;
     
     useEffect(() => {
         dispatch(getItemDetail(itemId))
         dispatch(getWishlist(itemId))
-        // wishClick = document.getElementById('wishSimbol')
-        isWishlist ? checkWishBt.current.style.color = "red" : checkWishBt.current.style.color = "black"
-        // isWishlist ? wishClick.style.color = "red" : wishClick.style.color = "black"
+        // isWishlist ? checkWishBt.current.style.color = "red" : checkWishBt.current.style.color = "black"
         
     
     }, [dispatch, isWishlist]);
@@ -31,22 +27,6 @@ const WishList = ({allWishUser, isWishlist}) => {
     }
 
  
-    // const isWishlist = allWishUser?.find((id) => id === user?.id)
-    // isWishlist ? setWishlistBt(true) : setWishlistBt(false)
-    // window.onload = function () {
-    //     wishClick = document?.getElementById('wishSimbol')
-    
-    //     isWishlist ? wishClick.style.color = "red" : wishClick.style.color = "black"
-    // }
-    //  const wishClick = document?.getElementById('wishSimbol')
-    //  wishClick === null ? dispatch(getWishlist(itemId)) :
-    //  wishClick.style.color = "black"
-    // const wishClicked = allWishUser?.find((id)=>id === user?.id)
-
-    // if (allWishUser?.find((id)=>id === user?.id)) {
-    //     wishClick === null ? dispatch(getWishlist(itemId)) :
-    //     wishClick.style.color = "red"
-            // }
 
 const wishBt = (e) => {
     e.preventDefault();
@@ -59,25 +39,6 @@ const wishBt = (e) => {
         setWishlistBt(true)
         dispatch(postWishlist(itemId))
     }
-    // if (!user) {
-    //     alert("please login")
-    // } else {
-    //     if (isWishlist) {
-    //         // wishClick === null ? dispatch(getWishlist(itemId)) :
-    //         // wishClick.style.color = "black"
-
-    //         setWishlistBt(false)
-    //         dispatch(deleteWishlist(itemId))
-    //     } else {
-    //         dispatch(postWishlist(itemId))
-    //         //   wishClick === null ? dispatch(getWishlist(itemId)) :
-    //         // wishClick.style.color = "red";
-    //         setWishlistBt(true)
-    //         //   dispatch(getItemDetail(itemId))
-    //     }
-    // wishClick = document?.getElementById('wishSimbol')
-    // isWishlist ? wishClick.style.color = "red" : wishClick.style.color = "black"
-    // isWishlist ? checkWishBt.current.style.color = "red" : checkWishBt.current.style.color = "black"
     dispatch(getWishlist(itemId))
     // }
 };
@@ -89,11 +50,11 @@ return (
             <div onClick={wishBt}>
                 <button id="wishlistLabel">Add to Wishlist </button>
                 {/* <i className="fa-solid fa-heart heartSign"></i> */}
-                <i ref={checkWishBt} 
+                {/* <i ref={checkWishBt} 
                     id="wishSimbol" 
                     className={wishlistBt ? "fas fa-heart heartSign" 
-                                :"fa fa-heart-o blackHeart"}>
-                </i>
+                                :"fas fa-heart blackHeart"}>
+                </i> */}
             </div>
         </div>
         

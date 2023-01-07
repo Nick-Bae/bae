@@ -1,10 +1,8 @@
-import { useEffect,useState, useCallback, React  } from 'react';
+import { useEffect,useState, useCallback, React, useRef  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory, useLocation } from 'react-router-dom';
-// import './index.css'
 import { getItemDetail } from '../../store/itemDetail';
 import { deleteOneItem } from '../../store/items';
-import { getItems } from '../../store/items';
 import './itemDetail.css'
 import CommentDisplay from '../Comment/CommentDisplay';
 import CommentForm from '../Comment/CommentForm';
@@ -14,7 +12,7 @@ import Bid from '../Bid';
 import ReactImageZoom from "react-image-zoom";
 import EndTime from './EndTime';
 import BuyNow from '../Order/BuyNow';
-import { getWishlist } from '../../store/wishlist';
+import { getWishlist, postWishlist, deleteWishlist } from "../../store/wishlist";
 
 const ItemDetail = () => {
     
@@ -28,13 +26,15 @@ const ItemDetail = () => {
 
     const wishlist = useSelector((state) => state.wishlist);
     const allWishUser = wishlist.allUser
+    const checkWishBt = useRef(null);
+    const isWishlist = allWishUser?.find((id) => id === user?.id)
+    const [wishlistBt, setWishlistBt] = useState('')
 
     useEffect(() => {
-       
             dispatch(getItemDetail(itemId));
             dispatch(getWishlist(itemId));
-       
-    }, [dispatch, itemId]);
+            isWishlist ? checkWishBt.current.style.color = "red" : checkWishBt.current.style.color = "black"
+    }, [dispatch, itemId, isWishlist]);
 
     const endtime =new Date(item?.end)
     const currentTime = new Date()
@@ -60,17 +60,20 @@ const ItemDetail = () => {
 
     const isEnded = endtime - currentTime > 0
 
+    const wishBt = (e) => {
+        e.preventDefault();
     
-    // useEffect(()=>{
-    //     if (item?.end){
-    //         const interval = setInterval(
-    //             () => setDelta(Math.abs(endtime - currentTime) / 1000), 1000)
-    //         setRemainTime(calculateTime)
-    
-    //         return ()=> clearInterval(interval);
-    //     }
-    // },[endtime, calculateTime, currentTime] )
-    
+        // isWishlist ? setWishlistBt(false) : setWishlistBt(true)
+        if (isWishlist){
+            setWishlistBt(false)
+            dispatch(deleteWishlist(itemId))
+        } else {
+            setWishlistBt(true)
+            dispatch(postWishlist(itemId))
+        }
+        dispatch(getWishlist(itemId))
+    };
+       
      
     const deleteBt = async (e) => {
         e.preventDefault();
@@ -101,7 +104,7 @@ const ItemDetail = () => {
         setSelectedImg(item?.image[0])
     }
 
-    const isWishlist = allWishUser?.find((id) => id === user?.id)
+   
 
     if (!item) return null;
     return (
@@ -135,7 +138,12 @@ const ItemDetail = () => {
                                     {/* {!(selectedImg) ? loadImg : <ReactImageZoom {...props} />} */}
                                      <ReactImageZoom {...props} />
                                 </div>
-
+                                <i ref={checkWishBt} 
+                                   onClick={wishBt} 
+                                    id="wishSimbol" 
+                                    className={wishlistBt ? "fas fa-heart heartSign" 
+                                :"fas fa-heart blackHeart"}>
+                </i>
                         </div>
                         <div className="itemDetail_right">
                             <div className='itemDetail_info'>

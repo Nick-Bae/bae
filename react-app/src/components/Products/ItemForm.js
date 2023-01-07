@@ -28,6 +28,7 @@ const ItemForm = () => {
     if ( price < 0) errors.push('Please enter your Correct Price');
     if (price > 10000) errors.push('Price should be less than $10,000');
     if (!category_id ) errors.push('Please select the category');
+    if (quantity<1) errors.push('Please enter more than 0')
     // if (image.length>255) errors.push('url should not be over 255 characters');
     // if (!image.startsWith('https://') && 
     //     !image.startsWith('http://')) errors.push('url should starts with https:// or http://');
@@ -261,6 +262,7 @@ const ItemForm = () => {
             onChange={e => setQuantity(e.target.value)}
             value={quantity}
             required
+            min="1"
             max="1000"
           />
         </div>

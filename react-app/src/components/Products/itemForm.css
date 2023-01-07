@@ -4,6 +4,7 @@
     justify-content: center;
     background-color: rgb(246, 243, 240);
     height: auto;
+    width:1200px;
 }
 #formTitle{
 font-size: 40px;
@@ -28,7 +29,7 @@ label{
 }
 #nameInput, #priceInput{
     font-size: 20px;
-    min-width:700px;
+    /* min-width:700px; */
     background-color: white;
     margin-bottom: 20px;
     border-bottom: 1px solid var(--grey-light-color);
@@ -60,7 +61,7 @@ label{
 
 #name, #price, #imageUrl, #description {
     height: 40px;
-    width: 700px;
+    min-width: 700px;
     margin: 10px 20px 0 20px;
     outline: none;
     border: none;
@@ -70,7 +71,7 @@ label{
 }
 
 #description{
-    width:750px;
+    min-width:750px;
 }
 #price {
     /* height:50px */

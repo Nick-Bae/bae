@@ -55,7 +55,7 @@ function MymenuDetail({ menu }) {
                     <div className='wishlistDetail_container'> 
                     <p id="myBaeMenu">Wishlist</p>
                         {wishlists.map(item => (
-                            <div key={item?.id} className='wishlistDetail'>
+                            <div key={item} className='wishlistDetail'>
                                 <NavLink key={item?.id} to={{ pathname: `/items/${item?.id}`, state: { item: item } }}>
                                     <div className='wishdetailContainer'>
                                         <img className="wishImage" src={item?.image[0]} alt="" />
@@ -73,7 +73,7 @@ function MymenuDetail({ menu }) {
                     <div className='wishlistDetail_container'>
                         <p id="myBaeMenu">Selling</p>
                         {items.map(item => (
-                            <div key={item?.id} className='sellinglistDetail'>
+                            <div key={item} className='sellinglistDetail'>
                                 <NavLink key={item?.id} to={{ pathname: `/items/${item?.id}`, state: { item: item } }}>
                                     <div className='wishdetailContainer'>
                                         <img className="wishImage" src={item?.image[0]} alt=""/>
@@ -93,7 +93,7 @@ function MymenuDetail({ menu }) {
                         {orderHistory?.order?.map(orders => (
                             
                             <>
-                            <div className='orderHtableHead'>
+                            <div key={orders} className='orderHtableHead'>
                                 <div className='orderDate'>
                                     <p className='orderDateLabel'>
                                         Order Date: &nbsp;
@@ -116,9 +116,9 @@ function MymenuDetail({ menu }) {
                                  <div>
                                     {orders?.items.map(singleItem=>(
                                        
-                                            <>
+                                            <div key={singleItem}>
                                            
-                                    <NavLink key={singleItem?.id} 
+                                    <NavLink key={singleItem} 
                                         to={{ pathname: `/items/${singleItem?.item?.id}`, state: { item: singleItem?.item } }}>
                                         <div className='orderHistoryContainer'>
                                             <div className='orderHImgName'>
@@ -143,7 +143,7 @@ function MymenuDetail({ menu }) {
                                             <div hidden={true} className='totalOrderPrice'>
                                                 $ {totalPrice += eachTotal}
                                             </div>
-                                            </>
+                                            </div>
                                     ))}
                                     <p className='orderHTotal'>
                                     Order Total: ${totalPrice}

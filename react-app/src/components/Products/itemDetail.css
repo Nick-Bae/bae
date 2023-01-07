@@ -133,3 +133,19 @@
     width: 400px;
     height: 300px;
 }
+
+.heartSign{
+    font-size: 30px;
+    position:relative;
+    right:50px;
+    top:-200px;
+    color: rgb(212, 24, 24);
+}
+
+.blackHeart{
+    font-size: 30px;
+    position:relative;
+    right:50px;
+    top:-200px;
+    color: red;
+}
