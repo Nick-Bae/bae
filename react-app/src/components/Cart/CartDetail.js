@@ -40,7 +40,7 @@ const CartDetail = () => {
 
             <div className='cartList-content'>
                 {carts.map(cart => (
-                    <div className='cartDetailContainer' key={cart.id}>
+                    <div key={cart} className='cartDetailContainer' key={cart.id}>
                         <NavLink to={`/items/${cart.id}`}>
                             <div className='cartInside'>
                                 <img className="cartImage" src={cart.image} alt=""/>

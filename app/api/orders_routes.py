@@ -47,7 +47,7 @@ def post_orders():
     # item.quantity = data['quantity']
     db.session.add(newOrder)
     db.session.commit()
-    # print("items what is inside???",orderInfo['items'])
+    print("items what is inside???",orderInfo['items'])
     # items = data['items']
     for item in items:
         
@@ -129,3 +129,11 @@ def update_orders():
         # }
         
     return newOrder.to_dict()
+
+@orders_routes.route('/<int:id>', methods=['DELETE'])    
+@login_required
+def delete_orders(id):
+    item = Cart.query.get(id).all()
+    db.session.delete(item)
+    db.session.commit()
+    return {"data": "Deleted"}

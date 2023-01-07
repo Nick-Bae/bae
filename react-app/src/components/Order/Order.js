@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import { deleteOneCart } from '../../store/cart';
 import { deleteOneOrder } from '../../store/order';
 import { createOrder } from '../../store/order';
 import './Order.css'
@@ -14,14 +15,14 @@ const Order = () => {
   const history = useHistory();
   const user = useSelector(state => state.session.user)
   let cartTotal = 0
-
+console.log(carts)
     // useEffect(() => {
     //     dispatch(getUserOrder(user?.id))
     // }, [dispatch, quantity]);
 
 
     const orderDelete = (cartId) => {
-    dispatch(deleteOneOrder(cartId))
+    dispatch(deleteOneCart(cartId))
     }
 
     const order =()=>{
@@ -32,6 +33,9 @@ const Order = () => {
         }
 
         dispatch(createOrder(orderInfo))
+        for (let i=0; i < carts.length; i++){
+            dispatch(deleteOneCart(carts[i].cartId))
+        }
         history.push('/order-complete');
     }
 
@@ -61,7 +65,7 @@ const Order = () => {
                         </div>
                         <div hidden={true}>{cartTotal += cart.price * cart.quantity}</div>
                         <div className='cartDeleteBt'>
-                            <button className="orderDeleteBt" onClick={() => orderDelete(cart.id)}>
+                            <button className="orderDeleteBt" onClick={() => orderDelete(cart.cartId)}>
                                 <i className="fa-solid fa-trash" ></i>
                             </button>
                         </div>
