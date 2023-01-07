@@ -15,7 +15,7 @@ const ItemForm = () => {
     const [category_id, setCategory_id] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
-    const [quantity, setQuantity] = useState('');
+    const [quantity, setQuantity] = useState('1');
     const [end, setEnd] = useState('');
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [ errors, setErrors ] = useState([]);

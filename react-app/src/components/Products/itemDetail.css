@@ -8,6 +8,10 @@
     
 }
 
+.itemDetail{
+    margin:50px 0;
+}
+
 .itemDetail_container{
     display: flex;
      flex-direction: column;

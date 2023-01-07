@@ -16,10 +16,12 @@
     font-weight: 300;
     margin-right:5px;
     font-weight: 300;
+    cursor: pointer;
 }
 .login-interactive{
     font-size: 18px;
     margin-top:10px;
+    margin-right:20px;
     cursor: pointer;
     display: flex;
     justify-content: center;
