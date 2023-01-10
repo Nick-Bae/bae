@@ -57,11 +57,11 @@
 }
 
 #itemName{
-    font-size:40px;
+    font-size:30px;
     overflow-wrap: break-word;
 }
 #itemPrice{
-    font-size:30px;
+    font-size:20px;
 }
 
 .itemEditBt{
@@ -129,8 +129,9 @@
     flex-direction: row;
 }
 .thumnailImg{
-    width:100px;
-    height: 100px;
+    width:110px;
+    height: 140px;
+    padding:10px;
 }
 
 .selectedImage{

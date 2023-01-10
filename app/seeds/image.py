@@ -5,35 +5,59 @@ from app.models import db, User, Image
 # Adds a demo user, you can add other users here if you want
 def seed_images():
     image1 = Image(
-        url='https://static.nike.com/a/images/w_1536,c_limit,f_auto/y3henppvrmboxalhqbn5/air-jordan-1-banned-555088-001.jpg', 
+        url='https://nbae.s3.amazonaws.com/open+front+long+sleeve1.jpeg', 
         product_id=1)
     image2 = Image(
-        url='https://cdn.shopify.com/s/files/1/1726/4473/files/ba-hoops-gold-02-9x16_800x.jpg?v=1668706126', 
-        product_id=2)
+        url='https://nbae.s3.amazonaws.com/open+front+long+sleeve2.jpeg', 
+        product_id=1)
     image3 = Image(
-        url='https://nbalance.by/wp-content/uploads/2022/03/574-1.jpg', 
-        product_id=3)
+        url='https://nbae.s3.amazonaws.com/open+front+long+sleeve3.jpeg', 
+        product_id=1)
     image4 = Image(
-        url='https://bnsec.bluenile.com/bluenile/is/image/bluenile/2a_JSP_GetInspired_2880x3848?$alloy_default$&hei=1136&wid=850&fmt=pjpeg', 
-        product_id=4)
+        url='https://nbae.s3.amazonaws.com/open+front+long+sleeve4.jpeg', 
+        product_id=1)
+
+
     image5 = Image(
-        url='https://media.glamourmagazine.co.uk/photos/633eeed812cab0baed0aeb15/master/w_1600%2Cc_limit/KAIA%2520GERBER%2520X%2520ZARA%2520061022%2520campaign3.jpg', 
-        product_id=5)
+        url='https://nbae.s3.amazonaws.com/Oversieze+Twill4.jpeg', 
+        product_id=2)
     image6 = Image(
-        url='https://m.media-amazon.com/images/I/51l+OB+eV6L._AC_UY780_.jpg', 
-        product_id=6)
+        url='https://nbae.s3.amazonaws.com/Oversieze+Twill2.jpeg', 
+        product_id=2)
     image7 = Image(
-        url='https://nbae.s3.amazonaws.com/Nike_red+right.png', 
-        product_id=7)
+        url='https://nbae.s3.amazonaws.com/Oversieze+Twill3.jpeg', 
+        product_id=2)
     image8 = Image(
-        url='https://nbae.s3.amazonaws.com/Nike_red+left.png', 
-        product_id=7)
+        url='https://nbae.s3.amazonaws.com/Oversieze+Twill1.jpeg', 
+        product_id=2)
+
+
     image9 = Image(
-        url='https://nbae.s3.amazonaws.com/Nike_red+top.png', 
-        product_id=7)
+        url='https://nbae.s3.amazonaws.com/Tie+Waist+Long1.jpeg', 
+        product_id=3)
     image10 = Image(
-        url='https://nbae.s3.amazonaws.com/Nike_red_74397_back_large.jpg', 
-        product_id=7)
+        url='https://nbae.s3.amazonaws.com/Tie+Waist+Long2.jpeg', 
+        product_id=3)
+    image11 = Image(
+        url='https://nbae.s3.amazonaws.com/Tie+Waist+Long3.jpeg', 
+        product_id=3)
+    image12 = Image(
+        url='https://nbae.s3.amazonaws.com/Tie+Waist+Long4.jpeg', 
+        product_id=3)
+   
+   
+    image13 = Image(
+        url='https://nbae.s3.amazonaws.com/Tie+Waist+Long+Sleeve1.jpeg', 
+        product_id=4)
+    image14 = Image(
+        url='https://nbae.s3.amazonaws.com/Tie+Waist+Long+Sleeve2.jpeg', 
+        product_id=4)
+    image15 = Image(
+        url='https://nbae.s3.amazonaws.com/Tie+Waist+Long+Sleeve3.jpeg', 
+        product_id=4)
+    image16 = Image(
+        url='https://nbae.s3.amazonaws.com/Tie+Waist+Long+Sleeve4.jpeg', 
+        product_id=4)
 
     db.session.add(image1)
     db.session.add(image2)
@@ -45,6 +69,12 @@ def seed_images():
     db.session.add(image8)
     db.session.add(image9)
     db.session.add(image10)
+    db.session.add(image11)
+    db.session.add(image12)
+    db.session.add(image13)
+    db.session.add(image14)
+    db.session.add(image15)
+    db.session.add(image16)
     db.session.commit()
 
 

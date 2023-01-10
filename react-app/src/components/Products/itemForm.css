@@ -142,3 +142,7 @@ option {
     align-items: center;
     flex-direction: row; */
 }
+
+#quantity{
+    width:60px;
+}

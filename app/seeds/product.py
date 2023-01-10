@@ -5,13 +5,13 @@ from app.models import db, User, Product
 # Adds a demo user, you can add other users here if you want
 def seed_products():
     item1 = Product(
-        name='Jordan', user_id=1, price = 100, quantity = 100 ,category_id = 2, )
+        name='Open Front Long Blazer', user_id=1, price = 119, quantity = 100 ,category_id = 1, )
     item2 = Product(
-        name='Jewelry Blue Nile', user_id=3, price = 900, quantity = 100 ,category_id = 3, )
+        name='Oversize Twill', user_id=2, price = 135, quantity = 100 ,category_id = 1, )
     item3 = Product(
-        name='New Balance', user_id=2, price = 70, quantity = 100 ,category_id = 2, )
+        name='Tie Waist Long Sleeve', user_id=3, price = 70, quantity = 70 ,category_id = 1, )
     item4 = Product(
-        name='To The Moon And Back Stud Earrings', user_id=1, price = 910, quantity = 100 ,category_id = 3, )
+        name='Tie Waist Long Sleeve', user_id=1, price = 79, quantity = 120 ,category_id = 1, )
     item5 = Product(
         name='Zara', user_id=3, price = 80, quantity = 100 ,category_id = 1, )
     item6 = Product(

@@ -89,8 +89,8 @@ const ItemDetail = () => {
         history.push({ pathname: `/items/${itemId}/edit`, state: { item: item } })
     };
     const props = {
-        width: 350,
-        height: 450,
+        width: 330,
+        height: 530,
         zoomWidth: 600,
         zoomHeight: 500,
         img: selectedImg
