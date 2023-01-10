@@ -13,11 +13,13 @@ def seed_products():
     item4 = Product(
         name='Tie Waist Long Sleeve', user_id=1, price = 79, quantity = 120 ,category_id = 1, )
     item5 = Product(
-        name='Zara', user_id=3, price = 80, quantity = 100 ,category_id = 1, )
+        name='Icon Bomber Jacket', user_id=2, price = 65, quantity = 50 ,category_id = 1, )
     item6 = Product(
-        name='Womens watches of 2023', user_id=1, price = 580, quantity = 100 ,category_id = 4, )
+        name='Faux Leather Renoir Jacket', user_id=3, price = 295, quantity = 30 ,category_id = 1, )
     item7 = Product(
-        name='Women Court Vision Low Sneaker', user_id=2, price = 280, quantity = 50 ,category_id = 2, )
+        name='V-Neck Cashmere Sweater', user_id=1, price = 68.97, quantity = 50 ,category_id = 1, )
+    item8 = Product(
+        name='Mode Slim Fit Wool Cardigan', user_id=2, price = 149, quantity = 100 ,category_id = 1, )
 
     db.session.add(item1)
     db.session.add(item2)
@@ -26,6 +28,7 @@ def seed_products():
     db.session.add(item5)
     db.session.add(item6)
     db.session.add(item7)
+    db.session.add(item8)
     db.session.commit()
 
 

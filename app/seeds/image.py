@@ -59,6 +59,62 @@ def seed_images():
         url='https://nbae.s3.amazonaws.com/Tie+Waist+Long+Sleeve4.jpeg', 
         product_id=4)
 
+
+    image17 = Image(
+        url='https://nbae.s3.amazonaws.com/Icon+Bomber+Jacket1.jpeg', 
+        product_id=5)
+    image18 = Image(
+        url='https://nbae.s3.amazonaws.com/Icon+Bomber+Jacket2.jpeg', 
+        product_id=5)
+    image19 = Image(
+        url='https://nbae.s3.amazonaws.com/Icon+Bomber+Jacket5.jpeg', 
+        product_id=5)
+    image20 = Image(
+        url='https://nbae.s3.amazonaws.com/Icon+Bomber+Jacket4.jpeg', 
+        product_id=5)
+
+
+    image21 = Image(
+        url='https://nbae.s3.amazonaws.com/Faux+Leather+Renoir+Jacket1.jpeg', 
+        product_id=6)
+    image22 = Image(
+        url='https://nbae.s3.amazonaws.com/Faux+Leather+Renoir+Jacket2.jpeg', 
+        product_id=6)
+    image23 = Image(
+        url='https://nbae.s3.amazonaws.com/Faux+Leather+Renoir+Jacket3.jpeg', 
+        product_id=6)
+    image24 = Image(
+        url='https://nbae.s3.amazonaws.com/Faux+Leather+Renoir+Jacket4.jpeg', 
+        product_id=6)
+
+
+    image25 = Image(
+        url='https://nbae.s3.amazonaws.com/V-Neck+Cashmere+Sweater1.jpeg', 
+        product_id=7)
+    image26 = Image(
+        url='https://nbae.s3.amazonaws.com/V-Neck+Cashmere+Sweater2.jpeg', 
+        product_id=7)
+    image27 = Image(
+        url='https://nbae.s3.amazonaws.com/V-Neck+Cashmere+Sweater3.jpeg', 
+        product_id=7)
+    image28 = Image(
+        url='https://nbae.s3.amazonaws.com/V-Neck+Cashmere+Sweater4.jpeg', 
+        product_id=7)
+
+
+    image29 = Image(
+        url='https://nbae.s3.amazonaws.com/Mode+Slim+Fit+Wool+Cardigan1.jpeg', 
+        product_id=8)
+    image30 = Image(
+        url='https://nbae.s3.amazonaws.com/Mode+Slim+Fit+Wool+Cardigan2.jpeg', 
+        product_id=8)
+    image31 = Image(
+        url='https://nbae.s3.amazonaws.com/Mode+Slim+Fit+Wool+Cardigan3.jpeg', 
+        product_id=8)
+    image32 = Image(
+        url='https://nbae.s3.amazonaws.com/Mode+Slim+Fit+Wool+Cardigan4.jpeg', 
+        product_id=8)
+
     db.session.add(image1)
     db.session.add(image2)
     db.session.add(image3)
@@ -75,6 +131,22 @@ def seed_images():
     db.session.add(image14)
     db.session.add(image15)
     db.session.add(image16)
+    db.session.add(image17)
+    db.session.add(image18)
+    db.session.add(image19)
+    db.session.add(image20)
+    db.session.add(image21)
+    db.session.add(image22)
+    db.session.add(image23)
+    db.session.add(image24)
+    db.session.add(image25)
+    db.session.add(image26)
+    db.session.add(image27)
+    db.session.add(image28)
+    db.session.add(image29)
+    db.session.add(image30)
+    db.session.add(image31)
+    db.session.add(image32)
     db.session.commit()
 
 

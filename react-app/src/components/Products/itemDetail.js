@@ -90,7 +90,7 @@ const ItemDetail = () => {
     };
     const props = {
         width: 330,
-        height: 530,
+        height: 540,
         zoomWidth: 600,
         zoomHeight: 500,
         img: selectedImg
