@@ -32,7 +32,7 @@ def upload_file_to_s3(file, acl="public-read"):
     try:
         s3.upload_fileobj(
             file,
-            str(BUCKET_NAME),
+           str(BUCKET_NAME),
             str(file.filename),
             ExtraArgs={
                 "ACL": acl,
