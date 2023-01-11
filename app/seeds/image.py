@@ -28,7 +28,7 @@ def seed_images():
         url='https://nbae.s3.amazonaws.com/Oversieze+Twill3.jpeg', 
         product_id=2)
     image8 = Image(
-        url='https://nbae.s3.amazonaws.com/Oversieze+Twill1.jpeg', 
+        url='https://nbae.s3.amazonaws.com/Oversieze+Twill.jpeg', 
         product_id=2)
 
 
@@ -67,7 +67,7 @@ def seed_images():
         url='https://nbae.s3.amazonaws.com/Icon+Bomber+Jacket2.jpeg', 
         product_id=5)
     image19 = Image(
-        url='https://nbae.s3.amazonaws.com/Icon+Bomber+Jacket5.jpeg', 
+        url='https://nbae.s3.amazonaws.com/Icon+Bomber+Jacket3.jpeg', 
         product_id=5)
     image20 = Image(
         url='https://nbae.s3.amazonaws.com/Icon+Bomber+Jacket4.jpeg', 
