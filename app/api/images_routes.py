@@ -37,8 +37,6 @@ def upload_image():
     # console.log("request. files", request.files)
     image = request.files["image"]
 
-    print("what is the value of image", image.name)
-    print("what is the value of image", image.filename)
     if not allowed_file(image.filename):
         return {"errors": "file type not permitted"}, 400
     
