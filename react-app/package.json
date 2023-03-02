@@ -17,7 +17,6 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "react-search-autocomplete": "^8.2.1",
-    "react-search-field": "^2.0.1",
     "react-validation": "^3.0.7",
     "redux": "^4.1.0",
     "redux-logger": "^3.0.6",
