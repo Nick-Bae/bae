@@ -50,7 +50,7 @@ const SearchBar = () => {
                     className={styles.input}
                     id="searchInput"
                     type='text'
-                    placeholder='Search for anything'
+                    placeholder='   Search for anything'
                     value={keyword}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
