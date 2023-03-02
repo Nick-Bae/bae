@@ -104,3 +104,7 @@
     display: flex;
     align-items: center;
 }
+
+.sellinglistDetail{
+    margin-bottom: 10px;
+}
