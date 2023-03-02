@@ -122,11 +122,11 @@ def delete_Item(id):
     return {'errors': ['Unauthorized']}
 
 # ============================search by title==========================================
-@products_routes.route('/<search>')
-def search_Item(search):
-    products = Product.query.filter(Product.name == search).all()
+# @products_routes.route('/<search>')
+# def search_Item(search):
+#     products = Product.query.filter(Product.name == search).all()
 
-    return {item.to_dict()['id']: item.to_dict() for item in products}
+#     return {item.to_dict()['id']: item.to_dict() for item in products}
 
 
 # ==============C O M M E N T S=====================================
@@ -300,3 +300,17 @@ def post_bid(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+# ===============Search===================================================
+
+# ===============search only 10 items============================
+@products_routes.route('/search/<keyword>')
+def search_items(keyword):
+    items = Product.query.filter(Product.name.ilike(f'%{keyword}%')).limit(7)
+    return {item.id: item.name for item in items}
+
+# ===============search all items============================
+
+@products_routes.route('/search-all/<keyword>')
+def search_all_items(keyword):
+    items = Product.query.filter(Product.name.ilike(f'%{keyword}%')).all()
+    return  {item.to_dict()['id']: item.to_dict() for item in items}

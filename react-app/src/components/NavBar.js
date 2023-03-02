@@ -8,7 +8,6 @@ import './NavBar.css'
 import Profile from './Profile';
 import SearchBar from './SearchBar';
 
-
 const NavBar = () => {
 
   const sessionUser = useSelector(state => state.session.user);
@@ -60,8 +59,10 @@ const NavBar = () => {
             </NavLink>
           </li>
       </ul>
-      <div className='searchBarInNav'>
-        <SearchBar className="searchBarDisplay" placeholder="search for product" />
+      {/* <div className='searchBarInNav'> */}
+      <div >
+        {/* <SearchBar className="searchBarDisplay" placeholder="search for product" /> */}
+        <SearchBar />
       </div>
       {sessionLinks}
     </div>

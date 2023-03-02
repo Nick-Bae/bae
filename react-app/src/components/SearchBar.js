@@ -1,67 +1,97 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import { ReactSearchAutocomplete } from "react-search-autocomplete";
-import { useLocation } from 'react-router-dom';
-import { getItems } from "../store/items";
-import "./SearchBar.css"
-// import Profile from "./Profile/Profile";
-// import Cart from "./Cart/Cart";
+import { useState, useRef, useEffect } from 'react';
+import { useHistory } from 'react-router-dom'
+import NotFound from './NotFound';
+import styles from './SearchBar.css'
 
-function SearchBar() {
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const data = Object.values(useSelector(state => state.items));
+const SearchBar = () => {
+    const [keyword, setKeyword] = useState('')
+    const [showResult, setShowResult] = useState(false)
+    const [isOnResult, setIsOnResult] = useState(false)
+    const [result, setResult] = useState({})
+    const submitBtn = useRef(null)
+    const searchBarContainer = useRef(null)
+    const history = useHistory()
 
-  const handleOnSearch = (string, results) => {
-    if (string)  {
-      dispatch(getItems())
+    const handleSubmit = e => {
+        e.preventDefault()
+        if(Object.keys(result).length) {
+            history.push(`/items/search/${keyword}`)
+            setKeyword('')
+        }
     }
-    console.log(string, results);
-  };
 
-  const handleOnHover = (result) => {
-    console.log(result);
-  };
+    const handleFocus = () => {
+        setShowResult(!!keyword.length)
+        submitBtn.current.className = styles.inputFocus
+        // searchBarContainer.current.style.backgroundColor = 'white'
+    }
 
-  const handleOnSelect = (item) => {
-    window.location = `/items/${item.id}`;
-  };
+    const handleBlur = () => {
+        setShowResult(false)
+        submitBtn.current.className = styles.submitBtn
+        // searchBarContainer.current.style.backgroundColor = 'white'
+    }
 
-  const handleOnFocus = () => {
-    dispatch(getItems())
-    console.log("Focused");
-  };
+    useEffect(() => {
+        if(keyword.length){
+            fetch(`/api/items/search/${keyword}`)
+                .then(res => {
+                    if(res.ok) return res.json()
+                })
+                .then(res => setResult(res))
+        }
+        setShowResult(!!keyword.length)
+    }, [keyword])
 
-  const formatResult = (item) => {
     return (
-      <>
-        {/* <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span> */}
-        <span style={{ display: 'block', textAlign: 'left' }}> {item.name}</span>
-      </>
-    )
-  }
-  
-  useEffect(() => {
-      dispatch(getItems());
-  }, [dispatch, location.pathname]);
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div className="searchBarStyle" style={{ width: 520 }}>
-          <ReactSearchAutocomplete
-            items={data}
-            onSearch={handleOnSearch}
-            onHover={handleOnHover}
-            onSelect={handleOnSelect}
-            onFocus={handleOnFocus}
-            autoFocus
-            formatResult={formatResult}
-          />
+        <div className={styles.searchResultContainer} id="searchResultContainer">
+            <form ref={searchBarContainer}  id="searchBarContainer" className={styles.searchBarContainer} method='GET' action='' onSubmit={handleSubmit}>
+                <input
+                    className={styles.input}
+                    id="searchInput"
+                    type='text'
+                    placeholder='Search for anything'
+                    value={keyword}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    onChange={e => {
+                        if(/^[a-zA-Z0-9]*$/.test(e.target.value))
+                            setKeyword(e.target.value)
+                    }}
+                />
+                {!!keyword.length && <div id="cancelBtn" className={styles.cancelBtn} 
+                    onClick={() => {setKeyword('')}}><i className="fa-solid fa-xmark"></i>&nbsp; &nbsp;</div>}
+                <button ref={submitBtn} type='submit' id="searchIconBt" className={styles.submitBtn}>
+                    &nbsp; <i className="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+            {(showResult || isOnResult) &&
+                <ul
+                    className={styles.searchResult}
+                    id="searchResult"
+                    onMouseOver={() => setIsOnResult(true)}
+                    onMouseLeave={() => setIsOnResult(false)}
+                >
+                    {
+                        !!Object.keys(result).length ?
+                        Object.keys(result).map(itemId =>
+                            <li
+                                className={styles.itemsFound}
+                                id="itemsFound"
+                                onClick={() => {
+                                    history.push(`/items/${itemId}`)
+                                    setIsOnResult(false)
+                                    setKeyword('')
+                                }}
+                            >
+                                {/* {result[itemId]} */}
+                            </li>) : 
+                        <li id="itemNotFound" className={styles.itemNotFound}>No item found</li>
+                    }
+                </ul>
+            }
         </div>
-      </header>
-    </div>
-  )
+    )
 }
 
-export default SearchBar;
+export default SearchBar

@@ -34,7 +34,8 @@
     justify-content: center;
     align-items: center;
     position:relative;
-    right:-150px;
+    /* right:-150px; */
+    width:100%;
 }
 
 .search{
@@ -58,3 +59,4 @@
 .navInfo{
     margin-right:0;
 }
+

@@ -26,6 +26,7 @@ import Splash from './components/splash';
 import CategoryItems from './components/CategoryItems';
 import CategoryBar from './components/CategoryBar';
 import UploadPicture from './components/UploadPicture';
+import SearchResult from './components/SearchResult';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -134,6 +135,10 @@ function App() {
 
         <ProtectedRoute path='/order-complete' exact={true} >
           <OrderComplete />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/items/search/:keyword' exact={true} >
+          <SearchResult />
         </ProtectedRoute>
 
         <Route>
