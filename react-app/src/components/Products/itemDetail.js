@@ -133,7 +133,7 @@ const ItemDetail = () => {
                             // </Zoom>
                             ))}
                             </div>
-
+ 
                                 <div>
                                     {/* {!(selectedImg) ? loadImg : <ReactImageZoom {...props} />} */}
                                      <ReactImageZoom {...props} />
