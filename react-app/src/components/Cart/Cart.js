@@ -69,7 +69,7 @@ const Cart = () => {
                 
       <form id="cartForm" onSubmit={submitCart}>
         <div id="quantityInDetail">
-          <label id="quantityLabel" htmlFor='quantity'>Quantity</label>
+          <label id="qtyLabelInDetail" htmlFor='quantity'>Quantity</label>
           <input
             id='quantity'
             type='number'
