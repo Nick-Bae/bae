@@ -76,8 +76,6 @@
     justify-content: flex-start;
     flex-direction: column;
 
-    /* align-items: center; */
-    /* width:800px; */
     border: 1px solid var(--grey-light-color);
     border-radius: 10px;
     min-width:1000px;
