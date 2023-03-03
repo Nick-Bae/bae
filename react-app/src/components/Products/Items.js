@@ -10,7 +10,6 @@ const Items = () => {
   const items = Object.values(useSelector(state => state.items));
   // const images =Object.values( useSelector(state=>state.images));
   // const user = useSelector(state => state.session.user)
-console.log(items)
   useEffect(() => {
     dispatch(getItems());
     dispatch(getAllImages());

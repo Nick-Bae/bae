@@ -50,6 +50,11 @@ margin-bottom: 20px;
     display: flex;
     align-items: center;
 }
+
+#quantityLabel{
+    margin-left:20px;
+}
+
 #quantity{
     align-items: center;
 }
