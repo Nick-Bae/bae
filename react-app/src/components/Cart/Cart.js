@@ -68,7 +68,7 @@ const Cart = () => {
       <button type="submit" className="addToCartLabel" onClick={submitCart} >Add to Cart</button>
                 
       <form id="cartForm" onSubmit={submitCart}>
-        <div id="quantityInput">
+        <div id="quantityInDetail">
           <label id="quantityLabel" htmlFor='quantity'>Quantity</label>
           <input
             id='quantity'
@@ -80,7 +80,7 @@ const Cart = () => {
             max="1000"
           />
           <div className='availableQty'>
-            <div id="availableQty"> {item.quantity} </div> <div>available</div>
+            <div id="availableQty"> {item.quantity} </div> <div>&nbsp; available</div>
           </div>
         </div>
       </form>

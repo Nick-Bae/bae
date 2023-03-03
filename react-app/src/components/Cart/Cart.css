@@ -8,7 +8,7 @@
     cursor: pointer;
 }
 
-.quantityInput{
+.quantityInDetail{
     display: flex;
     margin-top:20px;
 }
@@ -29,7 +29,7 @@
 
 .availableQty{
     display: flex;
-    margin:18px;
+    margin:18px 18px 18px 0;
 }
 #availableQty{
     color:red;

@@ -92,7 +92,7 @@ const ItemForm = () => {
         console.log("formData is ???",formData)
         // const product_id = {"product_id": newItem.id }
         // formData.append("product_id", JSON.stringify(product_id));
-
+        
         const imageReturn = await fetch('/api/images',{
             method: "POST",
             body:formData,
@@ -130,7 +130,7 @@ const ItemForm = () => {
         setImage(e.target.files);
     }
 
-    const UploadMultipleFiles = async () => {
+const UploadMultipleFiles = async () => {
         setHasSubmitted(true);
         if (validationErrors.length) return alert(`Cannot Submit`);
         
@@ -219,7 +219,7 @@ const ItemForm = () => {
         <h2 id="formTitle">List an Item</h2>
 
         <div className="selectCategory">
-            <label id="categoryLabel"> Category</label>
+            <label id="editLabel"> Category</label>
             <select id="selectCategory" className="required" onChange={e=> setCategory_id(parseInt(e.target.value))}>
                 <option id="categoryOption" defaultValue="Click"> Click to see options </option>
                 <option value="1">Clothes</option>
@@ -227,7 +227,6 @@ const ItemForm = () => {
                 <option value="3">Jewelry</option>
                 <option value="4">Accessoreis</option>
             </select>
-            
         </div>
 
         <div id="nameInput">
@@ -235,7 +234,6 @@ const ItemForm = () => {
             <input 
                 id='name'
                 type='text'
-                // placeholder='address'
                 onChange={e => setName(e.target.value)}
                 value={name}
                 required
@@ -254,19 +252,6 @@ const ItemForm = () => {
             />
         </div>
         
-        <div id="quantityInput">
-          <label id="quantityLabel" htmlFor='quantity'>Quantity</label>
-          <input
-            id='quantity'
-            type='number'
-            onChange={e => setQuantity(e.target.value)}
-            value={quantity}
-            required
-            min="1"
-            max="1000"
-          />
-        </div>
-
         <div id="itemtInput">
             <label id="editLabel" htmlFor='description'>description</label>
             <textarea
@@ -314,12 +299,25 @@ const ItemForm = () => {
           
             {(imageLoading)&& <p>Loading...</p>}
         </div>
+        
+        <div id="quantityInput">
+          <label id="quantityLabel" htmlFor='quantity'>Quantity</label>
+          <input
+            id='quantityInList'
+            type='number'
+            onChange={e => setQuantity(e.target.value)}
+            value={quantity}
+            required
+            min="1"
+            max="1000"
+          />
+        </div>
 
         <div>
-        <input id="itemtBt" type="submit" /> &nbsp;
-        <button id="itemtBt" type="button" onClick={cancelClick}>Cancel</button>
+        {/* <input id="itemtBt" type="submit" /> &nbsp; */}
         {/* <button onClick={()=>{history.push(`/items/${itemId}/images`)}}>edit image</button> */}
-        <button type="button" onClick={() => UploadMultipleFiles()}  className="mutipleUploadBt">Upload</button>
+        <button type="button" onClick={() => UploadMultipleFiles()}  className="mutipleUploadBt">Submit</button>
+        <button id="itemtBt" type="button" onClick={cancelClick}>Cancel</button>
         </div>
     </form>
     

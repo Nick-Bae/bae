@@ -12,7 +12,7 @@ padding:20px;
 border-bottom: 1px solid var(--grey-light-color);
 margin-bottom: 20px;
 }
-label{
+#editLabel{
     margin: 20px 0 0 20px;
 
 }
@@ -36,7 +36,22 @@ label{
     border-radius: 10px;
     height: 60px;
     display: flex;
-    align-content: center;
+    align-items: center;
+}
+
+#quantityInput{
+    font-size: 20px;
+    /* min-width:700px; */
+    background-color: white;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--grey-light-color);
+    border-radius: 10px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+#quantity{
+    align-items: center;
 }
 
 #uploadImage{background-color: white;
@@ -50,7 +65,7 @@ label{
 #uploadBt{
     display: flex;
     align-items: center;
-    margin: 0 5px 0 10px;
+    margin: 0 5px 0 20px;
 }
 
 .selectCategory{
@@ -96,12 +111,13 @@ label{
     font-size: 20px;
 }
 
-#itemtBt{
+#itemtBt, .mutipleUploadBt{
     height:40px;
     width: 60px;
     background-color: rgb(252, 239, 213);
     border-radius: 5px;
     margin-bottom: 20px;
+    margin-right:10px;
 }
 
 #errorMessages{
@@ -142,7 +158,9 @@ option {
     align-items: center;
     flex-direction: row; */
 }
-
+#quantityInList{
+    height:30px;
+}
 #quantity{
     width:60px;
 }
