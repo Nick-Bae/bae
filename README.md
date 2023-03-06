@@ -3,23 +3,32 @@
 # Getting started
 
 1. Install dependencies
-
+   ```
    pipenv install -r requirements.txt
+   ```
    
 2. Create a .env file based on the example with proper settings for your development environment
-
+   ```
    Make sure the SQLite3 database connection URL is in the .env file
-   
-3. Get into your pipenv, migrate your database, seed your database, and run your Flask app
-  
-   pipenv shell
-   
-   flask db upgrade
-   
-   flask seed all
-   
-   flask run
+   ```
+3. Create a .env file based on the example with proper settings for your development environment
 
+4. Make sure the SQLite3 database connection URL is in the .env file
+
+5. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+     ```
+      pipenv shell
+     ```
+     ```
+      flask db upgrade
+     ```
+     ```
+      flask seed all
+     ```
+     ```
+      flask run
+      ```
+ 6. To run the React App in development, checkout the README inside the react-app directory.
  
 # App Link 
 https://nbae.herokuapp.com/
