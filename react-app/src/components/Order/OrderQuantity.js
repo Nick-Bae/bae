@@ -49,7 +49,7 @@ const OrderQuantity = ({item}) => {
               <div id="cartViewquantityInput">
                   <label id="cartViewquantityLabel" htmlFor='quantity'>Quantity</label>
                   <input
-                      id='quantity'
+                      id='qtyInCheckout'
                       type='number'
                       onChange={e => setQuantity(e.target.value)}
                       value={quantity}

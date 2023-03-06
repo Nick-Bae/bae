@@ -19,6 +19,7 @@
     display: flex;
     justify-content: space-between;
     padding:10px;
+    align-items: center;
 }
 
 .cartviewTitle{
@@ -54,4 +55,15 @@
 
 .shoppingCartLabel{
     margin-top:50px;
+}
+
+
+.cartviewTitle, .cartviewPrice, .cartViewQty, .orderDeleteBt{
+    display: flex;
+    align-items: center;
+}
+
+.cartviewTitle{
+    display: flex;
+    align-items:center;
 }

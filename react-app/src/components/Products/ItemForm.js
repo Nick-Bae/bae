@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createItem } from "../../store/items";
@@ -9,6 +9,7 @@ const ItemForm = () => {
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
     const history = useHistory();
+    const imageInput = useRef(null);
 
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -109,26 +110,48 @@ const ItemForm = () => {
     history.push(`/items/${newItem.id}`);
   };
 
-  const cancelClick = (e) =>{
+const cancelClick = (e) =>{
     e.preventDefault();
     history.push('/items')
   }
 
-  const reset= () =>{
+const reset= () =>{
     setImage("");
     setName("");
     setPrice("");
     setDescription("");
   }
   
-    const updateImage = (e) => {
+const updateImage = (e) => {
     const file = e.target.files[0];
         setImage(file); 
-    }
+}
 
-    const MultipleFileChange = (e) => {
+const MultipleFileChange = (e) => {
         setImage(e.target.files);
-    }
+        // const preview = document.querySelector('.preview')
+        // for (const file of e.target.files) {
+        //     preview.innerText += `\n${file.name}`;
+        //     preview.innerText += `\n${file.preview}`;
+
+        //     // preview.setAttribute('class',`{file.name}`)
+        //   }
+
+        var fileStore = [];
+
+function myFunction(){
+    var txt = "";
+    if (e.target.files.length == 0) {
+        txt = "Select one or more files.";
+    } else {
+    for (const x of e.target.files) {
+            fileStore.push.apply(fileStore,x.files);
+            console.log(x.files);
+            console.log(fileStore);
+        }}
+}
+myFunction();
+}
 
 const UploadMultipleFiles = async () => {
         setHasSubmitted(true);
@@ -171,6 +194,7 @@ const UploadMultipleFiles = async () => {
             formData.append('image', image[i]);                      
         }
         
+        console.log("attached images", image)
         console.log("this is a sending file to server", formData)
         
         const imageReturn = await fetch('/api/images',{
@@ -200,6 +224,62 @@ const UploadMultipleFiles = async () => {
             state: { item: newItem }
           });
     }
+
+    // const input = document.querySelector(".imageUpload")
+    // const preview = document.querySelector('.preview');
+
+    // imageInput.current.style.opacity = 0;
+    // input.addEventListener('change', updateImageDisplay);
+
+    // function updateImageDisplay() {
+    //     while(preview.firstChild) {
+    //       preview.removeChild(preview.firstChild);
+    //     }
+      
+    //     const curFiles = input.files;
+    //     if (curFiles.length === 0) {
+    //       const para = document.createElement('p');
+    //       para.textContent = 'No files currently selected for upload';
+    //       preview.appendChild(para);
+    //     } else {
+    //       const list = document.createElement('ol');
+    //       preview.appendChild(list);
+      
+    //       for (const file of curFiles) {
+    //         const listItem = document.createElement('li');
+    //         const para = document.createElement('p');
+    //         if (validFileType(file)) {
+    //           para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
+    //           const image = document.createElement('img');
+    //           image.src = URL.createObjectURL(file);
+      
+    //           listItem.appendChild(image);
+    //           listItem.appendChild(para);
+    //         } else {
+    //           para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
+    //           listItem.appendChild(para);
+    //         }
+      
+    //         list.appendChild(listItem);
+    //       }
+    //     }
+    //   }
+
+    //   const fileTypes = [ "image/bmp", "image/gif", "image/jpeg", "image/png" ];
+      
+    //   function validFileType(file) {
+    //     return fileTypes.includes(file.type);
+    //   }
+
+    //   function returnFileSize(number) {
+    //     if (number < 1024) {
+    //       return `${number} bytes`;
+    //     } else if (number >= 1024 && number < 1048576) {
+    //       return `${(number / 1024).toFixed(1)} KB`;
+    //     } else if (number >= 1048576) {
+    //       return `${(number / 1048576).toFixed(1)} MB`;
+    //     }
+    //   }
 
   return (
     <section className='createItemForm'>
@@ -286,18 +366,20 @@ const UploadMultipleFiles = async () => {
                     />
                 </div> */}
         
-        <div id="uploadImage">
+        <div id="uploadImage" class="imageUpload">
             <label id="uploadBt" htmlFor='url'>Image:</label>
              <input
               id="uploadBt"
               type="file"
-              accept="image/*"
+              accept=".jpg, .jpeg, .png"
             //   onChange={updateImage}
               onChange={MultipleFileChange}
               multiple 
             />
-          
             {(imageLoading)&& <p>Loading...</p>}
+        </div>
+        <div class="preview">
+            <p>No files currently selected for upload</p>
         </div>
         
         <div id="quantityInput">
