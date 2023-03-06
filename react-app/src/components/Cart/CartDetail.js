@@ -41,17 +41,17 @@ const CartDetail = () => {
             <div className='cartList-content'>
                 {carts.map(cart => (
                     <div key={cart} className='cartDetailContainer' key={cart.id}>
-                        <NavLink to={`/items/${cart.id}`}>
+                        {/* <NavLink to={`/items/${cart.id}`}> */}
                             <div className='cartInside'>
                                 <img className="cartImage" src={cart.image} alt=""/>
                             </div>
-                        </NavLink>
+                        {/* </NavLink> */}
                         <div className='cartDetailInfoinCart'>
-                            <NavLink to={`/items/${cart.id}`}>
+                            {/* <NavLink to={`/items/${cart.id}`}> */}
                                 <div className='titleInCart'>
                                  <p className='overflow-ellipsis'>{cart.name}</p>
                                 </div>
-                            </NavLink>
+                            {/* </NavLink> */}
                             <p className='cartPriceLabel'>${parseFloat(cart.price).toFixed(2)}</p>
                             <p className='cartPriceLabel'>Qty:{cart.quantity}</p>
                             <button className="cartDeleteCartView" onClick={() => cartDelete(cart.cartId)}>

@@ -137,20 +137,20 @@ const MultipleFileChange = (e) => {
         //     // preview.setAttribute('class',`{file.name}`)
         //   }
 
-        var fileStore = [];
+//         var fileStore = [];
 
-function myFunction(){
-    var txt = "";
-    if (e.target.files.length == 0) {
-        txt = "Select one or more files.";
-    } else {
-    for (const x of e.target.files) {
-            fileStore.push.apply(fileStore,x.files);
-            console.log(x.files);
-            console.log(fileStore);
-        }}
-}
-myFunction();
+// function myFunction(){
+//     var txt = "";
+//     if (e.target.files.length == 0) {
+//         txt = "Select one or more files.";
+//     } else {
+//     for (const x of e.target.files) {
+//             fileStore.push.apply(fileStore,x.files);
+//             console.log(x.files);
+//             console.log(fileStore);
+//         }}
+// }
+// myFunction();
 }
 
 const UploadMultipleFiles = async () => {
@@ -379,7 +379,7 @@ const UploadMultipleFiles = async () => {
             {(imageLoading)&& <p>Loading...</p>}
         </div>
         <div class="preview">
-            <p>No files currently selected for upload</p>
+            {/* <p>No files currently selected for upload</p> */}
         </div>
         
         <div id="quantityInput">

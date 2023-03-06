@@ -32,11 +32,15 @@ console.log(carts)
             "items": carts
         }
 
-        dispatch(createOrder(orderInfo))
-        for (let i=0; i < carts.length; i++){
-            dispatch(deleteOneCart(carts[i].cartId))
+        if (!carts.length){
+            alert("cart is empty")
+        } else {
+            dispatch(createOrder(orderInfo))
+            for (let i=0; i < carts.length; i++){
+                dispatch(deleteOneCart(carts[i].cartId))
+            }
+            history.push('/order-complete');
         }
-        history.push('/order-complete');
     }
 
   return (
