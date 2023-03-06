@@ -53,4 +53,42 @@ https://nbae.herokuapp.com/
    <img width="50" src="https://user-images.githubusercontent.com/25181517/183896132-54262f2e-6d98-41e3-8888-e40ab5a17326.png" />
 </div>
 
- 
+# Features
+<div align="center">
+<img width="70%" src="https://user-images.githubusercontent.com/88744340/223229572-f883973d-5a7d-4ec5-b325-5401572790dc.gif" />
+</div>
+
+<div align="center">
+<img width="70%" src="https://user-images.githubusercontent.com/88744340/223234336-40b5bd4a-13e1-4521-8812-158c1cb102d3.gif" />
+</div>
+
+<div align="center">
+<img width="70%" src="https://user-images.githubusercontent.com/88744340/223259148-a353916e-393f-467f-9816-b36fcbb26931.gif" />
+</div>
+![bae-wish]()
+
+<div align="center">
+<img width="70%" src="https://user-images.githubusercontent.com/88744340/223261116-e4421e8b-d1fa-4e94-ac25-e86fe8a397bc.gif" />
+</div>
+
+<div align="center">
+<img width="70%" src="" />
+</div>
+
+<div align="center">
+<img width="70%" src="" />
+</div>
+
+<div align="center">
+<img width="70%" src="" />
+</div>
+
+<div align="center">
+<img width="70%" src="" />
+</div>
+
+
+
+
+
+
