@@ -312,5 +312,6 @@ def search_items(keyword):
 
 @products_routes.route('/search-all/<keyword>')
 def search_all_items(keyword):
-    items = Product.query.filter(Product.name.ilike(f'%{keyword}%')).all()
+    items = Product.query.filter(Product.name.ilike(f'%{keyword.lower()}%')).all() or Product.query.filter(Product.description.ilike(f'%{keyword.lower()}%')).all()
+    print ("################# items", items)
     return  {item.to_dict()['id']: item.to_dict() for item in items}
