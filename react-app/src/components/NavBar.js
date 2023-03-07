@@ -6,7 +6,8 @@ import LoginFormModal from './LoginFormModal';
 import SignupModal from './SignupFormPage';
 import './NavBar.css'
 import Profile from './Profile';
-import SearchBar from './SearchBar';
+// import SearchBar from './SearchBar';
+import SearchBox from './SearchBar/SearchBox';
 
 const NavBar = () => {
 
@@ -62,7 +63,7 @@ const NavBar = () => {
       {/* <div className='searchBarInNav'> */}
       <div >
         {/* <SearchBar className="searchBarDisplay" placeholder="search for product" /> */}
-        <SearchBar />
+        <SearchBox />
       </div>
       {sessionLinks}
     </div>
