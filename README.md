@@ -54,38 +54,31 @@ https://nbae.herokuapp.com/
 </div>
 
 # Features
+Browse Category
 <div align="center">
 <img width="70%" src="https://user-images.githubusercontent.com/88744340/223229572-f883973d-5a7d-4ec5-b325-5401572790dc.gif" />
 </div>
 
+List an item
 <div align="center">
 <img width="70%" src="https://user-images.githubusercontent.com/88744340/223234336-40b5bd4a-13e1-4521-8812-158c1cb102d3.gif" />
 </div>
 
+Checkt out
 <div align="center">
 <img width="70%" src="https://user-images.githubusercontent.com/88744340/223259148-a353916e-393f-467f-9816-b36fcbb26931.gif" />
 </div>
-![bae-wish]()
 
+Wishlist
 <div align="center">
 <img width="70%" src="https://user-images.githubusercontent.com/88744340/223261116-e4421e8b-d1fa-4e94-ac25-e86fe8a397bc.gif" />
 </div>
 
+Search bar
 <div align="center">
-<img width="70%" src="" />
+<img width="70%" src="https://user-images.githubusercontent.com/88744340/223881038-60f8808b-e0a5-41a8-9fec-fe002af36d54.gif" />
 </div>
 
-<div align="center">
-<img width="70%" src="" />
-</div>
-
-<div align="center">
-<img width="70%" src="" />
-</div>
-
-<div align="center">
-<img width="70%" src="" />
-</div>
 
 
 
