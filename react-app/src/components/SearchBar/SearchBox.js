@@ -40,8 +40,8 @@ function SearchBox(props) {
                 // // .then(res =>history.push({ pathname: `/items/search/${searchStr}`, state: { items:res } }))
                 // .then(data => console.log("data",data))
             const items = data.filter(item=>
-                            ((item.name).toLowerCase()).includes(searchStr.toLowerCase()) ||
-                            ((item.description).toLowerCase()).includes(searchStr.toLowerCase()) 
+                            ((item?.name)?.toLowerCase()).includes(searchStr?.toLowerCase()) ||
+                            ((item?.description)?.toLowerCase()).includes(searchStr?.toLowerCase()) 
                             // ((item.category).toLowerCase()).includes(searchStr.toLowerCase())
                         )
         //    const allResult = {...result, ...collectR}
@@ -69,7 +69,7 @@ console.log("search result",result)
     useEffect(() => {
         dispatch(getItems());
        
-    }, [dispatch]);
+    }, [dispatch, searchStr]);
 
     // useEffect(() => { 
     //     setResult(result) }, [])
