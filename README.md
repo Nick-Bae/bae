@@ -79,8 +79,15 @@ Search bar
 <img width="70%" src="https://user-images.githubusercontent.com/88744340/223881038-60f8808b-e0a5-41a8-9fec-fe002af36d54.gif" />
 </div>
 
+Comment
+<div align="center">
+<img width="70%" src="https://user-images.githubusercontent.com/88744340/223882895-b46d541a-84d6-4fc4-9d8e-b961807dde68.gif" />
+</div>
 
-
+Image zoom
+<div align="center">
+<img width="70%" src="https://user-images.githubusercontent.com/88744340/223883181-8a5167b7-5fc7-4bfc-b821-c23152ee6373.gif" />
+</div>
 
 
 
