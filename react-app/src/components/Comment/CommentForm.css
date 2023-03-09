@@ -28,3 +28,8 @@
     border-radius: 3px;
     background-color: antiquewhite;
 }
+
+.commentLable{
+    margin-left: 20px;
+    font-weight: bold;
+}

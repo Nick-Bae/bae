@@ -45,7 +45,7 @@ export const CommentDisplay = () => {
             <p id="commentTitle">
                 {/* <button id="reviewModalClick" onClick={reveiwModal}> */}
 
-                &nbsp; Comments
+                {/* &nbsp; Comments */}
 
                 {/* <ReviewFormModal />
                      </button> */}

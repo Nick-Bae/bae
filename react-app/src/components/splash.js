@@ -75,7 +75,7 @@ const Splash = () => {
                     </div>
                 </div>
             </div>
-
+        
         </div>
     );
 };

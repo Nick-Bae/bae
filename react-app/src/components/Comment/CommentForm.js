@@ -97,6 +97,7 @@ export const CommentForm = () => {
     return (
         <div id="reviewModal">
             <div className="leaveComment" onClick={() => { open ? setOpen(false) : setOpen(true) }}>
+                <p className='commentLable'>Comments</p>
                 <i className="fa-solid fa-pen-to-square commentSign" 
                     onClick={moveToComment}> </i>
                 &nbsp; Click to leave your comment!

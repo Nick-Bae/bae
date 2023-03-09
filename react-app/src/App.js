@@ -27,6 +27,7 @@ import CategoryItems from './components/CategoryItems';
 import CategoryBar from './components/CategoryBar';
 import UploadPicture from './components/UploadPicture';
 import SearchResult from './components/SearchBar/SearchResult';
+import aboutMe from './components/aboutMe';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -145,6 +146,8 @@ function App() {
           <NotFound />
         </Route>
       </Switch>
+      <aboutMe />
+      
     </BrowserRouter>
   );
 }

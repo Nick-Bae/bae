@@ -13,6 +13,7 @@ import ReactImageZoom from "react-image-zoom";
 import EndTime from './EndTime';
 import BuyNow from '../Order/BuyNow';
 import { getWishlist, postWishlist, deleteWishlist } from "../../store/wishlist";
+import aboutMe from '../aboutMe';
 
 const ItemDetail = () => {
     
@@ -179,16 +180,15 @@ const ItemDetail = () => {
                     )}
                 </div>
                 <div className='itemComment_container'>
-                    <div className='commentDisplay'>
-                        <CommentDisplay />
-                    </div>
                     <div className='commentForm'>
                         <CommentForm />
+                    </div>
+                    <div className='commentDisplay'>
+                        <CommentDisplay />
                     </div>
                 </div>
             </div>
         </div>
-       
     );
 };
 
