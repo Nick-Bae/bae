@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import SearchBar from "material-ui-search-bar";
 import { withRouter } from "react-router";
 import { getItems } from "../../store/items";
 
 function SearchBox(props) {
     const dispatch = useDispatch();
+    const location = useLocation();
     const history = useHistory();
     const [searchStr, setSearchStr] = useState('');
     const [result, setResult] = useState({})
@@ -46,6 +47,7 @@ function SearchBox(props) {
                         )
         //    const allResult = {...result, ...collectR}
            setResult(items)
+          
                 //  .catch(console.err)   
                 // }
         console.log("items", items)
@@ -65,14 +67,21 @@ console.log("search result",result)
     //                     .then(res => setResult(res))
     //             }
     //         }, [keyword])
-
     useEffect(() => {
         dispatch(getItems());
-       
     }, [dispatch, searchStr]);
-
     // useEffect(() => { 
     //     setResult(result) }, [])
+
+    useEffect (()=>{
+        let inputValue = document.querySelector('.MuiInputBase-input')
+        inputValue.innerText=' '
+        console.log(location)
+    },[location.pathname])
+    // if (location.pathname.length) {
+    //     let inputValue = document.querySelector('.MuiInputBase-input')
+    //     inputValue = ''
+    // }
 
     return (
         <>

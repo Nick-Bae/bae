@@ -209,16 +209,16 @@ def seed_images():
         product_id=17)
 
     image61 = Image(
-        url="https://nbae.s3.amazonaws.com/'The+Birdy'+Bracelet+Watch1.png", 
+        url="https://nbae.s3.amazonaws.com/smart+watch1.jpeg", 
         product_id=18)
     image62 = Image(
-        url="https://nbae.s3.amazonaws.com/'The+Birdy'+Bracelet+Watch2.jpeg", 
+        url="https://nbae.s3.amazonaws.com/smart+watch2.jpeg", 
         product_id=18)
     image63 = Image(
-        url="https://nbae.s3.amazonaws.com/'The+Birdy'+Bracelet+Watch3.jpeg", 
+        url="https://nbae.s3.amazonaws.com/smart+watch3.jpeg", 
         product_id=18)
     image64 = Image(
-        url="https://nbae.s3.amazonaws.com/'The+Birdy'+Bracelet+Watch4.jpeg", 
+        url="https://nbae.s3.amazonaws.com/smart+watch4.jpeg", 
         product_id=18)
 
     image65 = Image(

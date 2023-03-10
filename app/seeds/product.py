@@ -56,8 +56,8 @@ def seed_products():
         name='G-Timeless Feline Bracelet Watch', user_id=1, price = 1300, quantity = 15 ,category_id = 4, 
         description ="Gucci's signature feline and mixed indexes—from a buzzing bee to an interlocking-G—gleam against the mother-of-pearl dial of this Swiss-made bracelet watch.")
     item18 = Product(
-        name='The Birdy Bracelet Watch', user_id=2, price = 675, quantity = 20 ,category_id = 4, 
-        description ="A round, cleanly styled watch on a slender linked bracelet offers classic American style fine-tuned by Detroit craftsmen.")
+        name='Sport Slim FKM Rubber', user_id=2, price = 275, quantity = 20 ,category_id = 4, 
+        description ="Designed to accommodate your active lifestyle, this ultrasleek watchband combines durability and flexibility for comfort that lasts. classic American style fine-tuned by Detroit craftsmen.")
     item19 = Product(
         name='The Birdy Day & Night Phase Leather Strap Watch', user_id=3, price = 625, quantity = 50 ,category_id = 4, 
         description ="A beautiful sun-and-moon-phase indicator and coin-edge bezel refresh a vintage-inspired round watch assembled and fine-tuned by Detroit craftsmen.")
