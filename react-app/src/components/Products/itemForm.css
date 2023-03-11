@@ -3,7 +3,8 @@
     display: flex;
     justify-content: center;
     background-color: rgb(246, 243, 240);
-    height: auto;
+    /* height: auto; */
+    min-height:975px;
     width:1200px;
 }
 #formTitle{

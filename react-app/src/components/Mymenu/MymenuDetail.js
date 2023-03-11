@@ -135,18 +135,18 @@ function MymenuDetail({ menu }) {
                                                     {/* Order Total */}
                                                 </p>
                                                 <p className='orderHtotal'>
-                                                    $ {eachTotal = singleItem.item?.price*singleItem.quantity}
+                                                    $ {eachTotal = (singleItem.item?.price*singleItem.quantity).toFixed(2)}
                                                 </p>
                                             </div>
                                         </div>
                                     </NavLink>
                                             <div hidden={true} className='totalOrderPrice'>
-                                                $ {totalPrice += eachTotal}
+                                                $ {(totalPrice += parseFloat(eachTotal))}
                                             </div>
                                             </div>
                                     ))}
                                     <p className='orderHTotal'>
-                                    Order Total: ${totalPrice}
+                                    Order Total: ${totalPrice.toFixed(2)}
                                     </p>
                                     <p hidden={true}>{totalPrice=0}</p>
                             </div>

@@ -37,7 +37,7 @@ const CategoryItems = () => {
                                  )}   
                                 </div>
                                 <div className='previewNamePrice'>
-                                    <div>
+                                    <div className='previewName'>
                                         {item?.name}
                                     </div>
                                     <div>

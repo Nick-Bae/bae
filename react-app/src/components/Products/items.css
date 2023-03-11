@@ -40,6 +40,7 @@
     width:1200px;
     gap:0px 45px;
     justify-content: center;
+    min-height:800px;
     /* margin: 20px 0px; */
 }
 
@@ -99,4 +100,8 @@
 
   .aboutMe, .socialNetwork{
     font-size: 30px;
+  }
+
+  .itemDetail_container{
+    min-height: 1200px;
   }

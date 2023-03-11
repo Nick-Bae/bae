@@ -12,6 +12,7 @@ function SearchBox(props) {
     const history = useHistory();
     const [searchStr, setSearchStr] = useState('');
     const [result, setResult] = useState({})
+    const [inputText, setInputText] = useState('');
     const data = Object.values(useSelector(state => state.items));
 
     const handleSearch = async () => {
@@ -47,7 +48,7 @@ function SearchBox(props) {
                         )
         //    const allResult = {...result, ...collectR}
            setResult(items)
-          
+           setInputText('')
                 //  .catch(console.err)   
                 // }
         console.log("items", items)
@@ -89,7 +90,7 @@ console.log("search result",result)
         onChange={(keyword) => setSearchStr(keyword)
                 }
         onRequestSearch={handleSearch}
-        value={searchStr}
+        value={inputText}
         style={{
           margin: '10px auto',
           width:'800px',

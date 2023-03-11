@@ -1,6 +1,6 @@
 import React from 'react';
 
-const aboutMe = () => {
+const AboutMe = () => {
     
 return (
     <div className='about'>
@@ -17,4 +17,4 @@ return (
     )
 }
 
-export default aboutMe;
+export default AboutMe;

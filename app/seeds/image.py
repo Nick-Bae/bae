@@ -5,7 +5,7 @@ from app.models import db, User, Image
 # Adds a demo user, you can add other users here if you want
 def seed_images():
     image1 = Image(
-        url='https://nbae.s3.amazonaws.com/open+front+long+sleeve1.jpeg', 
+        url='https://nbae.s3.amazonaws.com/Open+Front+Long+Blazer1.png', 
         product_id=1)
     image2 = Image(
         url='https://nbae.s3.amazonaws.com/open+front+long+sleeve2.jpeg', 

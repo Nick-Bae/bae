@@ -67,3 +67,8 @@
     display: flex;
     align-items:center;
 }
+
+.cartImage{
+    border: 1px solid var(--grey-light-color);
+    border-radius: 8px;
+}   

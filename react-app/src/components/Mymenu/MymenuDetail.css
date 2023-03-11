@@ -8,17 +8,21 @@
 }
 .wishdetailContainer{
     display: flex;
+    border-bottom: 1px solid var(--grey-light-color);
+    padding:10px;
 }
 .ordherHImage{
     width: 100px;
-    height: 100px;
+    height: 100%;
     border-radius: 10px;
     margin-left: 40px;
     padding:10px;
+    border: 1px solid var(--grey-light-color);
+    border-radius: 8px;
 }
 
 .menu-details{
-    margin-left:20px;
+    margin:15px 0 0 20px;
     /* padding: 10px 0; */
     font-size: 30px;
 }
@@ -48,7 +52,7 @@
 .orderHistoryContainer{
     display: flex;
     height:90px;
-
+    margin-bottom: 10px;
 }
 
 .orderHistoryTotalLabel{
@@ -69,6 +73,8 @@
 .wishImage{
     width:150px;
     height: 150px;
+    border: 1px solid var(--grey-light-color);
+    border-radius: 10px;
 }
 
 .orderDate{
