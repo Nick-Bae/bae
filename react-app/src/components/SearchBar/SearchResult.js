@@ -57,7 +57,7 @@ return (
         onSearchClick={onSearchClick}
         /> */}
 
-<div className="itemDetail">
+<div className="itemDetailInSearch">
               <div className="itemLayout">
              
               {items.length ?    items?.map((item, ind)=>(
