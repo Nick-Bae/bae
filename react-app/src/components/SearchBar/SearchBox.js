@@ -84,8 +84,9 @@ console.log("search result",result)
     //     inputValue = ''
     // }
 
+
     return (
-        <>
+        <div className="searchBarC">
         <SearchBar
         onChange={(keyword) => setSearchStr(keyword)
                 }
@@ -93,13 +94,13 @@ console.log("search result",result)
         value={inputText}
         style={{
           margin: '10px auto',
-          width:'800px',
+          width:'100%',
           border: '1px solid black'
         }}
         cancelOnEscape
       />
      
-      </>
+      </div>
     )
 }
 

@@ -8,6 +8,7 @@
 
 .categoryBarContainer{
     background-color: rgb(222, 222, 215);
+    /* min-width:1300px; */
 }
 
 .categoryBarName{

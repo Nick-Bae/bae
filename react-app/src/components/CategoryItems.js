@@ -20,7 +20,7 @@ const CategoryItems = () => {
     return (
         <>
             <div className='mainContainer'>
-                <div >
+                <div className='bannerInMain'>
                     <img className='banner' src="https://nbae.s3.amazonaws.com/mainImage.jpg" alt="" />
                 </div>
                 <div className="itemDetail">

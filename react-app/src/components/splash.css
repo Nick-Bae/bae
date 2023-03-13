@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-items: center;
     align-items: center;
+    width:1300px;
     /* background-color: rgb(247, 246, 242); */
 }
 .mainImageContainer{
@@ -16,12 +17,21 @@
     min-width: 1300px;
 }
 
+/* @media only screen and (max-width: 1280px) {
+    .trendGroup, .mainContainer, .trendContainer, .mainCategory, .mainImageContainer{
+      width:1200px;
+    }
+
+    .mainImage{
+        width:100%;
+    }
+} */
 
 
 .about{
     border-top-color:transparent ;
 }
-.mainImage{
+.bannerInMain{
     width:1300px;
     height: 450px;
 }
@@ -92,7 +102,7 @@
 
 .trendGroup{
     display: flex;
-    min-width: 1300px;
+    /* min-width: 1300px; */
 }
 
 .trendSmall{

@@ -51,6 +51,10 @@
     height: 450px;
 }
 
+.mainImage{
+    width:1300px;
+}
+
 .previewNamePrice{
     width:240px;
 }

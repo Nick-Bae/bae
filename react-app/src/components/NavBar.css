@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0px 5px;
+    max-width:1300px;
+    /* margin: 0px 5px; */
     height:67px;
 }
 .navMenu_login {
@@ -60,3 +61,28 @@
     margin-right:0;
 }
 
+.searchBarC{
+    width:800px;
+}
+
+@media only screen and (max-width: 1280px) {
+    .logoHome{
+        margin-left:15px;
+    }
+    
+    /* .navMenu, .categoryBarContainer, .mainContainer, .trendGroup, .trendContainer, .mainCategory{
+      width:1200px;
+    }
+
+    .mainImage{
+        width:1200px;
+    }
+
+    .loginName, .sellNewItem, .myBae, .logOutButton {
+        padding-right:20px;
+    }
+   
+    .searchBarc{
+        width:400px;
+    } */
+  }

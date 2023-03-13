@@ -5,7 +5,11 @@
     background-color: rgb(246, 243, 240);
     /* height: auto; */
     min-height:975px;
+    /* width:1220px; */
     width:1200px;
+}
+#createItemForm{
+    
 }
 #formTitle{
 font-size: 40px;
@@ -22,7 +26,7 @@ margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     font-size: 20px;
-    min-width:700px;
+    min-width:720px;
     background-color: white;
     margin-bottom: 20px;
     /* border-bottom: 1px solid var(--grey-light-color); */
@@ -30,7 +34,7 @@ margin-bottom: 20px;
 }
 #nameInput, #priceInput{
     font-size: 20px;
-    /* min-width:700px; */
+    /* min-width:720px; */
     background-color: white;
     margin-bottom: 20px;
     border-bottom: 1px solid var(--grey-light-color);
@@ -42,7 +46,7 @@ margin-bottom: 20px;
 
 #quantityInput{
     font-size: 20px;
-    /* min-width:700px; */
+    /* min-width:720px; */
     background-color: white;
     margin-bottom: 20px;
     border-bottom: 1px solid var(--grey-light-color);
@@ -82,7 +86,7 @@ margin-bottom: 20px;
 
 #name, #price, #imageUrl, #description {
     height: 40px;
-    min-width: 700px;
+    min-width: 720px;
     margin: 10px 20px 0 20px;
     outline: none;
     border: none;
@@ -92,7 +96,7 @@ margin-bottom: 20px;
 }
 
 #description{
-    min-width:750px;
+    min-width:720px;
 }
 #price {
     /* height:50px */
@@ -112,7 +116,7 @@ margin-bottom: 20px;
 .selectCategory{
     margin-bottom: 20px;
     height:70px;
-    min-width:700px;
+    min-width:720px;
     border-radius: 10px;
     font-size: 20px;
 }
