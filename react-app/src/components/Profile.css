@@ -1,7 +1,14 @@
-.loginName, .sellNewItem, .myBae, .logOutButton {
+.loginName, .sellNewItem, .myBae {
 padding-right:30px;
 color:black;
+transition: transform .2s;
 }
+
+.sellNewItem:hover,.myBae:hover, .logoutBt:hover {
+  /* border: 1px solid black; */
+  /* background-color: #eee; */
+  text-decoration: underline;
+  }
 
 .navInfo{
     font-size: var(--font-large);
