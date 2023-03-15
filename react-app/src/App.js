@@ -138,9 +138,9 @@ function App() {
           <OrderComplete />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/items/search/:searchStr' exact={true} >
+        <Route path='/items/search/:searchStr' exact={true} >
           <SearchResult />
-        </ProtectedRoute>
+        </Route>
 
         <Route>
           <NotFound />

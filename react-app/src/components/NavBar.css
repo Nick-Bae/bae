@@ -1,8 +1,14 @@
+.navMenuC{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:1300px;
+}
 .navMenu {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    max-width:1300px;
+    width:1300px;
     /* margin: 0px 5px; */
     height:67px;
 }
@@ -63,14 +69,24 @@
 
 .searchBarC{
     width:800px;
+    margin: 0 30px;
 }
 
 @media only screen and (max-width: 1280px) {
     .logoHome{
-        margin-left:15px;
+        margin-left:10px;
     }
-    
-    /* .navMenu, .categoryBarContainer, .mainContainer, .trendGroup, .trendContainer, .mainCategory{
+    .searchBarC{
+        width:700px;
+        /* margin: 0 30px; */
+    }
+    .navMenu{
+        display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+        width:1300px;
+    }
+    /*  .categoryBarContainer, .mainContainer, .trendGroup, .trendContainer, .mainCategory{
       width:1200px;
     }
 

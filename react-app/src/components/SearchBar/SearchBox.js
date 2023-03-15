@@ -12,7 +12,7 @@ function SearchBox(props) {
     const history = useHistory();
     const [searchStr, setSearchStr] = useState('');
     const [result, setResult] = useState({})
-    const [inputText, setInputText] = useState('');
+    const [inputKey, setInputKey] = useState('');
     const data = Object.values(useSelector(state => state.items));
 
     const handleSearch = async () => {
@@ -41,18 +41,26 @@ function SearchBox(props) {
                 // // .then(res => setResult(res))
                 // // .then(res =>history.push({ pathname: `/items/search/${searchStr}`, state: { items:res } }))
                 // .then(data => console.log("data",data))
-            const items = data.filter(item=>
-                            ((item?.name)?.toLowerCase()).includes(searchStr?.toLowerCase()) ||
-                            ((item?.description)?.toLowerCase()).includes(searchStr?.toLowerCase()) 
-                            // ((item.category).toLowerCase()).includes(searchStr.toLowerCase())
-                        )
+            if (!searchStr) {
+                alert("please enter a keyword to search")  
+            } else {
+                const items = data.filter(item=> ((item?.name)?.toLowerCase()).includes(searchStr?.toLowerCase()) ||
+                    ((item?.description)?.toLowerCase()).includes(searchStr?.toLowerCase()) 
+                     // ((item.category).toLowerCase()).includes(searchStr.toLowerCase())
+                    )
+                    let inputValue = document.querySelector('.MuiInputBase-input')
+                    inputValue.value=''
+                    console.log(inputValue)
+                    setSearchStr(' ')
+                    setResult(items)
+                    setInputKey('')
+                    console.log("items", items)
+                    history.push(`/items/search/${searchStr}`)
+            }
+            
         //    const allResult = {...result, ...collectR}
-           setResult(items)
-           setInputText('')
                 //  .catch(console.err)   
                 // }
-        console.log("items", items)
-    history.push(`/items/search/${searchStr}`)
     // history.push({ pathname: `/items/search/${searchStr}`, state: { items:items } })
 }
 console.log("search result",result)
@@ -70,19 +78,20 @@ console.log("search result",result)
     //         }, [keyword])
     useEffect(() => {
         dispatch(getItems());
-    }, [dispatch, searchStr]);
+    }, [dispatch]);
     // useEffect(() => { 
     //     setResult(result) }, [])
 
-    useEffect (()=>{
-        let inputValue = document.querySelector('.MuiInputBase-input')
-        inputValue.innerText=' '
-        console.log(location)
-    },[location.pathname])
+    // useEffect (()=>{
+    //     let inputValue = document.querySelector('.MuiInputBase-input')
+    //     console.log(inputValue)
+    //     inputValue.value=' '
+    // },[location.pathname])
     // if (location.pathname.length) {
     //     let inputValue = document.querySelector('.MuiInputBase-input')
     //     inputValue = ''
     // }
+   
 
 
     return (
@@ -91,13 +100,14 @@ console.log("search result",result)
         onChange={(keyword) => setSearchStr(keyword)
                 }
         onRequestSearch={handleSearch}
-        value={inputText}
+        value={inputKey}
         style={{
           margin: '10px auto',
           width:'100%',
           border: '1px solid black'
         }}
         cancelOnEscape
+        onCancelSearch
       />
      
       </div>

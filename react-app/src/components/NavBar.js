@@ -51,21 +51,23 @@ const NavBar = () => {
   }
 
   return (
-    <div  className='navMenu'>
-      <ul className='navMenu_home'>
-          <li>
-            <NavLink to='/' exact={true} activeClassName='active'>
-              <img className="logoHome" src="https://nbae.s3.amazonaws.com/logo.png" alt="Home"/>
-             
-            </NavLink>
-          </li>
-      </ul>
-      {/* <div className='searchBarInNav'> */}
-      <div >
-        {/* <SearchBar className="searchBarDisplay" placeholder="search for product" /> */}
-        <SearchBox />
+    <div className='navMenuC'>
+      <div  className='navMenu'>
+        <ul className='navMenu_home'>
+            <li>
+              <NavLink to='/' exact={true} activeClassName='active'>
+                <img className="logoHome" src="https://nbae.s3.amazonaws.com/logo.png" alt="Home"/>
+              
+              </NavLink>
+            </li>
+        </ul>
+        {/* <div className='searchBarInNav'> */}
+        <div className='searchBox' >
+          {/* <SearchBar className="searchBarDisplay" placeholder="search for product" /> */}
+          <SearchBox />
+        </div>
+        {sessionLinks}
       </div>
-      {sessionLinks}
     </div>
   );
 }
