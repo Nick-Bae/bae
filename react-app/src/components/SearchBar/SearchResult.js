@@ -22,10 +22,14 @@ const SearchResult = () => {
     //         // .then(res => setItems(Object.values(res)))
        
     // }
+    const categories =["clothes", "shoes", "jewelry", "accessories"];
+    const resCategory = categories.filter(category => category === searchStr.toLocaleLowerCase())
+    const searchCategory = categories.indexOf(resCategory[0])+1
 
     const items = data.filter(item=>
         ((item.name).toLowerCase()).includes(searchStr.toLowerCase()) ||
-        ((item.description).toLowerCase()).includes(searchStr.toLowerCase()) 
+        ((item.description).toLowerCase()).includes(searchStr.toLowerCase()) || 
+        (Number(item.category_id) === Number(searchCategory))
         // ((item.category).toLowerCase()).includes(searchStr.toLowerCase())
     )
     

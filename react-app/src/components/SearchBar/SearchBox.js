@@ -41,13 +41,28 @@ function SearchBox(props) {
                 // // .then(res => setResult(res))
                 // // .then(res =>history.push({ pathname: `/items/search/${searchStr}`, state: { items:res } }))
                 // .then(data => console.log("data",data))
+                
+                // function searchCategory(category) {
+                    //     if (category === searchStr.toLocaleLowerCase()){
+                        //         return category
+                        //     }
+                        // }
+                        
+            const categories =["clothes", "shoes", "jewelry", "accessories"];
+            const resCategory = categories.filter(category => category === searchStr.toLocaleLowerCase())
+            const searchCategory = categories.indexOf(resCategory[0])+1
+            // console.log("rescategory", resCategory)
+            // console.log("searchCategory", searchCategory)
+
             if (!searchStr) {
                 alert("please enter a keyword to search")  
             } else {
+                // category.filter(item => item.includes(searchStr?.toLowerCase()))
                 const items = data.filter(item=> ((item?.name)?.toLowerCase()).includes(searchStr?.toLowerCase()) ||
-                    ((item?.description)?.toLowerCase()).includes(searchStr?.toLowerCase()) 
-                     // ((item.category).toLowerCase()).includes(searchStr.toLowerCase())
+                    ((item?.description)?.toLowerCase()).includes(searchStr?.toLowerCase()) ||
+                    (Number(item?.category_id) === Number(searchCategory))
                     )
+
                     let inputValue = document.querySelector('.MuiInputBase-input')
                     inputValue.value=''
                     console.log(inputValue)
@@ -107,7 +122,6 @@ console.log("search result",result)
           border: '1px solid black'
         }}
         cancelOnEscape
-        onCancelSearch
       />
      
       </div>
