@@ -28,10 +28,11 @@ function SearchBox(props) {
         //     console.log(result)
         // }
        
-        // if(searchStr){
-        //     const response = await fetch(`/api/items/search-all/${searchStr}`)
-        //     const resData = await response.json();
-        //     console.log("resdata0",resData)
+        if(searchStr){
+            const response = await fetch(`/api/items/search-all/${searchStr}`)
+            const resData = await response.json();
+            console.log("resdata0",resData)
+        }
         //     history.push({ pathname: `/items/search/${searchStr}`, 
         //                     state: { items:resData } })
                 // .then(res => res.json())
@@ -49,9 +50,10 @@ function SearchBox(props) {
                         // }
                         
             const categories =["clothes", "shoes", "jewelry", "accessories"];
-            const resCategory = categories.filter(category => category === searchStr.toLocaleLowerCase())
+            // const resCategory = categories.filter(category => category === searchStr.toLocaleLowerCase())
+            const resCategory = categories.filter(category => category.includes(searchStr.toLocaleLowerCase()))
             const searchCategory = categories.indexOf(resCategory[0])+1
-            // console.log("rescategory", resCategory)
+            console.log("rescategory", resCategory)
             // console.log("searchCategory", searchCategory)
 
             if (!searchStr) {

@@ -23,7 +23,7 @@ const SearchResult = () => {
        
     // }
     const categories =["clothes", "shoes", "jewelry", "accessories"];
-    const resCategory = categories.filter(category => category === searchStr.toLocaleLowerCase())
+    const resCategory = categories.filter(category => category.includes(searchStr.toLocaleLowerCase()))
     const searchCategory = categories.indexOf(resCategory[0])+1
 
     const items = data.filter(item=>
