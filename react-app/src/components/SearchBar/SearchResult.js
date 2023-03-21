@@ -33,7 +33,6 @@ const SearchResult = () => {
         // ((item.category).toLowerCase()).includes(searchStr.toLowerCase())
     )
     
-    console.log("search display",items)
 
     const noResult =  `We couldn't find matches for "${searchStr}"`
     const sNoResult = 'Double check your search for any typos or spellling errors - or different search term'
